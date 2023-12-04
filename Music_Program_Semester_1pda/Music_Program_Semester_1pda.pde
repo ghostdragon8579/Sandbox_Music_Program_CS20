@@ -48,9 +48,14 @@ void keyPressed() {
   if (key=='L' || key=='l') SongLooping=true;
   if (key=='R' || key=='r') SongLooping=false;
   if (SongLooping=true) song1.loop(LoopNumber);
-  if (SongLooping=false) song1.loop(LoopNumber); stop();
+  if (SongLooping=false) stop();
   //
 } //End keyPressed
+void keyReleased() {
+  //
+  if (SongLooping=false) stop();
+  //
+}
 void mousePressed() {} //End mousePressed
 //
 //End MAIN Program
