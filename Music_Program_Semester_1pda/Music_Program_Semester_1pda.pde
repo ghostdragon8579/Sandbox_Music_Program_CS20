@@ -8,32 +8,49 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
 //Global Variables
-//int appWidth, appHeight;
+float xRectBackground, yRectBackground, widthRectBackground, heightRectBackground;
+int appWidth, appHeight;
+Boolean SongLooping=false;
 Minim minim;
 AudioPlayer song1;
 //
 void setup() {
   //
-  //size(1200, 1000);
-  //appWidth = width;
-  //appHeight = height;
+  size(1200, 1000);
+  appWidth = width;
+  appHeight = height;
   //
   minim = new Minim(this);
-  String pathway = "../Audio Files/";
+  String path = "../Audio Files/";
   String Luxery = "Luxery.mp3";
   String extension = ".mp3";
-  song1 = minim.loadFile(pathway + Luxery);
+  String Pathway = sketchPath(path + Luxery);
+  //
+  xRectBackground = appWidth*0;
+  yRectBackground = appHeight*0;
+  widthRectBackground = appWidth-1;
+  heightRectBackground = appHeight-1;
+  //
+  song1 = minim.loadFile(Pathway);
   //
 } //End setup
 //
-void draw() {} //End draw
+void draw() {
+  //
+  rect(xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
+  //
+} //End draw
 //
 void keyPressed() {
   //
-  song1.loop(0);
+  int LoopNumber = 0;
+  if (key=='F' || key=='f') song1.play();
+  if (key=='L' || key=='l') SongLooping=true;
+  if (key=='R' || key=='r') SongLooping=false;
+  if (SongLooping=true) song1.loop(LoopNumber);
+  if (SongLooping=false) song1.loop(LoopNumber); stop();
   //
 } //End keyPressed
-//
 void mousePressed() {} //End mousePressed
 //
 //End MAIN Program
