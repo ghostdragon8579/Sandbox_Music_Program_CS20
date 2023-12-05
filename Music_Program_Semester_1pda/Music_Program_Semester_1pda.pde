@@ -38,9 +38,6 @@ void setup() {
 void draw() {
   //
   rect(xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
-  if ( song1.isLooping() && song1.loopCount()!=-1 ) println("There are", song1.loopCount(), "loops left.");
-  if ( song1.isLooping() && song1.loopCount()==-1 ) println("Looping Infinitely");
-  if ( song1.isPlaying() && !song1.isLooping() ) println("Play Once");
   //
 } //End draw
 //
@@ -60,6 +57,10 @@ void keyPressed() {
     song1.loop(loopNum);
     // 
   }
+  //
+  if ( song1.isLooping() && song1.loopCount()!=-1 ) println("There are", song1.loopCount(), "loops left.");
+  if ( song1.isLooping() && song1.loopCount()==-1 ) println("Looping Infinitely");
+  if ( song1.isPlaying() && !song1.isLooping() ) println("Play Once");
   //
 } //End keyPressed
 void keyReleased() {
