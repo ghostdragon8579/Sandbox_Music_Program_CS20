@@ -70,8 +70,6 @@ void keyPressed() {
 } //End keyPressed
 void keyReleased() {
   //
-  if (SongLooping==false) stop();
-  //
 }
 void mousePressed() {} //End mousePressed
 //
