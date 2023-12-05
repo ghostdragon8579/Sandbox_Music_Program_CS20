@@ -58,8 +58,8 @@ void keyPressed() {
     int loopNum = int(keystr);
     song1.loop(loopNum);
     //
-    if (key=='T' || key=='t'); song1.skip(2000);
-    if (key=='R' || key=='r'); song1.skip(-20000);
+    if (key=='T' || key=='t'); song1.skip(+2000);
+    if (key=='R' || key=='r'); song1.skip(0);
     //
   }
    if ( key=='m' || key=='M' ) {
