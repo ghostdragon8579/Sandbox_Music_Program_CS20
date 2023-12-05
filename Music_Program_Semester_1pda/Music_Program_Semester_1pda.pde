@@ -57,13 +57,16 @@ void keyPressed() {
     println(keystr);
     int loopNum = int(keystr);
     song1.loop(loopNum);
-    // 
+    //
+    if (key=='T' || key=='t'); song1.skip(2000);
+    if (key=='R' || key=='r'); song1.skip(-20000);
+    //
   }
    if ( key=='m' || key=='M' ) {
     if ( song1.isMuted() && ( key=='m' || key=='M' ) ) {
-      song1.unmute();
+     if (song1.isPlaying()) song1.unmute();
     } else { 
-      song1.mute();
+     if (song1.isPlaying()) song1.mute();
     }
     }
   //
