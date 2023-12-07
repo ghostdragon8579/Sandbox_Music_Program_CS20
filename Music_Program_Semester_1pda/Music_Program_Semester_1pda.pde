@@ -42,6 +42,8 @@ void draw() {
   if ( song1.isLooping() && song1.loopCount()==-1 ) println("Looping Infinitely");
   if ( song1.isPlaying() && !song1.isLooping() ) println("Play Once");
   //
+  println( "Song Position", song1.position(), "Song Length", song1.length() );
+  //
 } //End draw
 //
 void keyPressed() {
@@ -56,19 +58,27 @@ void keyPressed() {
     String keystr = String.valueOf(key);
     println(keystr);
     int loopNum = int(keystr);
-    song1.loop(loopNum);
-    //
-    if (key=='T' || key=='t'); song1.skip(+2000);
-    if (key=='R' || key=='r'); song1.skip(0);
+    song1.loop(loopNum);   
     //
   }
-   if ( key=='m' || key=='M' ) {
-    if ( song1.isMuted() && ( key=='m' || key=='M' ) ) {
+   if (key=='m' || key=='M') {
+    if (song1.isMuted() && (key=='m' || key=='M') ) {
      if (song1.isPlaying()) song1.unmute();
     } else { 
      if (song1.isPlaying()) song1.mute();
     }
     }
+    //
+    if (key=='P' || key=='p'); {
+      if (song1.isPlaying()) {
+      song1.pause();
+    } else {
+      song1.play(song1.position());
+    }
+    }
+    //
+    if (key=='T' || key=='t'); song1.skip(song1.position()+1000);
+    if (key=='R' || key=='r'); song1.skip(song1.position()-1000);
   //
 } //End keyPressed
 void keyReleased() {
