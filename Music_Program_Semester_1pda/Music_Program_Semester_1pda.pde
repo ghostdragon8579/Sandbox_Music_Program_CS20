@@ -84,7 +84,7 @@ void keyPressed() {
     //
     if (key=='T' || key=='t'); song1.skip(song1.position()+1000);
     if (key=='Y' || key=='y'); song1.skip(song1.position()-1000);
-    if (key=='T' || key=='t'); song1.play();
+    if (key=='F' || key=='f'); song1.play();
   //
 } //End keyPressed
 void keyReleased() {
