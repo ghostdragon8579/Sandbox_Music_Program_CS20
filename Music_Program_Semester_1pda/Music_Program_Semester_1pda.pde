@@ -49,19 +49,18 @@ void draw() {
 void keyPressed() {
   //
   int LoopNumber = 0;
-  if (key=='F' || key=='f') song1.play();
   if (key=='L' || key=='l') SongLooping=true;
   if (key=='R' || key=='r') SongLooping=false;
   if (SongLooping==true) song1.loop(LoopNumber);
   //
-   if ( key=='1' || key=='9' ) {
+    if ( key=='1' || key=='9' ) {
     String keystr = String.valueOf(key);
     println(keystr);
     int loopNum = int(keystr);
     song1.loop(loopNum);   
     //
-  }
-   if (key=='m' || key=='M') {
+    }
+    if (key=='m' || key=='M') {
     if (song1.isMuted() && (key=='m' || key=='M') ) {
      if (song1.isPlaying()) song1.unmute();
     } else { 
@@ -77,8 +76,15 @@ void keyPressed() {
     }
     }
     //
+    if (key=='R' || key=='r'); {
+      if (song1.isPlaying()) {
+      song1.rewind();
+    }
+    }
+    //
     if (key=='T' || key=='t'); song1.skip(song1.position()+1000);
-    if (key=='R' || key=='r'); song1.skip(song1.position()-1000);
+    if (key=='Y' || key=='y'); song1.skip(song1.position()-1000);
+    if (key=='T' || key=='t'); song1.play();
   //
 } //End keyPressed
 void keyReleased() {
