@@ -9,6 +9,7 @@ import ddf.minim.ugens.*;
 //
 //Global Variables
 float xRectBackground, yRectBackground, widthRectBackground, heightRectBackground;
+PImage NeonBackground;
 int appWidth, appHeight;
 Boolean SongLooping=false;
 Minim minim;
@@ -25,6 +26,12 @@ void setup() {
   String Luxery = "Luxery.mp3";
   String extension = ".mp3";
   String Pathway = sketchPath(path + Luxery);
+  String up = "..";
+  String open = "/";
+  String ImageFolder = "Images";
+  String Imagepathway = up + open + up + open + up + open;
+  String NeonImage = "NeonBackground.jpg";
+  NeonBackground = loadImage(Imagepathway + ImageFolder + open + NeonImage);
   //
   xRectBackground = appWidth*0;
   yRectBackground = appHeight*0;
@@ -38,6 +45,7 @@ void setup() {
 void draw() {
   //
   rect(xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
+  image(NeonBackground, xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
   if ( song1.isLooping() && song1.loopCount()!=-1 ) println("There are", song1.loopCount(), "loops left.");
   if ( song1.isLooping() && song1.loopCount()==-1 ) println("Looping Infinitely");
   if ( song1.isPlaying() && !song1.isLooping() ) println("Play Once");
