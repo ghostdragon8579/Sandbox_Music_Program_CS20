@@ -23,9 +23,6 @@ void setup() {
   appHeight = height;
   //
   minim = new Minim(this);
-  String path = "../Audio Files/";
-  String Luxery = "Luxery.mp3";
-  String extension = ".mp3";
   String Pathway = sketchPath(path + Luxery);
   String up = "..";
   String open = "/";
@@ -40,6 +37,26 @@ void setup() {
   heightRectBackground = appHeight-1;
   //
   song1 = minim.loadFile(Pathway);
+  songMetaData1 = song1.getMetaData();
+  //
+  println("File Name", songMetaData1.fileName()); //Data Verified
+  println("Song Length (in milliseconds)", songMetaData1.length());
+  println("Song Length (in seconds)", songMetaData1.length()/1000);
+  println("Song Length (in minutes and seconds)", songMetaData1.?());
+  println("Song Title", songMetaData1.title());
+  println("Author", songMetaData1.author());
+  println("Composer", songMetaData1.composer());
+  println("Orchestra", songMetaData1.orchestra());
+  println("Album", songMetaData1.album());
+  println("Disc", songMetaData1.disc());
+  println("Publisher", songMetaData1.publisher());
+  println("Date Released", songMetaData1.date());
+  println("Copyright", songMetaData1.copyright());
+  println("Comments", songMetaData1.comments());
+  println("Lyrics", songMetaData1.lyrics());
+  println("Track", songMetaData1.track());
+  println("Genre", songMetaData1.genre());
+  println("Encoded", songMetaData1.encoded());
   //
 } //End setup
 //
@@ -51,7 +68,7 @@ void draw() {
   if ( song1.isLooping() && song1.loopCount()==-1 ) println("Looping Infinitely");
   if ( song1.isPlaying() && !song1.isLooping() ) println("Play Once");
   //
-  println( "Song Position", song1.position(), "Song Length", song1.length() );
+  //println( "Song Position", song1.position(), "Song Length", song1.length() );
   //
 } //End draw
 //
