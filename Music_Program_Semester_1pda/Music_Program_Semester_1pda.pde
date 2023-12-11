@@ -14,6 +14,7 @@ int appWidth, appHeight;
 Boolean SongLooping=false;
 Minim minim;
 AudioPlayer song1;
+AudioMetaData songMetaData1;
 //
 void setup() {
   //
@@ -29,7 +30,7 @@ void setup() {
   String up = "..";
   String open = "/";
   String ImageFolder = "Images";
-  String Imagepathway = up + open + up + open + up + open;
+  String Imagepathway = up + open + up + open;
   String NeonImage = "NeonBackground.jpg";
   NeonBackground = loadImage(Imagepathway + ImageFolder + open + NeonImage);
   //
