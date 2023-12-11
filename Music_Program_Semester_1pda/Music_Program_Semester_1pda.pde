@@ -23,7 +23,7 @@ void setup() {
   appHeight = height;
   //
   minim = new Minim(this);
-  String Pathway = sketchPath(path + Luxery);
+  String Pathway = sketchPath(Luxery);
   String up = "..";
   String open = "/";
   String ImageFolder = "Images";
@@ -63,7 +63,7 @@ void setup() {
 void draw() {
   //
   rect(xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
-  image(NeonBackground, xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
+  //image(NeonBackground, xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
   if ( song1.isLooping() && song1.loopCount()!=-1 ) println("There are", song1.loopCount(), "loops left.");
   if ( song1.isLooping() && song1.loopCount()==-1 ) println("Looping Infinitely");
   if ( song1.isPlaying() && !song1.isLooping() ) println("Play Once");
