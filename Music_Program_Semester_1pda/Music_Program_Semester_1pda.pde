@@ -42,7 +42,7 @@ void setup() {
   println("File Name", songMetaData1.fileName()); //Data Verified
   println("Song Length (in milliseconds)", songMetaData1.length());
   println("Song Length (in seconds)", songMetaData1.length()/1000);
-  println("Song Length (in minutes and seconds)", songMetaData1.?());
+  //println("Song Length (in minutes and seconds)", songMetaData1.?());
   println("Song Title", songMetaData1.title());
   println("Author", songMetaData1.author());
   println("Composer", songMetaData1.composer());
@@ -52,7 +52,7 @@ void setup() {
   println("Publisher", songMetaData1.publisher());
   println("Date Released", songMetaData1.date());
   println("Copyright", songMetaData1.copyright());
-  println("Comments", songMetaData1.comments());
+  println("Comments", songMetaData1.comment());
   println("Lyrics", songMetaData1.lyrics());
   println("Track", songMetaData1.track());
   println("Genre", songMetaData1.genre());
