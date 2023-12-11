@@ -23,7 +23,9 @@ void setup() {
   appHeight = height;
   //
   minim = new Minim(this);
-  String Pathway = sketchPath(Luxery);
+  String Path = "../Audio Files/";
+  String Luxery = "Luxery.mp3";
+  String Pathway = sketchPath(Path + Luxery);
   String up = "..";
   String open = "/";
   String ImageFolder = "Images";
@@ -42,7 +44,7 @@ void setup() {
   println("File Name", songMetaData1.fileName()); //Data Verified
   println("Song Length (in milliseconds)", songMetaData1.length());
   println("Song Length (in seconds)", songMetaData1.length()/1000);
-  //println("Song Length (in minutes and seconds)", songMetaData1.?());
+  println("Song Length (in minutes and seconds)", songMetaData1.length()/1000/60, "minutes", songMetaData1.length()/1000 - ((songMetaData1.length()/1000/60)*60), "seconds");
   println("Song Title", songMetaData1.title());
   println("Author", songMetaData1.author());
   println("Composer", songMetaData1.composer());
