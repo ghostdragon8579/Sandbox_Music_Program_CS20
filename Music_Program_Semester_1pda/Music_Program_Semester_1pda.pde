@@ -9,8 +9,14 @@ import ddf.minim.ugens.*;
 //
 //Global Variables
 float xRectBackground, yRectBackground, widthRectBackground, heightRectBackground;
+float xText, yText, widthText, heightText;
 PImage NeonBackground;
+PFont TitleFont;
+color resetDefaultInk=#FFFFFF;
+color DarkRed=#AA021B;
 int appWidth, appHeight;
+int size;
+String EurekaEffect="Eureka Effect";
 Boolean SongLooping=false;
 Minim minim;
 AudioPlayer song1;
@@ -38,6 +44,11 @@ void setup() {
   widthRectBackground = appWidth-1;
   heightRectBackground = appHeight-1;
   //
+  xText = appWidth*1/5;
+  yText = appHeight*2/5;
+  widthText = appWidth*3/5;
+  heightText = appHeight*1/5;
+  //
   song1 = minim.loadFile(Pathway);
   songMetaData1 = song1.getMetaData();
   //
@@ -60,15 +71,25 @@ void setup() {
   println("Genre", songMetaData1.genre());
   println("Encoded", songMetaData1.encoded());
   //
+  TitleFont = createFont("Times New Roman Bold", 55);
+  //
 } //End setup
 //
 void draw() {
   //
   rect(xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
   image(NeonBackground, xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
+  rect(xText, yText, widthText, heightText);
   if ( song1.isLooping() && song1.loopCount()!=-1 ) println("There are", song1.loopCount(), "loops left.");
   if ( song1.isLooping() && song1.loopCount()==-1 ) println("Looping Infinitely");
   if ( song1.isPlaying() && !song1.isLooping() ) println("Play Once");
+  //
+  fill(DarkRed);
+  textAlign(CENTER, CENTER); 
+  size = 120;
+  textFont(TitleFont, size); 
+  text(EurekaEffect, xText, yText, widthText, heightText);
+  fill(resetDefaultInk);
   //
   //println( "Song Position", song1.position(), "Song Length", song1.length() );
   //
@@ -113,7 +134,7 @@ void keyPressed() {
     if (key=='T' || key=='t'); song1.skip(song1.position()+1000);
     if (key=='Y' || key=='y'); song1.skip(song1.position()-1000);
     if (key=='F' || key=='f'); song1.play();
-  //
+    //
 } //End keyPressed
 void keyReleased() {
   //
