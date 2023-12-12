@@ -33,8 +33,8 @@ void setup() {
   String Pathway = sketchPath(Path + Eureka);
   String up = "..";
   String open = "/";
-  String ImageFolder = "Images";
-  String Imagepathway = up + open + up + open;
+  String ImageFolder = "Images2";
+  String Imagepathway = up + open;
   String NeonImage = "NeonBackground.jpg";
   NeonBackground = loadImage(Imagepathway + ImageFolder + open + NeonImage);
   //
