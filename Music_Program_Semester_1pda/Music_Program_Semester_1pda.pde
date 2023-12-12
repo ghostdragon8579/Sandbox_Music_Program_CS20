@@ -16,7 +16,6 @@ color resetDefaultInk=#FFFFFF;
 color DarkRed=#AA021B;
 int appWidth, appHeight;
 int size;
-String EurekaEffect="Eureka Effect";
 Boolean SongLooping=false;
 Minim minim;
 AudioPlayer song1;
@@ -88,7 +87,7 @@ void draw() {
   textAlign(CENTER, CENTER); 
   size = 120;
   textFont(TitleFont, size); 
-  text(EurekaEffect, xText, yText, widthText, heightText);
+  text(songMetaData1.title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
   //println( "Song Position", song1.position(), "Song Length", song1.length() );
