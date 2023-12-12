@@ -24,8 +24,8 @@ void setup() {
   //
   minim = new Minim(this);
   String Path = "../Audio Files/";
-  String Luxery = "Luxery.mp3";
-  String Pathway = sketchPath(Path + Luxery);
+  String Eureka = "Eureka.mp3";
+  String Pathway = sketchPath(Path + Eureka);
   String up = "..";
   String open = "/";
   String ImageFolder = "Images";
