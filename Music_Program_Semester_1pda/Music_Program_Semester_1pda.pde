@@ -19,6 +19,8 @@ int size;
 Boolean SongLooping=false;
 Minim minim;
 AudioPlayer song1;
+AudioPlayer song2;
+AudioPlayer soundEffect1;
 AudioMetaData songMetaData1;
 //
 void setup() {
