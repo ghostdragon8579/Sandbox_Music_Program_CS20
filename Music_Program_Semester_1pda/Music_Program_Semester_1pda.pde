@@ -9,8 +9,10 @@ import ddf.minim.ugens.*;
 //
 //Global Variables
 float xRectBackground, yRectBackground, widthRectBackground, heightRectBackground;
+float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
 float xText, yText, widthText, heightText;
 PImage NeonBackground;
+PImage PlayButton;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color DarkRed=#AA021B;
@@ -40,15 +42,22 @@ void setup() {
   String ImageFolder = "Images2";
   String Imagepathway = up + open;
   String NeonImage = "NeonBackground.jpg";
+  String PlayImage = "play.png";
   NeonBackground = loadImage(Imagepathway + ImageFolder + open + NeonImage);
+  PlayButton = loadImage(Imagepathway + ImageFolder + open + PlayImage);
   //
   xRectBackground = appWidth*0;
   yRectBackground = appHeight*0;
   widthRectBackground = appWidth-1;
   heightRectBackground = appHeight-1;
   //
+  xPlayPause = appWidth*6/13;
+  yPlayPause = appHeight*9/13;
+  widthPlayPause = appWidth*1/13;
+  heightPlayPause = appHeight*1/11;
+  //
   xText = appWidth*1/5;
-  yText = appHeight*2/5;
+  yText = appHeight*1/5;
   widthText = appWidth*3/5;
   heightText = appHeight*1/5;
   //
@@ -82,6 +91,8 @@ void draw() {
   //
   rect(xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
   image(NeonBackground, xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
+  rect(xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
+  image(PlayButton, xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
   rect(xText, yText, widthText, heightText);
   if ( song[0].isLooping() && song[0].loopCount()!=-1 ) println("There are", song1.loopCount(), "loops left.");
   if ( song[0].isLooping() && song[0].loopCount()==-1 ) println("Looping Infinitely");
