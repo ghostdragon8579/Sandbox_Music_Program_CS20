@@ -12,7 +12,7 @@ float xRectBackground, yRectBackground, widthRectBackground, heightRectBackgroun
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
 float xText, yText, widthText, heightText;
 PImage NeonBackground;
-PImage PlayButton;
+PImage PlayButton, PauseButton;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color DarkRed=#AA021B;
@@ -43,8 +43,10 @@ void setup() {
   String Imagepathway = up + open;
   String NeonImage = "NeonBackground.jpg";
   String PlayImage = "play.png";
+  String PauseImage = "pause.png";
   NeonBackground = loadImage(Imagepathway + ImageFolder + open + NeonImage);
   PlayButton = loadImage(Imagepathway + ImageFolder + open + PlayImage);
+  PauseButton = loadImage(Imagepathway + ImageFolder + open + PauseImage);
   //
   xRectBackground = appWidth*0;
   yRectBackground = appHeight*0;
@@ -110,11 +112,6 @@ void draw() {
 } //End draw
 //
 void keyPressed() {
-  //
-  int LoopNumber = 0;
-  if (key=='L' || key=='l') SongLooping=true;
-  if (key=='R' || key=='r') SongLooping=false;
-  if (SongLooping==true) song[0].loop(LoopNumber);
   //
     if ( key=='1' || key=='9' ) {
     String keystr = String.valueOf(key);
