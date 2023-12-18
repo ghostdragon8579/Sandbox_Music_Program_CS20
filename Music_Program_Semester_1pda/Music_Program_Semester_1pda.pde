@@ -171,7 +171,7 @@ void draw() {
   text(songMetaData[0].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  //println( "Song Position", song1.position(), "Song Length", song1.length() );
+  println( "Song Position", song[0].position(), "Song Length", song[0].length() );
   //
 } //End draw
 //
@@ -206,14 +206,19 @@ void keyPressed() {
     }
     }
     //
-    if (key=='T' || key=='t'); song[0].skip(song1.position()+1000);
-    if (key=='Y' || key=='y'); song[0].skip(song1.position()-1000);
+    if (key=='T' || key=='t'); song[0].skip(song[0].position()+1000);
+    if (key=='Y' || key=='y'); song[0].skip(song[0].position()-1000);
     if (key=='F' || key=='f'); song[0].play();
     //
 } //End keyPressed
 void keyReleased() {
   //
 }
-void mousePressed() {} //End mousePressed
+void mousePressed() {
+  //
+  if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) song[0].skip(+5000);
+  if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) song[0].skip(-5000);
+  //
+} //End mousePressed
 //
 //End MAIN Program
