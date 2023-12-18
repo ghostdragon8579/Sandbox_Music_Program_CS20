@@ -10,12 +10,18 @@ import ddf.minim.ugens.*;
 //Global Variables
 float xRectBackground, yRectBackground, widthRectBackground, heightRectBackground;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
+float xFastForward, yFastForward, widthFastForward, heightFastForward;
+float xRewind, yRewind, widthRewind, heightRewind;
+float xNext, yNext, widthNext, heightNext;
+float xPrevious, yPrevious, widthPrevious, heightPrevious;
 float xText, yText, widthText, heightText;
 PImage NeonBackground;
 PImage PlayButton, PauseButton;
+PImage FastForward, Rewind;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color DarkRed=#AA021B;
+color Gray=#C9C9C9;
 int appWidth, appHeight;
 int size;
 int SongNumber = 2;
@@ -44,9 +50,13 @@ void setup() {
   String NeonImage = "NeonBackground.jpg";
   String PlayImage = "play.png";
   String PauseImage = "pause.png";
+  String FastForwardImage = "FastForward.png";
+  String RewindImage = "FastRewind.png";
   NeonBackground = loadImage(Imagepathway + ImageFolder + open + NeonImage);
   PlayButton = loadImage(Imagepathway + ImageFolder + open + PlayImage);
   PauseButton = loadImage(Imagepathway + ImageFolder + open + PauseImage);
+  FastForward = loadImage(Imagepathway + ImageFolder + open + FastForwardImage);
+  Rewind = loadImage(Imagepathway + ImageFolder + open + RewindImage);
   //
   xRectBackground = appWidth*0;
   yRectBackground = appHeight*0;
@@ -57,6 +67,26 @@ void setup() {
   yPlayPause = appHeight*9/13;
   widthPlayPause = appWidth*1/13;
   heightPlayPause = appHeight*1/11;
+  //
+  xFastForward = appWidth*8/13;
+  yFastForward = yPlayPause;
+  widthFastForward = widthPlayPause;
+  heightFastForward = heightPlayPause;
+  //
+  xRewind = appWidth*4/13;
+  yRewind = yPlayPause;
+  widthRewind = widthPlayPause;
+  heightRewind = heightPlayPause;
+  //
+  xNext = appWidth*10/13;
+  yNext = yPlayPause;
+  widthNext = widthPlayPause;
+  heightNext = heightPlayPause;
+  //
+  xPrevious = appWidth*2/13;
+  yPrevious = yPlayPause;
+  widthPrevious = widthPlayPause;
+  heightPrevious = heightPlayPause;
   //
   xText = appWidth*1/5;
   yText = appHeight*1/5;
@@ -95,6 +125,12 @@ void draw() {
   image(NeonBackground, xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
   rect(xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
   image(PlayButton, xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
+  rect(xFastForward, yFastForward, widthFastForward, heightFastForward);
+  image(FastForward, xFastForward, yFastForward, widthFastForward, heightFastForward);
+  rect(xRewind, yRewind, widthRewind, heightRewind);
+  image(Rewind, xRewind, yRewind, widthRewind, heightRewind);
+  rect(xNext, yNext, widthNext, heightNext);
+  rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
   rect(xText, yText, widthText, heightText);
   if ( song[0].isLooping() && song[0].loopCount()!=-1 ) println("There are", song1.loopCount(), "loops left.");
   if ( song[0].isLooping() && song[0].loopCount()==-1 ) println("Looping Infinitely");
