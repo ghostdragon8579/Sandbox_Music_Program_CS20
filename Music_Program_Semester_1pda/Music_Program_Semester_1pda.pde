@@ -31,9 +31,12 @@ int SongNumber = 2;
 int SoundEffectNumber = 0;
 Boolean SongLooping=false;
 File file;
+File AudioFiles;
 Minim minim;
 AudioPlayer song1;
 AudioPlayer[] song = new AudioPlayer[SongNumber];
+AudioPlayer[] SongPlayList = new AudioPlayer[SongNumber];
+AudioMetaData[] SongPlayListMetaData = new AudioMetaData[SongNumber];
 AudioPlayer[] soundEffect = new AudioPlayer[SoundEffectNumber];
 AudioMetaData[] songMetaData = new AudioMetaData[SongNumber];
 //
@@ -44,9 +47,6 @@ void setup() {
   appHeight = height;
   //
   minim = new Minim(this);
-  String Path = "../Audio Files/";
-  String Eureka = "Eureka.mp3";
-  String EurekaPathway = sketchPath(Path + Eureka);
   String up = "..";
   String open = "/";
   String ImageFolder = "Images2";
@@ -101,9 +101,28 @@ void setup() {
   widthText = appWidth*3/5;
   heightText = appHeight*1/5;
   //
-  song[0] = minim.loadFile(EurekaPathway);
-  songMetaData[0] = song[0].getMetaData();
+  String RelativeMusicPathway = "../Audio Files/";
+  String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
+    AudioFiles = new File(AbsoluteMusicPathway);
+  int AudioFileCount = AudioFiles.list().length;
+    File[] SongFiles = AudioFiles.listFiles();
+  String[] SongFilePathway = new String[AudioFileCount];
+  for ( int i = 0; i < SongFiles.length; i++ ) {
+    SongFilePathway[i] = (SongFiles[i].toString());
+  }
   //
+  String PathDirectory = sketchPath(AbsoluteMusicPathway);
+  println("Main Directory to Music Folder", PathDirectory);
+  file = new File(PathDirectory);
+  int fileCount = file.list().length;
+  println("File Count of the Music Folder:", fileCount);
+  File[] files = file.listFiles();
+  printArray(files);
+  for (int i = 0; i < files.length; i++) {
+    println("File Name", files[i].getName());
+  }
+  //
+  /*
   println("File Name", songMetaData[0].fileName()); //Data Verified
   println("Song Length (in milliseconds)", songMetaData[0].length());
   println("Song Length (in seconds)", songMetaData[0].length()/1000);
@@ -123,22 +142,12 @@ void setup() {
   println("Genre", songMetaData[0].genre());
   println("Encoded", songMetaData[0].encoded());
   //
-  String PathDirectory = sketchPath(Path);
-  println("Main Directory to Music Folder", PathDirectory);
-  file = new File(PathDirectory);
-  int fileCount = file.list().length;
-  println("File Count of the Music Folder:", fileCount);
-  File[] files = file.listFiles();
-  printArray(files);
-  for (int i = 0; i < files.length; i++) {
-    println("File Name", files[i].getName());
-  }
-  //
-  /*
-  SongNumber = fileCount;
-  song = new AudioPlayer[SongNumber];
-  songMetaData = new AudioMetaData[SongNumber];
   */
+  //
+  for (int i=0; i<AudioFileCount; i++) {
+    SongPlayList[i]= minim.loadFile(SongFilePathway[i]);
+    SongPlayListMetaData[i] = SongPlayList[i].getMetaData();
+  }
   //
   TitleFont = createFont("Times New Roman Bold", 55);
   //
@@ -160,15 +169,15 @@ void draw() {
   image(Previous, xPrevious, yPrevious, widthPrevious, heightPrevious);
   rect(xText, yText, widthText, heightText);
   //
-  if (song[0].isLooping() && song[0].loopCount()!=-1) println("There are", song1.loopCount(), "loops left.");
-  if (song[0].isLooping() && song[0].loopCount()==-1) println("Looping Infinitely");
-  if (song[0].isPlaying() && !song[0].isLooping()) println("Play Once");
+  if (SongPlayList[0].isLooping() && SongPlayList[0].loopCount()!=-1) println("There are", SongPlayList[0].loopCount(), "loops left.");
+  if (SongPlayList[0].isLooping() && SongPlayList[0].loopCount()==-1) println("Looping Infinitely");
+  //if (SongPlayList[0].isPlaying() && !SongPlayList[0].isLooping()) println("Play Once");
   //
   fill(DarkRed);
   textAlign(CENTER, CENTER); 
   size = 120;
   textFont(TitleFont, size); 
-  text(songMetaData[0].title(), xText, yText, widthText, heightText);
+  text(SongPlayListMetaData[0].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
   println( "Song Position", song[0].position(), "Song Length", song[0].length() );
@@ -181,34 +190,32 @@ void keyPressed() {
     String keystr = String.valueOf(key);
     println(keystr);
     int loopNum = int(keystr);
-    song[0].loop(loopNum);   
+    SongPlayList[0].loop(loopNum);   
     //
     }
     if (key=='m' || key=='M') {
-    if (song[0].isMuted() && (key=='m' || key=='M') ) {
-     if (song[0].isPlaying()) song[0].unmute();
+    if (SongPlayList[0].isMuted() && (key=='m' || key=='M') ) {
+     if (SongPlayList[0].isPlaying()) SongPlayList[0].unmute();
     } else { 
-     if (song[0].isPlaying()) song[0].mute();
+     if (SongPlayList[0].isPlaying()) SongPlayList[0].mute();
     }
     }
     //
     if (key=='P' || key=='p'); {
-      if (song[0].isPlaying()) {
-      song[0].pause();
+      if (SongPlayList[0].isPlaying()) {
+      SongPlayList[0].pause();
     } else {
-      song[0].play(song[0].position());
+      SongPlayList[0].play(SongPlayList[0].position());
     }
     }
     //
     if (key=='R' || key=='r'); {
-      if (song[0].isPlaying()) {
-      song[0].rewind();
+      if (SongPlayList[0].isPlaying()) {
+      SongPlayList[0].rewind();
     }
     }
     //
-    if (key=='T' || key=='t'); song[0].skip(song[0].position()+1000);
-    if (key=='Y' || key=='y'); song[0].skip(song[0].position()-1000);
-    if (key=='F' || key=='f'); song[0].play();
+    if (key=='F' || key=='f'); SongPlayList[0].play();
     //
 } //End keyPressed
 void keyReleased() {
@@ -216,8 +223,9 @@ void keyReleased() {
 }
 void mousePressed() {
   //
-  if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) song[0].skip(+5000);
-  if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) song[0].skip(-5000);
+  if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[0].skip(+5000);
+  if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) SongPlayList[0].skip(-5000);
+  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) SongPlayList[0].play();
   //
 } //End mousePressed
 //
