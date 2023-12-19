@@ -122,32 +122,30 @@ void setup() {
     println("File Name", files[i].getName());
   }
   //
-  /*
-  println("File Name", songMetaData[0].fileName()); //Data Verified
-  println("Song Length (in milliseconds)", songMetaData[0].length());
-  println("Song Length (in seconds)", songMetaData[0].length()/1000);
-  println("Song Length (in minutes and seconds)", songMetaData[0].length()/1000/60, "minutes", songMetaData[0].length()/1000 - ((songMetaData[0].length()/1000/60)*60), "seconds");
-  println("Song Title", songMetaData[0].title());
-  println("Author", songMetaData[0].author());
-  println("Composer", songMetaData[0].composer());
-  println("Orchestra", songMetaData[0].orchestra());
-  println("Album", songMetaData[0].album());
-  println("Disc", songMetaData[0].disc());
-  println("Publisher", songMetaData[0].publisher());
-  println("Date Released", songMetaData[0].date());
-  println("Copyright", songMetaData[0].copyright());
-  println("Comments", songMetaData[0].comment());
-  println("Lyrics", songMetaData[0].lyrics());
-  println("Track", songMetaData[0].track());
-  println("Genre", songMetaData[0].genre());
-  println("Encoded", songMetaData[0].encoded());
-  //
-  */
-  //
-  for (int i=0; i<AudioFileCount; i++) {
+    for (int i=0; i<AudioFileCount; i++) {
     SongPlayList[i]= minim.loadFile(SongFilePathway[i]);
     SongPlayListMetaData[i] = SongPlayList[i].getMetaData();
   }
+  //
+  //
+  println("File Name", SongPlayListMetaData[0].fileName()); //Data Verified
+  println("Song Length (in milliseconds)", SongPlayListMetaData[0].length());
+  println("Song Length (in seconds)", SongPlayListMetaData[0].length()/1000);
+  println("Song Length (in minutes and seconds)", SongPlayListMetaData[0].length()/1000/60, "minutes", SongPlayListMetaData[0].length()/1000 - ((SongPlayListMetaData[0].length()/1000/60)*60), "seconds");
+  println("Song Title", SongPlayListMetaData[0].title());
+  println("Author", SongPlayListMetaData[0].author());
+  println("Composer", SongPlayListMetaData[0].composer());
+  println("Orchestra", SongPlayListMetaData[0].orchestra());
+  println("Album", SongPlayListMetaData[0].album());
+  println("Disc", SongPlayListMetaData[0].disc());
+  println("Publisher", SongPlayListMetaData[0].publisher());
+  println("Date Released", SongPlayListMetaData[0].date());
+  println("Copyright", SongPlayListMetaData[0].copyright());
+  println("Comments", SongPlayListMetaData[0].comment());
+  println("Lyrics", SongPlayListMetaData[0].lyrics());
+  println("Track", SongPlayListMetaData[0].track());
+  println("Genre", SongPlayListMetaData[0].genre());
+  println("Encoded", SongPlayListMetaData[0].encoded());
   //
   TitleFont = createFont("Times New Roman Bold", 55);
   //
@@ -180,7 +178,7 @@ void draw() {
   text(SongPlayListMetaData[0].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  println( "Song Position", song[0].position(), "Song Length", song[0].length() );
+  //println( "Song Position", SongPlayList[0].position(), "Song Length", SongPlayList[0].length() );
   //
 } //End draw
 //
