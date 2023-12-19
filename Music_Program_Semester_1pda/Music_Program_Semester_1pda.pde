@@ -25,8 +25,10 @@ PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color DarkRed=#AA021B;
 color Gray=#C9C9C9;
+color Black=#000000;
 int appWidth, appHeight;
 int size;
+int SongPlaying = 0;
 int SongNumber = 2;
 int SoundEffectNumber = 0;
 Boolean SongLooping=false;
@@ -107,7 +109,7 @@ void setup() {
   int AudioFileCount = AudioFiles.list().length;
     File[] SongFiles = AudioFiles.listFiles();
   String[] SongFilePathway = new String[AudioFileCount];
-  for ( int i = 0; i < SongFiles.length; i++ ) {
+  for ( int i = SongPlaying; i < SongFiles.length; i++ ) {
     SongFilePathway[i] = (SongFiles[i].toString());
   }
   //
@@ -118,34 +120,34 @@ void setup() {
   println("File Count of the Music Folder:", fileCount);
   File[] files = file.listFiles();
   printArray(files);
-  for (int i = 0; i < files.length; i++) {
+  for (int i = SongPlaying; i < files.length; i++) {
     println("File Name", files[i].getName());
   }
   //
-    for (int i=0; i<AudioFileCount; i++) {
+    for (int i=SongPlaying; i<AudioFileCount; i++) {
     SongPlayList[i]= minim.loadFile(SongFilePathway[i]);
     SongPlayListMetaData[i] = SongPlayList[i].getMetaData();
   }
   //
   //
-  println("File Name", SongPlayListMetaData[0].fileName()); //Data Verified
-  println("Song Length (in milliseconds)", SongPlayListMetaData[0].length());
-  println("Song Length (in seconds)", SongPlayListMetaData[0].length()/1000);
-  println("Song Length (in minutes and seconds)", SongPlayListMetaData[0].length()/1000/60, "minutes", SongPlayListMetaData[0].length()/1000 - ((SongPlayListMetaData[0].length()/1000/60)*60), "seconds");
-  println("Song Title", SongPlayListMetaData[0].title());
-  println("Author", SongPlayListMetaData[0].author());
-  println("Composer", SongPlayListMetaData[0].composer());
-  println("Orchestra", SongPlayListMetaData[0].orchestra());
-  println("Album", SongPlayListMetaData[0].album());
-  println("Disc", SongPlayListMetaData[0].disc());
-  println("Publisher", SongPlayListMetaData[0].publisher());
-  println("Date Released", SongPlayListMetaData[0].date());
-  println("Copyright", SongPlayListMetaData[0].copyright());
-  println("Comments", SongPlayListMetaData[0].comment());
-  println("Lyrics", SongPlayListMetaData[0].lyrics());
-  println("Track", SongPlayListMetaData[0].track());
-  println("Genre", SongPlayListMetaData[0].genre());
-  println("Encoded", SongPlayListMetaData[0].encoded());
+  println("File Name", SongPlayListMetaData[SongPlaying].fileName()); //Data Verified
+  println("Song Length (in milliseconds)", SongPlayListMetaData[SongPlaying].length());
+  println("Song Length (in seconds)", SongPlayListMetaData[SongPlaying].length()/1000);
+  println("Song Length (in minutes and seconds)", SongPlayListMetaData[SongPlaying].length()/1000/60, "minutes", SongPlayListMetaData[SongPlaying].length()/1000 - ((SongPlayListMetaData[SongPlaying].length()/1000/60)*60), "seconds");
+  println("Song Title", SongPlayListMetaData[SongPlaying].title());
+  println("Author", SongPlayListMetaData[SongPlaying].author());
+  println("Composer", SongPlayListMetaData[SongPlaying].composer());
+  println("Orchestra", SongPlayListMetaData[SongPlaying].orchestra());
+  println("Album", SongPlayListMetaData[SongPlaying].album());
+  println("Disc", SongPlayListMetaData[SongPlaying].disc());
+  println("Publisher", SongPlayListMetaData[SongPlaying].publisher());
+  println("Date Released", SongPlayListMetaData[SongPlaying].date());
+  println("Copyright", SongPlayListMetaData[SongPlaying].copyright());
+  println("Comments", SongPlayListMetaData[SongPlaying].comment());
+  println("Lyrics", SongPlayListMetaData[SongPlaying].lyrics());
+  println("Track", SongPlayListMetaData[SongPlaying].track());
+  println("Genre", SongPlayListMetaData[SongPlaying].genre());
+  println("Encoded", SongPlayListMetaData[SongPlaying].encoded());
   //
   TitleFont = createFont("Times New Roman Bold", 55);
   //
@@ -165,20 +167,22 @@ void draw() {
   image(Next, xNext, yNext, widthNext, heightNext);
   rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
   image(Previous, xPrevious, yPrevious, widthPrevious, heightPrevious);
+  fill(Black);
   rect(xText, yText, widthText, heightText);
+  fill(resetDefaultInk);
   //
-  if (SongPlayList[0].isLooping() && SongPlayList[0].loopCount()!=-1) println("There are", SongPlayList[0].loopCount(), "loops left.");
-  if (SongPlayList[0].isLooping() && SongPlayList[0].loopCount()==-1) println("Looping Infinitely");
+  if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()!=-1) println("There are", SongPlayList[SongPlaying].loopCount(), "loops left.");
+  if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()==-1) println("Looping Infinitely");
   //if (SongPlayList[0].isPlaying() && !SongPlayList[0].isLooping()) println("Play Once");
   //
-  fill(DarkRed);
+  fill(resetDefaultInk);
   textAlign(CENTER, CENTER); 
   size = 120;
   textFont(TitleFont, size); 
-  text(SongPlayListMetaData[0].title(), xText, yText, widthText, heightText);
+  text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  //println( "Song Position", SongPlayList[0].position(), "Song Length", SongPlayList[0].length() );
+  //println( "Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length() );
   //
 } //End draw
 //
@@ -188,32 +192,32 @@ void keyPressed() {
     String keystr = String.valueOf(key);
     println(keystr);
     int loopNum = int(keystr);
-    SongPlayList[0].loop(loopNum);   
+    SongPlayList[SongPlaying].loop(loopNum);   
     //
     }
     if (key=='m' || key=='M') {
-    if (SongPlayList[0].isMuted() && (key=='m' || key=='M') ) {
-     if (SongPlayList[0].isPlaying()) SongPlayList[0].unmute();
+    if (SongPlayList[SongPlaying].isMuted() && (key=='m' || key=='M') ) {
+     if (SongPlayList[SongPlaying].isPlaying()) SongPlayList[SongPlaying].unmute();
     } else { 
-     if (SongPlayList[0].isPlaying()) SongPlayList[0].mute();
+     if (SongPlayList[SongPlaying].isPlaying()) SongPlayList[SongPlaying].mute();
     }
     }
     //
     if (key=='P' || key=='p'); {
-      if (SongPlayList[0].isPlaying()) {
-      SongPlayList[0].pause();
+      if (SongPlayList[SongPlaying].isPlaying()) {
+      SongPlayList[SongPlaying].pause();
     } else {
-      SongPlayList[0].play(SongPlayList[0].position());
+      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
     }
     }
     //
     if (key=='R' || key=='r'); {
-      if (SongPlayList[0].isPlaying()) {
-      SongPlayList[0].rewind();
+      if (SongPlayList[SongPlaying].isPlaying()) {
+      SongPlayList[SongPlaying].rewind();
     }
     }
     //
-    if (key=='F' || key=='f'); SongPlayList[0].play();
+    if (key=='F' || key=='f'); SongPlayList[SongPlaying].play();
     //
 } //End keyPressed
 void keyReleased() {
@@ -221,9 +225,9 @@ void keyReleased() {
 }
 void mousePressed() {
   //
-  if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[0].skip(+5000);
-  if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) SongPlayList[0].skip(-5000);
-  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) SongPlayList[0].play();
+  if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[SongPlaying].skip(+5000);
+  if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) SongPlayList[SongPlaying].skip(-5000);
+  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) SongPlayList[SongPlaying].play();
   //
 } //End mousePressed
 //
