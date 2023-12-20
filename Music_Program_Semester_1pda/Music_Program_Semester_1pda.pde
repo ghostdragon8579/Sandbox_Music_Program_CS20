@@ -129,6 +129,12 @@ void setup() {
     SongPlayListMetaData[i] = SongPlayList[i].getMetaData();
   }
   //
+  if (SongPlaying<0) {
+      SongPlaying=1;
+    } else if ( SongPlaying>1) {
+      SongPlaying=0;
+    } else {
+  //
   //
   println("File Name", SongPlayListMetaData[SongPlaying].fileName()); //Data Verified
   println("Song Length (in milliseconds)", SongPlayListMetaData[SongPlaying].length());
@@ -148,6 +154,8 @@ void setup() {
   println("Track", SongPlayListMetaData[SongPlaying].track());
   println("Genre", SongPlayListMetaData[SongPlaying].genre());
   println("Encoded", SongPlayListMetaData[SongPlaying].encoded());
+  //
+  println(SongPlaying);
   //
   TitleFont = createFont("Times New Roman Bold", 55);
   //
