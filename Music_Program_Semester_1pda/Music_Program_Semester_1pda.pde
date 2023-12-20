@@ -129,14 +129,6 @@ void setup() {
     SongPlayListMetaData[i] = SongPlayList[i].getMetaData();
   }
   //
-  if (SongPlaying<0) {
-      SongPlaying=1;
-    } else if ( SongPlaying>1) {
-      SongPlaying=0;
-    } else {
-    }
-  //
-  //
   println("File Name", SongPlayListMetaData[SongPlaying].fileName()); //Data Verified
   println("Song Length (in milliseconds)", SongPlayListMetaData[SongPlaying].length());
   println("Song Length (in seconds)", SongPlayListMetaData[SongPlaying].length()/1000);
@@ -156,6 +148,10 @@ void setup() {
   println("Genre", SongPlayListMetaData[SongPlaying].genre());
   println("Encoded", SongPlayListMetaData[SongPlaying].encoded());
   //
+  //
+  if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()!=-1) println("There are", SongPlayList[SongPlaying].loopCount(), "loops left.");
+  if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()==-1) println("Looping Infinitely");
+  if (SongPlayList[SongPlaying].isPlaying() && !SongPlayList[SongPlaying].isLooping()) println("Play Once");
   println(SongPlaying);
   //
   TitleFont = createFont("Times New Roman Bold", 55);
@@ -180,9 +176,12 @@ void draw() {
   rect(xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()!=-1) println("There are", SongPlayList[SongPlaying].loopCount(), "loops left.");
-  if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()==-1) println("Looping Infinitely");
-  //if (SongPlayList[0].isPlaying() && !SongPlayList[0].isLooping()) println("Play Once");
+  if (SongPlaying<0) {
+      SongPlaying=1;
+    } else if ( SongPlaying>1) {
+      SongPlaying=0;
+    } else {
+    }
   //
   fill(resetDefaultInk);
   textAlign(CENTER, CENTER); 
@@ -234,6 +233,9 @@ void keyReleased() {
 }
 void mousePressed() {
   //
+  //
+  if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) SongPlaying+=1;
+  if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) SongPlaying-=1;
   if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[SongPlaying].skip(+5000);
   if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) SongPlayList[SongPlaying].skip(-5000);
   if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) SongPlayList[SongPlaying].play();
