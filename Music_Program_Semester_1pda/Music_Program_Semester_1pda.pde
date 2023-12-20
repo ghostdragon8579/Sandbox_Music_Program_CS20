@@ -233,7 +233,6 @@ void keyReleased() {
 }
 void mousePressed() {
   //
-  //
   if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) SongPlaying+=1;
   if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) SongPlaying-=1;
   if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[SongPlaying].skip(+5000);
@@ -241,5 +240,9 @@ void mousePressed() {
   if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) SongPlayList[SongPlaying].play();
   //
 } //End mousePressed
+  //
+void mouseReleased() {
+  //
+}
 //
 //End MAIN Program
