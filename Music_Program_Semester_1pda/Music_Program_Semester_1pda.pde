@@ -16,6 +16,7 @@ float xFastForward, yFastForward, widthFastForward, heightFastForward;
 float xRewind, yRewind, widthRewind, heightRewind;
 float xNext, yNext, widthNext, heightNext;
 float xPrevious, yPrevious, widthPrevious, heightPrevious;
+float xShuffle, yShuffle, widthShuffle, heightShuffle;
 float xText, yText, widthText, heightText;
 PImage NeonBackground;
 PImage PlayButton, PauseButton;
@@ -101,6 +102,11 @@ void setup() {
   widthPrevious = widthPlayPause;
   heightPrevious = heightPlayPause;
   //
+  xShuffle = xPlayPause;
+  yShuffle = appHeight*11/13;
+  widthShuffle = widthPlayPause;
+  heightShuffle = heightPlayPause;
+  //
   xText = appWidth*1/5;
   yText = appHeight*1/5;
   widthText = appWidth*3/5;
@@ -175,6 +181,8 @@ void draw() {
   image(Next, xNext, yNext, widthNext, heightNext);
   rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
   image(Previous, xPrevious, yPrevious, widthPrevious, heightPrevious);
+  rect(xShuffle, yShuffle, widthShuffle, heightShuffle);
+  image(Shuffle, xShuffle, yShuffle, widthShuffle, heightShuffle);
   fill(Black);
   rect(xText, yText, widthText, heightText);
   fill(resetDefaultInk);
