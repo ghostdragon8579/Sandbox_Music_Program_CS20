@@ -190,7 +190,7 @@ void draw() {
   text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  //println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
+  println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
   //
 } //End draw
 //
@@ -233,8 +233,16 @@ void keyReleased() {
 }
 void mousePressed() {
   //
-  if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) SongPlaying+=1;
-  if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) SongPlaying-=1;
+  if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
+    SongPlaying+=1;
+    SongPlayList[SongPlaying].rewind();
+    SongPlayList[SongPlaying].play();
+  }
+  if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
+    SongPlaying-=1;
+    SongPlayList[SongPlaying].rewind();
+    SongPlayList[SongPlaying].play();
+  }
   if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[SongPlaying].skip(+5000);
   if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) SongPlayList[SongPlaying].skip(-5000);
   if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) SongPlayList[SongPlaying].play();
