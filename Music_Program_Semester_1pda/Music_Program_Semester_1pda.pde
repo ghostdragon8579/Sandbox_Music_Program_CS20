@@ -29,7 +29,7 @@ color Black=#000000;
 int appWidth, appHeight;
 int size;
 int SongPlaying = 0;
-int SongNumber = 2;
+int SongNumber = 7;
 int SoundEffectNumber = 0;
 Boolean SongLooping=false;
 File file;
@@ -101,7 +101,7 @@ void setup() {
   xText = appWidth*1/5;
   yText = appHeight*1/5;
   widthText = appWidth*3/5;
-  heightText = appHeight*1/5;
+  heightText = appHeight*1/6;
   //
   String RelativeMusicPathway = "../Audio Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
@@ -177,8 +177,8 @@ void draw() {
   fill(resetDefaultInk);
   //
   if (SongPlaying<0) {
-      SongPlaying=1;
-    } else if ( SongPlaying>1) {
+      SongPlaying=0;
+    } else if ( SongPlaying>6) {
       SongPlaying=0;
     } else {
     }
@@ -190,7 +190,7 @@ void draw() {
   text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  //println( "Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length() );
+  //println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
   //
 } //End draw
 //
