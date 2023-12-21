@@ -21,6 +21,7 @@ PImage NeonBackground;
 PImage PlayButton, PauseButton;
 PImage FastForward, Rewind;
 PImage Next, Previous;
+PImage Shuffle;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color DarkRed=#AA021B;
@@ -60,6 +61,7 @@ void setup() {
   String RewindImage = "FastRewind.png";
   String NextImage = "skip.png";
   String PreviousImage = "prev.png";
+  String ShuffleImage = "Shuffle.png";
   NeonBackground = loadImage(Imagepathway + ImageFolder + open + NeonImage);
   PlayButton = loadImage(Imagepathway + ImageFolder + open + PlayImage);
   PauseButton = loadImage(Imagepathway + ImageFolder + open + PauseImage);
@@ -67,6 +69,7 @@ void setup() {
   Rewind = loadImage(Imagepathway + ImageFolder + open + RewindImage);
   Next = loadImage(Imagepathway + ImageFolder + open + NextImage);
   Previous = loadImage(Imagepathway + ImageFolder + open + PreviousImage);
+  Shuffle = loadImage(Imagepathway + ImageFolder + open + ShuffleImage);
   //
   xRectBackground = appWidth*0;
   yRectBackground = appHeight*0;
@@ -152,7 +155,7 @@ void setup() {
   if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()!=-1) println("There are", SongPlayList[SongPlaying].loopCount(), "loops left.");
   if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()==-1) println("Looping Infinitely");
   if (SongPlayList[SongPlaying].isPlaying() && !SongPlayList[SongPlaying].isLooping()) println("Play Once");
-  
+  println(SongPlaying);
   //
   TitleFont = createFont("Times New Roman Bold", 55);
   //
@@ -191,7 +194,6 @@ void draw() {
   fill(resetDefaultInk);
   //
   //println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
-  println(SongPlaying);
   //
 } //End draw
 //
