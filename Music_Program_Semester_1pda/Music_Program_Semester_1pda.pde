@@ -31,7 +31,7 @@ color Black=#000000;
 int appWidth, appHeight;
 int size;
 int SongPlaying = 0;
-int SongNumber = 7;
+int SongNumber = 5;
 int SoundEffectNumber = 0;
 Boolean SongLooping=false;
 File file;
@@ -189,7 +189,7 @@ void draw() {
   //
   if (SongPlaying<0) {
       SongPlaying=1;
-    } else if ( SongPlaying>6) {
+    } else if ( SongPlaying>5) {
       SongPlaying=0;
     } else {
     }
