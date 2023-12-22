@@ -160,7 +160,7 @@ void setup() {
   if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()!=-1) println("There are", SongPlayList[SongPlaying].loopCount(), "loops left.");
   if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()==-1) println("Looping Infinitely");
   if (SongPlayList[SongPlaying].isPlaying() && !SongPlayList[SongPlaying].isLooping()) println("Play Once");
-
+  println(SongPlaying);
   //
   TitleFont = createFont("Times New Roman Bold", 55);
   //
@@ -200,7 +200,6 @@ void draw() {
   text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  println(SongPlaying);
   //println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
   //
 } //End draw
@@ -245,18 +244,16 @@ void keyReleased() {
 void mousePressed() {
   //
   if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
-    /*
+    SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
-    SongPlayList[SongPlaying].play();
-    */
     SongPlaying+=1;
+    SongPlayList[SongPlaying].play();
   }
   if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
-    /*
+    SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
-    SongPlayList[SongPlaying].play();
-    */
     SongPlaying-=1;
+    SongPlayList[SongPlaying].play();
   }
   if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[SongPlaying].skip(+5000);
   if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) SongPlayList[SongPlaying].skip(-5000);
