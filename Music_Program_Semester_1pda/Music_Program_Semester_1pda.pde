@@ -31,8 +31,8 @@ color Black=#000000;
 int appWidth, appHeight;
 int size;
 int SongPlaying = 0;
-int SongNumber = 5;
-int SoundEffectNumber = 0;
+int SongNumber = 4;
+int SoundEffectNumber = 1;
 Boolean SongLooping=false;
 File file;
 File AudioFiles;
@@ -188,14 +188,14 @@ void draw() {
   //
   if (SongPlaying<0) {
       SongPlaying=0;
-    } else if ( SongPlaying>4) {
+    } else if (SongPlaying>3) {
       SongPlaying=0;
     } else {
     }
   //
   fill(resetDefaultInk);
   textAlign(CENTER, CENTER); 
-  size = 100;
+  size = 97;
   textFont(TitleFont, size); 
   text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
