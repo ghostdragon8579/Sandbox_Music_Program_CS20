@@ -195,7 +195,7 @@ void draw() {
   //
   fill(resetDefaultInk);
   textAlign(CENTER, CENTER); 
-  size = 120;
+  size = 100;
   textFont(TitleFont, size); 
   text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
@@ -247,13 +247,11 @@ void mousePressed() {
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
     SongPlaying+=1;
-    SongPlayList[SongPlaying].play();
   }
   if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
     SongPlaying-=1;
-    SongPlayList[SongPlaying].play();
   }
   if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[SongPlaying].skip(+5000);
   if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) SongPlayList[SongPlaying].skip(-5000);
