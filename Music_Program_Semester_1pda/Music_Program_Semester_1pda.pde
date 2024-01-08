@@ -33,9 +33,11 @@ int size;
 int SongPlaying = 0;
 int SongNumber = 6;
 int SoundEffectNumber = 1;
+int SoundEffectPlaying = 0;
 Boolean SongLooping=false;
 File file;
 File AudioFiles;
+File SoundEffectFiles;
 Minim minim;
 AudioPlayer song1;
 AudioPlayer[] Song = new AudioPlayer[SongNumber];
@@ -43,8 +45,9 @@ AudioPlayer[] SongPlayList = new AudioPlayer[SongNumber];
 AudioMetaData[] SongMetaData = new AudioMetaData[SongNumber];
 AudioMetaData[] SongPlayListMetaData = new AudioMetaData[SongNumber];
 AudioPlayer[] SoundEffect = new AudioPlayer[SoundEffectNumber];
-AudioPlayer[] SoundEffectMetaData = new AudioPlayer[SoundEffectNumber];
-
+AudioPlayer[] SoundEffectPlayList = new AudioPlayer[SoundEffectNumber];
+AudioMetaData[] SoundEffectMetaData = new AudioMetaData[SoundEffectNumber];
+AudioMetaData[] SoundEffectPlayListMetaData = new AudioMetaData[SoundEffectNumber];
 //
 void setup() {
   //
@@ -140,6 +143,31 @@ void setup() {
     SongPlayListMetaData[i] = SongPlayList[i].getMetaData();
   }
   //
+  String RelativeSoundEffectPathway = "../Sound Effects/";
+  String AbsoluteSoundEffectPathway = sketchPath(RelativeSoundEffectPathway);
+    SoundEffectFiles = new File(AbsoluteSoundEffectPathway);
+  int SoundEffectFileCount = SoundEffectFiles.list().length;
+    File[] SoundEffectfiles2 = SoundEffectFiles.listFiles();
+  String[] SoundEffectFilePathway = new String[SoundEffectFileCount];
+  for (int i = SoundEffectPlaying; i < SoundEffectfiles2.length; i++) {
+    SoundEffectFilePathway[i] = (SoundEffectfiles2[i].toString());
+  }
+  //
+  String SoundEffectPathDirectory = sketchPath(AbsoluteSoundEffectPathway);
+  println("Main Directory to Sound Effect Folder", SoundEffectPathDirectory);
+  file = new File(SoundEffectPathDirectory);
+  int SoundEffectfileCount = file.list().length;
+  println("File Count of the Sound Effect Folder:", SoundEffectfileCount);
+  File[] SoundEffectfiles = file.listFiles();
+  for (int i = SoundEffectPlaying; i < SoundEffectfiles.length; i++) {
+    println("File Name", SoundEffectfiles[i].getName());
+  }
+  //
+    for (int i=SoundEffectPlaying; i<SoundEffectFileCount; i++) {
+    SoundEffectPlayList[i]= minim.loadFile(SoundEffectFilePathway[i]);
+    SoundEffectPlayListMetaData[i] = SoundEffectPlayList[i].getMetaData();
+  }
+  //
   println("File Name", SongPlayListMetaData[SongPlaying].fileName()); //Data Verified
   println("Song Length (in milliseconds)", SongPlayListMetaData[SongPlaying].length());
   println("Song Length (in seconds)", SongPlayListMetaData[SongPlaying].length()/1000);
@@ -195,7 +223,7 @@ void draw() {
     } else {
     }
   //
-  if (SongPlayList[SongPlaying].position() == SongPlayListMetaData[SongPlaying].length()) SongPlaying+=1;
+  //if (SongPlayList[SongPlaying].position() == SongPlayListMetaData[SongPlaying].length()) SongPlaying+=1;
   //
   fill(resetDefaultInk);
   textAlign(CENTER, CENTER); 
@@ -204,7 +232,7 @@ void draw() {
   text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
+  //println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
   //
 } //End draw
 //
