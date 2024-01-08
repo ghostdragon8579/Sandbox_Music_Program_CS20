@@ -38,11 +38,13 @@ File file;
 File AudioFiles;
 Minim minim;
 AudioPlayer song1;
-AudioPlayer[] song = new AudioPlayer[SongNumber];
+AudioPlayer[] Song = new AudioPlayer[SongNumber];
 AudioPlayer[] SongPlayList = new AudioPlayer[SongNumber];
+AudioMetaData[] SongMetaData = new AudioMetaData[SongNumber];
 AudioMetaData[] SongPlayListMetaData = new AudioMetaData[SongNumber];
-AudioPlayer[] soundEffect = new AudioPlayer[SoundEffectNumber];
-AudioMetaData[] songMetaData = new AudioMetaData[SongNumber];
+AudioPlayer[] SoundEffect = new AudioPlayer[SoundEffectNumber];
+AudioPlayer[] SoundEffectMetaData = new AudioPlayer[SoundEffectNumber];
+
 //
 void setup() {
   //
@@ -200,7 +202,7 @@ void draw() {
   text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  //println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
+  println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
   //
 } //End draw
 //
@@ -255,7 +257,11 @@ void mousePressed() {
   }
   if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[SongPlaying].skip(+5000);
   if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) SongPlayList[SongPlaying].skip(-5000);
-  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) SongPlayList[SongPlaying].play();
+  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause && SongPlayList[SongPlaying].isPlaying()) {
+      SongPlayList[SongPlaying].pause();
+    } else {
+      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
+    }
   //
 } //End mousePressed
   //
