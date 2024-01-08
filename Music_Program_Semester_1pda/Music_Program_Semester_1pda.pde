@@ -195,6 +195,8 @@ void draw() {
     } else {
     }
   //
+  if (SongPlayList[SongPlaying].position() == SongPlayListMetaData[SongPlaying].length()) SongPlaying+=1;
+  //
   fill(resetDefaultInk);
   textAlign(CENTER, CENTER); 
   size = 97;
@@ -245,6 +247,11 @@ void keyReleased() {
 }
 void mousePressed() {
   //
+  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause && SongPlayList[SongPlaying].isPlaying()) {
+      SongPlayList[SongPlaying].pause();
+    } else {
+      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
+    }
   if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
@@ -257,11 +264,6 @@ void mousePressed() {
   }
   if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[SongPlaying].skip(+5000);
   if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) SongPlayList[SongPlaying].skip(-5000);
-  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause && SongPlayList[SongPlaying].isPlaying()) {
-      SongPlayList[SongPlaying].pause();
-    } else {
-      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
-    }
   //
 } //End mousePressed
   //
