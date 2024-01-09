@@ -27,6 +27,7 @@ PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color DarkRed=#AA021B;
 color Gray=#C9C9C9;
+color LightGray=#BCBCBC;
 color Black=#000000;
 int appWidth, appHeight;
 int size;
@@ -201,17 +202,11 @@ void draw() {
   rect(xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
   image(NeonBackground, xRectBackground, yRectBackground, widthRectBackground, heightRectBackground);
   rect(xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
-  image(PlayButton, xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
   rect(xFastForward, yFastForward, widthFastForward, heightFastForward);
-  image(FastForward, xFastForward, yFastForward, widthFastForward, heightFastForward);
   rect(xRewind, yRewind, widthRewind, heightRewind);
-  image(Rewind, xRewind, yRewind, widthRewind, heightRewind);
   rect(xNext, yNext, widthNext, heightNext);
-  image(Next, xNext, yNext, widthNext, heightNext);
   rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
-  image(Previous, xPrevious, yPrevious, widthPrevious, heightPrevious);
   rect(xShuffle, yShuffle, widthShuffle, heightShuffle);
-  image(Shuffle, xShuffle, yShuffle, widthShuffle, heightShuffle);
   fill(Black);
   rect(xText, yText, widthText, heightText);
   fill(resetDefaultInk);
@@ -233,6 +228,46 @@ void draw() {
   fill(resetDefaultInk);
   //
   //println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
+  //
+  color hoverOverColor=resetDefaultInk;
+  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) {
+    hoverOverColor = LightGray;
+    fill(hoverOverColor);
+    rect(xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
+    fill(resetDefaultInk);
+  } else if (mouseX>xShuffle && mouseX<xShuffle+widthShuffle && mouseY>yShuffle && mouseY<yShuffle+heightShuffle) {
+    hoverOverColor = LightGray;
+    fill(hoverOverColor);
+    rect(xShuffle, yShuffle, widthShuffle, heightShuffle);
+    fill(resetDefaultInk);
+  } else if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) {
+    hoverOverColor = LightGray;
+    fill(hoverOverColor);
+    rect(xFastForward, yFastForward, widthFastForward, heightFastForward);
+    fill(resetDefaultInk);
+  } else if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) {
+    hoverOverColor = LightGray;
+    fill(hoverOverColor);
+    rect(xRewind, yRewind, widthRewind, heightRewind);
+    fill(resetDefaultInk);
+  } else if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
+    hoverOverColor = LightGray;
+    fill(hoverOverColor);
+    rect(xNext, yNext, widthNext, heightNext);
+    fill(resetDefaultInk);
+  } else if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
+    hoverOverColor = LightGray;
+    fill(hoverOverColor);
+    rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
+    fill(resetDefaultInk);
+  }
+  //
+  image(PlayButton, xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
+  image(FastForward, xFastForward, yFastForward, widthFastForward, heightFastForward);
+  image(Rewind, xRewind, yRewind, widthRewind, heightRewind);
+  image(Next, xNext, yNext, widthNext, heightNext);
+  image(Previous, xPrevious, yPrevious, widthPrevious, heightPrevious);
+  image(Shuffle, xShuffle, yShuffle, widthShuffle, heightShuffle);
   //
 } //End draw
 //
