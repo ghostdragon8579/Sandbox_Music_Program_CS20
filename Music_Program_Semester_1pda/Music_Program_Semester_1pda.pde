@@ -227,7 +227,7 @@ void draw() {
   text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  //println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
+  println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
   //
   color hoverOverColor=resetDefaultInk;
   if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) {
@@ -272,14 +272,7 @@ void draw() {
 } //End draw
 //
 void keyPressed() {
-  //
-    if ( key=='1' || key=='9' ) {
-    String keystr = String.valueOf(key);
-    println(keystr);
-    int loopNum = int(keystr);
-    SongPlayList[SongPlaying].loop(loopNum);   
     //
-    }
     if (key=='m' || key=='M') {
     if (SongPlayList[SongPlaying].isMuted() && (key=='m' || key=='M') ) {
      if (SongPlayList[SongPlaying].isPlaying()) SongPlayList[SongPlaying].unmute();
@@ -288,6 +281,12 @@ void keyPressed() {
     }
     }
     //
+    if (key==CODED && keyCode == LEFT || keyCode == RIGHT) {
+    if (key==CODED && keyCode == RIGHT) SongPlayList[SongPlaying].skip(+5000);
+    if (key==CODED && keyCode == LEFT) SongPlayList[SongPlaying].skip(-5000);
+    }
+    //
+    /*
     if (key=='P' || key=='p'); {
       if (SongPlayList[SongPlaying].isPlaying()) {
       SongPlayList[SongPlaying].pause();
@@ -300,7 +299,7 @@ void keyPressed() {
       if (SongPlayList[SongPlaying].isPlaying()) {
       SongPlayList[SongPlaying].rewind();
     }
-    }
+    */
     //
     if (key=='F' || key=='f'); SongPlayList[SongPlaying].play();
     //
@@ -327,6 +326,7 @@ void mousePressed() {
   }
   if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[SongPlaying].skip(+5000);
   if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) SongPlayList[SongPlaying].skip(-5000);
+  if (mouseX>xShuffle && mouseX<xShuffle+widthShuffle && mouseY>yShuffle && mouseY<yShuffle+heightShuffle);
   //
 } //End mousePressed
   //
