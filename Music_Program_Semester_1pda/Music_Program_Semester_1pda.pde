@@ -315,12 +315,10 @@ void mousePressed() {
       SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
     }
   if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
-    SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
     SongPlaying+=1;
   }
   if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
-    SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
     SongPlaying-=1;
   }
