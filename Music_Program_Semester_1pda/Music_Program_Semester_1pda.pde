@@ -229,7 +229,7 @@ void draw() {
   text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  println (SongPlayListMetaData[SongPlaying].length()/1000/60-SongPlayList[SongPlaying].position()/1000/60, "Minutes and", SongPlayListMetaData[SongPlaying].length()/1000-((SongPlayListMetaData[SongPlaying].length()/1000/60)*60)-((SongPlayList[SongPlaying].position()/1000/60)*60), "Seconds Left");
+  println(SongPlayListMetaData[SongPlaying].length()/1000/60-SongPlayList[SongPlaying].position()/1000/60, "Minutes and", SongPlayListMetaData[SongPlaying].length()/1000-((SongPlayListMetaData[SongPlaying].length()/1000/60)*60)-((SongPlayList[SongPlaying].position()/1000/60)*60), "Seconds Left");
   //println(SongPlaying);
   //println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
   //
