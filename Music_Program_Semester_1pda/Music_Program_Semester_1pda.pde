@@ -302,7 +302,11 @@ void keyPressed() {
     }
     */
     //
-    if (key=='F' || key=='f'); SongPlayList[SongPlaying].play();
+    if (key=='F' || key=='f' && SongPlayList[SongPlaying].isPlaying()) {
+      SongPlayList[SongPlaying].pause();
+    } else {
+      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
+    }
     //
 } //End keyPressed
 void keyReleased() {
