@@ -287,6 +287,12 @@ void keyPressed() {
     if (key==CODED && keyCode == LEFT) SongPlayList[SongPlaying].skip(-5000);
     }
     //
+    if (key=='F' || key=='f' && SongPlayList[SongPlaying].isPlaying()) {
+      SongPlayList[SongPlaying].pause();
+    } else {
+      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
+    }
+    //
     /*
     if (key=='P' || key=='p'); {
       if (SongPlayList[SongPlaying].isPlaying()) {
@@ -301,12 +307,6 @@ void keyPressed() {
       SongPlayList[SongPlaying].rewind();
     }
     */
-    //
-    if (key=='F' || key=='f' && SongPlayList[SongPlaying].isPlaying()) {
-      SongPlayList[SongPlaying].pause();
-    } else {
-      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
-    }
     //
 } //End keyPressed
 void keyReleased() {
@@ -333,6 +333,7 @@ void mousePressed() {
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
     SongPlaying=int (random(0, 5));
+    SongPlayList[SongPlaying].play();
   }
   //
 } //End mousePressed
