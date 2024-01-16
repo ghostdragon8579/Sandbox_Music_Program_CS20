@@ -18,6 +18,8 @@ float xNext, yNext, widthNext, heightNext;
 float xPrevious, yPrevious, widthPrevious, heightPrevious;
 float xShuffle, yShuffle, widthShuffle, heightShuffle;
 float xText, yText, widthText, heightText;
+float xComposer, yComposer, widthComposer, heightComposer;
+float xTimer, yTimer, widthTimer, heightTimer;
 PImage NeonBackground;
 PImage PlayButton, PauseButton;
 PImage FastForward, Rewind;
@@ -227,7 +229,8 @@ void draw() {
   text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  println(SongPlaying);
+  println (SongPlayListMetaData[SongPlaying].length()/1000/60-SongPlayList[SongPlaying].position()/1000/60, "Minutes and", SongPlayListMetaData[SongPlaying].length()/1000-((SongPlayListMetaData[SongPlaying].length()/1000/60)*60)-((SongPlayList[SongPlaying].position()/1000/60)*60), "Seconds Left");
+  //println(SongPlaying);
   //println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
   //
   color hoverOverColor=resetDefaultInk;
