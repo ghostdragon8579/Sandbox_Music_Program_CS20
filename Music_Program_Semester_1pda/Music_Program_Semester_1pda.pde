@@ -18,7 +18,7 @@ float xNext, yNext, widthNext, heightNext;
 float xPrevious, yPrevious, widthPrevious, heightPrevious;
 float xShuffle, yShuffle, widthShuffle, heightShuffle;
 float xText, yText, widthText, heightText;
-float xComposer, yComposer, widthComposer, heightComposer;
+float xAuthor, yAuthor, widthAuthor, heightAuthor;
 float xTimer, yTimer, widthTimer, heightTimer;
 PImage NeonBackground;
 PImage PlayButton, PauseButton;
@@ -120,6 +120,11 @@ void setup() {
   widthText = appWidth*3/5;
   heightText = appHeight*1/6;
   //
+  xAuthor = appWidth*3/10;
+  yAuthor = appHeight*11/30;
+  widthAuthor = appWidth*4/10;
+  heightAuthor = appHeight*1/16;
+  //
   String RelativeMusicPathway = "../Audio Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
     AudioFiles = new File(AbsoluteMusicPathway);
@@ -190,9 +195,6 @@ void setup() {
   println("Genre", SongPlayListMetaData[SongPlaying].genre());
   println("Encoded", SongPlayListMetaData[SongPlaying].encoded());
   //
-  if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()!=-1) println("There are", SongPlayList[SongPlaying].loopCount(), "loops left.");
-  if (SongPlayList[SongPlaying].isLooping() && SongPlayList[SongPlaying].loopCount()==-1) println("Looping Infinitely");
-  if (SongPlayList[SongPlaying].isPlaying() && !SongPlayList[SongPlaying].isLooping()) println("Play Once");
   println(SongPlaying);
   //
   TitleFont = createFont("Times New Roman Bold", 55);
@@ -210,6 +212,7 @@ void draw() {
   rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
   rect(xShuffle, yShuffle, widthShuffle, heightShuffle);
   fill(Black);
+  rect(xAuthor, yAuthor, widthAuthor, heightAuthor);
   rect(xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
@@ -227,6 +230,13 @@ void draw() {
   size = 97;
   textFont(TitleFont, size); 
   text(SongPlayListMetaData[SongPlaying].title(), xText, yText, widthText, heightText);
+  fill(resetDefaultInk);
+  //
+  fill(resetDefaultInk);
+  textAlign(CENTER, CENTER); 
+  size = 40;
+  textFont(TitleFont, size); 
+  text("Author: "+SongPlayListMetaData[SongPlaying].author(), xAuthor, yAuthor, widthAuthor, heightAuthor);
   fill(resetDefaultInk);
   //
   println(SongPlayListMetaData[SongPlaying].length()/1000/60-SongPlayList[SongPlaying].position()/1000/60, "Minutes and", SongPlayListMetaData[SongPlaying].length()/1000-((SongPlayListMetaData[SongPlaying].length()/1000/60)*60)-((SongPlayList[SongPlaying].position()/1000/60)*60), "Seconds Left");
