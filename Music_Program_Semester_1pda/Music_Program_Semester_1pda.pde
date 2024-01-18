@@ -37,7 +37,6 @@ int SongPlaying = 0;
 int SongNumber = 6;
 int SoundEffectNumber = 1;
 int SoundEffectPlaying = 0;
-Boolean SongLooping=false;
 File file;
 File AudioFiles;
 File SoundEffectFiles;
@@ -223,8 +222,6 @@ void draw() {
     } else {
     }
   //
-  //if (SongPlayList[SongPlaying].position() == SongPlayListMetaData[SongPlaying].length()) SongPlaying+=1;
-  //
   fill(resetDefaultInk);
   textAlign(CENTER, CENTER); 
   size = 97;
@@ -238,10 +235,6 @@ void draw() {
   textFont(TitleFont, size); 
   text("Author: "+SongPlayListMetaData[SongPlaying].author(), xAuthor, yAuthor, widthAuthor, heightAuthor);
   fill(resetDefaultInk);
-  //
-  println(SongPlayListMetaData[SongPlaying].length()/1000/60-SongPlayList[SongPlaying].position()/1000/60, "Minutes and", SongPlayListMetaData[SongPlaying].length()/1000-((SongPlayListMetaData[SongPlaying].length()/1000/60)*60)-((SongPlayList[SongPlaying].position()/1000/60)*60), "Seconds Left");
-  //println(SongPlaying);
-  //println("Song Position", SongPlayList[SongPlaying].position(), "Song Length", SongPlayList[SongPlaying].length());
   //
   color hoverOverColor=resetDefaultInk;
   if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) {
@@ -327,22 +320,53 @@ void keyReleased() {
 }
 void mousePressed() {
   //
+  SoundEffectPlayList[SoundEffectPlaying].play();
   if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause && SongPlayList[SongPlaying].isPlaying()) {
       SongPlayList[SongPlaying].pause();
     } else {
       SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
     }
   if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
+    SoundEffectPlayList[SoundEffectPlaying].rewind();
+    SoundEffectPlayList[SoundEffectPlaying].play();
+    SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
     SongPlaying+=1;
+    if (SongPlaying<0) {
+      SongPlaying=5;
+    } else if (SongPlaying>5) {
+      SongPlaying=0;
+    } else {
+    }
+    SongPlayList[SongPlaying].play();
   }
   if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
+    SoundEffectPlayList[SoundEffectPlaying].rewind();
+    SoundEffectPlayList[SoundEffectPlaying].play();
+    SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
     SongPlaying-=1;
+    if (SongPlaying<0) {
+      SongPlaying=5;
+    } else if (SongPlaying>5) {
+      SongPlaying=0;
+    } else {
+    }
+    SongPlayList[SongPlaying].play();
   }
-  if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) SongPlayList[SongPlaying].skip(+5000);
-  if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) SongPlayList[SongPlaying].skip(-5000);
+  if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) {
+  SoundEffectPlayList[SoundEffectPlaying].rewind();  
+  SoundEffectPlayList[SoundEffectPlaying].play();
+  SongPlayList[SongPlaying].skip(+5000);
+  }
+  if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) {
+  SoundEffectPlayList[SoundEffectPlaying].rewind();
+  SoundEffectPlayList[SoundEffectPlaying].play();
+  SongPlayList[SongPlaying].skip(-5000);
+  }
   if (mouseX>xShuffle && mouseX<xShuffle+widthShuffle && mouseY>yShuffle && mouseY<yShuffle+heightShuffle) {
+    SoundEffectPlayList[SoundEffectPlaying].rewind();
+    SoundEffectPlayList[SoundEffectPlaying].play();
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
     SongPlaying=int (random(0, 5));
