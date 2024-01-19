@@ -19,7 +19,7 @@ float xPrevious, yPrevious, widthPrevious, heightPrevious;
 float xShuffle, yShuffle, widthShuffle, heightShuffle;
 float xText, yText, widthText, heightText;
 float xAuthor, yAuthor, widthAuthor, heightAuthor;
-float xTimer, yTimer, widthTimer, heightTimer;
+float xRelease, yRelease, widthRelease, heightRelease;
 PImage NeonBackground;
 PImage PlayButton, PauseButton;
 PImage FastForward, Rewind;
@@ -124,6 +124,11 @@ void setup() {
   widthAuthor = appWidth*4/10;
   heightAuthor = appHeight*1/16;
   //
+  xRelease = xAuthor;
+  yRelease = appHeight*11/30+appHeight*1/16;
+  widthRelease = widthAuthor;
+  heightRelease = heightAuthor;
+  //
   String RelativeMusicPathway = "../Audio Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
     AudioFiles = new File(AbsoluteMusicPathway);
@@ -212,6 +217,7 @@ void draw() {
   rect(xShuffle, yShuffle, widthShuffle, heightShuffle);
   fill(Black);
   rect(xAuthor, yAuthor, widthAuthor, heightAuthor);
+  rect(xRelease, yRelease, widthRelease, heightRelease);
   rect(xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
@@ -234,6 +240,13 @@ void draw() {
   size = 40;
   textFont(TitleFont, size); 
   text("Author: "+SongPlayListMetaData[SongPlaying].author(), xAuthor, yAuthor, widthAuthor, heightAuthor);
+  fill(resetDefaultInk);
+  //
+  fill(resetDefaultInk);
+  textAlign(CENTER, CENTER); 
+  size = 40;
+  textFont(TitleFont, size); 
+  text("Released in: "+SongPlayListMetaData[SongPlaying].date(), xRelease, yRelease, widthRelease, heightRelease);
   fill(resetDefaultInk);
   //
   color hoverOverColor=resetDefaultInk;
