@@ -333,7 +333,6 @@ void keyReleased() {
 }
 void mousePressed() {
   //
-  SoundEffectPlayList[SoundEffectPlaying].play();
   if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause && SongPlayList[SongPlaying].isPlaying()) {
       SongPlayList[SongPlaying].pause();
     } else {
