@@ -199,7 +199,7 @@ void setup() {
   println("Genre", SongPlayListMetaData[SongPlaying].genre());
   println("Encoded", SongPlayListMetaData[SongPlaying].encoded());
   //
-  println("Soundeffect Length", SoundEffectPlayListMetaData[SoundEffectPlaying].length());
+  //println("Effect Length", SoundEffectPlayListMetaData[SoundEffectPlaying].length());
   //
   println(SongPlaying);
   //
