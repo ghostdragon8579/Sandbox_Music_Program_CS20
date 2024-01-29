@@ -199,6 +199,8 @@ void setup() {
   println("Genre", SongPlayListMetaData[SongPlaying].genre());
   println("Encoded", SongPlayListMetaData[SongPlaying].encoded());
   //
+  println("Soundeffect Length", SoundEffectPlayListMetaData[SoundEffectPlaying].length());
+  //
   println(SongPlaying);
   //
   TitleFont = createFont("Times New Roman Bold", 55);
@@ -340,6 +342,7 @@ void mousePressed() {
     }
   if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
     SoundEffectPlayList[SoundEffectPlaying].rewind();
+    SoundEffectPlayList[SoundEffectPlaying].skip(+1441);
     SoundEffectPlayList[SoundEffectPlaying].play();
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
@@ -354,6 +357,7 @@ void mousePressed() {
   }
   if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
     SoundEffectPlayList[SoundEffectPlaying].rewind();
+    SoundEffectPlayList[SoundEffectPlaying].skip(+1441);
     SoundEffectPlayList[SoundEffectPlaying].play();
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
@@ -367,17 +371,20 @@ void mousePressed() {
     SongPlayList[SongPlaying].play();
   }
   if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) {
-  SoundEffectPlayList[SoundEffectPlaying].rewind();  
+  SoundEffectPlayList[SoundEffectPlaying].rewind();
+  SoundEffectPlayList[SoundEffectPlaying].skip(+1441);
   SoundEffectPlayList[SoundEffectPlaying].play();
   SongPlayList[SongPlaying].skip(+5000);
   }
   if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) {
   SoundEffectPlayList[SoundEffectPlaying].rewind();
+  SoundEffectPlayList[SoundEffectPlaying].skip(+1441);
   SoundEffectPlayList[SoundEffectPlaying].play();
   SongPlayList[SongPlaying].skip(-5000);
   }
   if (mouseX>xShuffle && mouseX<xShuffle+widthShuffle && mouseY>yShuffle && mouseY<yShuffle+heightShuffle) {
     SoundEffectPlayList[SoundEffectPlaying].rewind();
+    SoundEffectPlayList[SoundEffectPlaying].skip(+1441);
     SoundEffectPlayList[SoundEffectPlaying].play();
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
