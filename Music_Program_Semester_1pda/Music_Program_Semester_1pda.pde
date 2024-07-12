@@ -223,10 +223,10 @@ void draw() {
   rect(xText, yText, widthText, heightText);
   fill(resetDefaultInk);
   //
-  if (SongPlaying<0) {
-      SongPlaying=5;
-    } else if (SongPlaying>5) {
-      SongPlaying=0;
+  if (SongPlaying<SongNumber-SongNumber) {
+      SongPlaying=SongNumber-1;
+    } else if (SongPlaying>SongNumber+1) {
+      SongPlaying=SongNumber-SongNumber;
     } else {
     }
   //
@@ -388,7 +388,7 @@ void mousePressed() {
     SoundEffectPlayList[SoundEffectPlaying].play();
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
-    SongPlaying=int (random(0, 5));
+    SongPlaying=int (random(0, SongNumber));
     SongPlayList[SongPlaying].play();
   }
   //
