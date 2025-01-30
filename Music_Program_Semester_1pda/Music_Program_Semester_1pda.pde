@@ -349,7 +349,7 @@ void mousePressed() {
     SongPlaying+=1;
     if (SongPlaying<0) {
       SongPlaying=5;
-    } else if (SongPlaying>5) {
+    } else if (SongPlaying>SongNumber-1) {
       SongPlaying=0;
     } else {
     }
@@ -364,7 +364,7 @@ void mousePressed() {
     SongPlaying-=1;
     if (SongPlaying<0) {
       SongPlaying=5;
-    } else if (SongPlaying>5) {
+    } else if (SongPlaying>SongNumber-1) {
       SongPlaying=0;
     } else {
     }
