@@ -60,7 +60,7 @@ void setup() {
   minim = new Minim(this);
   String up = "..";
   String open = "/";
-  String ImageFolder = "Images2";
+  String ImageFolder = "Music_Program_Images";
   String Imagepathway = up + open;
   String NeonImage = "NeonBackground.jpg";
   String PlayImage = "play.png";
