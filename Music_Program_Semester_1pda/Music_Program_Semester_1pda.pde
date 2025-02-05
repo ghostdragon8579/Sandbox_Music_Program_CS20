@@ -314,21 +314,6 @@ void keyPressed() {
       SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
     }
     //
-    /*
-    if (key=='P' || key=='p'); {
-      if (SongPlayList[SongPlaying].isPlaying()) {
-      SongPlayList[SongPlaying].pause();
-    } else {
-      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
-    }
-    }
-    //
-    if (key=='R' || key=='r'); {
-      if (SongPlayList[SongPlaying].isPlaying()) {
-      SongPlayList[SongPlaying].rewind();
-    }
-    */
-    //
 } //End keyPressed
 void keyReleased() {
   //
