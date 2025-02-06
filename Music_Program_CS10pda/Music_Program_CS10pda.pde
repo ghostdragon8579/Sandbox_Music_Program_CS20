@@ -27,7 +27,6 @@ PImage Next, Previous;
 PImage Shuffle;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
-color DarkRed=#AA021B;
 color Gray=#C9C9C9;
 color LightGray=#BCBCBC;
 color Black=#000000;
