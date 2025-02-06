@@ -10,6 +10,11 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
 //Global Variables
+PFont TitleFont;
+color resetDefaultInk=#FFFFFF;
+color Gray=#C9C9C9;
+color LightGray=#BCBCBC;
+color Black=#000000;
 int appWidth, appHeight;
 int size;
 int SongPlaying = 0;
@@ -110,6 +115,10 @@ void setup() {
   println("Track", SongPlayListMetaData[SongPlaying].track());
   println("Genre", SongPlayListMetaData[SongPlaying].genre());
   println("Encoded", SongPlayListMetaData[SongPlaying].encoded());
+  //
+  println(SongPlaying);
+  //
+  TitleFont = createFont("Times New Roman Bold", 55);
   //
 } //End setup
 void draw() {
