@@ -18,7 +18,7 @@ color Black=#000000;
 int appWidth, appHeight;
 int size;
 int SongPlaying = 0;
-int SongNumber = 4;
+int SongNumber = 6;
 int SoundEffectNumber = 1;
 int SoundEffectPlaying = 0;
 File file;
@@ -41,6 +41,7 @@ void setup() {
   appWidth = width;
   appHeight = height;
   //
+  minim = new Minim(this);
   String up = "..";
   String open = "/";
   String ImageFolder = "Music_Program_Images";
