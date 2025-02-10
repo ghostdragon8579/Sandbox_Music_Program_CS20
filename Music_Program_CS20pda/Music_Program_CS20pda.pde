@@ -10,6 +10,16 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
 //Global Variables
+float xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground;
+float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
+float xFastForward, yFastForward, widthFastForward, heightFastForward;
+float xRewind, yRewind, widthRewind, heightRewind;
+float xNext, yNext, widthNext, heightNext;
+float xPrevious, yPrevious, widthPrevious, heightPrevious;
+PImage NeonBackground;
+PImage PlayButton, PauseButton;
+PImage FastForward, Rewind;
+PImage Next, Previous;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color Gray=#C9C9C9;
@@ -46,6 +56,20 @@ void setup() {
   String open = "/";
   String ImageFolder = "Music_Program_Images";
   String Imagepathway = up + open;
+  String NeonImage = "NeonBackground.jpg";
+  String PlayImage = "play.png";
+  String PauseImage = "pause.png";
+  String FastForwardImage = "FastForward.png";
+  String RewindImage = "FastRewind.png";
+  String NextImage = "skip.png";
+  String PreviousImage = "prev.png";
+  NeonBackground = loadImage(Imagepathway + ImageFolder + open + NeonImage);
+  PlayButton = loadImage(Imagepathway + ImageFolder + open + PlayImage);
+  PauseButton = loadImage(Imagepathway + ImageFolder + open + PauseImage);
+  FastForward = loadImage(Imagepathway + ImageFolder + open + FastForwardImage);
+  Rewind = loadImage(Imagepathway + ImageFolder + open + RewindImage);
+  Next = loadImage(Imagepathway + ImageFolder + open + NextImage);
+  Previous = loadImage(Imagepathway + ImageFolder + open + PreviousImage);
   //
     String RelativeMusicPathway = "../Audio Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
