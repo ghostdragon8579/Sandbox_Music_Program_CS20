@@ -11,21 +11,21 @@ const tagSelectors = [
     name: 'Name',
     parent: 'div#element-0',
     sibling: 0,
-    text: 'Put your name here'
+    text: ''
   },
   {
     tag: 'h3',
     name: 'Grade',
     parent: 'div#element-0',
     sibling: 1,
-    text: 'Put which grade you are in here'
+    text: ''
   },
   {
     tag: 'h4',
     name: '\"Who Am I\" header',
     parent: 'div#element-1',
     sibling: 0,
-    text: 'Put \"Who Am I\" here'
+    text: ''
   },
   {
     tag: 'ul',
@@ -39,21 +39,21 @@ const tagSelectors = [
     name: 'Description',
     parent: 'div#element-1 ul',
     sibling: 0,
-    text: 'Put something about yourself'
+    text: ''
   },
   {
     tag: 'h1',
     name: 'Image',
     parent: 'div#element-2',
     sibling: 0,
-    text: 'Put an image here'
+    text: ''
   },
   {
     tag: 'p',
     name: 'Image description',
     parent: 'div#element-3',
     sibling: 0,
-    text: 'Put a description of the image here'
+    text: ''
   },
 ]
 
