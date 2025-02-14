@@ -32,7 +32,6 @@ const tagSelectors = [
     name: 'Unordered list tag',
     parent: 'div#element-1',
     sibling: 1,
-    text: 'Don\'t forget the <ul> tag!'
   },
   {
     tag: 'li',
