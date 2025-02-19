@@ -16,10 +16,12 @@ float xFastForward, yFastForward, widthFastForward, heightFastForward;
 float xRewind, yRewind, widthRewind, heightRewind;
 float xNext, yNext, widthNext, heightNext;
 float xPrevious, yPrevious, widthPrevious, heightPrevious;
+float xQuit, yQuit, widthQuit, heightQuit;
 PImage NeonBackground2;
 PImage PlayButton, PauseButton;
 PImage FastForward, Rewind;
 PImage Next, Previous;
+PImage Quit;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color Gray=#C9C9C9;
@@ -63,6 +65,7 @@ void setup() {
   String RewindImage = "FastRewind.png";
   String NextImage = "skip.png";
   String PreviousImage = "prev.png";
+  String QuitImage = "exit.png";
   NeonBackground2 = loadImage(Imagepathway + ImageFolder + open + NeonImage2);
   PlayButton = loadImage(Imagepathway + ImageFolder + open + PlayImage);
   PauseButton = loadImage(Imagepathway + ImageFolder + open + PauseImage);
@@ -70,9 +73,10 @@ void setup() {
   Rewind = loadImage(Imagepathway + ImageFolder + open + RewindImage);
   Next = loadImage(Imagepathway + ImageFolder + open + NextImage);
   Previous = loadImage(Imagepathway + ImageFolder + open + PreviousImage);
+  Quit = loadImage(Imagepathway + ImageFolder + open + QuitImage);
   //
   xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
-  xPopup = appWidth*1/12; yPopup = appHeight*1/16; widthPopup = appWidth*5/6; heightPopup = appHeight*7/8;
+  xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
   //
     String RelativeMusicPathway = "../Audio Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
@@ -154,6 +158,12 @@ void draw() {
   fill(Black);
   rect(xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
   image(NeonBackground2, xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
+  fill(resetDefaultInk);
+  rect(xQuit, yQuit, widthQuit, heightQuit);
+  //
+  image(Quit, xQuit, yQuit, widthQuit, heightQuit);
+  //
+  Music_Program_CS20_HoverOverColors ();
   //
 } //End draw
 //
