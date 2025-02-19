@@ -73,6 +73,7 @@ void setup() {
   Previous = loadImage(Imagepathway + ImageFolder + open + PreviousImage);
   //
   xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
+  xPopup = appWidth*1/12; yPopup = appHeight*1/16; widthPopup = appWidth*5/6; heightPopup = appHeight*7/8;
   //
     String RelativeMusicPathway = "../Audio Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
@@ -154,6 +155,7 @@ void draw() {
   fill(Gray);
   rect(xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
   fill(resetDefaultInk);
+  rect(xPopup, yPopup, widthPopup, heightPopup);
   //
 } //End draw
 //
