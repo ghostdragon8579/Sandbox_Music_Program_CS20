@@ -11,6 +11,7 @@ import ddf.minim.ugens.*;
 //
 //Global Variables
 float xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground;
+float xPopup, yPopup, widthPopup, heightPopup;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
 float xFastForward, yFastForward, widthFastForward, heightFastForward;
 float xRewind, yRewind, widthRewind, heightRewind;
@@ -47,7 +48,7 @@ AudioMetaData[] SoundEffectPlayListMetaData = new AudioMetaData[SoundEffectNumbe
 //
 void setup() {
   //
-  size(1200, 1000);
+  size(1200, 800);
   appWidth = width;
   appHeight = height;
   //
@@ -70,6 +71,8 @@ void setup() {
   Rewind = loadImage(Imagepathway + ImageFolder + open + RewindImage);
   Next = loadImage(Imagepathway + ImageFolder + open + NextImage);
   Previous = loadImage(Imagepathway + ImageFolder + open + PreviousImage);
+  //
+  xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
   //
     String RelativeMusicPathway = "../Audio Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
@@ -147,6 +150,10 @@ void setup() {
   //
 } //End setup
 void draw() {
+  //
+  fill(Gray);
+  rect(xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
+  fill(resetDefaultInk);
   //
 } //End draw
 //
