@@ -17,7 +17,7 @@ float xFastForward, yFastForward, widthFastForward, heightFastForward;
 float xRewind, yRewind, widthRewind, heightRewind;
 float xNext, yNext, widthNext, heightNext;
 float xPrevious, yPrevious, widthPrevious, heightPrevious;
-PImage NeonBackground;
+PImage NeonBackground2;
 PImage PlayButton, PauseButton;
 PImage FastForward, Rewind;
 PImage Next, Previous;
@@ -57,14 +57,14 @@ void setup() {
   String open = "/";
   String ImageFolder = "Music_Program_Images";
   String Imagepathway = up + open;
-  String NeonImage = "NeonBackground.jpg";
+  String NeonImage2 = "NeonBackground2.jpg";
   String PlayImage = "play.png";
   String PauseImage = "pause.png";
   String FastForwardImage = "FastForward.png";
   String RewindImage = "FastRewind.png";
   String NextImage = "skip.png";
   String PreviousImage = "prev.png";
-  NeonBackground = loadImage(Imagepathway + ImageFolder + open + NeonImage);
+  NeonBackground2 = loadImage(Imagepathway + ImageFolder + open + NeonImage2);
   PlayButton = loadImage(Imagepathway + ImageFolder + open + PlayImage);
   PauseButton = loadImage(Imagepathway + ImageFolder + open + PauseImage);
   FastForward = loadImage(Imagepathway + ImageFolder + open + FastForwardImage);
@@ -154,8 +154,8 @@ void draw() {
   //
   fill(Gray);
   rect(xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
-  fill(resetDefaultInk);
   rect(xPopup, yPopup, widthPopup, heightPopup);
+  image(NeonBackground2, xPopup, yPopup, widthPopup, heightPopup);
   //
 } //End draw
 //
