@@ -11,7 +11,6 @@ import ddf.minim.ugens.*;
 //
 //Global Variables
 float xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground;
-float xPopup, yPopup, widthPopup, heightPopup;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
 float xFastForward, yFastForward, widthFastForward, heightFastForward;
 float xRewind, yRewind, widthRewind, heightRewind;
@@ -152,10 +151,9 @@ void setup() {
 } //End setup
 void draw() {
   //
-  fill(Gray);
+  fill(Black);
   rect(xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
-  rect(xPopup, yPopup, widthPopup, heightPopup);
-  image(NeonBackground2, xPopup, yPopup, widthPopup, heightPopup);
+  image(NeonBackground2, xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
   //
 } //End draw
 //
