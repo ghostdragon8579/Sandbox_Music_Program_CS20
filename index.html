@@ -32,6 +32,34 @@
       justify-content: center;
       padding: 20px;
     }
+
+    section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 640px) {
+      section {
+        flex-direction: column;
+      }
+
+      section img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      section p, section ln, section li {
+        font-size: 3vw;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section p, section ln, section li {
+        font-size: 4vw;
+      }
+    }
   </style>
 
 </head>
@@ -41,18 +69,11 @@
 <body>
   
   <header id="complete">
-	 <h1 style="font-size:3.15vw">Music Player CS20</h1>
+     <h1 style="font-size:3.15vw">Music Player CS20</h1>
   </header>
 
   <!-- Portfolio Section -->
   <section>
-    <style>
-      section {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    </style>
     <div id="complete">
       <h2 style="font-size:1.85vw">Developer Information:</h2>
         <p>
@@ -88,8 +109,8 @@
     </div>
     <div> 
       <p style="font-size:1.5vw">This is a rough draft of the design that will be used in the music player created for CS20.
-        <ln style="font-size:1.5vw">The focus of the design is to create a simple interface that is easy to learn how to use.</ln>
-        <ln style="font-size:1.5vw">The following is a summary of the design's various buttons and their purposes:</ln>
+        <ln style="font-size:2vw">The focus of the design is to create a simple interface that is easy to learn how to use.</ln>
+        <ln style="font-size:2vw">The following is a summary of the design's various buttons and their purposes:</ln>
          <li style="font-size:1.2vw"> The button on the far left skips to the previous song in the playlist.</li>
          <li style="font-size:1.2vw"> The button second from the left rewinds the selected song by ten seconds.</li>
          <li style="font-size:1.2vw"> The middle button plays the selected song however if the song is already playing it pauses the song instead.</li>
@@ -112,7 +133,7 @@
       <iframe width="560" height="315" src="https://www.youtube.com/embed/1snr9wqlfr8?si=Ib-Rec4vFRISf2eL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" style="margin-left: 10px;" style="margin-right: 10px;" allowfullscreen></iframe>
       <!-- Date Accessed: 2025-02-14 -->
     </div>
-	  <div> 
+      <div> 
       <p>
         <ln style="font-size:1.3vw"> The music player is designed to be used to play background music while the user is doing something else.</ln>
         <ln style="font-size:1.3vw"> The first of the presented videos accurately represents the kind of background music I imagine this music player would be used for.</ln>
