@@ -135,6 +135,10 @@ footer {
 	background-color: rgb(71, 166, 177);
 }
 
+#completebackground {
+	background-color: #3fad7da8;
+}
+
 #incomplete {
 	background-color: red;
 }
