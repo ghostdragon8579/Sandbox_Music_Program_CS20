@@ -1,5 +1,6 @@
 const tagSelectors = [
   {
+    id: 'TitleFormat1',
     tag: 'h1',
     name: 'Title',
     parent: 'header',
