@@ -8,6 +8,7 @@ const tagSelectors = [
     text: 'Put your title here'
   },
   {
+    id: 'TitleFormat2',
     tag: 'h2',
     name: 'Name',
     parent: 'div#element-0',
@@ -15,6 +16,7 @@ const tagSelectors = [
     text: ''
   },
   {
+    id: 'TitleFormat3',
     tag: 'h3',
     name: 'Grade',
     parent: 'div#element-0',

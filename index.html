@@ -152,13 +152,13 @@
 <body>
   
   <header id="HoloBlue">
-     <h1>Music Player CS20</h1>
+     <h1 id="TitleFormat1"></h1>
   </header>
 
   <!-- Portfolio Section -->
   <section>
-    <div id="complete">
-      <h2>Developer Information:</h2>
+    <div>
+      <h2 id="TitleFormat2">test</h2>
         <p>
          <ln> My name is Eric Barnes.</ln>
          <ln> I am currently a student at <a target="_blank" href="https://queenelizabeth.epsb.ca/"><strong> Queen Elizabeth high school.</a></ln></strong>
@@ -171,8 +171,8 @@
          </blockquote>
         </p>
     </div>
-    <div id="complete">
-      <h3>Details about the program:</h3>
+    <div>
+      <h3 id="TitleFormat3"></h3>
         <p>
          <ln> This is a free-to-use music program designed and published for CS20. (Computer Science 20-1)</ln>
          <ln> It was made as a more advanced replacment for the music program I developed in CS10 (Computer Science 10-1)</ln>
@@ -245,6 +245,19 @@
    <p><strong>&copy</strong> Eric Barnes, powered by ghostdragon8579 in GitHub</p>
   </div>
 </footer>
+
+  <script>
+   element = document.getElementById("TitleFormat1").innerHTML = "Music Player CS20";
+  </script>
+
+  <script>
+    element = document.getElementById("TitleFormat2").innerHTML = "Developer Information:";
+  </script>
+
+  <script>
+    element = document.getElementById("TitleFormat3").innerHTML = "Details about the program:";
+  </script>
+
 
   <!-- Loading JavaScript Last: why some pages load and don't seem to 'work' -->
   <script src='Website Dependancies/script.js'></script>
