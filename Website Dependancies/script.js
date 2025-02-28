@@ -61,6 +61,7 @@ const tagSelectors = [
   {
     id: 'DesignImage',
     tag: 'Image',
+    src: 'Music_Program_Images/PXL_20250207_220511935.MP.jpg',
     alt: 'Error 404 Image not found',
     title: 'Planned design for Music_Program_CS20',
     style: 'width:50vw',
