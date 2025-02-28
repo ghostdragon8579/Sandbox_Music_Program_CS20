@@ -58,6 +58,15 @@ const tagSelectors = [
     sibling: 0,
     text: ''
   },
+  {
+    id: 'DesignImage',
+    tag: 'Image',
+    alt: 'Error 404 Image not found',
+    title: 'Planned design for Music_Program_CS20',
+    style: 'width:50vw',
+    sibling: 0,
+    text: ''
+  },
 ]
 
 document.onload = main();
