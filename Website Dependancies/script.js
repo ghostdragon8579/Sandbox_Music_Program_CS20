@@ -59,9 +59,23 @@ const tagSelectors = [
     text: ''
   },
   {
+    id: 'QueenElizabethLogo',
+    tag: 'Image',
+    name: 'Queen Elizabeth Logo',
+    sibling: 0,
+    text: ''
+  },
+  {
     id: 'DesignImage',
     tag: 'Image',
     name: 'Design Image',
+    sibling: 0,
+    text: ''
+  },
+  {
+    id: 'ColorImage',
+    tag: 'Image',
+    name: 'Color Image',
     sibling: 0,
     text: ''
   },
