@@ -2,15 +2,15 @@ const tagSelectors = [
   {
     id: 'TitleFormat1',
     tag: 'h1',
-    name: 'Title',
+    name: 'First Title Format',
     parent: 'header',
     sibling: 0,
-    text: 'Put your title here'
+    text: ''
   },
   {
     id: 'TitleFormat2',
     tag: 'h2',
-    name: 'Name',
+    name: 'Second Title Format',
     parent: 'div#element-0',
     sibling: 0,
     text: ''
@@ -18,7 +18,7 @@ const tagSelectors = [
   {
     id: 'TitleFormat3',
     tag: 'h3',
-    name: 'Grade',
+    name: 'Third Title Format',
     parent: 'div#element-0',
     sibling: 1,
     text: ''
