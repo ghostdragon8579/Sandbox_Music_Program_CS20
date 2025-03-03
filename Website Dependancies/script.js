@@ -24,10 +24,19 @@ const tagSelectors = [
     text: ''
   },
   {
-    tag: 'h4',
-    name: '\"Who Am I\" header',
+  id: 'TitleFormat5',
+  tag: 'h5',
+  name: 'Fourth Title Format',
+  parent: 'div#element-1',
+  sibling: 1,
+  text: ''
+  },
+  {
+    id: 'TitleFormat5',
+    tag: 'h5',
+    name: 'Fifth Title Format',
     parent: 'div#element-1',
-    sibling: 0,
+    sibling: 1,
     text: ''
   },
   {
