@@ -24,8 +24,8 @@ const tagSelectors = [
     text: ''
   },
   {
-    id: 'TitleFormat5',
-    tag: 'h5',
+    id: 'TitleFormat4',
+    tag: 'h4',
     name: 'Fourth Title Format',
     parent: 'div#element-1',
     sibling: 1,
