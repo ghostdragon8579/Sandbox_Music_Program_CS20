@@ -54,6 +54,27 @@ const tagSelectors = [
     text: ''
   },
   {
+    id: 'Play/PauseButton',
+    tag: 'button',
+    name: 'Play/Pause Button',
+    sibling: 2,
+    text: ''
+  },
+  {
+    id: 'SkipButton',
+    tag: 'button',
+    name: 'Skip Button',
+    sibling: 3,
+    text: ''
+  },
+  {
+    id: 'NextButton',
+    tag: 'button',
+    name: 'Next Button',
+    sibling: 4,
+    text: ''
+  },
+  {
     tag: 'ul',
     name: 'Unordered list tag',
     parent: 'div#element-1',
