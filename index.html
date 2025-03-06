@@ -51,13 +51,8 @@
       flex-wrap: wrap;
     }
 
-    .btn-square {
-      width: 5vw;
-      height: 5vw;
-    }
-
     button {
-           display: flex;
+      display: flex;
       align-items: center;
       justify-content: center;
       color: white;
@@ -124,6 +119,15 @@
         font-size: 1.85vw;
         font-family: "roboto", sans-serif;
       }
+
+      button {
+        font-size: 1vw;
+      }
+
+      .btn-square {
+      width: 5vw;
+      height: 5vw;
+      }
     }
 
     @media (max-width: 1200px) and (min-width: 800px) {
@@ -145,6 +149,15 @@
         font-size: 2.2vw;
         font-family: "roboto", sans-serif;
       }
+
+      button {
+        font-size: 1.4vw;
+      }
+
+      .btn-square {
+      width: 7.5vw;
+      height: 7.5vw;
+      }
     }
 
     @media (max-width: 800px) and (min-width: 400px) {
@@ -165,6 +178,15 @@
         font-size: 3.7vw;
         font-family: "roboto", sans-serif;
       }
+
+      button {
+        font-size: 2vw;
+      }
+
+      .btn-square {
+      width: 10vw;
+      height: 10vw;
+      }
     }
 
     @media (max-width: 400px) {
@@ -181,6 +203,15 @@
       section h2, section h3, section h4, section h5 {
         font-size: 7.4vw;
         font-family: "roboto", sans-serif;
+      }
+
+      button {
+        font-size: 4.4vw;
+      }
+
+      .btn-square {
+      width: 20vw;
+      height: 20vw;
       }
     }
    </style>
@@ -261,28 +292,24 @@
 
   <!-- Music Player Buttons Design Draft -->
   <section id="PineBackground" class="container-fluid" style="border:10px double whitesmoke;">
-    <div class="col-1"></div>
+    <div class="col-2">
+      <ln> This is the format that the music buttons will take in the program.</ln>
+    </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <ln></ln>
       <button id="ButtonBackground" type="button" class="btn-square .btn-default" style="border:5px solid white;">Previous</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <ln></ln>
       <button id="ButtonBackground" type="button" class="btn-square .btn-default" style="border:5px solid white;">Rewind</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <ln></ln>
       <button id="ButtonBackground" type="button" class="btn-square .btn-default" style="border:5px solid white;">Play/Pause</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <ln></ln>
       <button id="ButtonBackground" type="button" class="btn-square .btn-default" style="border:5px solid white;">Skip</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <ln></ln>
       <button id="ButtonBackground" type="button" class="btn-square .btn-default" style="border:5px solid white;">Next</button>
     </div>
-    <div class="col-1"></div>
   </section>
 
   <!-- Music Player Color Scheme -->
