@@ -296,26 +296,36 @@
       <ln> This is the format that the music buttons will take in the program:</ln>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <button id="ButtonBackground" type="button" class="btn-square .btn-default" style="border:5px solid white;">Previous</button>
+      <button id="PreviousButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
+        onclick="document.getElementById('PreviousButton').style.color = 'rgb(124, 1, 176)';">
+        Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <button id="ButtonBackground" type="button" class="btn-square .btn-default" style="border:5px solid white;">Rewind</button>
+      <button id="RewindButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
+        onclick="document.getElementById('PreviousButton').style.color = 'rgb(124, 1, 176)';">
+        Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <button id="ButtonBackground" type="button" class="btn-square .btn-default" style="border:5px solid white;">Play/Pause</button>
+      <button id="Play/PauseButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
+        onclick="document.getElementById('PreviousButton').style.color = 'rgb(124, 1, 176)';">
+        Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <button id="ButtonBackground" type="button" class="btn-square .btn-default" style="border:5px solid white;">Skip</button>
+      <button id="SkipButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
+        onclick="document.getElementById('PreviousButton').style.color = 'rgb(124, 1, 176)';">
+        Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <button id="ButtonBackground" type="button" class="btn-square .btn-default" style="border:5px solid white;">Next</button>
+      <button id="NextButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
+      onclick="document.getElementById('PreviousButton').style.color = 'rgb(124, 1, 176)';">
+      Error 404 Text Not Found</button>
     </div>
   </section>
 
   <!-- Music Player Color Scheme -->
   <section id="PineBackground" class="container-fluid" style="border:10px double whitesmoke;">
     <div class="col-6">
-      <img id="ColorImage" style="border:5px solid whitesmoke;" class="rounded .img-fluid" alt="Image not found" title="The color scheme of the music player">
+      <img id="ColorImage" style="border:5px solid whitesmoke;" class="rounded .img-fluid" alt="Error 404 Image not found" title="The color scheme of the music player">
     </div>
     <div class="col-6">
       <p>This is the color scheme that will be used in the music player created for CS20. The colors are designed to be noticeable and visually appealing. The following is a description of the various aspects of the color scheme:
@@ -355,6 +365,14 @@
    <p><strong>&copy</strong> Eric Barnes, powered by ghostdragon8579 in GitHub</p>
   </div>
 </footer>
+
+  <script>
+    element = document.getElementById("PreviousButton").innerHTML = "Previous";
+    element = document.getElementById("RewindButton").innerHTML = "Rewind";
+    element = document.getElementById("Play/PauseButton").innerHTML = "Play/Pause";
+    element = document.getElementById("SkipButton").innerHTML = "Skip";
+    element = document.getElementById("NextButton").innerHTML = "Next";
+  </script>
 
   <script>
     element = document.getElementById("TitleFormat1").innerHTML = "Music Player CS20";

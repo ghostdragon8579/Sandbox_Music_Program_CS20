@@ -12,7 +12,7 @@ const tagSelectors = [
     tag: 'h2',
     name: 'Second Title Format',
     parent: 'div#element-0',
-    sibling: 1,
+    sibling: 0,
     text: ''
   },
   {
@@ -20,7 +20,7 @@ const tagSelectors = [
     tag: 'h3',
     name: 'Third Title Format',
     parent: 'div#element-0',
-    sibling: 2,
+    sibling: 0,
     text: ''
   },
   {
@@ -28,7 +28,7 @@ const tagSelectors = [
     tag: 'h4',
     name: 'Fourth Title Format',
     parent: 'div#element-1',
-    sibling: 3,
+    sibling: 1,
     text: ''
   },
   {
@@ -36,7 +36,7 @@ const tagSelectors = [
     tag: 'h5',
     name: 'Fifth Title Format',
     parent: 'div#element-1',
-    sibling: 4,
+    sibling: 1,
     text: ''
   },
   {
@@ -50,28 +50,28 @@ const tagSelectors = [
     id: 'RewindButton',
     tag: 'button',
     name: 'Rewind Button',
-    sibling: 1,
+    sibling: 0,
     text: ''
   },
   {
     id: 'Play/PauseButton',
     tag: 'button',
     name: 'Play/Pause Button',
-    sibling: 2,
+    sibling: 0,
     text: ''
   },
   {
     id: 'SkipButton',
     tag: 'button',
     name: 'Skip Button',
-    sibling: 3,
+    sibling: 0,
     text: ''
   },
   {
     id: 'NextButton',
     tag: 'button',
     name: 'Next Button',
-    sibling: 4,
+    sibling: 0,
     text: ''
   },
   {
