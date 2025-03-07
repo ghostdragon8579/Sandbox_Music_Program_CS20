@@ -297,28 +297,28 @@
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="PreviousButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="document.getElementById('PreviousButton').style.color = 'rgb(124, 1, 176)';">
+        onclick="toggleButtonColor('PreviousButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="RewindButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="document.getElementById('RewindButton').style.color = 'rgb(124, 1, 176)';">
+        onclick="toggleButtonColor('RewindButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="Play/PauseButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="document.getElementById('Play/PauseButton').style.color = 'rgb(124, 1, 176)';">
+        onclick="toggleButtonColor('Play/PauseButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="SkipButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="document.getElementById('SkipButton').style.color = 'rgb(124, 1, 176)';">
+        onclick="toggleButtonColor('SkipButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="NextButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-      onclick="document.getElementById('NextButton').style.color = 'rgb(124, 1, 176)';">
-      Error 404 Text Not Found</button>
+        onclick="toggleButtonColor('NextButton')">
+        Error 404 Text Not Found</button>
     </div>
   </section>
 
@@ -373,6 +373,50 @@
     element = document.getElementById("Play/PauseButton").innerHTML = "Play/Pause";
     element = document.getElementById("SkipButton").innerHTML = "Skip";
     element = document.getElementById("NextButton").innerHTML = "Next";
+  </script>
+
+  <!-- Button Functionality Dom -->
+  <script>
+    function toggleButtonColor(onclick) {
+     button = document.getElementById("PreviousButton");
+     if (button.style.color === "rgb(124, 1, 176)") {
+       button.style.color = "white";
+     } else {
+       button.style.color = "rgb(124, 1, 176)";
+     }
+    }
+    function toggleButtonColor(onclick) {
+     button = document.getElementById("RewindButton");
+     if (button.style.color === "rgb(124, 1, 176)") {
+       button.style.color = "white";
+     } else {
+       button.style.color = "rgb(124, 1, 176)";
+     }
+    }
+    function toggleButtonColor(onclick) {
+     button = document.getElementById("Play/PauseButton");
+     if (button.style.color === "rgb(124, 1, 176)") {
+       button.style.color = "white";
+     } else {
+       button.style.color = "rgb(124, 1, 176)";
+     }
+    }
+    function toggleButtonColor(onclick) {
+     button = document.getElementById("SkipButton");
+     if (button.style.color === "rgb(124, 1, 176)") {
+       button.style.color = "white";
+     } else {
+       button.style.color = "rgb(124, 1, 176)";
+     }
+    }
+    function toggleButtonColor(onclick) {
+     button = document.getElementById("NextButton");
+     if (button.style.color === "rgb(124, 1, 176)") {
+       button.style.color = "white";
+     } else {
+       button.style.color = "rgb(124, 1, 176)";
+     }
+    }
   </script>
 
   <!-- Title Text and Image Dom -->
