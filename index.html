@@ -290,8 +290,18 @@
     </div>
   </section>
 
-  <!-- Music Player Buttons Design Draft -->
+  <!-- Music Player Buttons Design Draft and Button Functionality Dom -->
   <section id="PineBackground" class="container-fluid" style="border:10px double whitesmoke;">
+    <script>
+      function toggleButtonColor(buttonId) {
+       var button = document.getElementById(buttonId);
+       if (button.style.color === "rgb(124, 1, 176)") {
+         button.style.color = "white";
+       } else {
+         button.style.color = "rgb(124, 1, 176)";
+       }
+      }
+    </script>  
     <div class="col-2">
       <ln> This is the format that the music buttons will take in the program:</ln>
     </div>
@@ -373,50 +383,6 @@
     element = document.getElementById("Play/PauseButton").innerHTML = "Play/Pause";
     element = document.getElementById("SkipButton").innerHTML = "Skip";
     element = document.getElementById("NextButton").innerHTML = "Next";
-  </script>
-
-  <!-- Button Functionality Dom -->
-  <script>
-    function toggleButtonColor(onclick) {
-     button = document.getElementById("PreviousButton");
-     if (button.style.color === "rgb(124, 1, 176)") {
-       button.style.color = "white";
-     } else {
-       button.style.color = "rgb(124, 1, 176)";
-     }
-    }
-    function toggleButtonColor(onclick) {
-     button = document.getElementById("RewindButton");
-     if (button.style.color === "rgb(124, 1, 176)") {
-       button.style.color = "white";
-     } else {
-       button.style.color = "rgb(124, 1, 176)";
-     }
-    }
-    function toggleButtonColor(onclick) {
-     button = document.getElementById("Play/PauseButton");
-     if (button.style.color === "rgb(124, 1, 176)") {
-       button.style.color = "white";
-     } else {
-       button.style.color = "rgb(124, 1, 176)";
-     }
-    }
-    function toggleButtonColor(onclick) {
-     button = document.getElementById("SkipButton");
-     if (button.style.color === "rgb(124, 1, 176)") {
-       button.style.color = "white";
-     } else {
-       button.style.color = "rgb(124, 1, 176)";
-     }
-    }
-    function toggleButtonColor(onclick) {
-     button = document.getElementById("NextButton");
-     if (button.style.color === "rgb(124, 1, 176)") {
-       button.style.color = "white";
-     } else {
-       button.style.color = "rgb(124, 1, 176)";
-     }
-    }
   </script>
 
   <!-- Title Text and Image Dom -->
