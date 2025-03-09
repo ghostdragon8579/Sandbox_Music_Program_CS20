@@ -56,6 +56,7 @@
       align-items: center;
       justify-content: center;
       color: white;
+      transition: background-color 0.3s, border-color 0.3s, color 0.3s;
     }
 
     @media (max-width: 1600px) and (min-width: 800px)  {
@@ -222,7 +223,7 @@
 <body>
   
   <header id="HoloBlue" class="container-fluid" style="border:1vw inset #3fad7da8;">
-     <h1 id="TitleFormat1">Error 404 Text Not Found</h1>
+     <h1 id="TitleFormat1" onmouseover="mOverTitleFormat1(this)" onmouseout="mOutTitleFormat1(this)">Error 404 Text Not Found</h1>
   </header>
 
   <!-- Portfolio Section -->
@@ -361,7 +362,7 @@
 <footer id="HoloBlue" class="container-fluid" style="border:1vw inset #3fad7da8;">
    <p> Dragon favicon by: <a target="_blank" href="https://icons8.com"><strong> Icons8</a></p></strong>
   <div id="HoloBlue">
-   <p id="CopyRight" onmouseover="mOver(CopyRight)" onmouseout="mOut(CopyRight)"></p>
+   <p id="CopyRight" onmouseover="mOverCopyRight(this)" onmouseout="mOutCopyRight(this)"></p>
   </div>
 </footer>
 
@@ -377,11 +378,17 @@
        button.style.borderColor = "rgb(124, 1, 176)";
     }
   }
-  function mOver(CopyRight) {
-    CopyRight.innerHTML = "Please do not copy this program without permission from the developer."
+  function mOverCopyRight(element) {
+    element.innerHTML = "Please do not copy this program without permission from the developer."
   }
-  function mOut(CopyRight) {
-    CopyRight.innerHTML = "<strong>&copy</strong> Eric Barnes, powered by ghostdragon8579 in GitHub"
+  function mOutCopyRight(element) {
+    element.innerHTML = "<strong>&copy</strong> Eric Barnes, powered by ghostdragon8579 in GitHub"
+  }
+  function mOverTitleFormat1(element) {
+    element.innerHTML = "Music Player Computer Science 20"
+  }
+  function mOutTitleFormat1(element) {
+    element.innerHTML = "Music Player CS20"
   }
   </script>
 
