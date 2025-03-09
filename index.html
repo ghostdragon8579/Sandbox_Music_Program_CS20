@@ -41,7 +41,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 5vw;
+      padding: 4vw;
     }
 
     section {
@@ -60,21 +60,21 @@
 
     @media (max-width: 1600px) and (min-width: 800px)  {
       footer p {
-        font-size: 1.5vw;
+        font-size: 1.2vw;
         font-family: "roboto", sans-serif;
       }
     }
 
     @media (max-width: 800px) and (min-width: 400px)  {
       footer p {
-        font-size: 3vw;
+        font-size: 2.6vw;
         font-family: "roboto", sans-serif;
       }
     }
 
     @media (max-width: 400px) {
       footer p {
-        font-size: 4.5vw;
+        font-size: 4.1vw;
         font-family: "roboto", sans-serif;
       }
     }
@@ -373,11 +373,21 @@
 <footer id="HoloBlue" class="container-fluid" style="border:1vw inset #3fad7da8;">
    <p> Dragon favicon by: <a target="_blank" href="https://icons8.com"><strong> Icons8</a></p></strong>
   <div id="HoloBlue">
-   <p><strong>&copy</strong> Eric Barnes, powered by ghostdragon8579 in GitHub</p>
+   <p id="CopyRight" onmouseover="mOver(CopyRight)" onmouseout="mOut(CopyRight)"></p>
   </div>
 </footer>
 
-  <!-- Button Text Dom -->
+  <!-- Dom Functions -->
+  <script>
+  function mOver(CopyRight) {
+    CopyRight.innerHTML = "Please do not copy this program without permission or credit from the developer."
+  }
+  function mOut(CopyRight) {
+    CopyRight.innerHTML = "<strong>&copy</strong> Eric Barnes, powered by ghostdragon8579 in GitHub"
+  }
+  </script>
+
+  <!-- Button/Text Dom -->
   <script>
     element = document.getElementById("PreviousButton").innerHTML = "Previous";
     element = document.getElementById("RewindButton").innerHTML = "Rewind";
@@ -393,6 +403,7 @@
     element = document.getElementById("TitleFormat3").innerHTML = "Details about the program:";
     element = document.getElementById("TitleFormat4").innerHTML = "Components used in the creation of the program:";
     element = document.getElementById("TitleFormat5").innerHTML = "Details of the components:";
+    element = document.getElementById("CopyRight").innerHTML = "<strong>&copy</strong> Eric Barnes, powered by ghostdragon8579 in GitHub";
     document.getElementById("QueenElizabethLogo").src = "https://queenelizabeth.epsb.ca/media/styleassets-schools/queenelizabeth/QueenE_T4_logo_white.png";
     document.getElementById("DesignImage").src = "Music_Program_Images/PXL_20250207_220511935.MP.jpg";
     document.getElementById("ColorImage").src = "https://static.vecteezy.com/system/resources/thumbnails/003/184/675/original/purple-neon-border-with-flare-on-the-top-background-free-video.jpg";

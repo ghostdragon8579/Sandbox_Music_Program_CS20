@@ -75,6 +75,13 @@ const tagSelectors = [
     text: ''
   },
   {
+    id: 'CopyRight',
+    tag: 'p',
+    name: 'Copy Right',
+    sibling: 0,
+    text: ''
+  },  
+  {
     tag: 'ul',
     name: 'Unordered list tag',
     parent: 'div#element-1',
