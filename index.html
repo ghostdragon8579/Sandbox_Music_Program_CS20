@@ -290,19 +290,7 @@
   </section>
 
   <!-- Music Player Buttons Design Draft and Button Functionality Dom -->
-  <section id="PineBackground" class="container-fluid" style="border:10px double whitesmoke;">
-    <script>
-      function toggleButtonColor(buttonId) {
-       var button = document.getElementById(buttonId);
-       if (button.style.color === "rgb(124, 1, 176)") {
-         button.style.color = "white";
-         button.style.borderColor = "white";
-       } else {
-         button.style.color = "rgb(124, 1, 176)";
-         button.style.borderColor = "rgb(124, 1, 176)";
-       }
-      }
-    </script>  
+  <section id="PineBackground" class="container-fluid" style="border:10px double whitesmoke;"> 
     <div class="col-2">
       <ln> This is the format that the music buttons will take in the program:</ln>
     </div>
@@ -379,6 +367,16 @@
 
   <!-- Dom Functions -->
   <script>
+  function toggleButtonColor(buttonId) {
+    var button = document.getElementById(buttonId);
+    if (button.style.color === "rgb(124, 1, 176)") {
+       button.style.color = "white";
+       button.style.borderColor = "white";
+    } else {
+       button.style.color = "rgb(124, 1, 176)";
+       button.style.borderColor = "rgb(124, 1, 176)";
+    }
+  }
   function mOver(CopyRight) {
     CopyRight.innerHTML = "Please do not copy this program without permission from the developer."
   }
