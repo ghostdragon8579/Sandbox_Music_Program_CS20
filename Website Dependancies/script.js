@@ -4,6 +4,7 @@ const tagSelectors = [
     tag: 'h1',
     name: 'First Title Format',
     parent: 'header',
+    class: 'TitleFormat',
     sibling: 0,
     text: ''
   },
@@ -12,6 +13,7 @@ const tagSelectors = [
     tag: 'h2',
     name: 'Second Title Format',
     parent: 'div#element-0',
+    class: 'TitleFormat',
     sibling: 0,
     text: ''
   },
@@ -20,6 +22,7 @@ const tagSelectors = [
     tag: 'h3',
     name: 'Third Title Format',
     parent: 'div#element-0',
+    class: 'TitleFormat',
     sibling: 0,
     text: ''
   },
@@ -28,6 +31,7 @@ const tagSelectors = [
     tag: 'h4',
     name: 'Fourth Title Format',
     parent: 'div#element-1',
+    class: 'TitleFormat',
     sibling: 1,
     text: ''
   },
@@ -36,6 +40,7 @@ const tagSelectors = [
     tag: 'h5',
     name: 'Fifth Title Format',
     parent: 'div#element-1',
+    class: 'TitleFormat',
     sibling: 1,
     text: ''
   },
