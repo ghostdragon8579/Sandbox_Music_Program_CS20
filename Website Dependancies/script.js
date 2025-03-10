@@ -32,7 +32,7 @@ const tagSelectors = [
     name: 'Fourth Title Format',
     parent: 'div#element-1',
     class: 'TitleFormat',
-    sibling: 1,
+    sibling: 0,
     text: ''
   },
   {
@@ -41,7 +41,7 @@ const tagSelectors = [
     name: 'Fifth Title Format',
     parent: 'div#element-1',
     class: 'TitleFormat',
-    sibling: 1,
+    sibling: 0,
     text: ''
   },
   {
