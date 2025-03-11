@@ -300,7 +300,7 @@
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="PreviousButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('PreviousButton')">
+        onclick="toggleButtonColor('PreviousButton')" onmousedown="changeButtonText('PreviousButton')" onmouseup="revertButtonText('PreviousButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
@@ -392,6 +392,12 @@
   }
   function mOutTitleFormat1(element) {
     element.innerHTML = "Music Player CS20"
+  }
+  function changeButtonText(button, text) {
+    button.innerHTML = "Release"
+  }
+  function revertButtonText(button, originalText) {
+    button.innerHTML = "originalText"
   }
   </script>
 
