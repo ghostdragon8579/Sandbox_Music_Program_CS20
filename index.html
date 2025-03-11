@@ -305,22 +305,22 @@
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="RewindButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('RewindButton')">
+        onclick="toggleButtonColor('RewindButton')" onmousedown="changeButtonText('RewindButton')" onmouseup="revertButtonText('RewindButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="Play/PauseButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('Play/PauseButton')">
+        onclick="toggleButtonColor('Play/PauseButton')" onmousedown="changeButtonText('Play/PauseButton')" onmouseup="revertButtonText('Play/PauseButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="SkipButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('SkipButton')">
+        onclick="toggleButtonColor('SkipButton')" onmousedown="changeButtonText('SkipButton')" onmouseup="revertButtonText('SkipButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="NextButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('NextButton')">
+        onclick="toggleButtonColor('NextButton')" onmousedown="changeButtonText('NextButton')" onmouseup="revertButtonText('NextButton')">
         Error 404 Text Not Found</button>
     </div>
   </section>
@@ -393,11 +393,14 @@
   function mOutTitleFormat1(element) {
     element.innerHTML = "Music Player CS20"
   }
-  function changeButtonText(button, text) {
+  function changeButtonText(buttonId, text) {
+    var button = document.getElementById(buttonId);
+    button.dataset.originalText = button.innerHTML;
     button.innerHTML = "Release"
   }
-  function revertButtonText(button, originalText) {
-    button.innerHTML = "originalText"
+  function revertButtonText(buttonId, originalText) {
+    var button = document.getElementById(buttonId);
+    button.innerHTML = button.dataset.originalText
   }
   </script>
 
