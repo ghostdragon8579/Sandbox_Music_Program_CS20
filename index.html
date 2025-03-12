@@ -299,28 +299,23 @@
       <ln> This is the format that the music buttons will take in the program (try clicking on them):</ln>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <button id="PreviousButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('PreviousButton')">
+      <button id="PreviousButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <button id="RewindButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('RewindButton')">
+      <button id="RewindButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <button id="Play/PauseButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('Play/PauseButton')">
+      <button id="Play/PauseButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <button id="SkipButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('SkipButton')">
+      <button id="SkipButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
-      <button id="NextButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('NextButton')">
+      <button id="NextButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;">
         Error 404 Text Not Found</button>
     </div>
   </section>
@@ -406,7 +401,7 @@
 
   <!-- Dom Event Listeners -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("PreviousButton").addEventListener("mousedown", function() {
       changeButtonText("PreviousButton")
     });
@@ -436,6 +431,23 @@
     });
     document.getElementById("NextButton").addEventListener("mouseup", function() {
       revertButtonText("NextButton");
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("PreviousButton").addEventListener("click", function() {
+      toggleButtonColor("PreviousButton")
+    });
+    document.getElementById("RewindButton").addEventListener("click", function() {
+      toggleButtonColor("RewindButton")
+    });
+    document.getElementById("Play/PauseButton").addEventListener("click", function() {
+      toggleButtonColor("Play/PauseButton")
+    });
+    document.getElementById("SkipButton").addEventListener("click", function() {
+      toggleButtonColor("SkipButton")
+    });
+    document.getElementById("NextButton").addEventListener("click", function() {
+      toggleButtonColor("NextButton")
     });
   });
   </script>
