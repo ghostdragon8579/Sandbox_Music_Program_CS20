@@ -300,27 +300,27 @@
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="PreviousButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('PreviousButton')" onmousedown="changeButtonText('PreviousButton')" onmouseup="revertButtonText('PreviousButton')">
+        onclick="toggleButtonColor('PreviousButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="RewindButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('RewindButton')" onmousedown="changeButtonText('RewindButton')" onmouseup="revertButtonText('RewindButton')">
+        onclick="toggleButtonColor('RewindButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="Play/PauseButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('Play/PauseButton')" onmousedown="changeButtonText('Play/PauseButton')" onmouseup="revertButtonText('Play/PauseButton')">
+        onclick="toggleButtonColor('Play/PauseButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="SkipButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('SkipButton')" onmousedown="changeButtonText('SkipButton')" onmouseup="revertButtonText('SkipButton')">
+        onclick="toggleButtonColor('SkipButton')">
         Error 404 Text Not Found</button>
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center">
       <button id="NextButton" type="button" class="btn-square .btn-default" style="border:5px solid white; background-color: black;"
-        onclick="toggleButtonColor('NextButton')" onmousedown="changeButtonText('NextButton')" onmouseup="revertButtonText('NextButton')">
+        onclick="toggleButtonColor('NextButton')">
         Error 404 Text Not Found</button>
     </div>
   </section>
@@ -393,15 +393,47 @@
   function mOutTitleFormat1(element) {
     element.innerHTML = "Music Player CS20"
   }
-  function changeButtonText(buttonId, text) {
+  function changeButtonText(buttonId) {
     var button = document.getElementById(buttonId);
     button.dataset.originalText = button.innerHTML;
     button.innerHTML = "Release"
   }
-  function revertButtonText(buttonId, originalText) {
+  function revertButtonText(buttonId) {
     var button = document.getElementById(buttonId);
     button.innerHTML = button.dataset.originalText
   }
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("PreviousButton").addEventListener("mousedown", function() {
+      changeButtonText("PreviousButton")
+    });
+    document.getElementById("PreviousButton").addEventListener("mouseup", function() {
+      revertButtonText("PreviousButton")
+    });
+    document.getElementById("RewindButton").addEventListener("mousedown", function() {
+    changeButtonText("RewindButton")
+    });
+    document.getElementById("RewindButton").addEventListener("mouseup", function() {
+      revertButtonText("RewindButton")
+    });
+    document.getElementById("Play/PauseButton").addEventListener("mousedown", function() {
+      changeButtonText("Play/PauseButton")
+    });
+    document.getElementById("Play/PauseButton").addEventListener("mouseup", function() {
+      revertButtonText("Play/PauseButton")
+    });
+    document.getElementById("SkipButton").addEventListener("mousedown", function() {
+      changeButtonText("SkipButton")
+    });
+    document.getElementById("SkipButton").addEventListener("mouseup", function() {
+      revertButtonText("SkipButton")
+    });
+    document.getElementById("NextButton").addEventListener("mousedown", function() {
+      changeButtonText("NextButton")
+    });
+    document.getElementById("NextButton").addEventListener("mouseup", function() {
+      revertButtonText("NextButton");
+    });
+  });
   </script>
 
   <!-- Button/Text Dom -->
