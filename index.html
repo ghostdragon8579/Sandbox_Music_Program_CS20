@@ -402,7 +402,11 @@
     var button = document.getElementById(buttonId);
     button.innerHTML = button.dataset.originalText
   }
-  document.addEventListener("DOMContentLoaded", function() {
+  </script>
+
+  <!-- Dom Event Listeners -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("PreviousButton").addEventListener("mousedown", function() {
       changeButtonText("PreviousButton")
     });
