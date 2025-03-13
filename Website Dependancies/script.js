@@ -1,6 +1,6 @@
 const tagSelectors = [
   {
-    id: 'TitleFormat1',
+    id: 'TitleFormat',
     tag: 'h1',
     name: 'First Title Format',
     parent: 'header',
@@ -9,7 +9,7 @@ const tagSelectors = [
     text: ''
   },
   {
-    id: 'TitleFormat2',
+    id: 'TitleFormat',
     tag: 'h2',
     name: 'Second Title Format',
     parent: 'div#element-0',
@@ -18,16 +18,16 @@ const tagSelectors = [
     text: ''
   },
   {
-    id: 'TitleFormat3',
+    id: 'TitleFormat',
     tag: 'h3',
     name: 'Third Title Format',
     parent: 'div#element-0',
     class: 'TitleFormat',
-    sibling: 0,
+    sibling: 1,
     text: ''
   },
   {
-    id: 'TitleFormat4',
+    id: 'TitleFormat',
     tag: 'h4',
     name: 'Fourth Title Format',
     parent: 'div#element-1',
@@ -36,12 +36,12 @@ const tagSelectors = [
     text: ''
   },
   {
-    id: 'TitleFormat5',
+    id: 'TitleFormat',
     tag: 'h5',
     name: 'Fifth Title Format',
     parent: 'div#element-1',
     class: 'TitleFormat',
-    sibling: 0,
+    sibling: 1,
     text: ''
   },
   {
