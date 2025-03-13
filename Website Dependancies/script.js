@@ -48,35 +48,40 @@ const tagSelectors = [
     id: 'PreviousButton',
     tag: 'button',
     name: 'Previous Button',
-    sibling: 0,
+    parent: 'div#element-1',
+    sibling: 2,
     text: ''
   },
   {
     id: 'RewindButton',
     tag: 'button',
     name: 'Rewind Button',
-    sibling: 0,
+    parent: 'div#element-1',
+    sibling: 3,
     text: ''
   },
   {
     id: 'Play/PauseButton',
     tag: 'button',
     name: 'Play/Pause Button',
-    sibling: 0,
+    parent: 'div#element-1',
+    sibling: 4,
     text: ''
   },
   {
     id: 'SkipButton',
     tag: 'button',
     name: 'Skip Button',
-    sibling: 0,
+    parent: 'div#element-1',
+    sibling: 5,
     text: ''
   },
   {
     id: 'NextButton',
     tag: 'button',
     name: 'Next Button',
-    sibling: 0,
+    parent: 'div#element-1',
+    sibling: 6,
     text: ''
   },
   {
