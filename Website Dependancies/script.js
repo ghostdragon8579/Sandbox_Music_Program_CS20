@@ -50,7 +50,7 @@ const tagSelectors = [
     name: 'Previous Button',
     parent: 'div#element-1',
     sibling: 2,
-    text: ''
+    text: 'Previous'
   },
   {
     id: 'RewindButton',
@@ -58,7 +58,7 @@ const tagSelectors = [
     name: 'Rewind Button',
     parent: 'div#element-1',
     sibling: 3,
-    text: ''
+    text: 'Rewind'
   },
   {
     id: 'Play/PauseButton',
@@ -66,7 +66,7 @@ const tagSelectors = [
     name: 'Play/Pause Button',
     parent: 'div#element-1',
     sibling: 4,
-    text: ''
+    text: 'Play/Pause'
   },
   {
     id: 'SkipButton',
@@ -74,7 +74,7 @@ const tagSelectors = [
     name: 'Skip Button',
     parent: 'div#element-1',
     sibling: 5,
-    text: ''
+    text: 'Skip'
   },
   {
     id: 'NextButton',
@@ -82,7 +82,7 @@ const tagSelectors = [
     name: 'Next Button',
     parent: 'div#element-1',
     sibling: 6,
-    text: ''
+    text: 'Next'
   },
   {
     id: 'CopyRight',
