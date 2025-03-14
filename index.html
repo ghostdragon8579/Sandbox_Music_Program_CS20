@@ -2,32 +2,35 @@
 <html lang=en xml:lang=en xmlns='http://www.w3.org/1999/xhtml'>
 <!-- Big Website Ideas-->
 <head>
+   <!-- Bootstrap -->
    <meta charset=utf-8>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!-- Keyboard & Dynamic Window -->
 
-   <noscript>Parents, please enable Javascript in your browser in order to expereince your student demo to properly</noscript>
-   <!-- JavaScript Security Feedback-->
+   <!-- Notes -->
+   <noscript>Temporarily unused font family id:"Rubik Glitch", system-ui.</noscript>
 
+   <!-- Fonts -->
    <link href="Website Dependancies/site.css" rel=stylesheet>
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
    <link href="Website Dependancies/site.css" rel=titlestylesheet>
    <link rel="titlestylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-     <!-- Note: what does INTEGRITY mean? -->
-     <!--- -->
+   <link href="Website Dependancies/site.css" rel=titlestylesheet>
+   <link rel="titlestylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Glitch&display=swap"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
+   <!-- Title and Favicon -->>
    <title>Music Player CS20 </title>
    <link rel="icon" type="image/x-icon" href="Website Dependancies/favicon/icons8-dragon-16.png">
 
+   <!-- Metadata -->
    <meta name="author" content="Eric Barnes">
    <meta name="description" content="Building a Music Player for CS20 (Computer Science 20-1) using HTML, CSS, and JavaScript">
    <meta name="keywords" content="School, Student, Project, Free, Free-to-use Template, HTML, Music Player, Computer Science, Experimental">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!-- Favicon is a Pathway and Image File, not from a server. Goes into computer. -->
 
    <style>
     header {
@@ -448,6 +451,12 @@
     });
     document.getElementById("NextButton").addEventListener("click", function() {
       toggleButtonColor("NextButton")
+    });
+  });
+  document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("copy", function() {
+      alert("Copying is not allowed on this page.");
+      event.preventDefault();
     });
   });
   </script>
