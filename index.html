@@ -453,6 +453,12 @@
       toggleButtonColor("NextButton")
     });
   });
+  document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("copy", function() {
+      alert("Copying is not allowed on this page.");
+      event.preventDefault();
+    });
+  });
   </script>
 
   <!-- Button/Text Dom -->
