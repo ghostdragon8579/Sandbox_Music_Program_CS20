@@ -22,7 +22,7 @@
    <link rel="titlestylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Glitch&display=swap"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-   <!-- Title and Favicon -->>
+   <!-- Title and Favicon -->
    <title>Music Player CS20 </title>
    <link rel="icon" type="image/x-icon" href="Website Dependancies/favicon/icons8-dragon-16.png">
 
@@ -453,11 +453,25 @@
       toggleButtonColor("NextButton")
     });
   });
-  document.addEventListener("DOMContentLoaded", function() {
-    document.addEventListener("copy", function() {
-      alert("Copying is not allowed on this page.");
-      event.preventDefault();
+  function changeFont() {
+    document.body.style.fontFamily = "Rubik Glitch";
+    const elements = document.querySelectorAll("h1, h2, h3, h4, h5, p, li, a, button, ln");
+    elements.forEach(element => {
+      element.style.fontFamily = "Rubik Glitch";
     });
+  }
+  let copyAlertCounter = 0;
+  document.addEventListener("copy", function() {
+    copyAlertCounter++;
+      if (copyAlertCounter === 1) {
+        alert("Copying is not allowed on this page.");
+      } else if (copyAlertCounter === 2) {
+        alert("Copying is not allowed this is your final warning.");
+      } else if (copyAlertCounter >= 3) {
+        alert("You were warned...");
+        changeFont();
+      }
+      event.preventDefault();
   });
   </script>
 
