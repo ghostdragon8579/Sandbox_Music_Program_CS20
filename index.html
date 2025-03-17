@@ -9,7 +9,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    <!-- Notes -->
-   <noscript>Temporarily unused font family id:"Rubik Glitch", system-ui.</noscript>
+   <noscript>None at the moment</noscript>
 
    <!-- Fonts -->
    <link href="Website Dependancies/site.css" rel=stylesheet>
@@ -400,6 +400,13 @@
     var button = document.getElementById(buttonId);
     button.innerHTML = button.dataset.originalText
   }
+  function changeFont() {
+    document.body.style.fontFamily = "Rubik Glitch";
+    const elements = document.querySelectorAll("h1, h2, h3, h4, h5, p, li, a, button, ln");
+    elements.forEach(element => {
+      element.style.fontFamily = "Rubik Glitch";
+    });
+  }
   </script>
 
   <!-- Dom Event Listeners -->
@@ -453,13 +460,6 @@
       toggleButtonColor("NextButton")
     });
   });
-  function changeFont() {
-    document.body.style.fontFamily = "Rubik Glitch";
-    const elements = document.querySelectorAll("h1, h2, h3, h4, h5, p, li, a, button, ln");
-    elements.forEach(element => {
-      element.style.fontFamily = "Rubik Glitch";
-    });
-  }
   let copyAlertCounter = 0;
   document.addEventListener("copy", function() {
     copyAlertCounter++;
