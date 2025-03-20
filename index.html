@@ -403,7 +403,7 @@
   <!-- Footer and Credit -->
 <footer id="HoloBlue" class="container-fluid" style="border:1vw inset #3fad7da8;">
    <p> Dragon favicon by: <a target="_blank" href="https://icons8.com"><strong> Icons8</a></p></strong>
-  <div id="HoloBlue">
+  <div>
    <p id="CopyRight" onmouseover="mOverCopyRight(this)" onmouseout="mOutCopyRight(this)"></p>
   </div>
 </footer>
@@ -529,11 +529,11 @@
 
   <!-- Button/Text Dom -->
   <script>
-    document.getElementsByTagName("button")[0].innerHTML = "Previous";
-    document.getElementsByTagName("button")[1].innerHTML = "Rewind";
-    document.getElementsByTagName("button")[2].innerHTML = "Play/Pause";
-    document.getElementsByTagName("button")[3].innerHTML = "Skip";
-    document.getElementsByTagName("button")[4].innerHTML = "Next";
+    const buttons = document.getElementsByTagName("button");
+    const buttonLabels = ["Previous", "Rewind", "Play/Pause", "Skip", "Next", "DarkMode"];
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].innerHTML = buttonLabels[i];
+    }
   </script>
 
   <!-- Title Text and Image Dom -->
