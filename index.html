@@ -268,7 +268,7 @@
         </p>
     </div>
     <div class="col-6">
-      <h3>Error 404 Text Not Found</h3>
+      <h2>Error 404 Text Not Found</h2>
         <p>
          <ln> This is a free-to-use music program designed and published for CS20. (Computer Science 20-1)</ln>
          <ln> It was made as a more advanced replacment for the music program I developed in CS10 (Computer Science 10-1)</ln>
@@ -281,13 +281,13 @@
   <!-- Coding Components -->
   <section id="PineBackground" class="container-fluid" style="border:10px double whitesmoke;">
     <div class="col-4">
-      <h4>Error 404 Text Not Found</h4>
+      <h2>Error 404 Text Not Found</h2>
         <li> The coding languages used are: Html, JavaScript, CSS, and Processing.</li>
         <li> This program used the previous music program as a base for it's functions and design.</li>
     </div>
     <div class="col-1"></div>
     <div class="col-7">
-      <h5>Error 404 Text Not Found</h5>
+      <h2>Error 404 Text Not Found</h2>
         <li> Html is a widely used language designed to create web pages. It is the primary component of this website.</li>
         <li> JavaScript is another widely used language also designed to create web pages. It is a secondary component of this website.</li>
         <li> CSS is yet another widely used language used to format the design and presentation of a document. It is the other secondary component of this website.</li>
@@ -527,22 +527,23 @@
   });
   </script>
 
-  <!-- Button/Text Dom -->
+  <!-- Dom Collections -->
   <script>
     const buttons = document.getElementsByTagName("button");
-    const buttonLabels = ["Previous", "Rewind", "Play/Pause", "Skip", "Next", "DarkMode"];
+    const buttonLabels = ["Previous", "Rewind", "Play/Pause", "Skip", "Next"];
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].innerHTML = buttonLabels[i];
     }
+    const Titles = document.getElementsByTagName("h2");
+    const TitleLabels = ["Developer Information:", "Details about the program:", "Components used in the creation of the program:", "Details of the components:"];
+    for (let i = 0; i < buttons.length; i++) {
+      Titles[i].innerHTML = TitleLabels[i];
+    }
   </script>
 
-  <!-- Title Text and Image Dom -->
+  <!-- Header/Footer Text and Image Dom -->
   <script>
     document.getElementsByTagName("h1")[0].innerHTML = "Music Player CS20";
-    document.getElementsByTagName("h2")[0].innerHTML = "Developer Information:";
-    document.getElementsByTagName("h3")[0].innerHTML = "Details about the program:";
-    document.getElementsByTagName("h4")[0].innerHTML = "Components used in the creation of the program:";
-    document.getElementsByTagName("h5")[0].innerHTML = "Details of the components:";
     element = document.getElementById("CopyRight").innerHTML = "<strong>&copy</strong> Eric Barnes, powered by ghostdragon8579 in GitHub";
     document.getElementById("CopyRight").style.color = "white";
     document.getElementById("QueenElizabethLogo").src = "https://queenelizabeth.epsb.ca/media/styleassets-schools/queenelizabeth/QueenE_T4_logo_white.png";
