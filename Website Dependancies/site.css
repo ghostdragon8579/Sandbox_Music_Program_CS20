@@ -143,6 +143,10 @@ footer {
 	background-color: black;
 }
 
+#CypherBackground {
+	background-color: rgb(66, 65, 65);
+}
+
 #incomplete {
 	background-color: red;
 }
