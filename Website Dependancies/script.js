@@ -32,7 +32,7 @@ const tagSelectors = [
     name: 'Fourth Title Format',
     parent: 'div#element-1',
     class: 'TitleFormat',
-    sibling: 0,
+    sibling: 1,
     text: ''
   },
   {
@@ -45,10 +45,36 @@ const tagSelectors = [
     text: ''
   },
   {
+    id: 'CipherText1',
+    tag: 'h2',
+    name: 'First Cipher Text',
+    parent: 'div#element-0',
+    class: 'CipherText',
+    sibling: 0,
+    text: ''
+  },
+  {
+    id: 'CipherText2',
+    tag: 'h2',
+    name: 'Second Cipher Text',
+    parent: 'div#element-0',
+    class: 'CipherText',
+    sibling: 0,
+    text: ''
+  },
+  {
+    id: 'CipherText3',
+    tag: 'h2',
+    name: 'Third Cipher Text',
+    parent: 'div#element-0',
+    class: 'CipherText',
+    sibling: 0,
+    text: ''
+  },
+  {
     id: 'PreviousButton',
     tag: 'button',
     name: 'Previous Button',
-    parent: 'div#element-1',
     sibling: 2,
     text: 'Previous'
   },
@@ -56,7 +82,6 @@ const tagSelectors = [
     id: 'RewindButton',
     tag: 'button',
     name: 'Rewind Button',
-    parent: 'div#element-1',
     sibling: 3,
     text: 'Rewind'
   },
@@ -64,7 +89,6 @@ const tagSelectors = [
     id: 'Play/PauseButton',
     tag: 'button',
     name: 'Play/Pause Button',
-    parent: 'div#element-1',
     sibling: 4,
     text: 'Play/Pause'
   },
@@ -72,7 +96,6 @@ const tagSelectors = [
     id: 'SkipButton',
     tag: 'button',
     name: 'Skip Button',
-    parent: 'div#element-1',
     sibling: 5,
     text: 'Skip'
   },
@@ -80,7 +103,6 @@ const tagSelectors = [
     id: 'NextButton',
     tag: 'button',
     name: 'Next Button',
-    parent: 'div#element-1',
     sibling: 6,
     text: 'Next'
   },
