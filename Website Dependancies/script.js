@@ -52,6 +52,8 @@ const tagSelectors = [
     class: 'CipherText',
     sibling: 0,
     text: ''
+    //First Encrypted Answer:The shadow of the eclipse.
+    //Note:A caesar cipher with a varying shift.
   },
   {
     id: 'CipherText2',
@@ -61,6 +63,8 @@ const tagSelectors = [
     class: 'CipherText',
     sibling: 0,
     text: ''
+    //Second Encrypted Answer:A faded and tainted ambition.
+    //Note:A reversed version of the first cipher.
   },
   {
     id: 'CipherText3',
@@ -70,6 +74,8 @@ const tagSelectors = [
     class: 'CipherText',
     sibling: 0,
     text: ''
+    //Third Encrypted Answer:The echo of a forgotten memory.
+    //Note:A vigenere cipher with the Keyword:mists.
   },
   {
     id: 'PreviousButton',
