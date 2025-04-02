@@ -41,7 +41,7 @@ const tagSelectors = [
     name: 'Fifth Title Format',
     parent: 'div#element-1',
     class: 'TitleFormat',
-    sibling: 1,
+    sibling: 2,
     text: ''
   },
   {
@@ -50,7 +50,7 @@ const tagSelectors = [
     name: 'First Cipher Text',
     parent: 'div#element-0',
     class: 'CipherText',
-    sibling: 0,
+    sibling: 2,
     text: ''
     //First Encrypted Answer:The shadow of the eclipse.
     //Note:A caesar cipher with a varying shift.
@@ -61,7 +61,7 @@ const tagSelectors = [
     name: 'Second Cipher Text',
     parent: 'div#element-0',
     class: 'CipherText',
-    sibling: 0,
+    sibling: 3,
     text: ''
     //Second Encrypted Answer:A faded and tainted ambition.
     //Note:A reversed version of the first cipher.
@@ -72,7 +72,7 @@ const tagSelectors = [
     name: 'Third Cipher Text',
     parent: 'div#element-0',
     class: 'CipherText',
-    sibling: 0,
+    sibling: 4,
     text: ''
     //Third Encrypted Answer:The echo of a forgotten memory.
     //Note:A vigenere cipher with the Keyword:mists.
