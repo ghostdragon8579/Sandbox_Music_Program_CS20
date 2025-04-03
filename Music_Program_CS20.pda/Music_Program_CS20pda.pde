@@ -277,6 +277,44 @@ void keyPressed() {
 //
 void mousePressed() {
   //
+  /*if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause && SongPlayList[SongPlaying].isPlaying()) {
+      SongPlayList[SongPlaying].pause();
+    } else {
+      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
+  }
+    */
+  if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
+    SongPlayList[SongPlaying].pause();
+    SongPlayList[SongPlaying].rewind();
+    SongPlaying+=1;
+    if (SongPlaying<0) {
+      SongPlaying=5;
+    } else if (SongPlaying>SongNumber-1) {
+      SongPlaying=0;
+    } else {
+    }
+    SongPlayList[SongPlaying].play();
+  }
+  if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
+    SongPlayList[SongPlaying].pause();
+    SongPlayList[SongPlaying].rewind();
+    SongPlaying-=1;
+    if (SongPlaying<0) {
+      SongPlaying=5;
+    } else if (SongPlaying>SongNumber-1) {
+      SongPlaying=0;
+    } else {
+    }
+    SongPlayList[SongPlaying].play();
+  }
+  if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) {
+  SongPlayList[SongPlaying].skip(+5000);
+  }
+  if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) {
+  SongPlayList[SongPlaying].skip(-5000);
+  }
+  if (mouseX>xQuit && mouseX<xQuit+widthQuit && mouseY>yQuit && mouseY<yQuit+heightQuit) exit();
+  //
 } //End mousePressed
 //
 //End MAIN Program
