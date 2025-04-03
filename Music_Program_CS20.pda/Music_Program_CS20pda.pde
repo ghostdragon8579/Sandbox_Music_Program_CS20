@@ -17,25 +17,27 @@ float xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor;
 float xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate;
 float xMusicImage, yMusicImage, widthMusicImage, heightMusicImage;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
+float xPlayPauseTriangle1, yPlayPauseTriangle1, xPlayPauseTriangle2, yPlayPauseTriangle2, xPlayPauseTriangle3, yPlayPauseTriangle3;
 float xFastForward, yFastForward, widthFastForward, heightFastForward;
+float xFastForwardTriangleOne1, yFastForwardTriangleOne1, xFastForwardTriangleOne2, yFastForwardTriangleOne2, xFastForwardTriangleOne3, yFastForwardTriangleOne3;
+float xFastForwardTriangleTwo1, yFastForwardTriangleTwo1, xFastForwardTriangleTwo2, yFastForwardTriangleTwo2, xFastForwardTriangleTwo3, yFastForwardTriangleTwo3;
 float xRewind, yRewind, widthRewind, heightRewind;
 float xNext, yNext, widthNext, heightNext;
 float xPrevious, yPrevious, widthPrevious, heightPrevious;
 float xQuit, yQuit, widthQuit, heightQuit;
 PImage NeonBackground2;
-PImage PlayButton, PauseButton;
-PImage FastForward, Rewind;
-PImage Next, Previous;
 PImage Quit;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color Gray=#C9C9C9;
 color LightGray=#CECECE;
 color Black=#000000;
+color Purple=#B031E8;
+color TextPurple=#F986FF;
 int appWidth, appHeight;
 int size;
-int SongPlaying = 0;
 int SongNumber = 6;
+int SongPlaying = SongNumber - SongNumber;
 int SoundEffectNumber = 1;
 int SoundEffectPlaying = 0;
 File file;
@@ -85,6 +87,17 @@ void setup() {
   xPlayPause = appWidth*25/52; yPlayPause = yPrevious; widthPlayPause = widthPrevious; heightPlayPause = heightPrevious;
   xFastForward = appWidth*16/26; yFastForward = yPlayPause; widthFastForward = widthPlayPause; heightFastForward = heightPlayPause;
   xNext = appWidth*20/26; yNext = yPrevious; widthNext = widthPrevious; heightNext = heightPrevious;
+  //
+  //Music Button Icons
+  xPlayPauseTriangle1 = xPlayPause+widthPlayPause*1/5; yPlayPauseTriangle1 = yPlayPause+heightPlayPause*1/5; 
+  xPlayPauseTriangle2 = xPlayPauseTriangle1; yPlayPauseTriangle2 = yPlayPause+heightPlayPause*4/5;
+  xPlayPauseTriangle3 = xPlayPause+widthPlayPause*4/5; yPlayPauseTriangle3 = yPlayPause+heightPlayPause*1/2;
+  xFastForwardTriangleOne1 = xFastForward+widthFastForward*1/6; yFastForwardTriangleOne1 = yPlayPauseTriangle1;
+  xFastForwardTriangleOne2 = xFastForwardTriangleOne1; yFastForwardTriangleOne2 = yPlayPauseTriangle2;
+  xFastForwardTriangleOne3 = xFastForward+widthFastForward*1/2; yFastForwardTriangleOne3 = yPlayPauseTriangle3;
+  xFastForwardTriangleTwo1 = xFastForwardTriangleOne3;  yFastForwardTriangleTwo1 = yPlayPauseTriangle1;
+  xFastForwardTriangleTwo2 = xFastForwardTriangleOne3; yFastForwardTriangleTwo2 = yPlayPauseTriangle2;
+  xFastForwardTriangleTwo3 = xFastForward+widthFastForward*5/6; yFastForwardTriangleTwo3 = yPlayPauseTriangle3;
   //
     String RelativeMusicPathway = "../Audio Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
@@ -172,6 +185,9 @@ void draw() {
   fill(resetDefaultInk);
   //
   //Music Player Panel
+  strokeWeight(3);
+  stroke(Purple);
+  fill(Black);
   rect(xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel);
   rect(xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle);
   rect(xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor);
@@ -186,25 +202,35 @@ void draw() {
   rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
   rect(xQuit, yQuit, widthQuit, heightQuit);
   //
-  //Button Images
+  //Music Button Icons
+  stroke(TextPurple);
+  fill(TextPurple);
+  triangle(xPlayPauseTriangle1, yPlayPauseTriangle1, xPlayPauseTriangle2, yPlayPauseTriangle2, xPlayPauseTriangle3, yPlayPauseTriangle3);
+  triangle(xFastForwardTriangleOne1, yFastForwardTriangleOne1, xFastForwardTriangleOne2, yFastForwardTriangleOne2, xFastForwardTriangleOne3, yFastForwardTriangleOne3);
+  triangle(xFastForwardTriangleTwo1, yFastForwardTriangleTwo1, xFastForwardTriangleTwo2, yFastForwardTriangleTwo2, xFastForwardTriangleTwo3, yFastForwardTriangleTwo3);
+  strokeWeight(1);
+  stroke(Black);
+  fill(resetDefaultInk);
+  //
+  //Images
   image(Quit, xQuit, yQuit, widthQuit, heightQuit);
   //
   //Music MetaData Display
-  fill(Black);
+  fill(TextPurple);
   textAlign(CENTER, CENTER); 
   size = 50;
   textFont(TitleFont, size); 
   text(SongPlayListMetaData[SongPlaying].title(), xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle);
   fill(resetDefaultInk);
   //
-  fill(Black);
+  fill(TextPurple);
   textAlign(CENTER, CENTER);
   size = 25;
   textFont(TitleFont, size); 
   text("Author: "+SongPlayListMetaData[SongPlaying].author(), xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor);
   fill(resetDefaultInk);
   //
-  fill(Black);
+  fill(TextPurple);
   textAlign(CENTER, CENTER);
   size = 25;
   textFont(TitleFont, size); 
