@@ -189,6 +189,7 @@ void draw() {
   //Button Images
   image(Quit, xQuit, yQuit, widthQuit, heightQuit);
   //
+  //Music MetaData Display
   fill(Black);
   textAlign(CENTER, CENTER); 
   size = 50;
