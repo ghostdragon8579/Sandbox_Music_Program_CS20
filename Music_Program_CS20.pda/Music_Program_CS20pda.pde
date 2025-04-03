@@ -11,6 +11,7 @@ import ddf.minim.ugens.*;
 //
 //Global Variables
 float xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground;
+float xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
 float xFastForward, yFastForward, widthFastForward, heightFastForward;
 float xRewind, yRewind, widthRewind, heightRewind;
@@ -59,24 +60,23 @@ void setup() {
   String ImageFolder = "Music_Program_Images";
   String Imagepathway = up + open;
   String NeonImage2 = "NeonBackground2.jpg";
-  String PlayImage = "play.png";
-  String PauseImage = "pause.png";
-  String FastForwardImage = "FastForward.png";
-  String RewindImage = "FastRewind.png";
-  String NextImage = "skip.png";
-  String PreviousImage = "prev.png";
   String QuitImage = "exit.png";
   NeonBackground2 = loadImage(Imagepathway + ImageFolder + open + NeonImage2);
-  PlayButton = loadImage(Imagepathway + ImageFolder + open + PlayImage);
-  PauseButton = loadImage(Imagepathway + ImageFolder + open + PauseImage);
-  FastForward = loadImage(Imagepathway + ImageFolder + open + FastForwardImage);
-  Rewind = loadImage(Imagepathway + ImageFolder + open + RewindImage);
-  Next = loadImage(Imagepathway + ImageFolder + open + NextImage);
-  Previous = loadImage(Imagepathway + ImageFolder + open + PreviousImage);
   Quit = loadImage(Imagepathway + ImageFolder + open + QuitImage);
   //
+  //Background
   xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
+  //
+  //Music Panel
+  xMusicPanel = appWidth*2/27; yMusicPanel = appHeight*1/10; widthMusicPanel = appWidth*23/27; heightMusicPanel = appHeight*4/5;
+  //
+  //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
+  xPrevious = appWidth*5/26; yPrevious = appHeight*3/5; widthPrevious = appWidth*1/26; heightPrevious = widthPrevious;
+  xRewind = appWidth*9/26; yRewind = yPrevious; widthRewind = widthPrevious; heightRewind = heightPrevious;
+  xPlayPause = appWidth*25/52; yPlayPause = yPrevious; widthPlayPause = widthPrevious; heightPlayPause = heightPrevious;
+  xFastForward = appWidth*16/26; yFastForward = yPlayPause; widthFastForward = widthPlayPause; heightFastForward = heightPlayPause;
+  xNext = appWidth*20/26; yNext = yPrevious; widthNext = widthPrevious; heightNext = heightPrevious;
   //
     String RelativeMusicPathway = "../Audio Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
@@ -155,12 +155,25 @@ void setup() {
 } //End setup
 void draw() {
   //
+  shapeMode(CENTER);
+  //Background
   fill(Black);
   rect(xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
   image(NeonBackground2, xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
   fill(resetDefaultInk);
+  //
+  //Music Player Panel
+  rect(xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel);
+  //
+  //Buttons
+  rect(xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
+  rect(xFastForward, yFastForward, widthFastForward, heightFastForward);
+  rect(xRewind, yRewind, widthRewind, heightRewind);
+  rect(xNext, yNext, widthNext, heightNext);
+  rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
   rect(xQuit, yQuit, widthQuit, heightQuit);
   //
+  //Button Images
   image(Quit, xQuit, yQuit, widthQuit, heightQuit);
   //
   Music_Program_CS20_HoverOverColors ();
