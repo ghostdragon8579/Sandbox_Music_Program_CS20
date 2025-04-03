@@ -30,7 +30,7 @@ PImage Quit;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color Gray=#C9C9C9;
-color LightGray=#BCBCBC;
+color LightGray=#CECECE;
 color Black=#000000;
 int appWidth, appHeight;
 int size;
