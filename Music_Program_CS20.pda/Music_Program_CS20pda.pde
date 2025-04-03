@@ -12,6 +12,8 @@ import ddf.minim.ugens.*;
 //Global Variables
 float xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground;
 float xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel;
+float xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle;
+float xMusicImage, yMusicImage, widthMusicImage, heightMusicImage;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
 float xFastForward, yFastForward, widthFastForward, heightFastForward;
 float xRewind, yRewind, widthRewind, heightRewind;
@@ -69,10 +71,12 @@ void setup() {
   //
   //Music Panel
   xMusicPanel = appWidth*2/27; yMusicPanel = appHeight*1/10; widthMusicPanel = appWidth*23/27; heightMusicPanel = appHeight*4/5;
+  xMusicTitle = appWidth*2/7; yMusicTitle = appHeight*3/20; widthMusicTitle = appWidth*3/7; heightMusicTitle = appHeight*1/9;
+  xMusicImage = appWidth*1/3; yMusicImage = yMusicTitle+heightMusicTitle; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
   //
   //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
-  xPrevious = appWidth*5/26; yPrevious = appHeight*3/5; widthPrevious = appWidth*1/26; heightPrevious = widthPrevious;
+  xPrevious = appWidth*5/26; yPrevious = appHeight*21/40; widthPrevious = appWidth*1/26; heightPrevious = widthPrevious;
   xRewind = appWidth*9/26; yRewind = yPrevious; widthRewind = widthPrevious; heightRewind = heightPrevious;
   xPlayPause = appWidth*25/52; yPlayPause = yPrevious; widthPlayPause = widthPrevious; heightPlayPause = heightPrevious;
   xFastForward = appWidth*16/26; yFastForward = yPlayPause; widthFastForward = widthPlayPause; heightFastForward = heightPlayPause;
@@ -164,6 +168,8 @@ void draw() {
   //
   //Music Player Panel
   rect(xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel);
+  rect(xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle);
+  rect(xMusicImage, yMusicImage, widthMusicImage, heightMusicImage);
   //
   //Buttons
   rect(xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
