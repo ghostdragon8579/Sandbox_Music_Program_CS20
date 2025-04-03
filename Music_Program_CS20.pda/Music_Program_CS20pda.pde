@@ -13,6 +13,8 @@ import ddf.minim.ugens.*;
 float xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground;
 float xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel;
 float xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle;
+float xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor;
+float xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate;
 float xMusicImage, yMusicImage, widthMusicImage, heightMusicImage;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
 float xFastForward, yFastForward, widthFastForward, heightFastForward;
@@ -71,12 +73,14 @@ void setup() {
   //
   //Music Panel
   xMusicPanel = appWidth*2/27; yMusicPanel = appHeight*1/10; widthMusicPanel = appWidth*23/27; heightMusicPanel = appHeight*4/5;
-  xMusicTitle = appWidth*2/7; yMusicTitle = appHeight*3/20; widthMusicTitle = appWidth*3/7; heightMusicTitle = appHeight*1/9;
-  xMusicImage = appWidth*1/3; yMusicImage = yMusicTitle+heightMusicTitle; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
+  xMusicTitle = appWidth*2/7; yMusicTitle = appHeight*3/20; widthMusicTitle = appWidth*3/7; heightMusicTitle = appHeight*1/11;
+  xMusicAuthor = appWidth*1/3; yMusicAuthor = yMusicTitle+heightMusicTitle; widthMusicAuthor = appWidth*1/3; heightMusicAuthor = appHeight*1/18;
+  xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+heightMusicAuthor; widthMusicPublishDate = widthMusicAuthor; heightMusicPublishDate = heightMusicAuthor;
+  xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+heightMusicPublishDate; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
   //
   //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
-  xPrevious = appWidth*5/26; yPrevious = appHeight*21/40; widthPrevious = appWidth*1/26; heightPrevious = widthPrevious;
+  xPrevious = appWidth*5/26; yPrevious = appHeight*24/40; widthPrevious = appWidth*1/26; heightPrevious = widthPrevious;
   xRewind = appWidth*9/26; yRewind = yPrevious; widthRewind = widthPrevious; heightRewind = heightPrevious;
   xPlayPause = appWidth*25/52; yPlayPause = yPrevious; widthPlayPause = widthPrevious; heightPlayPause = heightPrevious;
   xFastForward = appWidth*16/26; yFastForward = yPlayPause; widthFastForward = widthPlayPause; heightFastForward = heightPlayPause;
@@ -160,6 +164,7 @@ void setup() {
 void draw() {
   //
   shapeMode(CENTER);
+  //
   //Background
   fill(Black);
   rect(xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
@@ -169,6 +174,8 @@ void draw() {
   //Music Player Panel
   rect(xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel);
   rect(xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle);
+  rect(xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor);
+  rect(xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate);
   rect(xMusicImage, yMusicImage, widthMusicImage, heightMusicImage);
   //
   //Buttons
@@ -181,6 +188,27 @@ void draw() {
   //
   //Button Images
   image(Quit, xQuit, yQuit, widthQuit, heightQuit);
+  //
+  fill(Black);
+  textAlign(CENTER, CENTER); 
+  size = 50;
+  textFont(TitleFont, size); 
+  text(SongPlayListMetaData[SongPlaying].title(), xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle);
+  fill(resetDefaultInk);
+  //
+  fill(Black);
+  textAlign(CENTER, CENTER);
+  size = 25;
+  textFont(TitleFont, size); 
+  text("Author: "+SongPlayListMetaData[SongPlaying].author(), xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor);
+  fill(resetDefaultInk);
+  //
+  fill(Black);
+  textAlign(CENTER, CENTER);
+  size = 25;
+  textFont(TitleFont, size); 
+  text("Released in: "+SongPlayListMetaData[SongPlaying].date(), xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate);
+  fill(resetDefaultInk);
   //
   Music_Program_CS20_HoverOverColors ();
   //
