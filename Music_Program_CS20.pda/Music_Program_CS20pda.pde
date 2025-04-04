@@ -277,12 +277,13 @@ void keyPressed() {
 //
 void mousePressed() {
   //
-  /*if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause && SongPlayList[SongPlaying].isPlaying()) {
+  /*
+  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause && SongPlayList[SongPlaying].isPlaying()) {
       SongPlayList[SongPlaying].pause();
     } else {
       SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
   }
-    */
+  */
   if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
