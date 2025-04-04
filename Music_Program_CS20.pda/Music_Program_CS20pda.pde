@@ -77,57 +77,120 @@ void setup() {
   Quit = loadImage(Imagepathway + ImageFolder + open + QuitImage);
   //
   //Background
-  xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
+  xPopupBackground = appWidth*0;
+  yPopupBackground = appHeight*0;
+  widthPopupBackground = appWidth-1;
+  heightPopupBackground = appHeight-1;
   //
   //Music Panel
-  xMusicPanel = appWidth*2/27; yMusicPanel = appHeight*1/10; widthMusicPanel = appWidth*23/27; heightMusicPanel = appHeight*4/5;
-  xMusicTitle = appWidth*2/7; yMusicTitle = appHeight*3/20; widthMusicTitle = appWidth*3/7; heightMusicTitle = appHeight*1/11;
-  xMusicAuthor = appWidth*1/3; yMusicAuthor = yMusicTitle+heightMusicTitle; widthMusicAuthor = appWidth*1/3; heightMusicAuthor = appHeight*1/18;
-  xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+heightMusicAuthor; widthMusicPublishDate = widthMusicAuthor; heightMusicPublishDate = heightMusicAuthor;
-  xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+heightMusicPublishDate; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
+  xMusicPanel = appWidth*2/27;
+  yMusicPanel = appHeight*1/10;
+  widthMusicPanel = appWidth*23/27;
+  heightMusicPanel = appHeight*4/5;
+  xMusicTitle = appWidth*2/7;
+  yMusicTitle = appHeight*3/20;
+  widthMusicTitle = appWidth*3/7;
+  heightMusicTitle = appHeight*1/11;
+  xMusicAuthor = appWidth*1/3;
+  yMusicAuthor = yMusicTitle+heightMusicTitle;
+  widthMusicAuthor = appWidth*1/3;
+  heightMusicAuthor = appHeight*1/18;
+  xMusicPublishDate = xMusicAuthor;
+  yMusicPublishDate = yMusicAuthor+heightMusicAuthor;
+  widthMusicPublishDate = widthMusicAuthor;
+  heightMusicPublishDate = heightMusicAuthor;
+  xMusicImage = appWidth*1/3;
+  yMusicImage = yMusicPublishDate+heightMusicPublishDate;
+  widthMusicImage = appWidth*1/3;
+  heightMusicImage = appHeight*1/6;
   //
   //Buttons
-  xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
-  xPrevious = appWidth*5/26; yPrevious = appHeight*24/40; widthPrevious = appWidth*1/26; heightPrevious = widthPrevious;
-  xRewind = appWidth*9/26; yRewind = yPrevious; widthRewind = widthPrevious; heightRewind = heightPrevious;
-  xPlayPause = appWidth*25/52; yPlayPause = yPrevious; widthPlayPause = widthPrevious; heightPlayPause = heightPrevious;
-  xFastForward = appWidth*16/26; yFastForward = yPlayPause; widthFastForward = widthPlayPause; heightFastForward = heightPlayPause;
-  xNext = appWidth*20/26; yNext = yPrevious; widthNext = widthPrevious; heightNext = heightPrevious;
+  xQuit = appWidth*15/16;
+  yQuit = appHeight*0;
+  widthQuit = appWidth*1/16;
+  heightQuit = appHeight*1/24;
+  xPrevious = appWidth*5/26;
+  yPrevious = appHeight*24/40;
+  widthPrevious = appWidth*1/26;
+  heightPrevious = widthPrevious;
+  xRewind = appWidth*9/26;
+  yRewind = yPrevious;
+  widthRewind = widthPrevious;
+  heightRewind = heightPrevious;
+  xPlayPause = appWidth*25/52;
+  yPlayPause = yPrevious;
+  widthPlayPause = widthPrevious;
+  heightPlayPause = heightPrevious;
+  xFastForward = appWidth*16/26;
+  yFastForward = yPlayPause;
+  widthFastForward = widthPlayPause;
+  heightFastForward = heightPlayPause;
+  xNext = appWidth*20/26;
+  yNext = yPrevious;
+  widthNext = widthPrevious;
+  heightNext = heightPrevious;
   //
   //Music Button Icons
-  xPlayPauseTriangle1 = xPlayPause+widthPlayPause*1/5; yPlayPauseTriangle1 = yPlayPause+heightPlayPause*1/5; 
-  xPlayPauseTriangle2 = xPlayPauseTriangle1; yPlayPauseTriangle2 = yPlayPause+heightPlayPause*4/5;
-  xPlayPauseTriangle3 = xPlayPause+widthPlayPause*4/5; yPlayPauseTriangle3 = yPlayPause+heightPlayPause*1/2;
-  xFastForwardTriangleOne1 = xFastForward+widthFastForward*1/6; yFastForwardTriangleOne1 = yPlayPauseTriangle1;
-  xFastForwardTriangleOne2 = xFastForwardTriangleOne1; yFastForwardTriangleOne2 = yPlayPauseTriangle2;
-  xFastForwardTriangleOne3 = xFastForward+widthFastForward*1/2; yFastForwardTriangleOne3 = yPlayPauseTriangle3;
-  xFastForwardTriangleTwo1 = xFastForwardTriangleOne3;  yFastForwardTriangleTwo1 = yPlayPauseTriangle1;
-  xFastForwardTriangleTwo2 = xFastForwardTriangleOne3; yFastForwardTriangleTwo2 = yPlayPauseTriangle2;
-  xFastForwardTriangleTwo3 = xFastForward+widthFastForward*5/6; yFastForwardTriangleTwo3 = yPlayPauseTriangle3;
-  xRewindTriangleOne1 = xRewind+widthRewind*1/6; yRewindTriangleOne1 = yPlayPauseTriangle3; 
-  xRewindTriangleOne2 = xRewind+widthRewind*1/2; yRewindTriangleOne2 = yPlayPauseTriangle1;
-  xRewindTriangleOne3 = xRewindTriangleOne2; yRewindTriangleOne3 = yPlayPauseTriangle2;
-  xRewindTriangleTwo1 = xRewindTriangleOne2; yRewindTriangleTwo1 = yPlayPauseTriangle3;
-  xRewindTriangleTwo2 = xRewind+widthRewind*5/6; yRewindTriangleTwo2 = yPlayPauseTriangle1; 
-  xRewindTriangleTwo3 = xRewindTriangleTwo2; yRewindTriangleTwo3 = yPlayPauseTriangle2;
-  xNextTriangleOne1 = xNext+widthNext*1/6; yNextTriangleOne1 = yPlayPauseTriangle1; 
-  xNextTriangleOne2 = xNextTriangleOne1; yNextTriangleOne2 = yPlayPauseTriangle2; 
-  xNextTriangleOne3 = xNext+widthNext*3/4; yNextTriangleOne3 = yPlayPauseTriangle3;
-  xNextTriangleTwo1 = xNext+widthNext*5/6; yNextTriangleTwo1 = yPlayPauseTriangle1; 
-  xNextTriangleTwo2 = xNextTriangleTwo1; yNextTriangleTwo2 = yPlayPauseTriangle2;
-  xNextTriangleTwo3 = xNextTriangleTwo1; yNextTriangleTwo3 = yPlayPauseTriangle3;
-  xPreviousTriangleOne1 = xPrevious+widthPrevious*5/6; yPreviousTriangleOne1 = yPlayPauseTriangle1;
-  xPreviousTriangleOne2 = xPreviousTriangleOne1; yPreviousTriangleOne2 = yPlayPauseTriangle2;
-  xPreviousTriangleOne3 = xPrevious+widthPrevious*1/4; yPreviousTriangleOne3 = yPlayPauseTriangle3;
-  xPreviousTriangleTwo1 = xPrevious+widthPrevious*1/6; yPreviousTriangleTwo1 = yPlayPauseTriangle1;
-  xPreviousTriangleTwo2 = xPreviousTriangleTwo1; yPreviousTriangleTwo2 = yPlayPauseTriangle2;
-  xPreviousTriangleTwo3 = xPreviousTriangleTwo1; yPreviousTriangleTwo3 = yPlayPauseTriangle3;
+  xPlayPauseTriangle1 = xPlayPause+widthPlayPause*1/5;
+  yPlayPauseTriangle1 = yPlayPause+heightPlayPause*1/5;
+  xPlayPauseTriangle2 = xPlayPauseTriangle1;
+  yPlayPauseTriangle2 = yPlayPause+heightPlayPause*4/5;
+  xPlayPauseTriangle3 = xPlayPause+widthPlayPause*4/5;
+  yPlayPauseTriangle3 = yPlayPause+heightPlayPause*1/2;
+  xFastForwardTriangleOne1 = xFastForward+widthFastForward*1/6;
+  yFastForwardTriangleOne1 = yPlayPauseTriangle1;
+  xFastForwardTriangleOne2 = xFastForwardTriangleOne1;
+  yFastForwardTriangleOne2 = yPlayPauseTriangle2;
+  xFastForwardTriangleOne3 = xFastForward+widthFastForward*1/2;
+  yFastForwardTriangleOne3 = yPlayPauseTriangle3;
+  xFastForwardTriangleTwo1 = xFastForwardTriangleOne3;
+  yFastForwardTriangleTwo1 = yPlayPauseTriangle1;
+  xFastForwardTriangleTwo2 = xFastForwardTriangleOne3;
+  yFastForwardTriangleTwo2 = yPlayPauseTriangle2;
+  xFastForwardTriangleTwo3 = xFastForward+widthFastForward*5/6;
+  yFastForwardTriangleTwo3 = yPlayPauseTriangle3;
+  xRewindTriangleOne1 = xRewind+widthRewind*1/6;
+  yRewindTriangleOne1 = yPlayPauseTriangle3;
+  xRewindTriangleOne2 = xRewind+widthRewind*1/2;
+  yRewindTriangleOne2 = yPlayPauseTriangle1;
+  xRewindTriangleOne3 = xRewindTriangleOne2;
+  yRewindTriangleOne3 = yPlayPauseTriangle2;
+  xRewindTriangleTwo1 = xRewindTriangleOne2;
+  yRewindTriangleTwo1 = yPlayPauseTriangle3;
+  xRewindTriangleTwo2 = xRewind+widthRewind*5/6;
+  yRewindTriangleTwo2 = yPlayPauseTriangle1;
+  xRewindTriangleTwo3 = xRewindTriangleTwo2;
+  yRewindTriangleTwo3 = yPlayPauseTriangle2;
+  xNextTriangleOne1 = xNext+widthNext*1/6;
+  yNextTriangleOne1 = yPlayPauseTriangle1;
+  xNextTriangleOne2 = xNextTriangleOne1;
+  yNextTriangleOne2 = yPlayPauseTriangle2;
+  xNextTriangleOne3 = xNext+widthNext*3/4;
+  yNextTriangleOne3 = yPlayPauseTriangle3;
+  xNextTriangleTwo1 = xNext+widthNext*5/6;
+  yNextTriangleTwo1 = yPlayPauseTriangle1;
+  xNextTriangleTwo2 = xNextTriangleTwo1;
+  yNextTriangleTwo2 = yPlayPauseTriangle2;
+  xNextTriangleTwo3 = xNextTriangleTwo1;
+  yNextTriangleTwo3 = yPlayPauseTriangle3;
+  xPreviousTriangleOne1 = xPrevious+widthPrevious*5/6;
+  yPreviousTriangleOne1 = yPlayPauseTriangle1;
+  xPreviousTriangleOne2 = xPreviousTriangleOne1;
+  yPreviousTriangleOne2 = yPlayPauseTriangle2;
+  xPreviousTriangleOne3 = xPrevious+widthPrevious*1/4;
+  yPreviousTriangleOne3 = yPlayPauseTriangle3;
+  xPreviousTriangleTwo1 = xPrevious+widthPrevious*1/6;
+  yPreviousTriangleTwo1 = yPlayPauseTriangle1;
+  xPreviousTriangleTwo2 = xPreviousTriangleTwo1;
+  yPreviousTriangleTwo2 = yPlayPauseTriangle2;
+  xPreviousTriangleTwo3 = xPreviousTriangleTwo1;
+  yPreviousTriangleTwo3 = yPlayPauseTriangle3;
   //
-    String RelativeMusicPathway = "../Audio Files/";
+  String RelativeMusicPathway = "../Audio Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
-    AudioFiles = new File(AbsoluteMusicPathway);
+  AudioFiles = new File(AbsoluteMusicPathway);
   int AudioFileCount = AudioFiles.list().length;
-    File[] SongFiles = AudioFiles.listFiles();
+  File[] SongFiles = AudioFiles.listFiles();
   String[] SongFilePathway = new String[AudioFileCount];
   for (int i = SongPlaying; i < SongFiles.length; i++) {
     SongFilePathway[i] = (SongFiles[i].toString());
@@ -144,16 +207,16 @@ void setup() {
     println("File Name", files[i].getName());
   }
   //
-    for (int i=SongPlaying; i<AudioFileCount; i++) {
+  for (int i=SongPlaying; i<AudioFileCount; i++) {
     SongPlayList[i]= minim.loadFile(SongFilePathway[i]);
     SongPlayListMetaData[i] = SongPlayList[i].getMetaData();
   }
   //
   String RelativeSoundEffectPathway = "../Sound Effects/";
   String AbsoluteSoundEffectPathway = sketchPath(RelativeSoundEffectPathway);
-    SoundEffectFiles = new File(AbsoluteSoundEffectPathway);
+  SoundEffectFiles = new File(AbsoluteSoundEffectPathway);
   int SoundEffectFileCount = SoundEffectFiles.list().length;
-    File[] SoundEffectfiles2 = SoundEffectFiles.listFiles();
+  File[] SoundEffectfiles2 = SoundEffectFiles.listFiles();
   String[] SoundEffectFilePathway = new String[SoundEffectFileCount];
   for (int i = SoundEffectPlaying; i < SoundEffectfiles2.length; i++) {
     SoundEffectFilePathway[i] = (SoundEffectfiles2[i].toString());
@@ -169,7 +232,7 @@ void setup() {
     println("File Name", SoundEffectfiles[i].getName());
   }
   //
-    for (int i=SoundEffectPlaying; i<SoundEffectFileCount; i++) {
+  for (int i=SoundEffectPlaying; i<SoundEffectFileCount; i++) {
     SoundEffectPlayList[i]= minim.loadFile(SoundEffectFilePathway[i]);
     SoundEffectPlayListMetaData[i] = SoundEffectPlayList[i].getMetaData();
   }
@@ -247,23 +310,23 @@ void draw() {
   //
   //Music MetaData Display
   fill(TextPurple);
-  textAlign(CENTER, CENTER); 
+  textAlign(CENTER, CENTER);
   size = 50;
-  textFont(TitleFont, size); 
+  textFont(TitleFont, size);
   text(SongPlayListMetaData[SongPlaying].title(), xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle);
   fill(resetDefaultInk);
   //
   fill(TextPurple);
   textAlign(CENTER, CENTER);
   size = 25;
-  textFont(TitleFont, size); 
+  textFont(TitleFont, size);
   text("Author: "+SongPlayListMetaData[SongPlaying].author(), xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor);
   fill(resetDefaultInk);
   //
   fill(TextPurple);
   textAlign(CENTER, CENTER);
   size = 25;
-  textFont(TitleFont, size); 
+  textFont(TitleFont, size);
   text("Released in: "+SongPlayListMetaData[SongPlaying].date(), xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate);
   fill(resetDefaultInk);
   //
@@ -277,14 +340,14 @@ void keyPressed() {
 //
 void mousePressed() {
   //
-  /*
   if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause && SongPlayList[SongPlaying].isPlaying()) {
-      SongPlayList[SongPlaying].pause();
-    } else {
-      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
+    if (SongPlayList[SongPlaying].isPlaying()) {
+    SongPlayList[SongPlaying].pause();
+  } else {
+    SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
   }
-  */
-  if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
+  }
+  else if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
     SongPlaying+=1;
@@ -296,7 +359,7 @@ void mousePressed() {
     }
     SongPlayList[SongPlaying].play();
   }
-  if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
+  else if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
     SongPlayList[SongPlaying].pause();
     SongPlayList[SongPlaying].rewind();
     SongPlaying-=1;
@@ -308,13 +371,13 @@ void mousePressed() {
     }
     SongPlayList[SongPlaying].play();
   }
-  if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) {
-  SongPlayList[SongPlaying].skip(+5000);
+  else if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) {
+    SongPlayList[SongPlaying].skip(+5000);
   }
-  if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) {
-  SongPlayList[SongPlaying].skip(-5000);
+  else if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) {
+    SongPlayList[SongPlaying].skip(-5000);
   }
-  if (mouseX>xQuit && mouseX<xQuit+widthQuit && mouseY>yQuit && mouseY<yQuit+heightQuit) exit();
+  else if (mouseX>xQuit && mouseX<xQuit+widthQuit && mouseY>yQuit && mouseY<yQuit+heightQuit) exit();
   //
 } //End mousePressed
 //
