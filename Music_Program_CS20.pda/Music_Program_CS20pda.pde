@@ -340,12 +340,16 @@ void keyPressed() {
 //
 void mousePressed() {
   //
-  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause && SongPlayList[SongPlaying].isPlaying()) {
+  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) {
     if (SongPlayList[SongPlaying].isPlaying()) {
-    SongPlayList[SongPlaying].pause();
-  } else {
-    SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
-  }
+      SongPlayList[SongPlaying].pause();
+    } else {
+    if (SongPlayList[SongPlaying].position() == 0) {
+      SongPlayList[SongPlaying].play();
+    } else {
+      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
+      }
+    }
   }
   else if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
     SongPlayList[SongPlaying].pause();
