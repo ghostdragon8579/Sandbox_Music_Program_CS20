@@ -16,6 +16,7 @@ float xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle;
 float xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor;
 float xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate;
 float xMusicImage, yMusicImage, widthMusicImage, heightMusicImage;
+float xMusicProgressBar, yMusicProgressBar, widthMusicProgressBar, heightMusicProgressBar;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
 float xPlayPauseTriangle1, yPlayPauseTriangle1, xPlayPauseTriangle2, yPlayPauseTriangle2, xPlayPauseTriangle3, yPlayPauseTriangle3;
 float xFastForward, yFastForward, widthFastForward, heightFastForward;
@@ -46,6 +47,9 @@ int SongNumber = 6;
 int SongPlaying = SongNumber - SongNumber;
 int SoundEffectNumber = 1;
 int SoundEffectPlaying = 0;
+int SongTimeCounter;
+int SongBeginningTime;
+int SongEndingTime;
 File file;
 File AudioFiles;
 File SoundEffectFiles;
@@ -85,6 +89,7 @@ void setup() {
   xMusicAuthor = appWidth*1/3; yMusicAuthor = yMusicTitle+heightMusicTitle; widthMusicAuthor = appWidth*1/3; heightMusicAuthor = appHeight*1/18;
   xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+heightMusicAuthor; widthMusicPublishDate = widthMusicAuthor; heightMusicPublishDate = heightMusicAuthor;
   xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+heightMusicPublishDate; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
+  xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*3/4; widthMusicProgressBar = appWidth*15/26; heightMusicProgressBar = appHeight*1/24;
   //
   //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
@@ -195,6 +200,10 @@ void setup() {
   //
   println(SongPlaying);
   //
+  SongTimeCounter = 0; 
+  SongBeginningTime= millis(); 
+  SongEndingTime=int(SongPlayListMetaData[SongPlaying].length()); 
+  //
   TitleFont = createFont("Times New Roman Bold", 55);
   //
 } //End setup
@@ -265,6 +274,23 @@ void draw() {
   size = 25;
   textFont(TitleFont, size);
   text("Released in: "+SongPlayListMetaData[SongPlaying].date(), xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate);
+  fill(resetDefaultInk);
+  //
+  //Progress Bar
+  if (SongPlayList[SongPlaying].isPlaying()) {
+    SongTimeCounter=millis();
+  }
+  noStroke();
+  fill(TextPurple);
+  if (SongPlayList[SongPlaying].isPlaying()) {
+  rect(xMusicProgressBar, yMusicProgressBar,  map(SongTimeCounter-SongBeginningTime, 0, SongEndingTime, 0, widthMusicProgressBar), heightMusicProgressBar);
+  }
+  strokeWeight(4);
+  stroke(Purple);
+  noFill();
+  rect(xMusicProgressBar, yMusicProgressBar,  widthMusicProgressBar, heightMusicProgressBar);
+  strokeWeight(1);
+  stroke(Black);
   fill(resetDefaultInk);
   //
   Music_Program_CS20_HoverOverColors ();
