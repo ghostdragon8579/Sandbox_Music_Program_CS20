@@ -59,7 +59,7 @@ void mousePressed() {
   }
   //
   if (MusicPlayerPopup==true) {
-  MusicPlayerMousePressed();
+    MusicPlayerMousePressed();
   } else {
     println("Music is no longer playing");
   }
