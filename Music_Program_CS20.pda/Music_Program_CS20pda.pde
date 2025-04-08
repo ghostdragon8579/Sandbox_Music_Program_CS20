@@ -280,11 +280,11 @@ void draw() {
   if (SongPlayList[SongPlaying].isPlaying()) {
     SongTimeCounter=millis();
   }
+  float ProgressWidth = map(SongPlayList[SongPlaying].position(), 0, SongEndingTime, 0, widthMusicProgressBar);
+  ProgressWidth = constrain(ProgressWidth, 0, widthMusicProgressBar);
   noStroke();
   fill(TextPurple);
-  if (SongPlayList[SongPlaying].isPlaying()) {
-  rect(xMusicProgressBar, yMusicProgressBar,  map(SongTimeCounter-SongBeginningTime, 0, SongEndingTime, 0, widthMusicProgressBar), heightMusicProgressBar);
-  }
+  rect(xMusicProgressBar, yMusicProgressBar, ProgressWidth, heightMusicProgressBar);
   strokeWeight(4);
   stroke(Purple);
   noFill();
