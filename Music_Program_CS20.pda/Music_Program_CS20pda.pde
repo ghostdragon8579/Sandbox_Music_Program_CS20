@@ -305,6 +305,20 @@ void draw() {
 //
 void keyPressed() {
   //
+  if (key=='p' || key=='P') {
+    if (SongPlayList[SongPlaying].isPlaying()) {
+      SongPlayList[SongPlaying].pause();
+    } else {
+    if (SongPlayList[SongPlaying].position() == 0) {
+      SongPlayList[SongPlaying].play();
+    } else {
+      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
+      }
+    }
+  }
+  if (key==CODED && keyCode == LEFT) SongPlayList[SongPlaying].skip(-5000);
+  if (key==CODED && keyCode == RIGHT) SongPlayList[SongPlaying].skip(+5000);
+  //
 } //End keyPressed
 //
 void mousePressed() {
