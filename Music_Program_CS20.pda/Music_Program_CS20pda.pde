@@ -48,8 +48,6 @@ int SongPlaying = SongNumber - SongNumber;
 int SoundEffectNumber = 1;
 int SoundEffectPlaying = 0;
 int SongTimeCounter;
-int SongBeginningTime;
-int SongEndingTime;
 File file;
 File AudioFiles;
 File SoundEffectFiles;
@@ -89,7 +87,7 @@ void setup() {
   xMusicAuthor = appWidth*1/3; yMusicAuthor = yMusicTitle+heightMusicTitle; widthMusicAuthor = appWidth*1/3; heightMusicAuthor = appHeight*1/18;
   xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+heightMusicAuthor; widthMusicPublishDate = widthMusicAuthor; heightMusicPublishDate = heightMusicAuthor;
   xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+heightMusicPublishDate; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
-  xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*3/4; widthMusicProgressBar = appWidth*15/26; heightMusicProgressBar = appHeight*1/24;
+  xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*3/4; widthMusicProgressBar = appWidth*8/13; heightMusicProgressBar = appHeight*1/24;
   //
   //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
@@ -201,8 +199,6 @@ void setup() {
   println(SongPlaying);
   //
   SongTimeCounter = 0; 
-  SongBeginningTime= millis(); 
-  SongEndingTime=int(SongPlayListMetaData[SongPlaying].length()); 
   //
   TitleFont = createFont("Times New Roman Bold", 55);
   //
@@ -276,11 +272,21 @@ void draw() {
   text("Released in: "+SongPlayListMetaData[SongPlaying].date(), xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate);
   fill(resetDefaultInk);
   //
+  //Song Auto Transition
+  if (SongPlayList[SongPlaying].position() >= SongPlayList[SongPlaying].length() - 5000) {
+    SongPlaying += 1;
+    if (SongPlaying > SongNumber - 1) {
+    SongPlaying = 0;
+    }
+    SongPlayList[SongPlaying].play();
+  }
+  //
   //Progress Bar
   if (SongPlayList[SongPlaying].isPlaying()) {
     SongTimeCounter=millis();
   }
-  float ProgressWidth = map(SongPlayList[SongPlaying].position(), 0, SongEndingTime, 0, widthMusicProgressBar);
+  int AlteredCurrentSongLength = max(SongPlayList[SongPlaying].length() - 5000, 1);
+  float ProgressWidth = map(SongPlayList[SongPlaying].position(), 0, AlteredCurrentSongLength, 0, widthMusicProgressBar);
   ProgressWidth = constrain(ProgressWidth, 0, widthMusicProgressBar);
   noStroke();
   fill(TextPurple);
@@ -315,28 +321,36 @@ void mousePressed() {
     }
   }
   else if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
-    SongPlayList[SongPlaying].pause();
-    SongPlayList[SongPlaying].rewind();
-    SongPlaying+=1;
-    if (SongPlaying<0) {
-      SongPlaying=5;
-    } else if (SongPlaying>SongNumber-1) {
-      SongPlaying=0;
+    if (SongPlayList[SongPlaying].isPlaying()) {
+      SongPlayList[SongPlaying].pause();
+      SongPlayList[SongPlaying].rewind();
+      SongPlaying += 1;
+    if (SongPlaying > SongNumber -1) {
+      SongPlaying = 0; }
+      SongPlayList[SongPlaying].play();
     } else {
+      SongPlayList[SongPlaying].pause();
+      SongPlayList[SongPlaying].rewind();
+      SongPlaying += 1;
+    if (SongPlaying > SongNumber -1) {
+      SongPlaying = 0; }
     }
-    SongPlayList[SongPlaying].play();
   }
   else if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
-    SongPlayList[SongPlaying].pause();
-    SongPlayList[SongPlaying].rewind();
-    SongPlaying-=1;
-    if (SongPlaying<0) {
-      SongPlaying=5;
-    } else if (SongPlaying>SongNumber-1) {
-      SongPlaying=0;
+    if (SongPlayList[SongPlaying].isPlaying()) {
+      SongPlayList[SongPlaying].pause();
+      SongPlayList[SongPlaying].rewind();
+      SongPlaying -= 1;
+    if (SongPlaying < 0) {
+      SongPlaying = SongNumber -1; }
+      SongPlayList[SongPlaying].play(); 
     } else {
+      SongPlayList[SongPlaying].pause();
+      SongPlayList[SongPlaying].rewind();
+      SongPlaying -= 1;
+    if (SongPlaying < 0) {
+      SongPlaying = SongNumber -1; } 
     }
-    SongPlayList[SongPlaying].play();
   }
   else if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) {
     SongPlayList[SongPlaying].skip(+5000);
