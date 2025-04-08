@@ -87,7 +87,7 @@ void setup() {
   xMusicAuthor = appWidth*1/3; yMusicAuthor = yMusicTitle+heightMusicTitle; widthMusicAuthor = appWidth*1/3; heightMusicAuthor = appHeight*1/18;
   xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+heightMusicAuthor; widthMusicPublishDate = widthMusicAuthor; heightMusicPublishDate = heightMusicAuthor;
   xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+heightMusicPublishDate; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
-  xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*3/4; widthMusicProgressBar = appWidth*8/13; heightMusicProgressBar = appHeight*1/24;
+  xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*3/4; widthMusicProgressBar = appWidth*8/13; heightMusicProgressBar = appHeight*1/48;
   //
   //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
