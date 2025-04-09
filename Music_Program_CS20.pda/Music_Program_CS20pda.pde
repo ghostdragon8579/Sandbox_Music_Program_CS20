@@ -257,7 +257,7 @@ void draw() {
   //
   //Images
   image(Quit, xQuit, yQuit, widthQuit, heightQuit);
-  tint(249, 134, 255);
+  image(Shuffle, xShuffle, yShuffle, widthShuffle, heightShuffle);
   //
   //Music MetaData Display
   fill(TextPurple);
