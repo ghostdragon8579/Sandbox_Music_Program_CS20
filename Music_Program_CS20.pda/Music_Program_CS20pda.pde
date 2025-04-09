@@ -32,8 +32,12 @@ float xPrevious, yPrevious, widthPrevious, heightPrevious;
 float xPreviousTriangleOne1, yPreviousTriangleOne1, xPreviousTriangleOne2, yPreviousTriangleOne2, xPreviousTriangleOne3, yPreviousTriangleOne3;
 float xPreviousTriangleTwo1, yPreviousTriangleTwo1, xPreviousTriangleTwo2, yPreviousTriangleTwo2, xPreviousTriangleTwo3, yPreviousTriangleTwo3;
 float xQuit, yQuit, widthQuit, heightQuit;
+float xShuffle, yShuffle, widthShuffle, heightShuffle;
 PImage NeonBackground2;
 PImage Quit;
+PImage Shuffle;
+PImage Loop1;
+PImage FullRewind;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color Gray=#C9C9C9;
@@ -75,8 +79,10 @@ void setup() {
   String Imagepathway = up + open;
   String NeonImage2 = "NeonBackground2.jpg";
   String QuitImage = "exit.png";
+  String ShuffleImage = "Shuffle.png";
   NeonBackground2 = loadImage(Imagepathway + ImageFolder + open + NeonImage2);
   Quit = loadImage(Imagepathway + ImageFolder + open + QuitImage);
+  Shuffle = loadImage(Imagepathway + ImageFolder + open + ShuffleImage);
   //
   //Background
   xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
@@ -87,15 +93,16 @@ void setup() {
   xMusicAuthor = appWidth*1/3; yMusicAuthor = yMusicTitle+heightMusicTitle; widthMusicAuthor = appWidth*1/3; heightMusicAuthor = appHeight*1/18;
   xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+heightMusicAuthor; widthMusicPublishDate = widthMusicAuthor; heightMusicPublishDate = heightMusicAuthor;
   xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+heightMusicPublishDate; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
-  xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*3/4; widthMusicProgressBar = appWidth*8/13; heightMusicProgressBar = appHeight*1/48;
+  xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*13/16; widthMusicProgressBar = appWidth*8/13; heightMusicProgressBar = appHeight*1/48;
   //
   //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
   xPrevious = appWidth*5/26; yPrevious = appHeight*24/40; widthPrevious = appWidth*1/26; heightPrevious = widthPrevious; 
   xRewind = appWidth*9/26; yRewind = yPrevious; widthRewind = widthPrevious; heightRewind = heightPrevious;
   xPlayPause = appWidth*25/52; yPlayPause = yPrevious; widthPlayPause = widthPrevious; heightPlayPause = heightPrevious;
-  xFastForward = appWidth*16/26; yFastForward = yPlayPause; widthFastForward = widthPlayPause; heightFastForward = heightPlayPause;
+  xFastForward = appWidth*16/26; yFastForward = yPlayPause; widthFastForward = widthPrevious; heightFastForward = heightPrevious;
   xNext = appWidth*20/26; yNext = yPrevious; widthNext = widthPrevious; heightNext = heightPrevious;
+  xShuffle = xPlayPause; yShuffle = yPlayPause+heightPrevious*2; widthShuffle = widthPrevious; heightShuffle = heightPrevious;
   //
   //Music Button Icons
   xPlayPauseTriangle1 = xPlayPause+widthPlayPause*1/5; yPlayPauseTriangle1 = yPlayPause+heightPlayPause*1/5;
@@ -230,6 +237,7 @@ void draw() {
   rect(xNext, yNext, widthNext, heightNext);
   rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
   rect(xQuit, yQuit, widthQuit, heightQuit);
+  rect(xShuffle, yShuffle, widthShuffle, heightShuffle);
   //
   //Music Button Icons
   stroke(TextPurple);
@@ -249,6 +257,7 @@ void draw() {
   //
   //Images
   image(Quit, xQuit, yQuit, widthQuit, heightQuit);
+  tint(249, 134, 255);
   //
   //Music MetaData Display
   fill(TextPurple);
