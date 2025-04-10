@@ -33,6 +33,8 @@ float xPreviousTriangleOne1, yPreviousTriangleOne1, xPreviousTriangleOne2, yPrev
 float xPreviousTriangleTwo1, yPreviousTriangleTwo1, xPreviousTriangleTwo2, yPreviousTriangleTwo2, xPreviousTriangleTwo3, yPreviousTriangleTwo3;
 float xQuit, yQuit, widthQuit, heightQuit;
 float xShuffle, yShuffle, widthShuffle, heightShuffle;
+float xFullRewind, yFullRewind, widthFullRewind, heightFullRewind;
+float xLoop, yLoop, widthLoop, heightLoop;
 PImage NeonBackground2;
 PImage Quit;
 PImage Shuffle;
@@ -103,6 +105,8 @@ void setup() {
   xFastForward = appWidth*16/26; yFastForward = yPlayPause; widthFastForward = widthPrevious; heightFastForward = heightPrevious;
   xNext = appWidth*20/26; yNext = yPrevious; widthNext = widthPrevious; heightNext = heightPrevious;
   xShuffle = xPlayPause; yShuffle = yPlayPause+heightPrevious*2; widthShuffle = widthPrevious; heightShuffle = heightPrevious;
+  xFullRewind = xRewind; yFullRewind = yShuffle; widthFullRewind = widthPrevious; heightFullRewind = heightPrevious;
+  xLoop = xFastForward; yLoop = yShuffle; widthLoop = widthPrevious; heightLoop = heightPrevious;
   //
   //Music Button Icons
   xPlayPauseTriangle1 = xPlayPause+widthPlayPause*1/5; yPlayPauseTriangle1 = yPlayPause+heightPlayPause*1/5;
@@ -238,6 +242,8 @@ void draw() {
   rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
   rect(xQuit, yQuit, widthQuit, heightQuit);
   rect(xShuffle, yShuffle, widthShuffle, heightShuffle);
+  rect(xFullRewind, yFullRewind, widthFullRewind, heightFullRewind);
+  rect(xLoop, yLoop, widthLoop, heightLoop);
   //
   //Music Button Icons
   stroke(TextPurple);
@@ -380,6 +386,13 @@ void mousePressed() {
   }
   else if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) {
     SongPlayList[SongPlaying].skip(-5000);
+  }
+  else if (mouseX>xFullRewind && mouseX<xFullRewind+widthFullRewind && mouseY>yFullRewind && mouseY<yFullRewind+heightFullRewind) {
+    SongPlayList[SongPlaying].rewind();
+  }
+  else if (mouseX>xShuffle && mouseX<xShuffle+widthShuffle && mouseY>yShuffle && mouseY<yShuffle+heightShuffle) {
+    SongPlayList[SongPlaying].rewind();
+    SongPlaying=int (random(0, SongNumber-1));
   }
   else if (mouseX>xQuit && mouseX<xQuit+widthQuit && mouseY>yQuit && mouseY<yQuit+heightQuit) exit();
   //
