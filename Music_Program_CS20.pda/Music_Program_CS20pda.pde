@@ -333,6 +333,51 @@ void keyPressed() {
   }
   if (key==CODED && keyCode == LEFT) SongPlayList[SongPlaying].skip(-5000);
   if (key==CODED && keyCode == RIGHT) SongPlayList[SongPlaying].skip(+5000);
+  if (key=='1') {
+    int TargetPosition1 = int(SongPlayList[SongPlaying].length() * 0.1) - 5000;
+    TargetPosition1 = max(TargetPosition1, 0);
+    SongPlayList[SongPlaying].cue(TargetPosition1);
+  }
+  if (key=='2') {
+    int TargetPosition2 = int(SongPlayList[SongPlaying].length() * 0.2) - 5000;
+    TargetPosition2 = max(TargetPosition2, 0);
+    SongPlayList[SongPlaying].cue(TargetPosition2);
+  }
+  if (key=='3') {
+    int TargetPosition3 = int(SongPlayList[SongPlaying].length() * 0.3) - 5000;
+    TargetPosition3 = max(TargetPosition3, 0);
+    SongPlayList[SongPlaying].cue(TargetPosition3);
+  }
+  if (key=='4') {
+    int TargetPosition4 = int(SongPlayList[SongPlaying].length() * 0.4) - 5000;
+    TargetPosition4 = max(TargetPosition4, 0);
+    SongPlayList[SongPlaying].cue(TargetPosition4);
+  }
+  if (key=='5') {
+    int TargetPosition5 = int(SongPlayList[SongPlaying].length() * 0.5) - 5000;
+    TargetPosition5 = max(TargetPosition5, 0);
+    SongPlayList[SongPlaying].cue(TargetPosition5);
+  }
+  if (key=='6') {
+    int TargetPosition6 = int(SongPlayList[SongPlaying].length() * 0.6) - 5000;
+    TargetPosition6 = max(TargetPosition6, 0);
+    SongPlayList[SongPlaying].cue(TargetPosition6);
+  }
+  if (key=='7') {
+    int TargetPosition7 = int(SongPlayList[SongPlaying].length() * 0.7) - 5000;
+    TargetPosition7 = max(TargetPosition7, 0);
+    SongPlayList[SongPlaying].cue(TargetPosition7);
+  }
+  if (key=='8') {
+    int TargetPosition8 = int(SongPlayList[SongPlaying].length() * 0.8) - 5000;
+    TargetPosition8 = max(TargetPosition8, 0);
+    SongPlayList[SongPlaying].cue(TargetPosition8);
+  }
+  if (key=='9') {
+    int TargetPosition9 = int(SongPlayList[SongPlaying].length() * 0.9) - 5000;
+    TargetPosition9 = max(TargetPosition9, 0);
+    SongPlayList[SongPlaying].cue(TargetPosition9);
+  }
   //
 } //End keyPressed
 //
