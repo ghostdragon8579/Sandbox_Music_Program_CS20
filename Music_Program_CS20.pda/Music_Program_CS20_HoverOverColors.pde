@@ -28,9 +28,9 @@ void Music_Program_CS20_HoverOverColors () {
     fill(hoverOverColor);
     rect(xShuffle, yShuffle, widthShuffle, heightShuffle);
     fill(resetDefaultInk);
-  } else if (mouseX>xFullRewind && mouseX<xFullRewind+widthFullRewind && mouseY>yFullRewind && mouseY<yFullRewind+heightFullRewind) {
+  } else if (mouseX>xReplay && mouseX<xReplay+widthReplay && mouseY>yReplay && mouseY<yReplay+heightReplay) {
     fill(hoverOverColor);
-    rect(xFullRewind, yFullRewind, widthFullRewind, heightFullRewind);
+    rect(xReplay, yReplay, widthReplay, heightReplay);
     fill(resetDefaultInk);
   } else if (mouseX>xLoop && mouseX<xLoop+widthLoop && mouseY>yLoop && mouseY<yLoop+heightLoop) {
     fill(hoverOverColor);

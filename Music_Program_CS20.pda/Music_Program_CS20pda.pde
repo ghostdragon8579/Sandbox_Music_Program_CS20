@@ -17,6 +17,7 @@ float xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor;
 float xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate;
 float xMusicImage, yMusicImage, widthMusicImage, heightMusicImage;
 float xMusicProgressBar, yMusicProgressBar, widthMusicProgressBar, heightMusicProgressBar;
+float xIconAttribution, yIconAttribution, widthIconAttribution, heightIconAttribution;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
 float xPlayPauseTriangle1, yPlayPauseTriangle1, xPlayPauseTriangle2, yPlayPauseTriangle2, xPlayPauseTriangle3, yPlayPauseTriangle3;
 float xFastForward, yFastForward, widthFastForward, heightFastForward;
@@ -33,13 +34,13 @@ float xPreviousTriangleOne1, yPreviousTriangleOne1, xPreviousTriangleOne2, yPrev
 float xPreviousTriangleTwo1, yPreviousTriangleTwo1, xPreviousTriangleTwo2, yPreviousTriangleTwo2, xPreviousTriangleTwo3, yPreviousTriangleTwo3;
 float xQuit, yQuit, widthQuit, heightQuit;
 float xShuffle, yShuffle, widthShuffle, heightShuffle;
-float xFullRewind, yFullRewind, widthFullRewind, heightFullRewind;
+float xReplay, yReplay, widthReplay, heightReplay;
 float xLoop, yLoop, widthLoop, heightLoop;
 PImage NeonBackground2;
 PImage Quit;
 PImage Shuffle;
-PImage Loop1;
-PImage FullRewind;
+PImage Loop;
+PImage Replay;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color Gray=#C9C9C9;
@@ -81,10 +82,14 @@ void setup() {
   String Imagepathway = up + open;
   String NeonImage2 = "NeonBackground2.jpg";
   String QuitImage = "exit.png";
-  String ShuffleImage = "Shuffle.png";
+  String ShuffleImage = "icons8-shuffle.png";
+  String LoopImage = "icons8-loop.png";
+  String ReplayImage = "icons8-replay.png";
   NeonBackground2 = loadImage(Imagepathway + ImageFolder + open + NeonImage2);
   Quit = loadImage(Imagepathway + ImageFolder + open + QuitImage);
   Shuffle = loadImage(Imagepathway + ImageFolder + open + ShuffleImage);
+  Loop = loadImage(Imagepathway + ImageFolder + open + LoopImage);
+  Replay = loadImage(Imagepathway + ImageFolder + open + ReplayImage);
   //
   //Background
   xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
@@ -96,6 +101,7 @@ void setup() {
   xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+heightMusicAuthor; widthMusicPublishDate = widthMusicAuthor; heightMusicPublishDate = heightMusicAuthor;
   xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+heightMusicPublishDate; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
   xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*13/16; widthMusicProgressBar = appWidth*8/13; heightMusicProgressBar = appHeight*1/48;
+  xIconAttribution = xMusicPanel+appWidth*1/70; yIconAttribution = appHeight*9/10-appHeight*1/30;  widthIconAttribution = widthMusicPanel*1/3; heightIconAttribution = appHeight*1/36;
   //
   //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
@@ -105,7 +111,7 @@ void setup() {
   xFastForward = appWidth*16/26; yFastForward = yPlayPause; widthFastForward = widthPrevious; heightFastForward = heightPrevious;
   xNext = appWidth*20/26; yNext = yPrevious; widthNext = widthPrevious; heightNext = heightPrevious;
   xShuffle = xPlayPause; yShuffle = yPlayPause+heightPrevious*2; widthShuffle = widthPrevious; heightShuffle = heightPrevious;
-  xFullRewind = xRewind; yFullRewind = yShuffle; widthFullRewind = widthPrevious; heightFullRewind = heightPrevious;
+  xReplay = xRewind; yReplay = yShuffle; widthReplay = widthPrevious; heightReplay = heightPrevious;
   xLoop = xFastForward; yLoop = yShuffle; widthLoop = widthPrevious; heightLoop = heightPrevious;
   //
   //Music Button Icons
@@ -233,8 +239,13 @@ void draw() {
   rect(xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor);
   rect(xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate);
   rect(xMusicImage, yMusicImage, widthMusicImage, heightMusicImage);
+  noStroke();
+  rect(xIconAttribution, yIconAttribution, widthIconAttribution, heightIconAttribution);
   //
   //Buttons
+  strokeWeight(3);
+  stroke(Purple);
+  fill(Black);
   rect(xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
   rect(xFastForward, yFastForward, widthFastForward, heightFastForward);
   rect(xRewind, yRewind, widthRewind, heightRewind);
@@ -242,8 +253,8 @@ void draw() {
   rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
   rect(xQuit, yQuit, widthQuit, heightQuit);
   rect(xShuffle, yShuffle, widthShuffle, heightShuffle);
-  rect(xFullRewind, yFullRewind, widthFullRewind, heightFullRewind);
   rect(xLoop, yLoop, widthLoop, heightLoop);
+  rect(xReplay, yReplay, widthReplay, heightReplay);
   //
   //Music Button Icons
   stroke(TextPurple);
@@ -264,6 +275,8 @@ void draw() {
   //Images
   image(Quit, xQuit, yQuit, widthQuit, heightQuit);
   image(Shuffle, xShuffle, yShuffle, widthShuffle, heightShuffle);
+  image(Loop, xLoop, yLoop, widthLoop, heightLoop);
+  image(Replay, xReplay, yReplay, widthReplay, heightReplay);
   //
   //Music MetaData Display
   fill(TextPurple);
@@ -285,6 +298,13 @@ void draw() {
   size = 25;
   textFont(TitleFont, size);
   text("Released in: "+SongPlayListMetaData[SongPlaying].date(), xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate);
+  fill(resetDefaultInk);
+  //
+  fill(TextPurple);
+  textAlign(LEFT, LEFT);
+  size = 12;
+  textFont(TitleFont, size);
+  text("Loop, Shuffle, and Rewind icons by Icons8", xIconAttribution, yIconAttribution, widthIconAttribution, heightIconAttribution);
   fill(resetDefaultInk);
   //
   //Song Auto Transition
@@ -432,7 +452,7 @@ void mousePressed() {
   else if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) {
     SongPlayList[SongPlaying].skip(-5000);
   }
-  else if (mouseX>xFullRewind && mouseX<xFullRewind+widthFullRewind && mouseY>yFullRewind && mouseY<yFullRewind+heightFullRewind) {
+  else if (mouseX>xReplay && mouseX<xReplay+widthReplay && mouseY>yReplay && mouseY<yReplay+heightReplay) {
     SongPlayList[SongPlaying].rewind();
   }
   else if (mouseX>xShuffle && mouseX<xShuffle+widthShuffle && mouseY>yShuffle && mouseY<yShuffle+heightShuffle) {
