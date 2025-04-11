@@ -300,12 +300,22 @@ void draw() {
   text("Released in: "+SongPlayListMetaData[SongPlaying].date(), xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate);
   fill(resetDefaultInk);
   //
+  //Icon Attribution
   fill(TextPurple);
   textAlign(LEFT, LEFT);
   size = 12;
   textFont(TitleFont, size);
-  text("Loop, Shuffle, and Rewind icons by Icons8", xIconAttribution, yIconAttribution, widthIconAttribution, heightIconAttribution);
+  String AttributionText = "Loop, Shuffle, and Rewind icons by Icons8";
+  text(AttributionText, xIconAttribution, yIconAttribution+heightIconAttribution*3/4);
   fill(resetDefaultInk);
+  //
+  float xIcons8Location = xIconAttribution + textWidth("Loop, Shuffle, and Rewind icons by ");
+  if (mouseX > xIcons8Location && mouseX < xIcons8Location + textWidth("Icons8") &&
+      mouseY > yIconAttribution - 12 && mouseY < yIconAttribution + 12) {
+    cursor(HAND);
+  } else {
+    cursor(ARROW);
+  }
   //
   //Song Auto Transition
   if (SongPlayList[SongPlaying].position() >= SongPlayList[SongPlaying].length() - 5000) {
@@ -402,6 +412,12 @@ void keyPressed() {
 } //End keyPressed
 //
 void mousePressed() {
+  //
+  //Icon Attribution
+  float xIcons8Location = xIconAttribution + textWidth("Loop, Shuffle, and Rewind icons by ");
+  if (mouseX > xIcons8Location && mouseX < xIcons8Location + textWidth("Icons8") && mouseY > yIconAttribution - 12 && mouseY < yIconAttribution + 12) {
+    link("https://icons8.com/");
+  }
   //
   if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) {
     if (SongPlayList[SongPlaying].isPlaying()) {
