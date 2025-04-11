@@ -361,6 +361,9 @@ void keyPressed() {
       }
     }
   }
+  if (key=='r' || key=='R') {
+    SongPlayList[SongPlaying].rewind();
+  }
   if (key==CODED && keyCode == LEFT) SongPlayList[SongPlaying].skip(-5000);
   if (key==CODED && keyCode == RIGHT) SongPlayList[SongPlaying].skip(+5000);
   if (key=='1') {
