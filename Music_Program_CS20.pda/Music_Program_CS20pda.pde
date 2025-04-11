@@ -311,7 +311,7 @@ void draw() {
   //
   float xIcons8Location = xIconAttribution + textWidth("Loop, Shuffle, and Rewind icons by ");
   if (mouseX > xIcons8Location && mouseX < xIcons8Location + textWidth("Icons8") &&
-      mouseY > yIconAttribution - 12 && mouseY < yIconAttribution + 12) {
+      mouseY > yIconAttribution - appHeight*3/200 && mouseY < yIconAttribution + appHeight*3/200) {
     cursor(HAND);
   } else {
     cursor(ARROW);
@@ -415,7 +415,7 @@ void mousePressed() {
   //
   //Icon Attribution
   float xIcons8Location = xIconAttribution + textWidth("Loop, Shuffle, and Rewind icons by ");
-  if (mouseX > xIcons8Location && mouseX < xIcons8Location + textWidth("Icons8") && mouseY > yIconAttribution - 12 && mouseY < yIconAttribution + 12) {
+  if (mouseX > xIcons8Location && mouseX < xIcons8Location + textWidth("Icons8") && mouseY > yIconAttribution - appHeight*3/200 && mouseY < yIconAttribution + appHeight*3/200) {
     link("https://icons8.com/");
   }
   //
