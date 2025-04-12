@@ -55,6 +55,7 @@ int SongPlaying = SongNumber - SongNumber;
 int SoundEffectNumber = 1;
 int SoundEffectPlaying = 0;
 int SongTimeCounter;
+Boolean SongLoop = false;
 File file;
 File AudioFiles;
 File SoundEffectFiles;
@@ -318,12 +319,14 @@ void draw() {
   }
   //
   //Song Auto Transition
-  if (SongPlayList[SongPlaying].position() >= SongPlayList[SongPlaying].length() - 5000) {
+  if (SongPlayList[SongPlaying].position() >= SongPlayList[SongPlaying].length() - 5000 &&  SongLoop == false) {
     SongPlaying += 1;
     if (SongPlaying > SongNumber - 1) {
     SongPlaying = 0;
     }
     SongPlayList[SongPlaying].play();
+    } else if (SongPlayList[SongPlaying].position() >= SongPlayList[SongPlaying].length() - 5000 &&  SongLoop == true) {
+    SongPlayList[SongPlaying].rewind();
   }
   //
   //Progress Bar
@@ -434,6 +437,7 @@ void mousePressed() {
     }
   }
   else if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
+      SongLoop = false;
     if (SongPlayList[SongPlaying].isPlaying()) {
       SongPlayList[SongPlaying].pause();
       SongPlayList[SongPlaying].rewind();
@@ -450,6 +454,7 @@ void mousePressed() {
     }
   }
   else if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
+      SongLoop = false;
     if (SongPlayList[SongPlaying].isPlaying()) {
       SongPlayList[SongPlaying].pause();
       SongPlayList[SongPlaying].rewind();
@@ -477,6 +482,11 @@ void mousePressed() {
   else if (mouseX>xShuffle && mouseX<xShuffle+widthShuffle && mouseY>yShuffle && mouseY<yShuffle+heightShuffle) {
     SongPlayList[SongPlaying].rewind();
     SongPlaying=int (random(0, SongNumber-1));
+  }
+  else if (mouseX>xLoop && mouseX<xLoop+widthLoop && mouseY>yLoop && mouseY<yLoop+heightLoop) {
+      SongLoop = true;
+    } else if (SongLoop == true) {
+      SongLoop = false;
   }
   else if (mouseX>xQuit && mouseX<xQuit+widthQuit && mouseY>yQuit && mouseY<yQuit+heightQuit) exit();
   //
