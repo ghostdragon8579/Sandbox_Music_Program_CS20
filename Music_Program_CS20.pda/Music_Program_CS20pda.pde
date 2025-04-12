@@ -437,7 +437,6 @@ void mousePressed() {
     }
   }
   else if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
-      SongLoop = false;
     if (SongPlayList[SongPlaying].isPlaying()) {
       SongPlayList[SongPlaying].pause();
       SongPlayList[SongPlaying].rewind();
@@ -454,7 +453,6 @@ void mousePressed() {
     }
   }
   else if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
-      SongLoop = false;
     if (SongPlayList[SongPlaying].isPlaying()) {
       SongPlayList[SongPlaying].pause();
       SongPlayList[SongPlaying].rewind();
@@ -476,6 +474,9 @@ void mousePressed() {
   else if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) {
     SongPlayList[SongPlaying].skip(-5000);
   }
+  else if (mouseX>xQuit && mouseX<xQuit+widthQuit && mouseY>yQuit && mouseY<yQuit+heightQuit) {
+    exit();
+  }
   else if (mouseX>xReplay && mouseX<xReplay+widthReplay && mouseY>yReplay && mouseY<yReplay+heightReplay) {
     SongPlayList[SongPlaying].rewind();
   }
@@ -488,7 +489,6 @@ void mousePressed() {
     } else if (SongLoop == true) {
       SongLoop = false;
   }
-  else if (mouseX>xQuit && mouseX<xQuit+widthQuit && mouseY>yQuit && mouseY<yQuit+heightQuit) exit();
   //
 } //End mousePressed
 //
