@@ -55,8 +55,6 @@ int SongPlaying = SongNumber - SongNumber;
 int SoundEffectNumber = 1;
 int SoundEffectPlaying = 0;
 int SongTimeCounter;
-int FastForwardStartHeldTime = 0;
-int RewindStartHeldTime = 0;   
 int RewindTimeHeld = 0;
 int FastForwardTimeHeld = 0;
 Boolean SongLoop = false;
@@ -357,19 +355,17 @@ void draw() {
   //
   //Held Time Check
   if (FastForwardKeyHeldCheck) {
-    if (millis() - FastForwardStartHeldTime >= 3000) {
+    if (millis() - FastForwardTimeHeld >= 3000) {
       FastForwardHeld = true;
     }
   }
   if (RewindKeyHeldCheck) {
-    if (millis() - RewindStartHeldTime >= 3000) {
+    if (millis() - RewindTimeHeld >= 3000) {
       RewindHeld = true;
     }
   }
   //
   Music_Program_CS20_HoverOverColors ();
-  //
-  println(FastForwardHeld);
   //
 } //End draw
 //
@@ -391,13 +387,13 @@ void keyPressed() {
   }
   if (key == CODED && keyCode == RIGHT) {
     if (!FastForwardKeyHeldCheck) {
-      FastForwardStartHeldTime = millis();
+      FastForwardTimeHeld = millis();
       FastForwardKeyHeldCheck = true;
     }
   }
   if (key == CODED && keyCode == LEFT) {
     if (!RewindKeyHeldCheck) {
-      RewindStartHeldTime = millis();
+      RewindTimeHeld = millis();
       RewindKeyHeldCheck = true;
     }
   }
@@ -451,6 +447,7 @@ void keyPressed() {
 //
 void keyReleased() {
   //
+  //Key Held Reset
   if (key == CODED && keyCode == RIGHT) {
     FastForwardKeyHeldCheck = false;
     FastForwardHeld = false;
