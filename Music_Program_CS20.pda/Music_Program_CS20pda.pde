@@ -55,7 +55,15 @@ int SongPlaying = SongNumber - SongNumber;
 int SoundEffectNumber = 1;
 int SoundEffectPlaying = 0;
 int SongTimeCounter;
+int FastForwardStartHeldTime = 0;
+int RewindStartHeldTime = 0;   
+int RewindTimeHeld = 0;
+int FastForwardTimeHeld = 0;
 Boolean SongLoop = false;
+Boolean FastForwardHeld = false;
+Boolean RewindHeld = false;
+boolean FastForwardKeyHeldCheck = false;
+boolean RewindKeyHeldCheck = false;
 File file;
 File AudioFiles;
 File SoundEffectFiles;
@@ -319,13 +327,13 @@ void draw() {
   }
   //
   //Song Auto Transition
-  if (SongPlayList[SongPlaying].position() >= SongPlayList[SongPlaying].length() - 5000 &&  SongLoop == false) {
+  if (SongPlayList[SongPlaying].position() >= SongPlayList[SongPlaying].length() - 5000 && SongLoop == false) {
     SongPlaying += 1;
     if (SongPlaying > SongNumber - 1) {
     SongPlaying = 0;
     }
     SongPlayList[SongPlaying].play();
-    } else if (SongPlayList[SongPlaying].position() >= SongPlayList[SongPlaying].length() - 5000 &&  SongLoop == true) {
+    } else if (SongPlayList[SongPlaying].position() >= SongPlayList[SongPlaying].length() - 5000 && SongLoop == true) {
     SongPlayList[SongPlaying].rewind();
   }
   //
@@ -347,7 +355,21 @@ void draw() {
   stroke(Black);
   fill(resetDefaultInk);
   //
+  //Held Time Check
+  if (FastForwardKeyHeldCheck) {
+    if (millis() - FastForwardStartHeldTime >= 3000) {
+      FastForwardHeld = true;
+    }
+  }
+  if (RewindKeyHeldCheck) {
+    if (millis() - RewindStartHeldTime >= 3000) {
+      RewindHeld = true;
+    }
+  }
+  //
   Music_Program_CS20_HoverOverColors ();
+  //
+  println(FastForwardHeld);
   //
 } //End draw
 //
@@ -367,8 +389,18 @@ void keyPressed() {
   if (key=='r' || key=='R') {
     SongPlayList[SongPlaying].rewind();
   }
-  if (key==CODED && keyCode == LEFT) SongPlayList[SongPlaying].skip(-5000);
-  if (key==CODED && keyCode == RIGHT) SongPlayList[SongPlaying].skip(+5000);
+  if (key == CODED && keyCode == RIGHT) {
+    if (!FastForwardKeyHeldCheck) {
+      FastForwardStartHeldTime = millis();
+      FastForwardKeyHeldCheck = true;
+    }
+  }
+  if (key == CODED && keyCode == LEFT) {
+    if (!RewindKeyHeldCheck) {
+      RewindStartHeldTime = millis();
+      RewindKeyHeldCheck = true;
+    }
+  }
   if (key=='1') {
     int TargetPosition1 = int(SongPlayList[SongPlaying].length() * 0.1) - 5000;
     TargetPosition1 = max(TargetPosition1, 0);
@@ -416,6 +448,18 @@ void keyPressed() {
   }
   //
 } //End keyPressed
+//
+void keyReleased() {
+  //
+  if (key == CODED && keyCode == RIGHT) {
+    FastForwardKeyHeldCheck = false;
+    FastForwardHeld = false;
+  }
+  if (key == CODED && keyCode == LEFT) {
+    RewindKeyHeldCheck = false;
+    RewindHeld = false;
+  }
+} //End keyReleased
 //
 void mousePressed() {
   //
