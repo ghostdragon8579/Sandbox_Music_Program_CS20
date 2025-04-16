@@ -36,6 +36,8 @@ float xQuit, yQuit, widthQuit, heightQuit;
 float xShuffle, yShuffle, widthShuffle, heightShuffle;
 float xReplay, yReplay, widthReplay, heightReplay;
 float xLoop, yLoop, widthLoop, heightLoop;
+float xIcons8Location;
+float ProgressWidth;
 PImage NeonBackground2;
 PImage Quit;
 PImage Shuffle;
@@ -55,6 +57,7 @@ int SongPlaying = SongNumber - SongNumber;
 int SoundEffectNumber = 1;
 int SoundEffectPlaying = 0;
 int SongTimeCounter;
+int AlteredCurrentSongLength;
 int RewindTimeHeld = 0;
 int FastForwardTimeHeld = 0;
 int RepeatInterval = 500;
@@ -224,6 +227,8 @@ void setup() {
   //
   println(SongPlaying);
   //
+  AlteredCurrentSongLength = max(SongPlayList[SongPlaying].length() - 5000, 1);
+  //
   SongTimeCounter = 0; 
   //
   TitleFont = createFont("Times New Roman Bold", 55);
@@ -341,8 +346,7 @@ void draw() {
   if (SongPlayList[SongPlaying].isPlaying()) {
     SongTimeCounter = millis();
   }
-  int AlteredCurrentSongLength = max(SongPlayList[SongPlaying].length() - 5000, 1);
-  float ProgressWidth = map(SongPlayList[SongPlaying].position(), 0, AlteredCurrentSongLength, 0, widthMusicProgressBar);
+  ProgressWidth = map(SongPlayList[SongPlaying].position(), 0, AlteredCurrentSongLength, 0, widthMusicProgressBar);
   ProgressWidth = constrain(ProgressWidth, 0, widthMusicProgressBar);
   noStroke();
   fill(TextPurple);
