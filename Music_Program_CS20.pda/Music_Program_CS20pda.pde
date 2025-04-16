@@ -365,10 +365,12 @@ void draw() {
     if (millis() - RewindTimeHeld >= 3000) {
       RewindHeld = true;
     }
-  if (RewindHeld)
-    if (millis() - PreviousRepeat >= RepeatInterval) { // Check if 0.5 seconds have passed since the last repeat
-      SongPlayList[SongPlaying].skip(-5000); // Perform the rewind action
+  }
+  if (RewindHeld) {
+    if (millis() - PreviousRepeat >= RepeatInterval) {
+      SongPlayList[SongPlaying].skip(-5000);
       PreviousRepeat = millis();
+      PreviousRepeat += RepeatInterval;
     }
   }
   //
