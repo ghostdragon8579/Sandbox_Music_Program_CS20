@@ -57,6 +57,8 @@ int SoundEffectPlaying = 0;
 int SongTimeCounter;
 int RewindTimeHeld = 0;
 int FastForwardTimeHeld = 0;
+int RepeatInterval = 500;
+int PreviousRepeat = 0;
 Boolean SongLoop = false;
 Boolean FastForwardHeld = false;
 Boolean RewindHeld = false;
@@ -337,7 +339,7 @@ void draw() {
   //
   //Progress Bar
   if (SongPlayList[SongPlaying].isPlaying()) {
-    SongTimeCounter=millis();
+    SongTimeCounter = millis();
   }
   int AlteredCurrentSongLength = max(SongPlayList[SongPlaying].length() - 5000, 1);
   float ProgressWidth = map(SongPlayList[SongPlaying].position(), 0, AlteredCurrentSongLength, 0, widthMusicProgressBar);
@@ -362,6 +364,11 @@ void draw() {
   if (RewindKeyHeldCheck) {
     if (millis() - RewindTimeHeld >= 3000) {
       RewindHeld = true;
+    }
+  if (RewindHeld)
+    if (millis() - PreviousRepeat >= RepeatInterval) { // Check if 0.5 seconds have passed since the last repeat
+      SongPlayList[SongPlaying].skip(-5000); // Perform the rewind action
+      PreviousRepeat = millis();
     }
   }
   //
@@ -456,6 +463,7 @@ void keyReleased() {
     RewindKeyHeldCheck = false;
     RewindHeld = false;
   }
+  //
 } //End keyReleased
 //
 void mousePressed() {
