@@ -57,10 +57,12 @@ int SongPlaying = SongNumber - SongNumber;
 int SoundEffectNumber = 1;
 int SoundEffectPlaying = 0;
 int SongTimeCounter;
+int SongLengthAlteration;
 int AlteredCurrentSongLength;
+int KeySongPosition;
 int RewindTimeHeld = 0;
 int FastForwardTimeHeld = 0;
-int RepeatInterval = 500;
+int RepeatInterval = 50;
 int PreviousRepeat = 0;
 Boolean SongLoop = false;
 Boolean FastForwardHeld = false;
@@ -227,9 +229,11 @@ void setup() {
   //
   println(SongPlaying);
   //
-  AlteredCurrentSongLength = max(SongPlayList[SongPlaying].length() - 5000, 1);
+  xIcons8Location = xIconAttribution + textWidth("Loop, Shuffle, and Rewind icons by ");
   //
+  AlteredCurrentSongLength = max(SongPlayList[SongPlaying].length() - 5000, 1);
   SongTimeCounter = 0; 
+  SongLengthAlteration = 5000;
   //
   TitleFont = createFont("Times New Roman Bold", 55);
   //
@@ -323,7 +327,6 @@ void draw() {
   text(AttributionText, xIconAttribution, yIconAttribution+heightIconAttribution*3/4);
   fill(resetDefaultInk);
   //
-  float xIcons8Location = xIconAttribution + textWidth("Loop, Shuffle, and Rewind icons by ");
   if (mouseX > xIcons8Location && mouseX < xIcons8Location + textWidth("Icons8") &&
       mouseY > yIconAttribution - appHeight*3/200 && mouseY < yIconAttribution + appHeight*3/200) {
     cursor(HAND);
@@ -332,13 +335,13 @@ void draw() {
   }
   //
   //Song Auto Transition
-  if (SongPlayList[SongPlaying].position() >= SongPlayList[SongPlaying].length() - 5000 && SongLoop == false) {
+  if (SongPlayList[SongPlaying].position() >= AlteredCurrentSongLength && SongLoop == false) {
     SongPlaying += 1;
     if (SongPlaying > SongNumber - 1) {
     SongPlaying = 0;
     }
     SongPlayList[SongPlaying].play();
-    } else if (SongPlayList[SongPlaying].position() >= SongPlayList[SongPlaying].length() - 5000 && SongLoop == true) {
+    } else if (SongPlayList[SongPlaying].position() >= AlteredCurrentSongLength && SongLoop == true) {
     SongPlayList[SongPlaying].rewind();
   }
   //
@@ -410,50 +413,9 @@ void keyPressed() {
       RewindKeyHeldCheck = true;
     }
   }
-  if (key=='1') {
-    int TargetPosition1 = int(SongPlayList[SongPlaying].length() * 0.1) - 5000;
-    TargetPosition1 = max(TargetPosition1, 0);
-    SongPlayList[SongPlaying].cue(TargetPosition1);
-  }
-  if (key=='2') {
-    int TargetPosition2 = int(SongPlayList[SongPlaying].length() * 0.2) - 5000;
-    TargetPosition2 = max(TargetPosition2, 0);
-    SongPlayList[SongPlaying].cue(TargetPosition2);
-  }
-  if (key=='3') {
-    int TargetPosition3 = int(SongPlayList[SongPlaying].length() * 0.3) - 5000;
-    TargetPosition3 = max(TargetPosition3, 0);
-    SongPlayList[SongPlaying].cue(TargetPosition3);
-  }
-  if (key=='4') {
-    int TargetPosition4 = int(SongPlayList[SongPlaying].length() * 0.4) - 5000;
-    TargetPosition4 = max(TargetPosition4, 0);
-    SongPlayList[SongPlaying].cue(TargetPosition4);
-  }
-  if (key=='5') {
-    int TargetPosition5 = int(SongPlayList[SongPlaying].length() * 0.5) - 5000;
-    TargetPosition5 = max(TargetPosition5, 0);
-    SongPlayList[SongPlaying].cue(TargetPosition5);
-  }
-  if (key=='6') {
-    int TargetPosition6 = int(SongPlayList[SongPlaying].length() * 0.6) - 5000;
-    TargetPosition6 = max(TargetPosition6, 0);
-    SongPlayList[SongPlaying].cue(TargetPosition6);
-  }
-  if (key=='7') {
-    int TargetPosition7 = int(SongPlayList[SongPlaying].length() * 0.7) - 5000;
-    TargetPosition7 = max(TargetPosition7, 0);
-    SongPlayList[SongPlaying].cue(TargetPosition7);
-  }
-  if (key=='8') {
-    int TargetPosition8 = int(SongPlayList[SongPlaying].length() * 0.8) - 5000;
-    TargetPosition8 = max(TargetPosition8, 0);
-    SongPlayList[SongPlaying].cue(TargetPosition8);
-  }
-  if (key=='9') {
-    int TargetPosition9 = int(SongPlayList[SongPlaying].length() * 0.9) - 5000;
-    TargetPosition9 = max(TargetPosition9, 0);
-    SongPlayList[SongPlaying].cue(TargetPosition9);
+  if (key >= '1' && key <= '9') {
+    KeySongPosition = int(SongPlayList[SongPlaying].length() * (key - '0') * 0.1) - 5000;
+    SongPlayList[SongPlaying].cue(max(KeySongPosition, 0));
   }
   //
 } //End keyPressed
@@ -475,7 +437,6 @@ void keyReleased() {
 void mousePressed() {
   //
   //Icon Attribution
-  float xIcons8Location = xIconAttribution + textWidth("Loop, Shuffle, and Rewind icons by ");
   if (mouseX > xIcons8Location && mouseX < xIcons8Location + textWidth("Icons8") && mouseY > yIconAttribution - appHeight*3/200 && mouseY < yIconAttribution + appHeight*3/200) {
     link("https://icons8.com/");
   }
@@ -483,12 +444,10 @@ void mousePressed() {
   if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) {
     if (SongPlayList[SongPlaying].isPlaying()) {
       SongPlayList[SongPlaying].pause();
-    } else {
-    if (SongPlayList[SongPlaying].position() == 0) {
+    } else if (SongPlayList[SongPlaying].position() == 0) {
       SongPlayList[SongPlaying].play();
     } else {
       SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
-      }
     }
   }
   else if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
