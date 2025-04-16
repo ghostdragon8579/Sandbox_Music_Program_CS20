@@ -60,10 +60,6 @@ int SongTimeCounter;
 int SongLengthAlteration;
 int AlteredCurrentSongLength;
 int KeySongPosition;
-int RewindTimeHeld = 0;
-int FastForwardTimeHeld = 0;
-int RepeatInterval = 50;
-int PreviousRepeat = 0;
 Boolean SongLoop = false;
 Boolean FastForwardHeld = false;
 Boolean RewindHeld = false;
@@ -231,9 +227,9 @@ void setup() {
   //
   xIcons8Location = xIconAttribution + textWidth("Loop, Shuffle, and Rewind icons by ");
   //
-  AlteredCurrentSongLength = max(SongPlayList[SongPlaying].length() - 5000, 1);
-  SongTimeCounter = 0; 
   SongLengthAlteration = 5000;
+  AlteredCurrentSongLength = max(SongPlayList[SongPlaying].length() - SongLengthAlteration, 1);
+  SongTimeCounter = 0; 
   //
   TitleFont = createFont("Times New Roman Bold", 55);
   //
@@ -362,24 +358,6 @@ void draw() {
   stroke(Black);
   fill(resetDefaultInk);
   //
-  //Held Time Check
-  if (FastForwardKeyHeldCheck) {
-    if (millis() - FastForwardTimeHeld >= 3000) {
-      FastForwardHeld = true;
-    }
-  }
-  if (RewindKeyHeldCheck) {
-    if (millis() - RewindTimeHeld >= 3000) {
-      RewindHeld = true;
-    }
-  }
-  if (RewindHeld) {
-    if (millis() - PreviousRepeat >= RepeatInterval) {
-      SongPlayList[SongPlaying].skip(-5000);
-      PreviousRepeat = millis();
-      PreviousRepeat += RepeatInterval;
-    }
-  }
   //
   Music_Program_CS20_HoverOverColors ();
   //
@@ -402,16 +380,10 @@ void keyPressed() {
     SongPlayList[SongPlaying].rewind();
   }
   if (key == CODED && keyCode == RIGHT) {
-    if (!FastForwardKeyHeldCheck) {
-      FastForwardTimeHeld = millis();
-      FastForwardKeyHeldCheck = true;
-    }
+    SongPlayList[SongPlaying].skip(+5000);
   }
   if (key == CODED && keyCode == LEFT) {
-    if (!RewindKeyHeldCheck) {
-      RewindTimeHeld = millis();
-      RewindKeyHeldCheck = true;
-    }
+    SongPlayList[SongPlaying].skip(-5000);
   }
   if (key >= '1' && key <= '9') {
     KeySongPosition = int(SongPlayList[SongPlaying].length() * (key - '0') * 0.1) - 5000;
