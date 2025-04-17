@@ -60,11 +60,15 @@ int SongTimeCounter;
 int SongLengthAlteration;
 int AlteredCurrentSongLength;
 int KeySongPosition;
+int SongSkipTime;
 Boolean SongLoop = false;
 Boolean FastForwardHeld = false;
 Boolean RewindHeld = false;
 boolean FastForwardKeyHeldCheck = false;
 boolean RewindKeyHeldCheck = false;
+boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
+  return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
+}
 File file;
 File AudioFiles;
 File SoundEffectFiles;
@@ -227,6 +231,7 @@ void setup() {
   //
   xIcons8Location = xIconAttribution + textWidth("Loop, Shuffle, and Rewind icons by ");
   //
+  SongSkipTime = 5000;
   SongLengthAlteration = 5000;
   AlteredCurrentSongLength = max(SongPlayList[SongPlaying].length() - SongLengthAlteration, 1);
   SongTimeCounter = 0; 
@@ -413,67 +418,27 @@ void mousePressed() {
     link("https://icons8.com/");
   }
   //
-  if (mouseX>xPlayPause && mouseX<xPlayPause+widthPlayPause && mouseY>yPlayPause && mouseY<yPlayPause+heightPlayPause) {
-    if (SongPlayList[SongPlaying].isPlaying()) {
-      SongPlayList[SongPlaying].pause();
-    } else if (SongPlayList[SongPlaying].position() == 0) {
-      SongPlayList[SongPlaying].play();
-    } else {
-      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
-    }
-  }
-  else if (mouseX>xNext && mouseX<xNext+widthNext && mouseY>yNext && mouseY<yNext+heightNext) {
-    if (SongPlayList[SongPlaying].isPlaying()) {
-      SongPlayList[SongPlaying].pause();
-      SongPlayList[SongPlaying].rewind();
-      SongPlaying += 1;
-    if (SongPlaying > SongNumber -1) {
-      SongPlaying = 0; }
-      SongPlayList[SongPlaying].play();
-    } else {
-      SongPlayList[SongPlaying].pause();
-      SongPlayList[SongPlaying].rewind();
-      SongPlaying += 1;
-    if (SongPlaying > SongNumber -1) {
-      SongPlaying = 0; }
-    }
-  }
-  else if (mouseX>xPrevious && mouseX<xPrevious+widthPrevious && mouseY>yPrevious && mouseY<yPrevious+heightPrevious) {
-    if (SongPlayList[SongPlaying].isPlaying()) {
-      SongPlayList[SongPlaying].pause();
-      SongPlayList[SongPlaying].rewind();
-      SongPlaying -= 1;
-    if (SongPlaying < 0) {
-      SongPlaying = SongNumber -1; }
-      SongPlayList[SongPlaying].play(); 
-    } else {
-      SongPlayList[SongPlaying].pause();
-      SongPlayList[SongPlaying].rewind();
-      SongPlaying -= 1;
-    if (SongPlaying < 0) {
-      SongPlaying = SongNumber -1; } 
-    }
-  }
-  else if (mouseX>xFastForward && mouseX<xFastForward+widthFastForward && mouseY>yFastForward && mouseY<yFastForward+heightFastForward) {
-    SongPlayList[SongPlaying].skip(+5000);
-  }
-  else if (mouseX>xRewind && mouseX<xRewind+widthRewind && mouseY>yRewind && mouseY<yRewind+heightRewind) {
-    SongPlayList[SongPlaying].skip(-5000);
-  }
-  else if (mouseX>xQuit && mouseX<xQuit+widthQuit && mouseY>yQuit && mouseY<yQuit+heightQuit) {
-    exit();
-  }
-  else if (mouseX>xReplay && mouseX<xReplay+widthReplay && mouseY>yReplay && mouseY<yReplay+heightReplay) {
+  //Buttons
+  if (MouseIsOver(xPlayPause, yPlayPause, widthPlayPause, heightPlayPause)) {
+    PlayPauseFunction();
+  } else if (MouseIsOver(xNext, yNext, widthNext, heightNext)) {
+    NextSongFunction();
+  } else if (MouseIsOver(xPrevious, yPrevious, widthPrevious, heightPrevious)) {
+    PreviousSongFunction();
+  } else if (MouseIsOver(xFastForward, yFastForward, widthFastForward, heightFastForward)) {
+    SongPlayList[SongPlaying].skip(SongSkipTime);
+  } else if (MouseIsOver(xRewind, yRewind, widthRewind, heightRewind)) {
+    SongPlayList[SongPlaying].skip(-SongSkipTime);
+  } else if (MouseIsOver(xReplay, yReplay, widthReplay, heightReplay)) {
     SongPlayList[SongPlaying].rewind();
-  }
-  else if (mouseX>xShuffle && mouseX<xShuffle+widthShuffle && mouseY>yShuffle && mouseY<yShuffle+heightShuffle) {
-    SongPlayList[SongPlaying].rewind();
-    SongPlaying=int (random(0, SongNumber-1));
-  }
-  else if (mouseX>xLoop && mouseX<xLoop+widthLoop && mouseY>yLoop && mouseY<yLoop+heightLoop) {
+  } else if (MouseIsOver(xShuffle, yShuffle, widthShuffle, heightShuffle)) {
+    ShuffleSongFunction();
+  } else if (MouseIsOver(xLoop, yLoop, widthLoop, heightLoop)) {
       SongLoop = true;
     } else if (SongLoop == true) {
       SongLoop = false;
+  } else if (MouseIsOver(xQuit, yQuit, widthQuit, heightQuit)) {
+    exit();
   }
   //
 } //End mousePressed
