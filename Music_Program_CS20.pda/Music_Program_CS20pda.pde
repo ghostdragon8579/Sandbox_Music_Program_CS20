@@ -328,8 +328,7 @@ void draw() {
   text(AttributionText, xIconAttribution, yIconAttribution+heightIconAttribution*3/4);
   fill(resetDefaultInk);
   //
-  if (mouseX > xIcons8Location && mouseX < xIcons8Location + textWidth("Icons8") &&
-      mouseY > yIconAttribution - appHeight*3/200 && mouseY < yIconAttribution + appHeight*3/200) {
+  if (MouseIsOver(xIcons8Location, yIconAttribution - appHeight*3/200, textWidth("Icons8"), appHeight*3/100)) {
     cursor(HAND);
   } else {
     cursor(ARROW);
@@ -414,7 +413,7 @@ void keyReleased() {
 void mousePressed() {
   //
   //Icon Attribution
-  if (mouseX > xIcons8Location && mouseX < xIcons8Location + textWidth("Icons8") && mouseY > yIconAttribution - appHeight*3/200 && mouseY < yIconAttribution + appHeight*3/200) {
+  if (MouseIsOver(xIcons8Location, yIconAttribution - appHeight * 3 / 200, textWidth("Icons8"), appHeight * 3 / 100)) {
     link("https://icons8.com/");
   }
   //
