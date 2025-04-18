@@ -345,23 +345,9 @@ void draw() {
     SongPlayList[SongPlaying].rewind();
   }
   //
-  //Progress Bar
-  if (SongPlayList[SongPlaying].isPlaying()) {
-    SongTimeCounter = millis();
-  }
-  ProgressWidth = map(SongPlayList[SongPlaying].position(), 0, AlteredCurrentSongLength, 0, widthMusicProgressBar);
-  ProgressWidth = constrain(ProgressWidth, 0, widthMusicProgressBar);
-  noStroke();
-  fill(TextPurple);
-  rect(xMusicProgressBar, yMusicProgressBar, ProgressWidth, heightMusicProgressBar);
-  strokeWeight(4);
-  stroke(Purple);
-  noFill();
-  rect(xMusicProgressBar, yMusicProgressBar,  widthMusicProgressBar, heightMusicProgressBar);
-  strokeWeight(1);
-  stroke(Black);
-  fill(resetDefaultInk);
-  //
+  //Progress Bar and Progress Timer
+  Music_Program_CS20_ProgressBar ();
+  Music_Program_CS20_ProgressTimer ();
   //
   Music_Program_CS20_HoverOverColors ();
   //
@@ -384,10 +370,10 @@ void keyPressed() {
     SongPlayList[SongPlaying].rewind();
   }
   if (key == CODED && keyCode == RIGHT) {
-    SongPlayList[SongPlaying].skip(+5000);
+    SongPlayList[SongPlaying].skip(+SongSkipTime);
   }
   if (key == CODED && keyCode == LEFT) {
-    SongPlayList[SongPlaying].skip(-5000);
+    SongPlayList[SongPlaying].skip(-SongSkipTime);
   }
   if (key >= '1' && key <= '9') {
     KeySongPosition = int(SongPlayList[SongPlaying].length() * (key - '0') * 0.1) - 5000;
