@@ -18,10 +18,10 @@ void Music_Program_CS20_ProgressBar () {
 void Music_Program_CS20_ProgressTimer () {
   int CurrentSongTime = SongPlayList[SongPlaying].position();
   int TotalSongTime = AlteredCurrentSongLength;
-  int CurrentSongPositionMinutes = CurrentSongTime / 60000;
-  int CurrentSongPositionSeconds = (CurrentSongTime / 1000) % 60;
-  int TotalSongMinutes = TotalSongTime / 60000;
-  int TotalSongSeconds = (TotalSongTime / 1000) % 60;
+  int CurrentSongPositionMinutes = CurrentSongTime/60000;
+  int CurrentSongPositionSeconds = (CurrentSongTime/1000) % 60;
+  int TotalSongMinutes = TotalSongTime/60000;
+  int TotalSongSeconds = (TotalSongTime/1000) % 60;
   fill(TextPurple);
   textAlign(CENTER, CENTER);
   textSize(20);
