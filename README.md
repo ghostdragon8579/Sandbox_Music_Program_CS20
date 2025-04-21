@@ -9,8 +9,8 @@ CS20 project
 # To Do List: Prossesing
 - [x] Blank Intermediate Processing Music Player Program
 - [x] CS10 Music Player Redesign
-- [ ] CS10 Music Player Button Upgrades
-- [ ] Music Progress Bar & Timer
+- [x] CS10 Music Player Button Upgrades
+- [x] Music Progress Bar & Timer
 
 # To Do List: html
 - [x] Responsive Design
