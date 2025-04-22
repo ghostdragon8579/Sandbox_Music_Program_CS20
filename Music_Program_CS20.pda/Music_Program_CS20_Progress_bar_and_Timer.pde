@@ -24,7 +24,7 @@ void Music_Program_CS20_ProgressTimer () {
   int TotalSongSeconds = (TotalSongTime/1000) % 60;
   fill(TextPurple);
   textAlign(CENTER, CENTER);
-  textSize(20);
+  textSize(appHeight*1/40);
   text(
     nf(CurrentSongPositionMinutes, 2) + ":" + nf(CurrentSongPositionSeconds, 2) + " / " +
     nf(TotalSongMinutes, 2) + ":" + nf(TotalSongSeconds, 2),

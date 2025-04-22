@@ -303,21 +303,21 @@ void draw() {
   //Music MetaData Display
   fill(TextPurple);
   textAlign(CENTER, CENTER);
-  size = 50;
+  size = appHeight*1/16;
   textFont(TitleFont, size);
   text(SongPlayListMetaData[SongPlaying].title(), xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle);
   fill(resetDefaultInk);
   //
   fill(TextPurple);
   textAlign(CENTER, CENTER);
-  size = 25;
+  size = appHeight*1/32;
   textFont(TitleFont, size);
   text("Author: "+SongPlayListMetaData[SongPlaying].author(), xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor);
   fill(resetDefaultInk);
   //
   fill(TextPurple);
   textAlign(CENTER, CENTER);
-  size = 25;
+  size = appHeight*1/32;
   textFont(TitleFont, size);
   text("Released in: "+SongPlayListMetaData[SongPlaying].date(), xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate);
   fill(resetDefaultInk);
@@ -325,7 +325,7 @@ void draw() {
   //Icon Attribution
   fill(TextPurple);
   textAlign(LEFT, LEFT);
-  size = 12;
+  size = appHeight*3/200;
   textFont(TitleFont, size);
   String AttributionText = "Loop, Shuffle, and Rewind icons by Icons8";
   text(AttributionText, xIconAttribution, yIconAttribution+heightIconAttribution*3/4);
