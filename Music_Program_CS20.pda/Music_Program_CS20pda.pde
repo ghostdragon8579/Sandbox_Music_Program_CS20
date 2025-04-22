@@ -208,6 +208,8 @@ void setup() {
     SoundEffectPlayListMetaData[i] = SoundEffectPlayList[i].getMetaData();
   }
   //
+  /*
+  //Song Debugging 
   println("File Name", SongPlayListMetaData[SongPlaying].fileName());
   println("Song Length (in milliseconds)", SongPlayListMetaData[SongPlaying].length());
   println("Song Length (in seconds)", SongPlayListMetaData[SongPlaying].length()/1000);
@@ -228,6 +230,7 @@ void setup() {
   println("Encoded", SongPlayListMetaData[SongPlaying].encoded());
   //
   println(SongPlaying);
+  */
   //
   xIcons8Location = xIconAttribution + textWidth("Loop, Shuffle, and Rewind icons by ");
   //
