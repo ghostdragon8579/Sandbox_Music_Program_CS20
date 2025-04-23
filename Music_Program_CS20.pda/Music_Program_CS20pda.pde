@@ -44,6 +44,7 @@ PImage Shuffle;
 PImage Loop;
 PImage Replay;
 PFont TitleFont;
+PFont AttributionFont;
 color resetDefaultInk=#FFFFFF;
 color Gray=#C9C9C9;
 color LightGray=#CECECE;
@@ -115,7 +116,7 @@ void setup() {
   xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+heightMusicAuthor; widthMusicPublishDate = widthMusicAuthor; heightMusicPublishDate = heightMusicAuthor;
   xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+heightMusicPublishDate; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
   xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*13/16; widthMusicProgressBar = appWidth*8/13; heightMusicProgressBar = appHeight*1/48;
-  xIconAttribution = xMusicPanel+appWidth*1/70; yIconAttribution = appHeight*9/10-appHeight*1/30;  widthIconAttribution = widthMusicPanel*1/3; heightIconAttribution = appHeight*1/36;
+  xIconAttribution = xMusicPanel+appWidth*1/100; yIconAttribution = appHeight*9/10-appHeight*1/30;  widthIconAttribution = widthMusicPanel*1/5; heightIconAttribution = appHeight*1/36;
   //
   //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
@@ -240,6 +241,12 @@ void setup() {
   SongTimeCounter = 0; 
   //
   TitleFont = createFont("Times New Roman Bold", 55);
+  AttributionFont = createFont("Calibri Bold", 55);
+  //
+  /*
+  String[] fontList = PFont.list();
+  printArray(fontList);
+  */
   //
 } //End setup
 void draw() {
@@ -326,7 +333,7 @@ void draw() {
   fill(TextPurple);
   textAlign(LEFT, LEFT);
   size = appHeight*3/200;
-  textFont(TitleFont, size);
+  textFont(AttributionFont, size);
   String AttributionText = "Loop, Shuffle, and Rewind icons by Icons8";
   text(AttributionText, xIconAttribution, yIconAttribution+heightIconAttribution*3/4);
   fill(resetDefaultInk);
@@ -349,6 +356,7 @@ void draw() {
   }
   //
   //Progress Bar and Progress Timer
+  textFont(TitleFont, size);
   Music_Program_CS20_ProgressBar ();
   Music_Program_CS20_ProgressTimer ();
   //
