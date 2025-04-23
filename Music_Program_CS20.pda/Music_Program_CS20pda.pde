@@ -125,7 +125,7 @@ void setup() {
   xPlayPause = appWidth*25/52; yPlayPause = yPrevious; widthPlayPause = widthPrevious; heightPlayPause = heightPrevious;
   xFastForward = appWidth*16/26; yFastForward = yPlayPause; widthFastForward = widthPrevious; heightFastForward = heightPrevious;
   xNext = appWidth*20/26; yNext = yPrevious; widthNext = widthPrevious; heightNext = heightPrevious;
-  xShuffle = xPlayPause; yShuffle = yPlayPause+heightPrevious*2; widthShuffle = widthPrevious; heightShuffle = heightPrevious;
+  xShuffle = xPlayPause; yShuffle = yPlayPause+heightPrevious*1.5; widthShuffle = widthPrevious; heightShuffle = heightPrevious;
   xReplay = xRewind; yReplay = yShuffle; widthReplay = widthPrevious; heightReplay = heightPrevious;
   xLoop = xFastForward; yLoop = yShuffle; widthLoop = widthPrevious; heightLoop = heightPrevious;
   //
