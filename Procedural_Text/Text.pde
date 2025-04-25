@@ -1,18 +1,18 @@
 PFont appFont;
 PFont TitleFont;
 float fontSize;
+float[] fontSizes = new float[rectDIVHeight.length];
 String[] string = new String[2];
 //
 void textSetup1() {
-   /* Fonts from OS
-   println("Start of Console");
-   String[] fontList = PFont.list(); //To list all fonts available on system
-   printArray(fontList); //For listing all possible fonts to choose, then createFont
-   */
+  /* Fonts from OS
+  println("Start of Console");
+  String[] fontList = PFont.list(); //To list all fonts available on system
+  printArray(fontList); //For listing all possible fonts to choose, then createFont
+  */
   fontSize = shorterSide;
-  appFont = createFont("Harrington", fontSize); //Verify font exists
+  appFont = createFont("Harrington", fontSize);
   TitleFont = createFont("Times New Roman Bold", fontSize);
-  //Tools / Create Font / Find Font / Do Not Press "OK", known bug
   //
   stringVarsEntry();
   //
@@ -30,24 +30,21 @@ void textSetup2() {
    */
   fontSize = shorterSide;
   //Finds the smallest rect(height); might cause issue with text font formatting
-  for ( int i=0; i<rectDIVHeight.length; i++ ) {
-    if ( fontSize > rectDIVHeight[i] ) fontSize = rectDIVHeight[i];
+  for (int i=0; i<rectDIVHeight.length; i++) {
+    if (fontSize > rectDIVHeight[i]) fontSize = rectDIVHeight[i];
   }
-  float harringtonAspectRatio = 1.04;
-  fontSize = fontSize * harringtonAspectRatio;
+  float TimesNewRomanBoldAspectRatio = 1.04;
+  fontSize = fontSize * TimesNewRomanBoldAspectRatio;
   //
-  //println("Aspect Ratio:", harringtonAspectRatio);
-  textFont(TitleFont, fontSize); //Manditory, for textWidth()
-  float fontSize_temp=fontSize;
-  for ( int i=0; i<rectDIVWidth.length; i++ ) {
-    if ( rectDIVWidth[i] < textWidth( string[i] ) ) {
-      while ( rectDIVWidth[i] < textWidth( string[i] ) ) {
-        fontSize_temp = fontSize*0.74609375;
-        textFont(TitleFont, fontSize_temp); //Manditory, for textWidth()
-      }
-      fontSize = fontSize_temp;
+  for (int i = 0; i < rectDIVHeight.length; i++) {
+    float tempFontSize = rectDIVHeight[i];
+    textFont(appFont, tempFontSize);
+    while (textWidth(string[i]) > rectDIVWidth[i]) {
+      tempFontSize *= 0.99;
+      textFont(appFont, tempFontSize);
     }
-    textFont(TitleFont, fontSize);
+    fontSizes[i] = tempFontSize;
+    textFont(appFont, tempFontSize);
   }
 } //End Text Setup
 //
