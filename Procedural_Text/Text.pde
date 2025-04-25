@@ -11,6 +11,7 @@ void textSetup1() {
    */
   fontSize = shorterSide;
   appFont = createFont("Harrington", fontSize); //Verify font exists
+  TitleFont = createFont("Times New Roman Bold", fontSize);
   //Tools / Create Font / Find Font / Do Not Press "OK", known bug
   //
   stringVarsEntry();
@@ -36,17 +37,17 @@ void textSetup2() {
   fontSize = fontSize * harringtonAspectRatio;
   //
   //println("Aspect Ratio:", harringtonAspectRatio);
-  textFont(appFont, fontSize); //Manditory, for textWidth()
+  textFont(TitleFont, fontSize); //Manditory, for textWidth()
   float fontSize_temp=fontSize;
   for ( int i=0; i<rectDIVWidth.length; i++ ) {
     if ( rectDIVWidth[i] < textWidth( string[i] ) ) {
       while ( rectDIVWidth[i] < textWidth( string[i] ) ) {
         fontSize_temp = fontSize*0.74609375;
-        textFont(appFont, fontSize_temp); //Manditory, for textWidth()
+        textFont(TitleFont, fontSize_temp); //Manditory, for textWidth()
       }
       fontSize = fontSize_temp;
     }
-    textFont(appFont, fontSize);
+    textFont(TitleFont, fontSize);
   }
 } //End Text Setup
 //
