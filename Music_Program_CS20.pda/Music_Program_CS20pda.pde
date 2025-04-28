@@ -361,7 +361,7 @@ void draw() {
   Music_Program_CS20_ProgressTimer ();
   //
   //HoverOverColors
-  Music_Program_CS20_HoverOverColors ();
+  Music_Program_CS20_HoverOver ();
   //
 } //End draw
 //

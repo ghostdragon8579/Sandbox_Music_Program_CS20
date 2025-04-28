@@ -1,4 +1,4 @@
-void Music_Program_CS20_HoverOverColors () {
+void Music_Program_CS20_HoverOver () {
   color hoverOverColor=color(255, 255, 255, 64);
   if (MouseIsOver(xPrevious, yPrevious, widthPrevious, heightPrevious)) {
     fill(hoverOverColor);
