@@ -10,11 +10,13 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
 //Global Variables
+float[] TextDIVWidth = new float[3];
+float[] TextDIVHeight = new float[3];
 float xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground;
 float xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel;
-float xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle;
-float xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor;
-float xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate;
+float xMusicTitle, yMusicTitle;
+float xMusicAuthor, yMusicAuthor;
+float xMusicPublishDate, yMusicPublishDate;
 float xMusicImage, yMusicImage, widthMusicImage, heightMusicImage;
 float xMusicProgressBar, yMusicProgressBar, widthMusicProgressBar, heightMusicProgressBar;
 float xIconAttribution, yIconAttribution, widthIconAttribution, heightIconAttribution;
@@ -53,6 +55,7 @@ color Purple=#B031E8;
 color TextPurple=#F986FF;
 int appWidth, appHeight;
 int size;
+int ShorterSide;
 int SongNumber = 6;
 int SongPlaying = SongNumber - SongNumber;
 int SoundEffectNumber = 1;
@@ -89,6 +92,7 @@ void setup() {
   size(1200, 800);
   appWidth = width;
   appHeight = height;
+  ShorterSide = (appWidth >= appHeight) ? appHeight : appWidth;
   //
   minim = new Minim(this);
   String up = "..";
@@ -106,15 +110,17 @@ void setup() {
   Loop = loadImage(Imagepathway + ImageFolder + open + LoopImage);
   Replay = loadImage(Imagepathway + ImageFolder + open + ReplayImage);
   //
+  TitleTextSetup1();
+  //
   //Background
   xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
   //
   //Music Panel
   xMusicPanel = appWidth*2/27; yMusicPanel = appHeight*1/10; widthMusicPanel = appWidth*23/27; heightMusicPanel = appHeight*4/5;
-  xMusicTitle = appWidth*2/7; yMusicTitle = appHeight*3/20; widthMusicTitle = appWidth*3/7; heightMusicTitle = appHeight*1/11;
-  xMusicAuthor = appWidth*1/3; yMusicAuthor = yMusicTitle+heightMusicTitle; widthMusicAuthor = appWidth*1/3; heightMusicAuthor = appHeight*1/18;
-  xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+heightMusicAuthor; widthMusicPublishDate = widthMusicAuthor; heightMusicPublishDate = heightMusicAuthor;
-  xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+heightMusicPublishDate; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
+  xMusicTitle = appWidth*2/7; yMusicTitle = appHeight*3/20; TextDIVWidth[0] = appWidth*3/7; TextDIVHeight[0] = appHeight*1/11;
+  xMusicAuthor = appWidth*1/3; yMusicAuthor = yMusicTitle+TextDIVWidth[0]; TextDIVWidth[1] = appWidth*1/3; TextDIVHeight[1] = appHeight*1/18;
+  xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+TextDIVHeight[1]; TextDIVWidth[2] = TextDIVWidth[1]; TextDIVHeight[2] = TextDIVHeight[1];
+  xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+TextDIVHeight[2]; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
   xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*13/16; widthMusicProgressBar = appWidth*8/13; heightMusicProgressBar = appHeight*1/48;
   xIconAttribution = xMusicPanel+appWidth*1/100; yIconAttribution = appHeight*9/10-appHeight*1/30;  widthIconAttribution = widthMusicPanel*1/5; heightIconAttribution = appHeight*1/36;
   //
@@ -247,6 +253,7 @@ void setup() {
   String[] fontList = PFont.list();
   printArray(fontList);
   */
+  TitleTextSetup2();
   //
 } //End setup
 void draw() {
@@ -264,9 +271,9 @@ void draw() {
   stroke(Purple);
   fill(Black);
   rect(xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel);
-  rect(xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle);
-  rect(xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor);
-  rect(xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate);
+  rect(xMusicTitle, yMusicTitle, TextDIVWidth[0], TextDIVHeight[0]);
+  rect(xMusicAuthor, yMusicAuthor, TextDIVWidth[1], TextDIVHeight[1]);
+  rect(xMusicPublishDate, yMusicPublishDate, TextDIVWidth[2], TextDIVHeight[2]);
   rect(xMusicImage, yMusicImage, widthMusicImage, heightMusicImage);
   noStroke();
   rect(xIconAttribution, yIconAttribution, widthIconAttribution, heightIconAttribution);
@@ -307,26 +314,15 @@ void draw() {
   image(Loop, xLoop, yLoop, widthLoop, heightLoop);
   image(Replay, xReplay, yReplay, widthReplay, heightReplay);
   //
-  //Music MetaData Display
+  //Text ()
   fill(TextPurple);
   textAlign(CENTER, CENTER);
-  size = appHeight*1/16;
-  textFont(TitleFont, size);
-  text(SongPlayListMetaData[SongPlaying].title(), xMusicTitle, yMusicTitle, widthMusicTitle, heightMusicTitle);
-  fill(resetDefaultInk);
-  //
-  fill(TextPurple);
-  textAlign(CENTER, CENTER);
-  size = appHeight*1/32;
-  textFont(TitleFont, size);
-  text("Author: "+SongPlayListMetaData[SongPlaying].author(), xMusicAuthor, yMusicAuthor, widthMusicAuthor, heightMusicAuthor);
-  fill(resetDefaultInk);
-  //
-  fill(TextPurple);
-  textAlign(CENTER, CENTER);
-  size = appHeight*1/32;
-  textFont(TitleFont, size);
-  text("Released in: "+SongPlayListMetaData[SongPlaying].date(), xMusicPublishDate, yMusicPublishDate, widthMusicPublishDate, heightMusicPublishDate);
+  textFont(TitleFont, FontSizes[0]);
+  text(string[0], xMusicTitle, yMusicTitle, TextDIVWidth[0], TextDIVHeight[0]);
+  textFont(TitleFont, FontSizes[1]);
+  text(string[1], xMusicAuthor, yMusicAuthor, TextDIVWidth[1], TextDIVHeight[1]);
+  textFont(TitleFont, FontSizes[2]);
+  text(string[1], xMusicPublishDate, yMusicPublishDate, TextDIVWidth[2], TextDIVHeight[2]);
   fill(resetDefaultInk);
   //
   //Icon Attribution
