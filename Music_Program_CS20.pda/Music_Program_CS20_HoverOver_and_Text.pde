@@ -1,7 +1,7 @@
 float TitleFontSize;
-float[] FontSizes = new float[TextDIVHeight.length];
+float[] FontSizes = new float[MusicPanelDIVHeight.length];
 String[] string = new String[4];
-void TitleTextSetup1() {
+void MusicPanelTextSetup1() {
   //
   TitleFontSize = ShorterSide;
   TitleFont = createFont("Times New Roman Bold", TitleFontSize);
@@ -13,19 +13,19 @@ void stringVarsEntry() {
   string[1] = "Author: "+SongPlayListMetaData[SongPlaying].author();
   string[2] = "Released in: "+SongPlayListMetaData[SongPlaying].date();
 }
-void TitleTextSetup2() {
+void MusicPanelTextSetup2() {
   TitleFontSize = ShorterSide;
   //Finds the smallest rect(height); might cause issue with text font formatting
-  for (int i=0; i<TextDIVHeight.length; i++) {
-    if (TitleFontSize > TextDIVHeight[i]) TitleFontSize = TextDIVHeight[i];
+  for (int i=0; i<MusicPanelDIVHeight.length; i++) {
+    if (TitleFontSize > MusicPanelDIVHeight[i]) TitleFontSize = MusicPanelDIVHeight[i];
   }
   float TimesNewRomanBoldAspectRatio = 1.04;
   TitleFontSize = TitleFontSize * TimesNewRomanBoldAspectRatio;
   //
-  for (int i = 0; i < TextDIVHeight.length; i++) {
-    float TemporaryFontSize = TextDIVHeight[i];
+  for (int i = 0; i < MusicPanelDIVHeight.length; i++) {
+    float TemporaryFontSize = MusicPanelDIVHeight[i];
     textFont(TitleFont, TemporaryFontSize);
-    while (textWidth(string[i]) > TextDIVWidth[i]) {
+    while (textWidth(string[i]) > MusicPanelDIVWidth[i]) {
       TemporaryFontSize *= 0.99;
       textFont(TitleFont, TemporaryFontSize);
     }

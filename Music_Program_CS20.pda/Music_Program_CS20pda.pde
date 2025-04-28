@@ -10,14 +10,14 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
 //Global Variables
-float[] TextDIVWidth = new float[3];
-float[] TextDIVHeight = new float[3];
 float xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground;
-float xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel;
+float[] MusicPanelDIVWidth = new float[5];
+float[] MusicPanelDIVHeight = new float[5];
+float xMusicPanel, yMusicPanel;
 float xMusicTitle, yMusicTitle;
 float xMusicAuthor, yMusicAuthor;
 float xMusicPublishDate, yMusicPublishDate;
-float xMusicImage, yMusicImage, widthMusicImage, heightMusicImage;
+float xMusicImage, yMusicImage;
 float xMusicProgressBar, yMusicProgressBar, widthMusicProgressBar, heightMusicProgressBar;
 float xIconAttribution, yIconAttribution, widthIconAttribution, heightIconAttribution;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
@@ -110,19 +110,23 @@ void setup() {
   Loop = loadImage(Imagepathway + ImageFolder + open + LoopImage);
   Replay = loadImage(Imagepathway + ImageFolder + open + ReplayImage);
   //
-  TitleTextSetup1();
+  MusicPanelTextSetup1();
   //
   //Background
   xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
   //
   //Music Panel
-  xMusicPanel = appWidth*2/27; yMusicPanel = appHeight*1/10; widthMusicPanel = appWidth*23/27; heightMusicPanel = appHeight*4/5;
-  xMusicTitle = appWidth*2/7; yMusicTitle = appHeight*3/20; TextDIVWidth[0] = appWidth*3/7; TextDIVHeight[0] = appHeight*1/11;
-  xMusicAuthor = appWidth*1/3; yMusicAuthor = yMusicTitle+TextDIVWidth[0]; TextDIVWidth[1] = appWidth*1/3; TextDIVHeight[1] = appHeight*1/18;
-  xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+TextDIVHeight[1]; TextDIVWidth[2] = TextDIVWidth[1]; TextDIVHeight[2] = TextDIVHeight[1];
-  xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+TextDIVHeight[2]; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
+  xMusicPanel = appWidth*2/27; yMusicPanel = appHeight*1/10; MusicPanelDIVWidth[0] = appWidth*23/27; MusicPanelDIVHeight[0] = appHeight*4/5;
+  xMusicTitle = appWidth*2/7; yMusicTitle = appHeight*3/20; MusicPanelDIVWidth[1] = appWidth*3/7; MusicPanelDIVHeight[1] = appHeight*1/11;
+  xMusicAuthor = appWidth*1/3; yMusicAuthor = yMusicTitle+MusicPanelDIVHeight[1]; MusicPanelDIVWidth[2] = appWidth*1/3; MusicPanelDIVHeight[2] = appHeight*1/18;
+  xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+MusicPanelDIVHeight[2]; MusicPanelDIVWidth[3] = MusicPanelDIVWidth[2]; MusicPanelDIVHeight[3] = MusicPanelDIVHeight[2];
+  xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+MusicPanelDIVHeight[3]; MusicPanelDIVWidth[4] = appWidth*1/3; MusicPanelDIVHeight[4] = appHeight*1/6;
+  //
+  //Progress Bar
   xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*13/16; widthMusicProgressBar = appWidth*8/13; heightMusicProgressBar = appHeight*1/48;
-  xIconAttribution = xMusicPanel+appWidth*1/100; yIconAttribution = appHeight*9/10-appHeight*1/30;  widthIconAttribution = widthMusicPanel*1/5; heightIconAttribution = appHeight*1/36;
+  //
+  //Icon Attribution
+  xIconAttribution = xMusicPanel+appWidth*1/100; yIconAttribution = appHeight*9/10-appHeight*1/30;  widthIconAttribution = MusicPanelDIVWidth[0]; heightIconAttribution = appHeight*1/36;
   //
   //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
@@ -253,7 +257,7 @@ void setup() {
   String[] fontList = PFont.list();
   printArray(fontList);
   */
-  TitleTextSetup2();
+  MusicPanelTextSetup2();
   //
 } //End setup
 void draw() {
@@ -270,11 +274,11 @@ void draw() {
   strokeWeight(3);
   stroke(Purple);
   fill(Black);
-  rect(xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel);
-  rect(xMusicTitle, yMusicTitle, TextDIVWidth[0], TextDIVHeight[0]);
-  rect(xMusicAuthor, yMusicAuthor, TextDIVWidth[1], TextDIVHeight[1]);
-  rect(xMusicPublishDate, yMusicPublishDate, TextDIVWidth[2], TextDIVHeight[2]);
-  rect(xMusicImage, yMusicImage, widthMusicImage, heightMusicImage);
+  rect(xMusicPanel, yMusicPanel, MusicPanelDIVWidth[0], MusicPanelDIVHeight[0]);
+  rect(xMusicTitle, yMusicTitle, MusicPanelDIVWidth[1], MusicPanelDIVHeight[1]);
+  rect(xMusicAuthor, yMusicAuthor, MusicPanelDIVWidth[2], MusicPanelDIVHeight[2]);
+  rect(xMusicPublishDate, yMusicPublishDate, MusicPanelDIVWidth[3], MusicPanelDIVHeight[3]);
+  rect(xMusicImage, yMusicImage, MusicPanelDIVWidth[4], MusicPanelDIVHeight[4]);
   noStroke();
   rect(xIconAttribution, yIconAttribution, widthIconAttribution, heightIconAttribution);
   //
@@ -318,11 +322,11 @@ void draw() {
   fill(TextPurple);
   textAlign(CENTER, CENTER);
   textFont(TitleFont, FontSizes[0]);
-  text(string[0], xMusicTitle, yMusicTitle, TextDIVWidth[0], TextDIVHeight[0]);
+  text(string[0], xMusicTitle, yMusicTitle, MusicPanelDIVWidth[1], MusicPanelDIVHeight[1]);
   textFont(TitleFont, FontSizes[1]);
-  text(string[1], xMusicAuthor, yMusicAuthor, TextDIVWidth[1], TextDIVHeight[1]);
+  text(string[1], xMusicAuthor, yMusicAuthor, MusicPanelDIVWidth[2], MusicPanelDIVHeight[2]);
   textFont(TitleFont, FontSizes[2]);
-  text(string[1], xMusicPublishDate, yMusicPublishDate, TextDIVWidth[2], TextDIVHeight[2]);
+  text(string[1], xMusicPublishDate, yMusicPublishDate, MusicPanelDIVWidth[3], MusicPanelDIVHeight[3]);
   fill(resetDefaultInk);
   //
   //Icon Attribution
