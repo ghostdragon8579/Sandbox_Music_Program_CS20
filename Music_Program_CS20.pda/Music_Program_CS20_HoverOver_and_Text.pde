@@ -1,6 +1,6 @@
 float TitleFontSize;
-float[] FontSizes = new float[MusicPanelDIVHeight.length];
-String[] string = new String[4];
+float[] FontSizes = new float[TextDIVHeight.length];
+String[] Text = new String[4];
 void MusicPanelTextSetup1() {
   //
   TitleFontSize = ShorterSide;
@@ -9,23 +9,23 @@ void MusicPanelTextSetup1() {
   stringVarsEntry();
 }
 void stringVarsEntry() {
-  string[0] = SongPlayListMetaData[SongPlaying].title();
-  string[1] = "Author: "+SongPlayListMetaData[SongPlaying].author();
-  string[2] = "Released in: "+SongPlayListMetaData[SongPlaying].date();
+  Text[0] = ("Title");
+  Text[1] = ("Author: ");
+  Text[2] = ("Released in: ");
 }
 void MusicPanelTextSetup2() {
   TitleFontSize = ShorterSide;
   //Finds the smallest rect(height); might cause issue with text font formatting
-  for (int i=0; i<MusicPanelDIVHeight.length; i++) {
-    if (TitleFontSize > MusicPanelDIVHeight[i]) TitleFontSize = MusicPanelDIVHeight[i];
+  for (int i=0; i<TextDIVHeight.length; i++) {
+    if (TitleFontSize > TextDIVHeight[i]) TitleFontSize = TextDIVHeight[i];
   }
   float TimesNewRomanBoldAspectRatio = 1.04;
   TitleFontSize = TitleFontSize * TimesNewRomanBoldAspectRatio;
   //
-  for (int i = 0; i < MusicPanelDIVHeight.length; i++) {
-    float TemporaryFontSize = MusicPanelDIVHeight[i];
+  for (int i = 0; i < TextDIVHeight.length; i++) {
+    float TemporaryFontSize = TextDIVHeight[i];
     textFont(TitleFont, TemporaryFontSize);
-    while (textWidth(string[i]) > MusicPanelDIVWidth[i]) {
+    while (textWidth(Text[i]) > TextDIVWidth[i]) {
       TemporaryFontSize *= 0.99;
       textFont(TitleFont, TemporaryFontSize);
     }
