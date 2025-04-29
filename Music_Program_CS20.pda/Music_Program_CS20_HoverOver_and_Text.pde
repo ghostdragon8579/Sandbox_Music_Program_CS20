@@ -9,9 +9,9 @@ void MusicPanelTextSetup1() {
   stringVarsEntry();
 }
 void stringVarsEntry() {
-  Text[0] = ("Title");
-  Text[1] = ("Author: ");
-  Text[2] = ("Released in: ");
+  Text[0] = SongPlayListMetaData[SongPlaying].title();
+  Text[1] = "Author: "+SongPlayListMetaData[SongPlaying].author();
+  Text[2] = "Released in: "+SongPlayListMetaData[SongPlaying].date();
 }
 void MusicPanelTextSetup2() {
   TitleFontSize = ShorterSide;
@@ -22,7 +22,7 @@ void MusicPanelTextSetup2() {
   float TimesNewRomanBoldAspectRatio = 1.04;
   TitleFontSize = TitleFontSize * TimesNewRomanBoldAspectRatio;
   //
-  for (int i = 0; i < TextDIVHeight.length; i++) {
+  for (int i = 0; i < TextDIVHeight.length*3/4; i++) {
     float TemporaryFontSize = TextDIVHeight[i];
     textFont(TitleFont, TemporaryFontSize);
     while (textWidth(Text[i]) > TextDIVWidth[i]) {

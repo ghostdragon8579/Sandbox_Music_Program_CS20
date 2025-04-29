@@ -110,8 +110,6 @@ void setup() {
   Loop = loadImage(Imagepathway + ImageFolder + open + LoopImage);
   Replay = loadImage(Imagepathway + ImageFolder + open + ReplayImage);
   //
-  MusicPanelTextSetup1();
-  //
   //Background
   xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
   //
@@ -253,12 +251,14 @@ void setup() {
   String[] fontList = PFont.list();
   printArray(fontList);
   */
-  MusicPanelTextSetup2();
   //
 } //End setup
 void draw() {
   //
   shapeMode(CENTER);
+  //
+  MusicPanelTextSetup1();
+  MusicPanelTextSetup2();
   //
   //Background
   fill(Black);
@@ -407,7 +407,7 @@ void keyReleased() {
 void mousePressed() {
   //
   //Icon Attribution
-  if (MouseIsOver(xIcons8Location, yIconAttribution - appHeight * 3 / 200, textWidth("Icons8"), appHeight * 3 / 100)) {
+  if (MouseIsOver(xIcons8Location, yIconAttribution - appHeight*3/200, textWidth("Icons8"), appHeight*3/100)) {
     link("https://icons8.com/");
   }
   //
