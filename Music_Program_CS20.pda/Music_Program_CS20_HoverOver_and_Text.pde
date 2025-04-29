@@ -1,6 +1,6 @@
 float TitleFontSize;
 float[] FontSizes = new float[TextDIVHeight.length];
-String[] Text = new String[4];
+String[] Text = new String[3];
 void MusicPanelTextSetup1() {
   //
   TitleFontSize = ShorterSide;
