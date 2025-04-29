@@ -43,3 +43,18 @@ void ShuffleSongFunction () {
     SongPlayList[SongPlaying].rewind();
     SongPlaying=int (random(0, SongNumber-1));
 }
+void KeyPlayPauseFunction () {
+  if (SongPlayList[SongPlaying].isPlaying()) {
+    SongPlayList[SongPlaying].pause();
+  } else {
+  if (SongPlayList[SongPlaying].position() == 0) {
+    SongPlayList[SongPlaying].play();
+  } else {
+    SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
+    }
+  }
+}
+void KeyBasedLocationFunction () {
+  KeySongPosition = int(SongPlayList[SongPlaying].length() * (key - '0') * 0.1) - 5000;
+  SongPlayList[SongPlaying].cue(max(KeySongPosition, 0));
+}

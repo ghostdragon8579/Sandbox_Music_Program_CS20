@@ -1,4 +1,5 @@
 float TitleFontSize;
+float[] InitialFontSizes = new float[TextDIVHeight.length];
 float[] FontSizes = new float[TextDIVHeight.length];
 String[] Text = new String[3];
 void MusicPanelTextSetup1() {
@@ -15,7 +16,6 @@ void stringVarsEntry() {
 }
 void MusicPanelTextSetup2() {
   TitleFontSize = ShorterSide;
-  //Finds the smallest rect(height); might cause issue with text font formatting
   for (int i=0; i<TextDIVHeight.length; i++) {
     if (TitleFontSize > TextDIVHeight[i]) TitleFontSize = TextDIVHeight[i];
   }

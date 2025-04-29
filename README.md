@@ -10,7 +10,10 @@ CS20 project
 - [x] Blank Intermediate Processing Music Player Program
 - [x] CS10 Music Player Redesign
 - [x] CS10 Music Player Button Upgrades
+- [x] Icons and Attribution
 - [x] Music Progress Bar & Timer
+- [x] Procedurally Generated Text
+- [ ] Aspect Ratio Images
 
 # To Do List: html
 - [x] Responsive Design

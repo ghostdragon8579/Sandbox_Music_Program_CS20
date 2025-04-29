@@ -66,6 +66,7 @@ int AlteredCurrentSongLength;
 int KeySongPosition;
 int SongSkipTime;
 boolean SongLoop = false;
+boolean IsFontSizeUpdated = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
 }
@@ -254,7 +255,10 @@ void draw() {
   shapeMode(CENTER);
   //
   MusicPanelTextSetup1();
-  MusicPanelTextSetup2();
+  if (!IsFontSizeUpdated) {
+    MusicPanelTextSetup2();
+    IsFontSizeUpdated = true;
+  }
   //
   //Background
   fill(Black);
@@ -360,15 +364,7 @@ void draw() {
 void keyPressed() {
   //
   if (key=='p' || key=='P') {
-    if (SongPlayList[SongPlaying].isPlaying()) {
-      SongPlayList[SongPlaying].pause();
-    } else {
-    if (SongPlayList[SongPlaying].position() == 0) {
-      SongPlayList[SongPlaying].play();
-    } else {
-      SongPlayList[SongPlaying].play(SongPlayList[SongPlaying].position());
-      }
-    }
+    KeyPlayPauseFunction ();
   }
   if (key=='r' || key=='R') {
     SongPlayList[SongPlaying].rewind();
@@ -380,8 +376,7 @@ void keyPressed() {
     SongPlayList[SongPlaying].skip(-SongSkipTime);
   }
   if (key >= '1' && key <= '9') {
-    KeySongPosition = int(SongPlayList[SongPlaying].length() * (key - '0') * 0.1) - 5000;
-    SongPlayList[SongPlaying].cue(max(KeySongPosition, 0));
+    KeyBasedLocationFunction ();
   }
   //
 } //End keyPressed
