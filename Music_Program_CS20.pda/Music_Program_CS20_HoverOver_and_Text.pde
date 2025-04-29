@@ -22,7 +22,7 @@ void MusicPanelTextSetup2() {
   float TimesNewRomanBoldAspectRatio = 1.04;
   TitleFontSize = TitleFontSize * TimesNewRomanBoldAspectRatio;
   //
-  for (int i = 0; i < TextDIVHeight.length*3/4; i++) {
+  for (int i = 0; i < TextDIVHeight.length; i++) {
     float TemporaryFontSize = TextDIVHeight[i];
     textFont(TitleFont, TemporaryFontSize);
     while (textWidth(Text[i]) > TextDIVWidth[i]) {
