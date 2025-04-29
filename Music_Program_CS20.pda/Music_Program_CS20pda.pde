@@ -317,7 +317,7 @@ void draw() {
   text(Text[0], xMusicTitle, yMusicTitle, TextDIVWidth[0], TextDIVHeight[0]);
   textFont(TitleFont, FontSizes[1]);
   text(Text[1], xMusicAuthor, yMusicAuthor, TextDIVWidth[1], TextDIVHeight[1]);
-  textFont(TitleFont, FontSizes[2]);
+  textFont(TitleFont, FontSizes[1]);
   text(Text[2], xMusicPublishDate, yMusicPublishDate, TextDIVWidth[2], TextDIVHeight[2]);
   fill(resetDefaultInk);
   //
