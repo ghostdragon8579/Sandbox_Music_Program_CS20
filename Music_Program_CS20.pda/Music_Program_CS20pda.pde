@@ -65,11 +65,7 @@ int SongLengthAlteration;
 int AlteredCurrentSongLength;
 int KeySongPosition;
 int SongSkipTime;
-Boolean SongLoop = false;
-Boolean FastForwardHeld = false;
-Boolean RewindHeld = false;
-boolean FastForwardKeyHeldCheck = false;
-boolean RewindKeyHeldCheck = false;
+boolean SongLoop = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
 }
@@ -162,7 +158,7 @@ void setup() {
   xPreviousTriangleTwo2 = xPreviousTriangleTwo1; yPreviousTriangleTwo2 = yPlayPauseTriangle2;
   xPreviousTriangleTwo3 = xPreviousTriangleTwo1; yPreviousTriangleTwo3 = yPlayPauseTriangle3;
   //
-  String RelativeMusicPathway = "../Audio Files/";
+  String RelativeMusicPathway = "../Audio_Files_CS20/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
   AudioFiles = new File(AbsoluteMusicPathway);
   int AudioFileCount = AudioFiles.list().length;
@@ -391,16 +387,6 @@ void keyPressed() {
 } //End keyPressed
 //
 void keyReleased() {
-  //
-  //Key Held Reset
-  if (key == CODED && keyCode == RIGHT) {
-    FastForwardKeyHeldCheck = false;
-    FastForwardHeld = false;
-  }
-  if (key == CODED && keyCode == LEFT) {
-    RewindKeyHeldCheck = false;
-    RewindHeld = false;
-  }
   //
 } //End keyReleased
 //
