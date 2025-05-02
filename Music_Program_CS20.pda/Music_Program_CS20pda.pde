@@ -387,6 +387,14 @@ void keyReleased() {
 //
 void mousePressed() {
   //
+  //Progress Bar
+  if (MouseIsOver(xMusicProgressBar, yMusicProgressBar, widthMusicProgressBar, heightMusicProgressBar)) {
+    float ProgressBarPositionClicked = mouseX - xMusicProgressBar;
+    float SongPercentageAtClickPoint = ProgressBarPositionClicked/widthMusicProgressBar;
+    int ClickedSongPosition = int(SongPercentageAtClickPoint*SongPlayList[SongPlaying].length());
+    SongPlayList[SongPlaying].cue(ClickedSongPosition);
+  }
+  //
   //Icon Attribution
   if (MouseIsOver(xIcons8Location, yIconAttribution - appHeight*3/200, textWidth("Icons8"), appHeight*3/100)) {
     link("https://icons8.com/");
