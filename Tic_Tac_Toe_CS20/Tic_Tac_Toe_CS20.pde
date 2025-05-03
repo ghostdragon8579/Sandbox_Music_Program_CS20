@@ -59,7 +59,7 @@ void setup() {
   //Turn Display and Score Board
   xTurn = appWidth*1/16; yTurn = appHeight*1/4; widthTurn = appWidth*1/7; heightTurn = appHeight*1/16;
   xTurnDisplay = xTurn; yTurnDisplay = yTurn+heightTurn; widthTurnDisplay = widthTurn; heightTurnDisplay = appHeight*1/6;
-  //xScoreBoard, yScoreBoard, widthScoreBoard, heightScoreBoard;
+  xScoreBoard = appWidth*1/24; yScoreBoard = appHeight*9/16; widthScoreBoard = appWidth*5/24; heightScoreBoard = appHeight*1/16;
   //xScoreKeeper1, yScoreKeeper1, widthScoreKeeper1, heightScoreKeeper1;
   //xScoreKeeper2, yScoreKeeper2, widthScoreKeeper2, heightScoreKeeper2;
   //
@@ -108,7 +108,7 @@ void draw() {
   //Turn Display and Score Board
   rect(xTurn, yTurn, widthTurn, heightTurn);
   rect(xTurnDisplay, yTurnDisplay, widthTurnDisplay, heightTurnDisplay);
-  //rect(xScoreBoard, yScoreBoard, widthScoreBoard, heightScoreBoard);
+  rect(xScoreBoard, yScoreBoard, widthScoreBoard, heightScoreBoard);
   //rect(xScoreKeeper1, yScoreKeeper1, widthScoreKeeper1, heightScoreKeeper1);
   //rect(xScoreKeeper2, yScoreKeeper2, widthScoreKeeper2, heightScoreKeeper2);
   //
