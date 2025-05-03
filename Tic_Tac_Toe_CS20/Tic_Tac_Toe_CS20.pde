@@ -1,24 +1,33 @@
 //Global Variables
-color ResetDefaultInk=#FFFFFF;
-color LightGray=#EAE8E8;
 float xBackground, yBackground, widthBackground, heightBackground;
-float xGameModeSelection, yGameModeSelection, widthGameModeSelection, heightGameModeSelection;
-float xSinglePlayer, ySinglePlayer, widthSinglePlayer, heightSinglePlayer;
-float xMutiPlayer, yMultiPlayer, widthMultiPlayer, heightMultiPlayer;
 float xResetButton, yResetButton, widthResetButton, heightResetButton;
 float xQuitButton, yQuitButton, widthQuitButton, heightQuitButton;
 float[] xGameGrid = new float[10];
 float[] yGameGrid = new float[10];
 float widthGameGrid, heightGameGrid;
 float widthGameGridSquare, heightGameGridSquare;
+float[] TicTacToeTextDIVWidth = new float[3];
+float[] TicTacToeTextDIVHeight = new float[3];
+float xGameModeSelection, yGameModeSelection;
+float xSinglePlayer, ySinglePlayer;
+float xMutiPlayer, yMultiPlayer;
+PFont TitleFont;
+color ResetDefaultInk=#FFFFFF;
+color Black = #000000;
+color LightGray=#EAE8E8;
 int appWidth, appHeight;
 int size;
+int ShorterSide;
+boolean GameModeSinglePlayer = false;
+boolean GameModeMultiPlayer = false;
+boolean IsFontSizeUpdated = false; 
 //
 void setup() {
   //
   size(1200, 800);
   appWidth = width;
   appHeight = height;
+  ShorterSide = (appWidth >= appHeight) ? appHeight : appWidth;
   //
   //Background
   xBackground = appWidth*0; yBackground = appHeight*0; widthBackground = appWidth-1; heightBackground = appHeight-1;
@@ -38,18 +47,25 @@ void setup() {
   xGameGrid[9] = xGameGrid[0]+widthGameGridSquare*2; yGameGrid[9] = yGameGrid[0]+heightGameGridSquare*2;
   //
   //Game Mode Selection
-  xGameModeSelection = appWidth*1/3; yGameModeSelection = appHeight*1/24; widthGameModeSelection = appWidth*1/3; heightGameModeSelection = appHeight*1/16;
-  xSinglePlayer = appWidth*1/3; ySinglePlayer = appHeight*1/8; widthSinglePlayer = appWidth*1/7; heightSinglePlayer = appHeight*1/16;
-  xMutiPlayer = appWidth*2/3-appWidth*1/7; yMultiPlayer = ySinglePlayer; widthMultiPlayer = widthSinglePlayer; heightMultiPlayer = heightSinglePlayer;
+  xGameModeSelection = appWidth*1/3; yGameModeSelection = appHeight*1/24; TicTacToeTextDIVWidth[0] = appWidth*1/3; TicTacToeTextDIVHeight[0] = appHeight*1/16;
+  xSinglePlayer = appWidth*1/3; ySinglePlayer = appHeight*1/8; TicTacToeTextDIVWidth[1] = appWidth*1/7; TicTacToeTextDIVHeight[1] = appHeight*1/16;
+  xMutiPlayer = appWidth*2/3-appWidth*1/7; yMultiPlayer = ySinglePlayer; TicTacToeTextDIVWidth[2] = TicTacToeTextDIVWidth[1]; TicTacToeTextDIVHeight[2] = TicTacToeTextDIVHeight[1];
   //
   //Buttons
   xResetButton = appWidth*11/24; yResetButton = appHeight*31/36; widthResetButton = appWidth*1/12; heightResetButton = appHeight*1/24;
   xQuitButton = appWidth*15/16; yQuitButton = appHeight*0; widthQuitButton = appWidth*1/16; heightQuitButton = appHeight*1/24;
   //
+  //Fonts
+  TitleFont = createFont("Times New Roman Bold", 55);
+  //
 } //End setup
 void draw() {
   //
   shapeMode(CENTER);
+  //
+  MusicPanelTextSetup1();
+  MusicPanelTextSetup2();
+  //
   //
   //Background
   fill(LightGray);
@@ -71,13 +87,27 @@ void draw() {
   fill(ResetDefaultInk);
   //
   //Game Mode Selection
-  rect(xGameModeSelection, yGameModeSelection, widthGameModeSelection, heightGameModeSelection);
-  rect(xSinglePlayer, ySinglePlayer, widthSinglePlayer, heightSinglePlayer);
-  rect(xMutiPlayer, yMultiPlayer, widthMultiPlayer, heightMultiPlayer);
+  strokeWeight(2);
+  rect(xGameModeSelection, yGameModeSelection, TicTacToeTextDIVWidth[0], TicTacToeTextDIVHeight[0]);
+  rect(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
+  rect(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
+  strokeWeight(1);
   //
   //Buttons
+  strokeWeight(2);
   rect(xResetButton, yResetButton, widthResetButton, heightResetButton);
   rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
+  strokeWeight(1);
+  //
+  textAlign(CENTER, CENTER);
+  fill(Black);
+  textFont(TitleFont, FontSizes[0]);
+  text(Text[0], xGameModeSelection, yGameModeSelection, TicTacToeTextDIVWidth[0], TicTacToeTextDIVHeight[0]);
+  textFont(TitleFont, FontSizes[1]);
+  text(Text[1], xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
+  textFont(TitleFont, FontSizes[2]);
+  text(Text[2], xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
+  fill(ResetDefaultInk);
   //
 } //End draw
 //
