@@ -11,6 +11,11 @@ float[] TicTacToeTextDIVHeight = new float[3];
 float xGameModeSelection, yGameModeSelection;
 float xSinglePlayer, ySinglePlayer;
 float xMutiPlayer, yMultiPlayer;
+float xTurn, yTurn, widthTurn, heightTurn;
+float xTurnDisplay, yTurnDisplay, widthTurnDisplay, heightTurnDisplay;
+float xScoreBoard, yScoreBoard, widthScoreBoard, heightScoreBoard;
+float xScoreKeeper1, yScoreKeeper1, widthScoreKeeper1, heightScoreKeeper1;
+float xScoreKeeper2, yScoreKeeper2, widthScoreKeeper2, heightScoreKeeper2;
 PFont TitleFont;
 color ResetDefaultInk=#FFFFFF;
 color Black = #000000;
@@ -50,6 +55,13 @@ void setup() {
   xGameModeSelection = appWidth*1/3; yGameModeSelection = appHeight*1/24; TicTacToeTextDIVWidth[0] = appWidth*1/3; TicTacToeTextDIVHeight[0] = appHeight*1/16;
   xSinglePlayer = appWidth*1/3; ySinglePlayer = appHeight*1/8; TicTacToeTextDIVWidth[1] = appWidth*1/7; TicTacToeTextDIVHeight[1] = appHeight*1/16;
   xMutiPlayer = appWidth*2/3-appWidth*1/7; yMultiPlayer = ySinglePlayer; TicTacToeTextDIVWidth[2] = TicTacToeTextDIVWidth[1]; TicTacToeTextDIVHeight[2] = TicTacToeTextDIVHeight[1];
+  //
+  //Turn Display and Score Board
+  xTurn = appWidth*1/16; yTurn = appHeight*1/4; widthTurn = appWidth*1/7; heightTurn = appHeight*1/16;
+  xTurnDisplay = xTurn; yTurnDisplay = yTurn+heightTurn; widthTurnDisplay = widthTurn; heightTurnDisplay = appHeight*1/6;
+  //xScoreBoard, yScoreBoard, widthScoreBoard, heightScoreBoard;
+  //xScoreKeeper1, yScoreKeeper1, widthScoreKeeper1, heightScoreKeeper1;
+  //xScoreKeeper2, yScoreKeeper2, widthScoreKeeper2, heightScoreKeeper2;
   //
   //Buttons
   xResetButton = appWidth*11/24; yResetButton = appHeight*31/36; widthResetButton = appWidth*1/12; heightResetButton = appHeight*1/24;
@@ -92,6 +104,13 @@ void draw() {
   rect(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
   rect(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
   strokeWeight(1);
+  //
+  //Turn Display and Score Board
+  rect(xTurn, yTurn, widthTurn, heightTurn);
+  rect(xTurnDisplay, yTurnDisplay, widthTurnDisplay, heightTurnDisplay);
+  //rect(xScoreBoard, yScoreBoard, widthScoreBoard, heightScoreBoard);
+  //rect(xScoreKeeper1, yScoreKeeper1, widthScoreKeeper1, heightScoreKeeper1);
+  //rect(xScoreKeeper2, yScoreKeeper2, widthScoreKeeper2, heightScoreKeeper2);
   //
   //Buttons
   strokeWeight(2);
