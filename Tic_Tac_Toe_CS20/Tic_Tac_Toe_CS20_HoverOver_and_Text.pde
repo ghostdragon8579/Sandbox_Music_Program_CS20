@@ -20,6 +20,8 @@ void stringVarsEntry() {
   Text[1] = "SinglePlayer";
   Text[2] = "MultiPlayer";
   Text[3] = "Reset?";
+  //Text[4] = "Whose turn it is:";
+  //Text[5] = "X";
 }
 void MusicPanelTextSetup2() {
   TitleFontSize = ShorterSide;

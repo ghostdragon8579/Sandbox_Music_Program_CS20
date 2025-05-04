@@ -60,8 +60,8 @@ void setup() {
   xTurn = appWidth*1/16; yTurn = appHeight*1/4; widthTurn = appWidth*1/7; heightTurn = appHeight*1/16;
   xTurnDisplay = xTurn; yTurnDisplay = yTurn+heightTurn; widthTurnDisplay = widthTurn; heightTurnDisplay = appHeight*1/6;
   xScoreBoard = appWidth*1/24; yScoreBoard = appHeight*9/16; widthScoreBoard = appWidth*5/24; heightScoreBoard = appHeight*1/16;
-  //xScoreKeeper1, yScoreKeeper1, widthScoreKeeper1, heightScoreKeeper1;
-  //xScoreKeeper2, yScoreKeeper2, widthScoreKeeper2, heightScoreKeeper2;
+  xScoreKeeper1 = appWidth*1/24; yScoreKeeper1 = appHeight*5/8; widthScoreKeeper1 = appWidth*2.5/24; heightScoreKeeper1 = appHeight*1/16;
+  xScoreKeeper2 = appWidth*3.5/24; yScoreKeeper2 = appHeight*5/8; widthScoreKeeper2 = appWidth*2.5/24; heightScoreKeeper2 = appHeight*1/16;
   //
   //Buttons
   xResetButton = appWidth*11/24; yResetButton = appHeight*31/36; widthResetButton = appWidth*1/12; heightResetButton = appHeight*1/24;
@@ -106,11 +106,13 @@ void draw() {
   strokeWeight(1);
   //
   //Turn Display and Score Board
+  strokeWeight(2);
   rect(xTurn, yTurn, widthTurn, heightTurn);
   rect(xTurnDisplay, yTurnDisplay, widthTurnDisplay, heightTurnDisplay);
   rect(xScoreBoard, yScoreBoard, widthScoreBoard, heightScoreBoard);
-  //rect(xScoreKeeper1, yScoreKeeper1, widthScoreKeeper1, heightScoreKeeper1);
-  //rect(xScoreKeeper2, yScoreKeeper2, widthScoreKeeper2, heightScoreKeeper2);
+  rect(xScoreKeeper1, yScoreKeeper1, widthScoreKeeper1, heightScoreKeeper1);
+  rect(xScoreKeeper2, yScoreKeeper2, widthScoreKeeper2, heightScoreKeeper2);
+  strokeWeight(1);
   //
   //Buttons
   strokeWeight(2);
