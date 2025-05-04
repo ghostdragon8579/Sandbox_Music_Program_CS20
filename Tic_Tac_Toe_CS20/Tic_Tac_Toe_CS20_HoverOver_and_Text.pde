@@ -1,7 +1,7 @@
 float TitleFontSize;
 float[] InitialFontSizes = new float[TicTacToeTextDIVHeight.length];
 float[] FontSizes = new float[TicTacToeTextDIVHeight.length];
-String[] Text = new String[5];
+String[] Text = new String[9];
 void MusicPanelTextSetup1() {
   //
   TitleFontSize = ShorterSide;
@@ -19,9 +19,12 @@ void stringVarsEntry() {
   }
   Text[1] = "SinglePlayer";
   Text[2] = "MultiPlayer";
-  Text[3] = "Reset?";
-  //Text[4] = "Whose turn it is:";
-  //Text[5] = "X";
+  Text[3] = "Whose turn it is:";
+  Text[4] = "X";
+  Text[5] = "Score:";
+  Text[6] = "X: 0";
+  Text[7] = "O: 0";
+  Text[8] = "Reset";
 }
 void MusicPanelTextSetup2() {
   TitleFontSize = ShorterSide;

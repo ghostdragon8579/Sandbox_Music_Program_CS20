@@ -1,21 +1,21 @@
 //Global Variables
 float xBackground, yBackground, widthBackground, heightBackground;
-float xResetButton, yResetButton, widthResetButton, heightResetButton;
 float xQuitButton, yQuitButton, widthQuitButton, heightQuitButton;
 float[] xGameGrid = new float[10];
 float[] yGameGrid = new float[10];
 float widthGameGrid, heightGameGrid;
 float widthGameGridSquare, heightGameGridSquare;
-float[] TicTacToeTextDIVWidth = new float[3];
-float[] TicTacToeTextDIVHeight = new float[3];
+float[] TicTacToeTextDIVWidth = new float[9];
+float[] TicTacToeTextDIVHeight = new float[9];
 float xGameModeSelection, yGameModeSelection;
 float xSinglePlayer, ySinglePlayer;
 float xMutiPlayer, yMultiPlayer;
-float xTurn, yTurn, widthTurn, heightTurn;
-float xTurnDisplay, yTurnDisplay, widthTurnDisplay, heightTurnDisplay;
-float xScoreBoard, yScoreBoard, widthScoreBoard, heightScoreBoard;
-float xScoreKeeper1, yScoreKeeper1, widthScoreKeeper1, heightScoreKeeper1;
-float xScoreKeeper2, yScoreKeeper2, widthScoreKeeper2, heightScoreKeeper2;
+float xTurn, yTurn;
+float xTurnDisplay, yTurnDisplay;
+float xScoreBoard, yScoreBoard;
+float xScoreKeeper1, yScoreKeeper1;
+float xScoreKeeper2, yScoreKeeper2;
+float xResetButton, yResetButton;
 PFont TitleFont;
 color ResetDefaultInk=#FFFFFF;
 color Black = #000000;
@@ -25,7 +25,10 @@ int size;
 int ShorterSide;
 boolean GameModeSinglePlayer = false;
 boolean GameModeMultiPlayer = false;
-boolean IsFontSizeUpdated = false; 
+boolean IsFontSizeUpdated = false;
+boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
+  return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
+}
 //
 void setup() {
   //
@@ -57,14 +60,14 @@ void setup() {
   xMutiPlayer = appWidth*2/3-appWidth*1/7; yMultiPlayer = ySinglePlayer; TicTacToeTextDIVWidth[2] = TicTacToeTextDIVWidth[1]; TicTacToeTextDIVHeight[2] = TicTacToeTextDIVHeight[1];
   //
   //Turn Display and Score Board
-  xTurn = appWidth*1/16; yTurn = appHeight*1/4; widthTurn = appWidth*1/7; heightTurn = appHeight*1/16;
-  xTurnDisplay = xTurn; yTurnDisplay = yTurn+heightTurn; widthTurnDisplay = widthTurn; heightTurnDisplay = appHeight*1/6;
-  xScoreBoard = appWidth*1/24; yScoreBoard = appHeight*9/16; widthScoreBoard = appWidth*5/24; heightScoreBoard = appHeight*1/16;
-  xScoreKeeper1 = appWidth*1/24; yScoreKeeper1 = appHeight*5/8; widthScoreKeeper1 = appWidth*2.5/24; heightScoreKeeper1 = appHeight*1/16;
-  xScoreKeeper2 = appWidth*3.5/24; yScoreKeeper2 = appHeight*5/8; widthScoreKeeper2 = appWidth*2.5/24; heightScoreKeeper2 = appHeight*1/16;
+  xTurn = appWidth*1/16; yTurn = appHeight*1/4; TicTacToeTextDIVWidth[3] = appWidth*1/7; TicTacToeTextDIVHeight[3] = appHeight*1/16;
+  xTurnDisplay = xTurn; yTurnDisplay = yTurn+TicTacToeTextDIVHeight[3]; TicTacToeTextDIVWidth[4] = TicTacToeTextDIVWidth[3]; TicTacToeTextDIVHeight[4] = appHeight*1/6;
+  xScoreBoard = appWidth*1/24; yScoreBoard = appHeight*9/16; TicTacToeTextDIVWidth[5] = appWidth*5/24; TicTacToeTextDIVHeight[5] = appHeight*1/16;
+  xScoreKeeper1 = appWidth*1/24; yScoreKeeper1 = appHeight*5/8; TicTacToeTextDIVWidth[6] = TicTacToeTextDIVWidth[5]*1/2; TicTacToeTextDIVHeight[6] = TicTacToeTextDIVHeight[5];
+  xScoreKeeper2 = appWidth*3.5/24; yScoreKeeper2 = appHeight*5/8; TicTacToeTextDIVWidth[7] = TicTacToeTextDIVWidth[5]*1/2; TicTacToeTextDIVHeight[7] = TicTacToeTextDIVHeight[5];
   //
   //Buttons
-  xResetButton = appWidth*11/24; yResetButton = appHeight*31/36; widthResetButton = appWidth*1/12; heightResetButton = appHeight*1/24;
+  xResetButton = appWidth*11/24; yResetButton = appHeight*31/36; TicTacToeTextDIVWidth[8] = appWidth*1/12; TicTacToeTextDIVHeight[8] = appHeight*1/24;
   xQuitButton = appWidth*15/16; yQuitButton = appHeight*0; widthQuitButton = appWidth*1/16; heightQuitButton = appHeight*1/24;
   //
   //Fonts
@@ -107,16 +110,16 @@ void draw() {
   //
   //Turn Display and Score Board
   strokeWeight(2);
-  rect(xTurn, yTurn, widthTurn, heightTurn);
-  rect(xTurnDisplay, yTurnDisplay, widthTurnDisplay, heightTurnDisplay);
-  rect(xScoreBoard, yScoreBoard, widthScoreBoard, heightScoreBoard);
-  rect(xScoreKeeper1, yScoreKeeper1, widthScoreKeeper1, heightScoreKeeper1);
-  rect(xScoreKeeper2, yScoreKeeper2, widthScoreKeeper2, heightScoreKeeper2);
+  rect(xTurn, yTurn, TicTacToeTextDIVWidth[3], TicTacToeTextDIVHeight[3]);
+  rect(xTurnDisplay, yTurnDisplay, TicTacToeTextDIVWidth[4], TicTacToeTextDIVHeight[4]);
+  rect(xScoreBoard, yScoreBoard, TicTacToeTextDIVWidth[5], TicTacToeTextDIVHeight[5]);
+  rect(xScoreKeeper1, yScoreKeeper1, TicTacToeTextDIVWidth[6], TicTacToeTextDIVHeight[6]);
+  rect(xScoreKeeper2, yScoreKeeper2, TicTacToeTextDIVWidth[7], TicTacToeTextDIVHeight[7]);
   strokeWeight(1);
   //
   //Buttons
   strokeWeight(2);
-  rect(xResetButton, yResetButton, widthResetButton, heightResetButton);
+  rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
   rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
   strokeWeight(1);
   //
@@ -128,6 +131,18 @@ void draw() {
   text(Text[1], xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
   textFont(TitleFont, FontSizes[2]);
   text(Text[2], xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
+  textFont(TitleFont, FontSizes[3]);
+  text(Text[3], xTurn, yTurn, TicTacToeTextDIVWidth[3], TicTacToeTextDIVHeight[3]);
+  textFont(TitleFont, FontSizes[4]);
+  text(Text[4], xTurnDisplay, yTurnDisplay, TicTacToeTextDIVWidth[4], TicTacToeTextDIVHeight[4]);
+  textFont(TitleFont, FontSizes[5]);
+  text(Text[5], xScoreBoard, yScoreBoard, TicTacToeTextDIVWidth[5], TicTacToeTextDIVHeight[5]);
+  textFont(TitleFont, FontSizes[6]);
+  text(Text[6], xScoreKeeper1, yScoreKeeper1, TicTacToeTextDIVWidth[6], TicTacToeTextDIVHeight[6]);
+  textFont(TitleFont, FontSizes[7]);
+  text(Text[7], xScoreKeeper2, yScoreKeeper2, TicTacToeTextDIVWidth[7], TicTacToeTextDIVHeight[7]);
+  textFont(TitleFont, FontSizes[8]);
+  text(Text[8], xResetButton, yResetButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
   fill(ResetDefaultInk);
   //
 } //End draw
