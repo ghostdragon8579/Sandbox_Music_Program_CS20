@@ -153,6 +153,8 @@ void draw() {
   text(Text[9], xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
   fill(ResetDefaultInk);
   //
+  //TicTacToeSinglePlayer ();
+  //TicTacToeMultiPlayer ();
   Tic_Tac_Toe_CS20_HoverOver ();
   //
 } //End draw
