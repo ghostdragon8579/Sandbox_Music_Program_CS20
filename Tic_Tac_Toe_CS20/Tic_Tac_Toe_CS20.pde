@@ -5,8 +5,8 @@ float[] xGameGrid = new float[10];
 float[] yGameGrid = new float[10];
 float widthGameGrid, heightGameGrid;
 float widthGameGridSquare, heightGameGridSquare;
-float[] TicTacToeTextDIVWidth = new float[9];
-float[] TicTacToeTextDIVHeight = new float[9];
+float[] TicTacToeTextDIVWidth = new float[10];
+float[] TicTacToeTextDIVHeight = new float[10];
 float xGameModeSelection, yGameModeSelection;
 float xSinglePlayer, ySinglePlayer;
 float xMutiPlayer, yMultiPlayer;
@@ -15,6 +15,7 @@ float xTurnDisplay, yTurnDisplay;
 float xScoreBoard, yScoreBoard;
 float xScoreKeeper1, yScoreKeeper1;
 float xScoreKeeper2, yScoreKeeper2;
+float xNextGameButton, yNextGameButton;
 float xResetButton, yResetButton;
 PFont TitleFont;
 color ResetDefaultInk=#FFFFFF;
@@ -67,7 +68,8 @@ void setup() {
   xScoreKeeper2 = appWidth*3.5/24; yScoreKeeper2 = appHeight*5/8; TicTacToeTextDIVWidth[7] = TicTacToeTextDIVWidth[5]*1/2; TicTacToeTextDIVHeight[7] = TicTacToeTextDIVHeight[5];
   //
   //Buttons
-  xResetButton = appWidth*11/24; yResetButton = appHeight*31/36; TicTacToeTextDIVWidth[8] = appWidth*1/12; TicTacToeTextDIVHeight[8] = appHeight*1/24;
+  xNextGameButton = appWidth*9/20; yNextGameButton = appHeight*31/36; TicTacToeTextDIVWidth[8] = appWidth*1/10; TicTacToeTextDIVHeight[8] = appHeight*1/24;
+  xResetButton = appWidth*11/24; yResetButton = appHeight*33/36; TicTacToeTextDIVWidth[9] = appWidth*1/12; TicTacToeTextDIVHeight[9] = appHeight*1/24;
   xQuitButton = appWidth*15/16; yQuitButton = appHeight*0; widthQuitButton = appWidth*1/16; heightQuitButton = appHeight*1/24;
   //
   //Fonts
@@ -122,7 +124,8 @@ void draw() {
   //
   //Buttons
   strokeWeight(2);
-  rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
+  rect(xNextGameButton, yNextGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
+  rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
   rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
   strokeWeight(1);
   //
@@ -145,7 +148,9 @@ void draw() {
   textFont(TitleFont, FontSizes[7]);
   text(Text[7], xScoreKeeper2, yScoreKeeper2, TicTacToeTextDIVWidth[7], TicTacToeTextDIVHeight[7]);
   textFont(TitleFont, FontSizes[8]);
-  text(Text[8], xResetButton, yResetButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
+  text(Text[8], xNextGameButton, yNextGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
+  textFont(TitleFont, FontSizes[8]);
+  text(Text[9], xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
   fill(ResetDefaultInk);
   //
   Tic_Tac_Toe_CS20_HoverOver ();
@@ -163,6 +168,10 @@ void mousePressed() {
     if (!GameModeSinglePlayer) {
       GameModeSinglePlayer = true;
     }
+  }
+  if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
+    GameModeSinglePlayer = false;
+    GameModeMultiPlayer = false;
   }
   //
 } //End mousePressed

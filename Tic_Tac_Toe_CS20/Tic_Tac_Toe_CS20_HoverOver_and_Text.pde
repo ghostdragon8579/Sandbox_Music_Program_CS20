@@ -1,7 +1,7 @@
 float TitleFontSize;
 float[] InitialFontSizes = new float[TicTacToeTextDIVHeight.length];
 float[] FontSizes = new float[TicTacToeTextDIVHeight.length];
-String[] Text = new String[9];
+String[] Text = new String[10];
 void MusicPanelTextSetup1() {
   //
   TitleFontSize = ShorterSide;
@@ -24,7 +24,8 @@ void stringVarsEntry() {
   Text[5] = "Score:";
   Text[6] = "X: 0";
   Text[7] = "O: 0";
-  Text[8] = "Reset";
+  Text[8] = "New Game";
+  Text[9] = "Reset";
 }
 void MusicPanelTextSetup2() {
   TitleFontSize = ShorterSide;
@@ -56,9 +57,13 @@ void Tic_Tac_Toe_CS20_HoverOver () {
     fill(HoverOverColor);
     rect(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
     fill(ResetDefaultInk);
-  } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
+  } else if (MouseIsOver(xNextGameButton, yNextGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
     fill(HoverOverColor);
-    rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
+    rect(xNextGameButton, yNextGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
+    fill(ResetDefaultInk);
+  } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
+    fill(HoverOverColor);
+    rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
     fill(ResetDefaultInk);
   } else if (MouseIsOver(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton)) {
     fill(HoverOverColor);
