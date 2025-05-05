@@ -33,7 +33,7 @@ void MusicPanelTextSetup2() {
     if (TitleFontSize > TicTacToeTextDIVHeight[i]) 
     TitleFontSize = TicTacToeTextDIVHeight[i];
   }
-  float TimesNewRomanBoldAspectRatio = 1.04;
+  float TimesNewRomanBoldAspectRatio = 0.97;
   TitleFontSize = TitleFontSize * TimesNewRomanBoldAspectRatio;
   //
   for (int i = 0; i < TicTacToeTextDIVHeight.length; i++) {
