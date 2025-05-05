@@ -165,14 +165,24 @@ void keyPressed() {
 void mousePressed() {
   //
   if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1])) {
-    if (!GameModeSinglePlayer) {
+    if (!GameModeMultiPlayer && !GameModeSinglePlayer) {
       GameModeSinglePlayer = true;
     }
   }
-  if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
+  if (MouseIsOver(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2])) {
+    if (!GameModeMultiPlayer && !GameModeSinglePlayer) {
+      GameModeMultiPlayer = true;
+    }
+  }
+  if (MouseIsOver(xNextGameButton, yNextGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
     GameModeSinglePlayer = false;
     GameModeMultiPlayer = false;
   }
+  if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
+    GameModeSinglePlayer = false;
+    GameModeMultiPlayer = false;
+  }
+  
   //
 } //End mousePressed
 //
