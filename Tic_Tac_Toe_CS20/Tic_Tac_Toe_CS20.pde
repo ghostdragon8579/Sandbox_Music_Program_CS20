@@ -145,6 +145,8 @@ void draw() {
   text(Text[8], xResetButton, yResetButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
   fill(ResetDefaultInk);
   //
+  Tic_Tac_Toe_CS20_HoverOver ();
+  //
 } //End draw
 //
 void keyPressed() {

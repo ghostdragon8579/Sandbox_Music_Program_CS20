@@ -46,3 +46,23 @@ void MusicPanelTextSetup2() {
     textFont(TitleFont, TemporaryFontSize);
   }
 }
+void Tic_Tac_Toe_CS20_HoverOver () {
+  color HoverOverColor=color(255, 255, 255, 64);
+  if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1])) {
+    fill(HoverOverColor);
+    rect(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
+    fill(ResetDefaultInk);
+   } else if (MouseIsOver(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2])) {
+    fill(HoverOverColor);
+    rect(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
+    fill(ResetDefaultInk);
+  } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
+    fill(HoverOverColor);
+    rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
+    fill(ResetDefaultInk);
+  } else if (MouseIsOver(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton)) {
+    fill(HoverOverColor);
+    rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
+    fill(ResetDefaultInk);
+  }
+}
