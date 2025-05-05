@@ -11,7 +11,7 @@ void MusicPanelTextSetup1() {
 }
 void stringVarsEntry() {
   if (GameModeSinglePlayer == false && GameModeMultiPlayer == false) {
-  Text[0] = "Choose your Game Mode:";
+  Text[0] = "Select your Game Mode:";
   } else if (GameModeSinglePlayer == true) { 
   Text[0] = "Game Mode: SinglePlayer";
   } else if (GameModeMultiPlayer == true) {

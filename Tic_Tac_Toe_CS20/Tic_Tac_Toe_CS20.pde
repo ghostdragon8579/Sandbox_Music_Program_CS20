@@ -62,7 +62,7 @@ void setup() {
   //Turn Display and Score Board
   xTurn = appWidth*1/16; yTurn = appHeight*1/4; TicTacToeTextDIVWidth[3] = appWidth*1/7; TicTacToeTextDIVHeight[3] = appHeight*1/16;
   xTurnDisplay = xTurn; yTurnDisplay = yTurn+TicTacToeTextDIVHeight[3]; TicTacToeTextDIVWidth[4] = TicTacToeTextDIVWidth[3]; TicTacToeTextDIVHeight[4] = appHeight*1/6;
-  xScoreBoard = appWidth*1/24; yScoreBoard = appHeight*9/16; TicTacToeTextDIVWidth[5] = appWidth*5/24; TicTacToeTextDIVHeight[5] = appHeight*1/16;
+  xScoreBoard = appWidth*1/24; yScoreBoard = appHeight*9/16; TicTacToeTextDIVWidth[5] = appWidth*5/24; TicTacToeTextDIVHeight[5] = appHeight*1/24;
   xScoreKeeper1 = appWidth*1/24; yScoreKeeper1 = appHeight*5/8; TicTacToeTextDIVWidth[6] = TicTacToeTextDIVWidth[5]*1/2; TicTacToeTextDIVHeight[6] = TicTacToeTextDIVHeight[5];
   xScoreKeeper2 = appWidth*3.5/24; yScoreKeeper2 = appHeight*5/8; TicTacToeTextDIVWidth[7] = TicTacToeTextDIVWidth[5]*1/2; TicTacToeTextDIVHeight[7] = TicTacToeTextDIVHeight[5];
   //
@@ -80,7 +80,10 @@ void draw() {
   //
   MusicPanelTextSetup1();
   MusicPanelTextSetup2();
-  //
+  if (!IsFontSizeUpdated) {
+    MusicPanelTextSetup2();
+    IsFontSizeUpdated = true;
+  }
   //
   //Background
   fill(LightGray);
@@ -156,6 +159,11 @@ void keyPressed() {
 //
 void mousePressed() {
   //
+  if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1])) {
+    if (!GameModeSinglePlayer) {
+      GameModeSinglePlayer = true;
+    }
+  }
   //
 } //End mousePressed
 //
