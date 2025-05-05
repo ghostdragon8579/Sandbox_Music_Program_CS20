@@ -20,6 +20,7 @@ float xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel;
 float xMusicImage, yMusicImage, widthMusicImage, heightMusicImage;
 float xMusicProgressBar, yMusicProgressBar, widthMusicProgressBar, heightMusicProgressBar;
 float xIconAttribution, yIconAttribution, widthIconAttribution, heightIconAttribution;
+float xBackgroundAttribution, yBackgroundAttribution, widthBackgroundAttribution, heightBackgroundAttribution;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
 float xPlayPauseTriangle1, yPlayPauseTriangle1, xPlayPauseTriangle2, yPlayPauseTriangle2, xPlayPauseTriangle3, yPlayPauseTriangle3;
 float xFastForward, yFastForward, widthFastForward, heightFastForward;
@@ -39,6 +40,7 @@ float xShuffle, yShuffle, widthShuffle, heightShuffle;
 float xReplay, yReplay, widthReplay, heightReplay;
 float xLoop, yLoop, widthLoop, heightLoop;
 float xIcons8Location;
+float xVecteezyLocation;
 float ProgressWidth;
 PImage NeonBackground2;
 PImage Quit;
@@ -117,7 +119,8 @@ void setup() {
   xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+TextDIVHeight[1]; TextDIVWidth[2] = TextDIVWidth[1]; TextDIVHeight[2] = TextDIVHeight[1];
   xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+TextDIVHeight[2]; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
   xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*13/16; widthMusicProgressBar = appWidth*8/13; heightMusicProgressBar = appHeight*1/48;
-  xIconAttribution = xMusicPanel+appWidth*1/100; yIconAttribution = appHeight*9/10-appHeight*1/30; widthIconAttribution = widthMusicPanel; heightIconAttribution = appHeight*1/36;
+  xIconAttribution = xMusicPanel+appWidth*1/100; yIconAttribution = appHeight*9/10-appHeight*1/30; widthIconAttribution = widthMusicPanel*1/2; heightIconAttribution = appHeight*1/36;
+  xBackgroundAttribution = xIconAttribution; yBackgroundAttribution = appHeight*9/10-appHeight*1/30; widthBackgroundAttribution = widthIconAttribution*1/2; heightBackgroundAttribution = heightIconAttribution;
   //
   //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
@@ -235,6 +238,7 @@ void setup() {
   */
   //
   xIcons8Location = xIconAttribution + textWidth("Loop, Shuffle, and Rewind icons by ");
+  xVecteezyLocation = xBackgroundAttribution + textWidth("Background Image by Tinnapon Wuttichaikitcharoen on ");
   //
   SongSkipTime = 5000;
   SongLengthAlteration = 5000;
@@ -328,17 +332,19 @@ void draw() {
   //Icon Attribution
   fill(TextPurple);
   textAlign(LEFT, LEFT);
-  size = appHeight*3/200;
+  size = appHeight*5/400;
   textFont(AttributionFont, size);
-  String AttributionText = "Loop, Shuffle, and Rewind icons by Icons8";
-  text(AttributionText, xIconAttribution, yIconAttribution+heightIconAttribution*3/4);
+  String TextAttribution = "Loop, Shuffle, and Rewind icons by Icons8";
+  text(TextAttribution, xIconAttribution, yIconAttribution+heightIconAttribution*3/4);
   fill(resetDefaultInk);
   //
-  if (MouseIsOver(xIcons8Location, yIconAttribution - appHeight*3/200, textWidth("Icons8"), appHeight*3/100)) {
-    cursor(HAND);
-  } else {
-    cursor(ARROW);
-  }
+  fill(TextPurple);
+  textAlign(LEFT, LEFT);
+  size = appHeight*5/400;
+  textFont(AttributionFont, size);
+  String BackgroundAttribution = "Background Image by Tinnapon Wuttichaikitcharoen on Vecteezy";
+  text(BackgroundAttribution, xBackgroundAttribution, yBackgroundAttribution, heightBackgroundAttribution*3/4);
+  fill(resetDefaultInk);
   //
   //Song Auto Transition
   if (SongPlayList[SongPlaying].position() >= AlteredCurrentSongLength && SongLoop == false) {
@@ -398,6 +404,9 @@ void mousePressed() {
   //Icon Attribution
   if (MouseIsOver(xIcons8Location, yIconAttribution - appHeight*3/200, textWidth("Icons8"), appHeight*3/100)) {
     link("https://icons8.com/");
+  }
+  if (MouseIsOver(xIcons8Location, yBackgroundAttribution - appHeight*3/200, textWidth("Vecteezy"), appHeight*3/100)) {
+    link("https://www.vecteezy.com/members/earthtin");
   }
   //
   //Buttons
