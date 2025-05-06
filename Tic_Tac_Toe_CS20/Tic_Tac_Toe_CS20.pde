@@ -10,11 +10,11 @@ float[] TicTacToeTextDIVHeight = new float[10];
 float xGameModeSelection, yGameModeSelection;
 float xSinglePlayer, ySinglePlayer;
 float xMutiPlayer, yMultiPlayer;
-float xTurn, yTurn;
-float xTurnDisplay, yTurnDisplay;
 float xScoreBoard, yScoreBoard;
 float xScoreKeeper1, yScoreKeeper1;
 float xScoreKeeper2, yScoreKeeper2;
+float xTurn, yTurn;
+float xTurnDisplay, yTurnDisplay;
 float xNewGameButton, yNewGameButton;
 float xResetButton, yResetButton;
 PFont TitleFont;
@@ -69,11 +69,11 @@ void setup() {
   xMutiPlayer = appWidth*2/3-appWidth*1/7; yMultiPlayer = ySinglePlayer; TicTacToeTextDIVWidth[2] = TicTacToeTextDIVWidth[1]; TicTacToeTextDIVHeight[2] = TicTacToeTextDIVHeight[1];
   //
   //Turn Display and Score Board
-  xTurn = appWidth*1/16; yTurn = appHeight*1/4; TicTacToeTextDIVWidth[3] = appWidth*1/7; TicTacToeTextDIVHeight[3] = appHeight*1/16;
+  xScoreBoard = appWidth*1/24; yScoreBoard = appHeight*1/3; TicTacToeTextDIVWidth[5] = appWidth*5/24; TicTacToeTextDIVHeight[5] = appHeight*1/24;
+  xScoreKeeper1 = appWidth*1/24; yScoreKeeper1 = appHeight*7/18; TicTacToeTextDIVWidth[6] = TicTacToeTextDIVWidth[5]*1/2; TicTacToeTextDIVHeight[6] = TicTacToeTextDIVHeight[5];
+  xScoreKeeper2 = appWidth*3.5/24; yScoreKeeper2 = appHeight*7/18; TicTacToeTextDIVWidth[7] = TicTacToeTextDIVWidth[5]*1/2; TicTacToeTextDIVHeight[7] = TicTacToeTextDIVHeight[5];
+  xTurn = appWidth*1/16; yTurn = appHeight*1/2; TicTacToeTextDIVWidth[3] = appWidth*1/7; TicTacToeTextDIVHeight[3] = appHeight*1/16;
   xTurnDisplay = xTurn; yTurnDisplay = yTurn+TicTacToeTextDIVHeight[3]; TicTacToeTextDIVWidth[4] = TicTacToeTextDIVWidth[3]; TicTacToeTextDIVHeight[4] = appHeight*1/6;
-  xScoreBoard = appWidth*1/24; yScoreBoard = appHeight*9/16; TicTacToeTextDIVWidth[5] = appWidth*5/24; TicTacToeTextDIVHeight[5] = appHeight*1/24;
-  xScoreKeeper1 = appWidth*1/24; yScoreKeeper1 = appHeight*5/8; TicTacToeTextDIVWidth[6] = TicTacToeTextDIVWidth[5]*1/2; TicTacToeTextDIVHeight[6] = TicTacToeTextDIVHeight[5];
-  xScoreKeeper2 = appWidth*3.5/24; yScoreKeeper2 = appHeight*5/8; TicTacToeTextDIVWidth[7] = TicTacToeTextDIVWidth[5]*1/2; TicTacToeTextDIVHeight[7] = TicTacToeTextDIVHeight[5];
   //
   //Buttons
   xNewGameButton = appWidth*9/20; yNewGameButton = appHeight*31/36; TicTacToeTextDIVWidth[8] = appWidth*1/10; TicTacToeTextDIVHeight[8] = appHeight*1/24;
@@ -123,8 +123,6 @@ void draw() {
   //
   //Turn Display and Score Board
   strokeWeight(2);
-  rect(xTurn, yTurn, TicTacToeTextDIVWidth[3], TicTacToeTextDIVHeight[3]);
-  rect(xTurnDisplay, yTurnDisplay, TicTacToeTextDIVWidth[4], TicTacToeTextDIVHeight[4]);
   rect(xScoreBoard, yScoreBoard, TicTacToeTextDIVWidth[5], TicTacToeTextDIVHeight[5]);
   rect(xScoreKeeper1, yScoreKeeper1, TicTacToeTextDIVWidth[6], TicTacToeTextDIVHeight[6]);
   rect(xScoreKeeper2, yScoreKeeper2, TicTacToeTextDIVWidth[7], TicTacToeTextDIVHeight[7]);
@@ -145,10 +143,6 @@ void draw() {
   text(Text[1], xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
   textFont(TitleFont, FontSizes[2]);
   text(Text[2], xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
-  textFont(TitleFont, FontSizes[3]);
-  text(Text[3], xTurn, yTurn, TicTacToeTextDIVWidth[3], TicTacToeTextDIVHeight[3]);
-  textFont(TitleFont, FontSizes[4]);
-  text(Text[4], xTurnDisplay, yTurnDisplay, TicTacToeTextDIVWidth[4], TicTacToeTextDIVHeight[4]);
   textFont(TitleFont, FontSizes[5]);
   text(Text[5], xScoreBoard, yScoreBoard, TicTacToeTextDIVWidth[5], TicTacToeTextDIVHeight[5]);
   textFont(TitleFont, FontSizes[6]);
@@ -164,8 +158,10 @@ void draw() {
   //Images
   image(Quit, xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
   //
+  if (GameModeMultiPlayer == true) {
+  TicTacToeMultiPlayer ();
+  }
   //TicTacToeSinglePlayer ();
-  //TicTacToeMultiPlayer ();
   Tic_Tac_Toe_CS20_HoverOver ();
   //
 } //End draw
