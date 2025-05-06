@@ -98,7 +98,7 @@ void setup() {
   //
   minim = new Minim(this);
   // Define the image folder path
-  String ImagePathwayRelative = "../Music_Program_Images";
+  String ImagePathwayRelative = "../Music_Program_Images/";
   String ImagePathwayAbsolute = sketchPath(ImagePathwayRelative);
   File ImageFolder = new File(ImagePathwayAbsolute);
   File[] ImageFiles = ImageFolder.listFiles();

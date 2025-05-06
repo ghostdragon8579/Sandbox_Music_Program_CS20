@@ -13,7 +13,7 @@ CS20 project
 - [x] Icons and Attribution
 - [x] Music Progress Bar & Timer
 - [x] Procedurally Generated Text
-- [ ] Aspect Ratio Images
+- [ ] Upgraded Image Generation
 
 # To Do List: html
 - [x] Responsive Design
