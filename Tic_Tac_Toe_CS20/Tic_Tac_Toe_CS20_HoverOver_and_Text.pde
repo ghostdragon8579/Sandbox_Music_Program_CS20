@@ -49,6 +49,44 @@ void MusicPanelTextSetup2() {
 }
 void Tic_Tac_Toe_CS20_HoverOver () {
   color HoverOverColor=color(255, 255, 255, 64);
+  /*
+  if (MouseIsOver(xGameGrid[1], yGameGrid[1], widthGameGridSquare, heightGameGridSquare)) {
+    fill(HoverOverColor);
+    rect(xGameGrid[1], yGameGrid[1], widthGameGridSquare, heightGameGridSquare);
+    fill(ResetDefaultInk);
+  } else if (MouseIsOver(xGameGrid[2], yGameGrid[2], widthGameGridSquare, heightGameGridSquare)) {
+    fill(HoverOverColor);
+    rect(xGameGrid[2], yGameGrid[2], widthGameGridSquare, heightGameGridSquare);
+    fill(ResetDefaultInk);
+  } else if (MouseIsOver(xGameGrid[3], yGameGrid[3], widthGameGridSquare, heightGameGridSquare)) {
+    fill(HoverOverColor);
+    rect(xGameGrid[3], yGameGrid[3], widthGameGridSquare, heightGameGridSquare);
+    fill(ResetDefaultInk);
+  } else if (MouseIsOver(xGameGrid[4], yGameGrid[4], widthGameGridSquare, heightGameGridSquare)) {
+    fill(HoverOverColor);
+    rect(xGameGrid[4], yGameGrid[4], widthGameGridSquare, heightGameGridSquare);
+    fill(ResetDefaultInk);
+  } else if (MouseIsOver(xGameGrid[5], yGameGrid[5], widthGameGridSquare, heightGameGridSquare)) {
+    fill(HoverOverColor);
+    rect(xGameGrid[5], yGameGrid[5], widthGameGridSquare, heightGameGridSquare);
+    fill(ResetDefaultInk);
+  } else if (MouseIsOver(xGameGrid[6], yGameGrid[6], widthGameGridSquare, heightGameGridSquare)) {
+    fill(HoverOverColor);
+    rect(xGameGrid[6], yGameGrid[6], widthGameGridSquare, heightGameGridSquare);
+    fill(ResetDefaultInk);
+  } else if (MouseIsOver(xGameGrid[7], yGameGrid[7], widthGameGridSquare, heightGameGridSquare)) {
+    fill(HoverOverColor);
+    rect(xGameGrid[7], yGameGrid[7], widthGameGridSquare, heightGameGridSquare);
+    fill(ResetDefaultInk);
+  } else if (MouseIsOver(xGameGrid[8], yGameGrid[8], widthGameGridSquare, heightGameGridSquare)) {
+    fill(HoverOverColor);
+    rect(xGameGrid[8], yGameGrid[8], widthGameGridSquare, heightGameGridSquare);
+    fill(ResetDefaultInk);
+  } else if (MouseIsOver(xGameGrid[9], yGameGrid[9], widthGameGridSquare, heightGameGridSquare)) {
+    fill(HoverOverColor);
+    rect(xGameGrid[9], yGameGrid[9], widthGameGridSquare, heightGameGridSquare);
+    fill(ResetDefaultInk);
+  */
   if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1])) {
     fill(HoverOverColor);
     rect(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
@@ -57,9 +95,9 @@ void Tic_Tac_Toe_CS20_HoverOver () {
     fill(HoverOverColor);
     rect(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
     fill(ResetDefaultInk);
-  } else if (MouseIsOver(xNextGameButton, yNextGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
+  } else if (MouseIsOver(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
     fill(HoverOverColor);
-    rect(xNextGameButton, yNextGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
+    rect(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
     fill(ResetDefaultInk);
   } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
     fill(HoverOverColor);
