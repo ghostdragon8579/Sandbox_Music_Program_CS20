@@ -57,21 +57,25 @@ void Tic_Tac_Toe_CS20_HoverOver () {
     stroke(Black);
   } else if (MouseIsOver(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2])) {
     fill(HoverOverColor);
+    stroke(HoverOverColor);
     rect(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
     fill(ResetDefaultInk);
     stroke(Black);
   } else if (MouseIsOver(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
     fill(HoverOverColor);
+    stroke(HoverOverColor);
     rect(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
     fill(ResetDefaultInk);
     stroke(Black);
   } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
     fill(HoverOverColor);
+    stroke(HoverOverColor);
     rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
     fill(ResetDefaultInk);
     stroke(Black);
   } else if (MouseIsOver(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton)) {
     fill(HoverOverColor);
+    stroke(HoverOverColor);
     rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
     fill(ResetDefaultInk);
     stroke(Black);
@@ -80,8 +84,10 @@ void Tic_Tac_Toe_CS20_HoverOver () {
   for (int i = 1; i <= 9; i++) {
   if (MouseIsOver(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare)) {
     fill(HoverOverColor);
+    stroke(HoverOverColor);
     rect(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare);
     fill(ResetDefaultInk);
+    stroke(Black);
   }
  }
 }

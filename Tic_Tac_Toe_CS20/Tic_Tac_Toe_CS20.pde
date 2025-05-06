@@ -18,6 +18,7 @@ float xScoreKeeper2, yScoreKeeper2;
 float xNewGameButton, yNewGameButton;
 float xResetButton, yResetButton;
 PFont TitleFont;
+PImage Quit;
 color ResetDefaultInk=#FFFFFF;
 color Black=#000000;
 color LightGray=#EAE8E8;
@@ -37,6 +38,13 @@ void setup() {
   appWidth = width;
   appHeight = height;
   ShorterSide = (appWidth >= appHeight) ? appHeight : appWidth;
+  //
+  String up = "..";
+  String open = "/";
+  String ImageFolder = "Music_Program_Images";
+  String Imagepathway = up + open;
+  String QuitImage = "exit.png";
+  Quit = loadImage(Imagepathway + ImageFolder + open + QuitImage);
   //
   //Background
   xBackground = appWidth*0; yBackground = appHeight*0; widthBackground = appWidth-1; heightBackground = appHeight-1;
@@ -153,6 +161,9 @@ void draw() {
   text(Text[9], xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
   fill(ResetDefaultInk);
   //
+  //Images
+  image(Quit, xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
+  //
   //TicTacToeSinglePlayer ();
   //TicTacToeMultiPlayer ();
   Tic_Tac_Toe_CS20_HoverOver ();
@@ -168,23 +179,17 @@ void mousePressed() {
   //
   if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1])) {
     if (!GameModeMultiPlayer && !GameModeSinglePlayer) {
-      GameModeSinglePlayer = true;
-    }
-  }
-  if (MouseIsOver(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2])) {
+      GameModeSinglePlayer = true; }
+  } else if (MouseIsOver(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2])) {
     if (!GameModeMultiPlayer && !GameModeSinglePlayer) {
-      GameModeMultiPlayer = true;
-    }
-  }
-  if (MouseIsOver(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
+      GameModeMultiPlayer = true; }
+  } else if (MouseIsOver(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
+    GameModeSinglePlayer = false;
+    GameModeMultiPlayer = false;
+  } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
     GameModeSinglePlayer = false;
     GameModeMultiPlayer = false;
   }
-  if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
-    GameModeSinglePlayer = false;
-    GameModeMultiPlayer = false;
-  }
-  
   //
 } //End mousePressed
 //
