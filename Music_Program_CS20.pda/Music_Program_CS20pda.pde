@@ -42,7 +42,7 @@ float xLoop, yLoop, widthLoop, heightLoop;
 float xIcons8Location;
 float xVecteezyLocation;
 float ProgressWidth;
-PImage[] MusicProgramImage = new PImage[5];
+PImage[] MusicProgramImage = new PImage[7];
 PImage NeonBackground2;
 PImage Quit;
 PImage Shuffle;
@@ -106,25 +106,8 @@ void setup() {
   for (int i = 0; i < ImageFiles.length; i++) {
     if (ImageFiles[i].isFile()) {
       MusicProgramImage[i] = loadImage(ImageFiles[i].getAbsolutePath());
-     }
+    }
   }
-    println("Loaded " + MusicProgramImage.length + " images.");
-  /*
-  String up = "..";
-  String open = "/";
-  String ImageFolder = "Music_Program_Images";
-  String Imagepathway = up + open;
-  String NeonImage2 = "NeonBackground2.jpg";
-  String QuitImage = "exit.png";
-  String ShuffleImage = "icons8-shuffle.png";
-  String LoopImage = "icons8-loop.png";
-  String ReplayImage = "icons8-replay.png";
-  NeonBackground2 = loadImage(Imagepathway + ImageFolder + open + NeonImage2);
-  Quit = loadImage(Imagepathway + ImageFolder + open + QuitImage);
-  Shuffle = loadImage(Imagepathway + ImageFolder + open + ShuffleImage);
-  Loop = loadImage(Imagepathway + ImageFolder + open + LoopImage);
-  Replay = loadImage(Imagepathway + ImageFolder + open + ReplayImage);
-  */
   //
   //Background
   xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
@@ -284,7 +267,7 @@ void draw() {
   //Background
   fill(Black);
   rect(xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
-  //image(NeonBackground2, xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
+  image(MusicProgramImage[5], xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
   fill(resetDefaultInk);
   //
   //Music Player Panel
