@@ -19,7 +19,7 @@ float xNewGameButton, yNewGameButton;
 float xResetButton, yResetButton;
 PFont TitleFont;
 color ResetDefaultInk=#FFFFFF;
-color Black = #000000;
+color Black=#000000;
 color LightGray=#EAE8E8;
 int appWidth, appHeight;
 int size;
@@ -93,7 +93,7 @@ void draw() {
   fill(ResetDefaultInk);
   //
   //Game Grid and Grid Squares
-  strokeWeight(2);
+  strokeWeight(4);
   rect(xGameGrid[0], yGameGrid[0], widthGameGrid, heightGameGrid);
   rect(xGameGrid[1], yGameGrid[1], widthGameGridSquare, heightGameGridSquare);
   rect(xGameGrid[2], yGameGrid[2], widthGameGridSquare, heightGameGridSquare);
