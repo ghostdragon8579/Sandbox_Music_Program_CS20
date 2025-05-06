@@ -21,10 +21,6 @@ float xText, yText, widthText, heightText;
 float xAuthor, yAuthor, widthAuthor, heightAuthor;
 float xRelease, yRelease, widthRelease, heightRelease;
 PImage NeonBackground;
-PImage PlayButton, PauseButton;
-PImage FastForward, Rewind;
-PImage Next, Previous;
-PImage Shuffle;
 PFont TitleFont;
 color resetDefaultInk=#FFFFFF;
 color Gray=#C9C9C9;
@@ -62,21 +58,7 @@ void setup() {
   String ImageFolder = "Music_Program_Images";
   String Imagepathway = up + open;
   String NeonImage = "NeonBackground.jpg";
-  String PlayImage = "play.png";
-  String PauseImage = "pause.png";
-  String FastForwardImage = "FastForward.png";
-  String RewindImage = "FastRewind.png";
-  String NextImage = "skip.png";
-  String PreviousImage = "prev.png";
-  String ShuffleImage = "Shuffle.png";
   NeonBackground = loadImage(Imagepathway + ImageFolder + open + NeonImage);
-  PlayButton = loadImage(Imagepathway + ImageFolder + open + PlayImage);
-  PauseButton = loadImage(Imagepathway + ImageFolder + open + PauseImage);
-  FastForward = loadImage(Imagepathway + ImageFolder + open + FastForwardImage);
-  Rewind = loadImage(Imagepathway + ImageFolder + open + RewindImage);
-  Next = loadImage(Imagepathway + ImageFolder + open + NextImage);
-  Previous = loadImage(Imagepathway + ImageFolder + open + PreviousImage);
-  Shuffle = loadImage(Imagepathway + ImageFolder + open + ShuffleImage);
   //
   xRectBackground = appWidth*0;
   yRectBackground = appHeight*0;
@@ -283,12 +265,6 @@ void draw() {
     fill(resetDefaultInk);
   }
   //
-  image(PlayButton, xPlayPause, yPlayPause, widthPlayPause, heightPlayPause);
-  image(FastForward, xFastForward, yFastForward, widthFastForward, heightFastForward);
-  image(Rewind, xRewind, yRewind, widthRewind, heightRewind);
-  image(Next, xNext, yNext, widthNext, heightNext);
-  image(Previous, xPrevious, yPrevious, widthPrevious, heightPrevious);
-  image(Shuffle, xShuffle, yShuffle, widthShuffle, heightShuffle);
   //
 } //End draw
 //

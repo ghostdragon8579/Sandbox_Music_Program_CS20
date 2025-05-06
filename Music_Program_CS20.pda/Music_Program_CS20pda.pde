@@ -42,6 +42,7 @@ float xLoop, yLoop, widthLoop, heightLoop;
 float xIcons8Location;
 float xVecteezyLocation;
 float ProgressWidth;
+PImage[] MusicProgramImage = new PImage[5];
 PImage NeonBackground2;
 PImage Quit;
 PImage Shuffle;
@@ -75,6 +76,8 @@ boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float
 File file;
 File AudioFiles;
 File SoundEffectFiles;
+File ImageFiles;
+File FileImages;
 Minim minim;
 AudioPlayer song1;
 AudioPlayer[] Song = new AudioPlayer[SongNumber];
@@ -94,6 +97,19 @@ void setup() {
   ShorterSide = (appWidth >= appHeight) ? appHeight : appWidth;
   //
   minim = new Minim(this);
+  // Define the image folder path
+  String ImagePathwayRelative = "../Music_Program_Images";
+  String ImagePathwayAbsolute = sketchPath(ImagePathwayRelative);
+  File ImageFolder = new File(ImagePathwayAbsolute);
+  File[] ImageFiles = ImageFolder.listFiles();
+  MusicProgramImage = new PImage[ImageFiles.length];
+  for (int i = 0; i < ImageFiles.length; i++) {
+    if (ImageFiles[i].isFile()) {
+      MusicProgramImage[i] = loadImage(ImageFiles[i].getAbsolutePath());
+     }
+  }
+    println("Loaded " + MusicProgramImage.length + " images.");
+  /*
   String up = "..";
   String open = "/";
   String ImageFolder = "Music_Program_Images";
@@ -108,6 +124,7 @@ void setup() {
   Shuffle = loadImage(Imagepathway + ImageFolder + open + ShuffleImage);
   Loop = loadImage(Imagepathway + ImageFolder + open + LoopImage);
   Replay = loadImage(Imagepathway + ImageFolder + open + ReplayImage);
+  */
   //
   //Background
   xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
@@ -267,7 +284,7 @@ void draw() {
   //Background
   fill(Black);
   rect(xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
-  image(NeonBackground2, xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
+  //image(NeonBackground2, xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
   fill(resetDefaultInk);
   //
   //Music Player Panel
@@ -313,10 +330,10 @@ void draw() {
   fill(resetDefaultInk);
   //
   //Images
-  image(Quit, xQuit, yQuit, widthQuit, heightQuit);
-  image(Shuffle, xShuffle, yShuffle, widthShuffle, heightShuffle);
-  image(Loop, xLoop, yLoop, widthLoop, heightLoop);
-  image(Replay, xReplay, yReplay, widthReplay, heightReplay);
+  image(MusicProgramImage[0], xQuit, yQuit, widthQuit, heightQuit);
+  image(MusicProgramImage[1], xLoop, yLoop, widthLoop, heightLoop);
+  image(MusicProgramImage[2], xReplay, yReplay, widthReplay, heightReplay);
+  image(MusicProgramImage[3], xShuffle, yShuffle, widthShuffle, heightShuffle);
   //
   //Text ()
   fill(TextPurple);
