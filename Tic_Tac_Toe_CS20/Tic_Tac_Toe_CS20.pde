@@ -28,6 +28,8 @@ int size;
 int ShorterSide;
 boolean GameModeSinglePlayer = false;
 boolean GameModeMultiPlayer = false;
+boolean PlayerX = true;
+boolean PlayerO = false;
 boolean IsFontSizeUpdated = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
@@ -176,6 +178,8 @@ void keyPressed() {
 } //End keyPressed
 //
 void mousePressed() {
+  //
+  TicTacToeSinglePlayerMousePressed ();
   //
   if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1])) {
     if (!GameModeMultiPlayer && !GameModeSinglePlayer) {
