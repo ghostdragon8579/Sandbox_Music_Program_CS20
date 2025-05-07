@@ -12,8 +12,8 @@ void TicTacToeSinglePlayer () {
 }
 void TicTacToeSinglePlayerMousePressed () {
     for (int i = 1; i <= 9; i++) {
-    if (MouseIsOver(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare)) {
-      rect(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare);
+    if (MouseIsOver(xGameGrid[i], yGameGrid[i], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12])) {
+      rect(xGameGrid[i], yGameGrid[i], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
     }
   }
 }
@@ -40,8 +40,8 @@ void TicTacToeMultiPlayer () {
 }
 void TicTacToeMultiPlayerMousePressed () {
     for (int i = 1; i <= 9; i++) {
-    if (MouseIsOver(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare)) {
-      rect(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare);
+    if (MouseIsOver(xGameGrid[i], yGameGrid[i], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12])) {
+      rect(xGameGrid[i], yGameGrid[i], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
     }
   }
 }

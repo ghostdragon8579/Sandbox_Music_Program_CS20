@@ -4,9 +4,8 @@ float xQuitButton, yQuitButton, widthQuitButton, heightQuitButton;
 float[] xGameGrid = new float[10];
 float[] yGameGrid = new float[10];
 float widthGameGrid, heightGameGrid;
-float widthGameGridSquare, heightGameGridSquare;
-float[] TicTacToeTextDIVWidth = new float[12];
-float[] TicTacToeTextDIVHeight = new float[12];
+float[] TicTacToeTextDIVWidth = new float[13];
+float[] TicTacToeTextDIVHeight = new float[13];
 float xGameModeSelection, yGameModeSelection;
 float xSinglePlayer, ySinglePlayer;
 float xMutiPlayer, yMultiPlayer;
@@ -51,20 +50,6 @@ void setup() {
   //Background
   xBackground = appWidth*0; yBackground = appHeight*0; widthBackground = appWidth-1; heightBackground = appHeight-1;
   //
-  //Game Grid and Grid Squares
-  widthGameGrid = appWidth*14/36; heightGameGrid = widthGameGrid;
-  xGameGrid[0] = appWidth*11/36; yGameGrid[0] = appHeight*1/4;
-  widthGameGridSquare = widthGameGrid*1/3; heightGameGridSquare = widthGameGridSquare;
-  xGameGrid[1] = xGameGrid[0]; yGameGrid[1] = yGameGrid[0];
-  xGameGrid[2] = xGameGrid[0]+widthGameGridSquare; yGameGrid[2] = yGameGrid[0];
-  xGameGrid[3] = xGameGrid[0]+widthGameGridSquare*2; yGameGrid[3] = yGameGrid[0];
-  xGameGrid[4] = xGameGrid[0]; yGameGrid[4] = yGameGrid[0]+heightGameGridSquare;
-  xGameGrid[5] = xGameGrid[0]+widthGameGridSquare; yGameGrid[5] = yGameGrid[0]+heightGameGridSquare;
-  xGameGrid[6] = xGameGrid[0]+widthGameGridSquare*2; yGameGrid[6] = yGameGrid[0]+heightGameGridSquare;
-  xGameGrid[7] = xGameGrid[0]; yGameGrid[7] = yGameGrid[0]+heightGameGridSquare*2;
-  xGameGrid[8] = xGameGrid[0]+widthGameGridSquare; yGameGrid[8] = yGameGrid[0]+heightGameGridSquare*2;
-  xGameGrid[9] = xGameGrid[0]+widthGameGridSquare*2; yGameGrid[9] = yGameGrid[0]+heightGameGridSquare*2;
-  //
   //Game Mode Selection
   xGameModeSelection = appWidth*1/3; yGameModeSelection = appHeight*1/24; TicTacToeTextDIVWidth[0] = appWidth*1/3; TicTacToeTextDIVHeight[0] = appHeight*1/16;
   xSinglePlayer = appWidth*1/3; ySinglePlayer = appHeight*1/8; TicTacToeTextDIVWidth[1] = appWidth*1/7; TicTacToeTextDIVHeight[1] = appHeight*1/16;
@@ -85,6 +70,21 @@ void setup() {
   //SinglePlayer WinStreak
   xWinStreak = xScoreBoard; yWinStreak = yScoreBoard; TicTacToeTextDIVWidth[10] = TicTacToeTextDIVWidth[5]; TicTacToeTextDIVHeight[10] = TicTacToeTextDIVHeight[5];
   xWinStreakCounter = appWidth*1/12; yWinStreakCounter = appHeight*7/18; TicTacToeTextDIVWidth[11] = appWidth*1/8; TicTacToeTextDIVHeight[11] = TicTacToeTextDIVHeight[5];
+  //
+  //Game Grid and Grid Squares
+  widthGameGrid = appWidth*14/36; heightGameGrid = widthGameGrid;
+  xGameGrid[0] = appWidth*11/36; yGameGrid[0] = appHeight*1/4;
+  TicTacToeTextDIVWidth[12] = widthGameGrid*1/3; TicTacToeTextDIVHeight[12] = TicTacToeTextDIVWidth[12];
+  xGameGrid[1] = xGameGrid[0]; yGameGrid[1] = yGameGrid[0];
+  xGameGrid[2] = xGameGrid[0]+TicTacToeTextDIVWidth[12]; yGameGrid[2] = yGameGrid[0];
+  xGameGrid[3] = xGameGrid[0]+TicTacToeTextDIVWidth[12]*2; yGameGrid[3] = yGameGrid[0];
+  xGameGrid[4] = xGameGrid[0]; yGameGrid[4] = yGameGrid[0]+TicTacToeTextDIVHeight[12];
+  xGameGrid[5] = xGameGrid[0]+TicTacToeTextDIVWidth[12]; yGameGrid[5] = yGameGrid[0]+TicTacToeTextDIVHeight[12];
+  xGameGrid[6] = xGameGrid[0]+TicTacToeTextDIVWidth[12]*2; yGameGrid[6] = yGameGrid[0]+TicTacToeTextDIVHeight[12];
+  xGameGrid[7] = xGameGrid[0]; yGameGrid[7] = yGameGrid[0]+TicTacToeTextDIVHeight[12]*2;
+  xGameGrid[8] = xGameGrid[0]+TicTacToeTextDIVWidth[12]; yGameGrid[8] = yGameGrid[0]+TicTacToeTextDIVHeight[12]*2;
+  xGameGrid[9] = xGameGrid[0]+TicTacToeTextDIVWidth[12]*2; yGameGrid[9] = yGameGrid[0]+TicTacToeTextDIVHeight[12]*2;
+  //
   //
   //Fonts
   TitleFont = createFont("Times New Roman Bold", 55);
@@ -109,15 +109,15 @@ void draw() {
   //Game Grid and Grid Squares
   strokeWeight(4);
   rect(xGameGrid[0], yGameGrid[0], widthGameGrid, heightGameGrid);
-  rect(xGameGrid[1], yGameGrid[1], widthGameGridSquare, heightGameGridSquare);
-  rect(xGameGrid[2], yGameGrid[2], widthGameGridSquare, heightGameGridSquare);
-  rect(xGameGrid[3], yGameGrid[3], widthGameGridSquare, heightGameGridSquare);
-  rect(xGameGrid[4], yGameGrid[4], widthGameGridSquare, heightGameGridSquare);
-  rect(xGameGrid[5], yGameGrid[5], widthGameGridSquare, heightGameGridSquare);
-  rect(xGameGrid[6], yGameGrid[6], widthGameGridSquare, heightGameGridSquare);
-  rect(xGameGrid[7], yGameGrid[7], widthGameGridSquare, heightGameGridSquare);
-  rect(xGameGrid[8], yGameGrid[8], widthGameGridSquare, heightGameGridSquare);
-  rect(xGameGrid[9], yGameGrid[9], widthGameGridSquare, heightGameGridSquare);
+  rect(xGameGrid[1], yGameGrid[1], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  rect(xGameGrid[2], yGameGrid[2], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  rect(xGameGrid[3], yGameGrid[3], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  rect(xGameGrid[4], yGameGrid[4], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  rect(xGameGrid[5], yGameGrid[5], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  rect(xGameGrid[6], yGameGrid[6], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  rect(xGameGrid[7], yGameGrid[7], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  rect(xGameGrid[8], yGameGrid[8], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  rect(xGameGrid[9], yGameGrid[9], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
   strokeWeight(1);
   //
   //Game Mode Selection
@@ -146,6 +146,16 @@ void draw() {
   text(Text[8], xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
   textFont(TitleFont, FontSizes[8]);
   text(Text[9], xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
+  textFont(TitleFont, FontSizes[12]);
+  text(Text[12], xGameGrid[1], yGameGrid[1], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  text(Text[12], xGameGrid[2], yGameGrid[2], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  text(Text[12], xGameGrid[3], yGameGrid[3], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  text(Text[12], xGameGrid[4], yGameGrid[4], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  text(Text[12], xGameGrid[5], yGameGrid[5], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  text(Text[12], xGameGrid[6], yGameGrid[6], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  text(Text[12], xGameGrid[7], yGameGrid[7], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  text(Text[12], xGameGrid[8], yGameGrid[8], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  text(Text[12], xGameGrid[9], yGameGrid[9], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
   fill(ResetDefaultInk);
   //
   //Images
