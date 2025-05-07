@@ -31,6 +31,7 @@ boolean GameModeMultiPlayer = false;
 boolean PlayerX = true;
 boolean PlayerO = false;
 boolean IsFontSizeUpdated = false;
+boolean IsMousePressed = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
 }
@@ -167,6 +168,7 @@ void draw() {
   TicTacToeMultiPlayer ();
   } else if (GameModeSinglePlayer == true) {
   TicTacToeSinglePlayer ();
+  TicTacToeSinglePlayerMousePressed ();
   }
   Tic_Tac_Toe_CS20_HoverOver ();
   //
@@ -179,7 +181,7 @@ void keyPressed() {
 //
 void mousePressed() {
   //
-  TicTacToeSinglePlayerMousePressed ();
+  IsMousePressed = true;
   //
   if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1])) {
     if (!GameModeMultiPlayer && !GameModeSinglePlayer) {
@@ -190,13 +192,28 @@ void mousePressed() {
   } else if (MouseIsOver(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
     GameModeSinglePlayer = false;
     GameModeMultiPlayer = false;
+    Text[12] = "";
   } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
     GameModeSinglePlayer = false;
     GameModeMultiPlayer = false;
+    Text[12] = "";
   } else if (MouseIsOver(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton)) {
     exit();
   }
   //
 } //End mousePressed
+//
+void mouseReleased() {
+  //
+  if (PlayerX == true && PlayerO == false) {
+    PlayerX = false;
+    PlayerO = true;
+  }
+  if (PlayerO == true && PlayerX == false) {
+    PlayerO = false;
+    PlayerX = true;
+  }
+  //
+}
 //
 //End MAIN Program

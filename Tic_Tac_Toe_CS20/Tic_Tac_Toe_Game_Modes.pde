@@ -9,21 +9,19 @@ void TicTacToeSinglePlayer () {
   text(Text[10], xWinStreak, yWinStreak, TicTacToeTextDIVWidth[10], TicTacToeTextDIVHeight[10]);
   textFont(TitleFont, FontSizes[11]);
   text(Text[11], xWinStreakCounter, yWinStreakCounter, TicTacToeTextDIVWidth[11], TicTacToeTextDIVHeight[11]);
+  fill(Black);
 }
 void TicTacToeSinglePlayerMousePressed () {
   for (int i = 1; i <= 9; i++) {
-    if (MouseIsOver(xGameGrid[i], yGameGrid[i], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12])) {      
+    if (IsMousePressed && MouseIsOver(xGameGrid[i], yGameGrid[i], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12])) {      
       if (PlayerX == true && PlayerO == false) {
-        Text[i]++;
-        PlayerX = false; // Switch turn to PlayerO
-        PlayerO = true;
+        Text[12] = "X";
       } else if (PlayerO == true && PlayerX == false) {
-        Text[i]++;
-        PlayerO = false; // Switch turn to PlayerX
-        PlayerX = true;
+        Text[12] = "O";
       }
     }
   }
+  IsMousePressed = false;
 }
 void TicTacToeMultiPlayer () {
   //Turn Display and Score Board
