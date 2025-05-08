@@ -12,16 +12,6 @@ void TicTacToeSinglePlayer () {
   fill(Black);
 }
 void TicTacToeSinglePlayerMousePressed () {
-  for (int i = 1; i <= 9; i++) {
-    if (IsMousePressed && MouseIsOver(xGameGrid[i], yGameGrid[i], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12])) {      
-      if (PlayerX == true && PlayerO == false) {
-        Text[12] = "X";
-      } else if (PlayerO == true && PlayerX == false) {
-        Text[12] = "O";
-      }
-    }
-  }
-  IsMousePressed = false;
 }
 void TicTacToeMultiPlayer () {
   //Turn Display and Score Board
@@ -46,8 +36,8 @@ void TicTacToeMultiPlayer () {
 }
 void TicTacToeMultiPlayerMousePressed () {
     for (int i = 1; i <= 9; i++) {
-    if (MouseIsOver(xGameGrid[i], yGameGrid[i], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12])) {
-      rect(xGameGrid[i], yGameGrid[i], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+    if (MouseIsOver(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare)) {
+      rect(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare);
     }
   }
 }

@@ -1,7 +1,7 @@
 float TitleFontSize;
 float[] InitialFontSizes = new float[TicTacToeTextDIVHeight.length];
 float[] FontSizes = new float[TicTacToeTextDIVHeight.length];
-String[] Text = new String[13];
+String[] Text = new String[12];
 void MusicPanelTextSetup1() {
   //
   TitleFontSize = ShorterSide;
@@ -28,7 +28,6 @@ void stringVarsEntry() {
   Text[9] = "Reset";
   Text[10] = "Win Streak:";
   Text[11] = "0";
-  Text[12] = "";
   //
 }
 void MusicPanelTextSetup2() {
@@ -88,10 +87,10 @@ void Tic_Tac_Toe_CS20_HoverOver () {
   }
   //Array Hover Over Goes on the end to prevent miscoloring
   for (int i = 1; i <= 9; i++) {
-  if (MouseIsOver(xGameGrid[i], yGameGrid[i], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12])) {
+  if (MouseIsOver(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare)) {
     fill(HoverOverColor);
     stroke(HoverOverColor);
-    rect(xGameGrid[i], yGameGrid[i], TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+    rect(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare);
     fill(ResetDefaultInk);
     stroke(Black);
   }
