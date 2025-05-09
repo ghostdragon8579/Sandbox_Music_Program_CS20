@@ -1,3 +1,23 @@
+boolean CheckWin(int player) {
+  int[][] WinningCombinations = {
+    {1, 2, 3}, // Top row
+    {4, 5, 6}, // Middle row
+    {7, 8, 9}, // Bottom row
+    {1, 4, 7}, // Left column
+    {2, 5, 8}, // Middle column
+    {3, 6, 9}, // Right column
+    {1, 5, 9}, // Diagonal top-left to bottom-right
+    {3, 5, 7}  // Diagonal top-right to bottom-left
+  };
+  for (int[] Combination : WinningCombinations) {
+    if (GridState[Combination[0]] == player &&
+        GridState[Combination[1]] == player &&
+        GridState[Combination[2]] == player) {
+      return true;
+    }
+  }
+  return false;
+}
 void TicTacToeSinglePlayer () {
   //Win Streak Counter
   strokeWeight(2);
@@ -35,14 +55,25 @@ void TicTacToeMultiPlayer () {
   text(Text[7], xScoreKeeper2, yScoreKeeper2, TicTacToeTextDIVWidth[7], TicTacToeTextDIVHeight[7]);
 }
 void TicTacToeMultiPlayerMousePressed () {
+  if (GameWon) {
+    return;
+  }
   for (int i = 1; i <= 9; i++) {
     if (MouseIsOver(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare) && GridState[i] == 0) {
     if (PlayerO == false && PlayerX == true) {
       GridState[i] = 1;
+      if (CheckWin(1)) {
+          println("Player X wins!");
+          GameWon = true;
+      }
       PlayerX = false;
       PlayerO = true;
     } else if (PlayerX == false && PlayerO == true) {
       GridState[i] = 2;
+      if (CheckWin(2)) {
+        println("Player O wins!");
+        GameWon = true;
+      }
       PlayerX = true;
       PlayerO = false;
       }

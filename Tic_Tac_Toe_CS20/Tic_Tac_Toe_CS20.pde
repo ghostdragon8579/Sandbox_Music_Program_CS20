@@ -33,6 +33,7 @@ boolean GameModeSinglePlayer = false;
 boolean GameModeMultiPlayer = false;
 boolean PlayerX = true;
 boolean PlayerO = false;
+boolean GameWon = false;
 boolean IsFontSizeUpdated = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
@@ -199,12 +200,16 @@ void mousePressed() {
   } else if (MouseIsOver(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
     GameModeSinglePlayer = false;
     GameModeMultiPlayer = false;
+    PlayerX = true; PlayerO = false;
+    GameWon = false;
     for (int i = 1; i <= 9; i++) {
       GridState[i] = 0;
     }
   } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
     GameModeSinglePlayer = false;
     GameModeMultiPlayer = false;
+    PlayerX = true; PlayerO = false;
+    GameWon = false;
     for (int i = 1; i <= 9; i++) {
       GridState[i] = 0;
     }

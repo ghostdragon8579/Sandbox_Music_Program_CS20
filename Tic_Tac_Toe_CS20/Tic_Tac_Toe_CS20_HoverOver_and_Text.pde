@@ -20,7 +20,11 @@ void stringVarsEntry() {
   Text[1] = "SinglePlayer";
   Text[2] = "MultiPlayer";
   Text[3] = "Whose turn it is:";
+  if (PlayerO == false && PlayerX == true) {
   Text[4] = "X";
+  } else if (PlayerX == false && PlayerO == true) {
+  Text[4] = "O";
+  }
   Text[5] = "Score:";
   Text[6] = "X: 0";
   Text[7] = "O: 0";
