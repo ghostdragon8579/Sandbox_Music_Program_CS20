@@ -5,18 +5,12 @@ float[] xGameGrid = new float[10];
 float[] yGameGrid = new float[10];
 float widthGameGrid, heightGameGrid;
 float widthGameGridSquare, heightGameGridSquare;
-float[] xPlayerXGameGridLine1 = new float[18];
-float[] yPlayerXGameGridLine1 = new float[18];
-float[] xPlayerXGameGridLine2 = new float[18];
-float[] yPlayerXGameGridLine2 = new float[18];
-float[] xPlayerOGameGridCircle = new float[9];
-float[] yPlayerOGameGridCircle = new float[9];
 float widthPlayerOGameGridCircle;
 float[] TicTacToeTextDIVWidth = new float[12];
 float[] TicTacToeTextDIVHeight = new float[12];
 float xGameModeSelection, yGameModeSelection;
 float xSinglePlayer, ySinglePlayer;
-float xMutiPlayer, yMultiPlayer;
+float xMultiPlayer, yMultiPlayer;
 float xScoreBoard, yScoreBoard;
 float xScoreKeeper1, yScoreKeeper1;
 float xScoreKeeper2, yScoreKeeper2;
@@ -34,12 +28,12 @@ color LightGray=#EAE8E8;
 int appWidth, appHeight;
 int size;
 int ShorterSide;
+int[] GridState = new int[10];
 boolean GameModeSinglePlayer = false;
 boolean GameModeMultiPlayer = false;
 boolean PlayerX = true;
 boolean PlayerO = false;
 boolean IsFontSizeUpdated = false;
-boolean IsMousePressed = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
 }
@@ -64,7 +58,7 @@ void setup() {
   //Game Mode Selection
   xGameModeSelection = appWidth*1/3; yGameModeSelection = appHeight*1/24; TicTacToeTextDIVWidth[0] = appWidth*1/3; TicTacToeTextDIVHeight[0] = appHeight*1/16;
   xSinglePlayer = appWidth*1/3; ySinglePlayer = appHeight*1/8; TicTacToeTextDIVWidth[1] = appWidth*1/7; TicTacToeTextDIVHeight[1] = appHeight*1/16;
-  xMutiPlayer = appWidth*2/3-appWidth*1/7; yMultiPlayer = ySinglePlayer; TicTacToeTextDIVWidth[2] = TicTacToeTextDIVWidth[1]; TicTacToeTextDIVHeight[2] = TicTacToeTextDIVHeight[1];
+  xMultiPlayer = appWidth*2/3-appWidth*1/7; yMultiPlayer = ySinglePlayer; TicTacToeTextDIVWidth[2] = TicTacToeTextDIVWidth[1]; TicTacToeTextDIVHeight[2] = TicTacToeTextDIVHeight[1];
   //
   //Turn Display and Score Board
   xScoreBoard = appWidth*1/24; yScoreBoard = appHeight*1/3; TicTacToeTextDIVWidth[5] = appWidth*5/24; TicTacToeTextDIVHeight[5] = appHeight*1/24;
@@ -95,55 +89,6 @@ void setup() {
   xGameGrid[7] = xGameGrid[0]; yGameGrid[7] = yGameGrid[0]+heightGameGridSquare*2;
   xGameGrid[8] = xGameGrid[0]+widthGameGridSquare; yGameGrid[8] = yGameGrid[0]+heightGameGridSquare*2;
   xGameGrid[9] = xGameGrid[0]+widthGameGridSquare*2; yGameGrid[9] = yGameGrid[0]+heightGameGridSquare*2;
-  //
-  //X Lines
-  xPlayerXGameGridLine1[0] = xGameGrid[1]; yPlayerXGameGridLine1[0] = yGameGrid[1]; 
-  xPlayerXGameGridLine2[0] = xGameGrid[2]; yPlayerXGameGridLine2[0] = yGameGrid[4];
-  xPlayerXGameGridLine1[1] = xGameGrid[2]; yPlayerXGameGridLine1[1] = yGameGrid[1]; 
-  xPlayerXGameGridLine2[1] = xGameGrid[3]; yPlayerXGameGridLine2[1] = yGameGrid[4];
-  xPlayerXGameGridLine1[2] = xGameGrid[3]; yPlayerXGameGridLine1[2] = yGameGrid[1]; 
-  xPlayerXGameGridLine2[2] = xGameGrid[3]+widthGameGridSquare; yPlayerXGameGridLine2[2] = yGameGrid[4];
-  xPlayerXGameGridLine1[3] = xGameGrid[4]; yPlayerXGameGridLine1[3] = yGameGrid[4]; 
-  xPlayerXGameGridLine2[3] = xGameGrid[5]; yPlayerXGameGridLine2[3] = yGameGrid[7];
-  xPlayerXGameGridLine1[4] = xGameGrid[5]; yPlayerXGameGridLine1[4] = yGameGrid[4]; 
-  xPlayerXGameGridLine2[4] = xGameGrid[6]; yPlayerXGameGridLine2[4] = yGameGrid[7];
-  xPlayerXGameGridLine1[5] = xGameGrid[6]; yPlayerXGameGridLine1[5] = yGameGrid[4]; 
-  xPlayerXGameGridLine2[5] = xGameGrid[6]+widthGameGridSquare; yPlayerXGameGridLine2[5] = yGameGrid[7];
-  xPlayerXGameGridLine1[6] = xGameGrid[7]; yPlayerXGameGridLine1[6] = yGameGrid[7]; 
-  xPlayerXGameGridLine2[6] = xGameGrid[8]; yPlayerXGameGridLine2[6] = yGameGrid[7]+heightGameGridSquare;
-  xPlayerXGameGridLine1[7] = xGameGrid[8]; yPlayerXGameGridLine1[7] = yGameGrid[7]; 
-  xPlayerXGameGridLine2[7] = xGameGrid[9]; yPlayerXGameGridLine2[7] = yGameGrid[7]+heightGameGridSquare;
-  xPlayerXGameGridLine1[8] = xGameGrid[9]; yPlayerXGameGridLine1[8] = yGameGrid[7]; 
-  xPlayerXGameGridLine2[8] = xGameGrid[9]+widthGameGridSquare; yPlayerXGameGridLine2[8] = yGameGrid[7]+heightGameGridSquare;
-  xPlayerXGameGridLine1[9] = xGameGrid[1]; yPlayerXGameGridLine1[9] = yGameGrid[4]; 
-  xPlayerXGameGridLine2[9] = xGameGrid[1]+widthGameGridSquare; yPlayerXGameGridLine2[9] = yGameGrid[1];
-  xPlayerXGameGridLine1[10] = xGameGrid[2]; yPlayerXGameGridLine1[10] = yGameGrid[4]; 
-  xPlayerXGameGridLine2[10] = xGameGrid[2]+widthGameGridSquare; yPlayerXGameGridLine2[10] = yGameGrid[1];
-  xPlayerXGameGridLine1[11] = xGameGrid[3]; yPlayerXGameGridLine1[11] = yGameGrid[4];
-  xPlayerXGameGridLine2[11] = xGameGrid[3]+widthGameGridSquare; yPlayerXGameGridLine2[11] = yGameGrid[1];
-  xPlayerXGameGridLine1[12] = xGameGrid[4]; yPlayerXGameGridLine1[12] = yGameGrid[7]; 
-  xPlayerXGameGridLine2[12] = xGameGrid[4]+widthGameGridSquare; yPlayerXGameGridLine2[12] = yGameGrid[4];
-  xPlayerXGameGridLine1[13] = xGameGrid[5]; yPlayerXGameGridLine1[13] = yGameGrid[7]; 
-  xPlayerXGameGridLine2[13] = xGameGrid[5]+widthGameGridSquare; yPlayerXGameGridLine2[13] = yGameGrid[4];
-  xPlayerXGameGridLine1[14] = xGameGrid[6]; yPlayerXGameGridLine1[14] = yGameGrid[7];
-  xPlayerXGameGridLine2[14] = xGameGrid[6]+widthGameGridSquare; yPlayerXGameGridLine2[14] = yGameGrid[4];
-  xPlayerXGameGridLine1[15] = xGameGrid[7]; yPlayerXGameGridLine1[15] = yGameGrid[7]+heightGameGridSquare;
-  xPlayerXGameGridLine2[15] = xGameGrid[7]+widthGameGridSquare; yPlayerXGameGridLine2[15] = yGameGrid[7];
-  xPlayerXGameGridLine1[16] = xGameGrid[8]; yPlayerXGameGridLine1[16] = yGameGrid[7]+heightGameGridSquare;
-  xPlayerXGameGridLine2[16] = xGameGrid[8]+widthGameGridSquare; yPlayerXGameGridLine2[16] = yGameGrid[7];
-  xPlayerXGameGridLine1[17] = xGameGrid[9]; yPlayerXGameGridLine1[17] = yGameGrid[7]+heightGameGridSquare;
-  xPlayerXGameGridLine2[17] = xGameGrid[9]+widthGameGridSquare; yPlayerXGameGridLine2[17] = yGameGrid[7];
-  //
-  //O Circles
-  xPlayerOGameGridCircle[0] = xGameGrid[1]+widthGameGridSquare*1/2; yPlayerOGameGridCircle[0] = yGameGrid[1]+heightGameGridSquare*1/2;
-  xPlayerOGameGridCircle[1] = xGameGrid[2]+widthGameGridSquare*1/2; yPlayerOGameGridCircle[1] = yGameGrid[2]+heightGameGridSquare*1/2;
-  xPlayerOGameGridCircle[2] = xGameGrid[3]+widthGameGridSquare*1/2; yPlayerOGameGridCircle[2] = yGameGrid[3]+heightGameGridSquare*1/2;
-  xPlayerOGameGridCircle[3] = xGameGrid[4]+widthGameGridSquare*1/2; yPlayerOGameGridCircle[3] = yGameGrid[4]+heightGameGridSquare*1/2;
-  xPlayerOGameGridCircle[4] = xGameGrid[5]+widthGameGridSquare*1/2; yPlayerOGameGridCircle[4] = yGameGrid[5]+heightGameGridSquare*1/2;
-  xPlayerOGameGridCircle[5] = xGameGrid[6]+widthGameGridSquare*1/2; yPlayerOGameGridCircle[5] = yGameGrid[6]+heightGameGridSquare*1/2;
-  xPlayerOGameGridCircle[6] = xGameGrid[7]+widthGameGridSquare*1/2; yPlayerOGameGridCircle[6] = yGameGrid[7]+heightGameGridSquare*1/2;
-  xPlayerOGameGridCircle[7] = xGameGrid[8]+widthGameGridSquare*1/2; yPlayerOGameGridCircle[7] = yGameGrid[8]+heightGameGridSquare*1/2;
-  xPlayerOGameGridCircle[8] = xGameGrid[9]+widthGameGridSquare*1/2; yPlayerOGameGridCircle[8] = yGameGrid[9]+heightGameGridSquare*1/2;
   widthPlayerOGameGridCircle = widthGameGridSquare*2/3;
   //
   //Fonts
@@ -178,21 +123,25 @@ void draw() {
   rect(xGameGrid[7], yGameGrid[7], widthGameGridSquare, heightGameGridSquare);
   rect(xGameGrid[8], yGameGrid[8], widthGameGridSquare, heightGameGridSquare);
   rect(xGameGrid[9], yGameGrid[9], widthGameGridSquare, heightGameGridSquare);
-  /*
-  for (int i = 0; i <= 17; i++) {
-  line(xPlayerXGameGridLine1[i], yPlayerXGameGridLine1[i], xPlayerXGameGridLine2[i], yPlayerXGameGridLine2[i]);
+  for (int i = 1; i <= 9; i++) {
+    if (GridState[i] == 1) {
+      stroke(Black);
+      strokeWeight(10);
+      line(xGameGrid[i], yGameGrid[i], xGameGrid[i] + widthGameGridSquare, yGameGrid[i] + heightGameGridSquare); // Diagonal line 1
+      line(xGameGrid[i], yGameGrid[i] + heightGameGridSquare, xGameGrid[i] + widthGameGridSquare, yGameGrid[i]); // Diagonal line 2
+    } else if (GridState[i] == 2) {
+      stroke(Black);
+      strokeWeight(10);
+      circle(xGameGrid[i]+widthGameGridSquare*1/2, yGameGrid[i]+heightGameGridSquare*1/2, widthPlayerOGameGridCircle);
+    }
   }
-  for (int i = 0; i <= 8; i++) {
-    circle(xPlayerOGameGridCircle[i], yPlayerOGameGridCircle[i], widthPlayerOGameGridCircle);
-  }
-  */
   strokeWeight(1);
   //
   //Game Mode Selection
   strokeWeight(2);
   rect(xGameModeSelection, yGameModeSelection, TicTacToeTextDIVWidth[0], TicTacToeTextDIVHeight[0]);
   rect(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
-  rect(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
+  rect(xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
   strokeWeight(1);
   //
   //Buttons
@@ -210,7 +159,7 @@ void draw() {
   textFont(TitleFont, FontSizes[1]);
   text(Text[1], xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
   textFont(TitleFont, FontSizes[2]);
-  text(Text[2], xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
+  text(Text[2], xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
   textFont(TitleFont, FontSizes[8]);
   text(Text[8], xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
   textFont(TitleFont, FontSizes[8]);
@@ -221,10 +170,10 @@ void draw() {
   image(Quit, xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
   //
   if (GameModeMultiPlayer == true) {
-  TicTacToeMultiPlayer ();
+  TicTacToeMultiPlayer();
   } else if (GameModeSinglePlayer == true) {
-  TicTacToeSinglePlayer ();
-  TicTacToeSinglePlayerMousePressed ();
+  TicTacToeSinglePlayer();
+  TicTacToeSinglePlayerMousePressed();
   }
   Tic_Tac_Toe_CS20_HoverOver ();
   //
@@ -237,20 +186,28 @@ void keyPressed() {
 //
 void mousePressed() {
   //
-  IsMousePressed = true;
+  if (GameModeMultiPlayer == true) {
+  TicTacToeMultiPlayerMousePressed();
+  }
   //
   if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1])) {
     if (!GameModeMultiPlayer && !GameModeSinglePlayer) {
       GameModeSinglePlayer = true; }
-  } else if (MouseIsOver(xMutiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2])) {
+  } else if (MouseIsOver(xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2])) {
     if (!GameModeMultiPlayer && !GameModeSinglePlayer) {
       GameModeMultiPlayer = true; }
   } else if (MouseIsOver(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
     GameModeSinglePlayer = false;
     GameModeMultiPlayer = false;
+    for (int i = 1; i <= 9; i++) {
+      GridState[i] = 0;
+    }
   } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
     GameModeSinglePlayer = false;
     GameModeMultiPlayer = false;
+    for (int i = 1; i <= 9; i++) {
+      GridState[i] = 0;
+    }
   } else if (MouseIsOver(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton)) {
     exit();
   }
@@ -259,14 +216,6 @@ void mousePressed() {
 //
 void mouseReleased() {
   //
-  if (PlayerX == true && PlayerO == false) {
-    PlayerX = false;
-    PlayerO = true;
-  }
-  if (PlayerO == true && PlayerX == false) {
-    PlayerO = false;
-    PlayerX = true;
-  }
   //
 }
 //

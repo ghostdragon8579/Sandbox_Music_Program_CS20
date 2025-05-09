@@ -35,9 +35,17 @@ void TicTacToeMultiPlayer () {
   text(Text[7], xScoreKeeper2, yScoreKeeper2, TicTacToeTextDIVWidth[7], TicTacToeTextDIVHeight[7]);
 }
 void TicTacToeMultiPlayerMousePressed () {
-    for (int i = 1; i <= 9; i++) {
-    if (MouseIsOver(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare)) {
-      rect(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare);
+  for (int i = 1; i <= 9; i++) {
+    if (MouseIsOver(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare) && GridState[i] == 0) {
+    if (PlayerO == false && PlayerX == true) {
+      GridState[i] = 1;
+      PlayerX = false;
+      PlayerO = true;
+    } else if (PlayerX == false && PlayerO == true) {
+      GridState[i] = 2;
+      PlayerX = true;
+      PlayerO = false;
+      }
     }
   }
 }
