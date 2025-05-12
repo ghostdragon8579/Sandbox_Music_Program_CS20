@@ -77,6 +77,7 @@ void TicTacToeMultiPlayerMousePressed () {
       GridState[i] = 1;
       if (CheckWin(1)) {
         GameWon = true;
+        MultiPlayerXScore++;
       }
       PlayerX = false;
       PlayerO = true;
@@ -84,6 +85,7 @@ void TicTacToeMultiPlayerMousePressed () {
       GridState[i] = 2;
       if (CheckWin(2)) {
         GameWon = true;
+        MultiPlayerOScore++;
       }
       PlayerX = true;
       PlayerO = false;

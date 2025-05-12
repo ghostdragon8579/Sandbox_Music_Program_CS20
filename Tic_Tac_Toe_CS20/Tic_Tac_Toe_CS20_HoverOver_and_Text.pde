@@ -26,8 +26,8 @@ void stringVarsEntry() {
   Text[4] = "O";
   }
   Text[5] = "Score:";
-  Text[6] = "X: 0";
-  Text[7] = "O: 0";
+  Text[6] = "X: "+MultiPlayerXScore;
+  Text[7] = "O: "+MultiPlayerOScore;
   Text[8] = "New Game";
   Text[9] = "Reset";
   Text[10] = "Win Streak:";

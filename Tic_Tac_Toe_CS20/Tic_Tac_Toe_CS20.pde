@@ -30,6 +30,8 @@ color LightGray=#EAE8E8;
 int appWidth, appHeight;
 int size;
 int ShorterSide;
+int MultiPlayerXScore = 0;
+int MultiPlayerOScore = 0;
 int[] GridState = new int[10];
 boolean GameModeSinglePlayer = false;
 boolean GameModeMultiPlayer = false;
@@ -220,6 +222,8 @@ void mousePressed() {
     GameModeMultiPlayer = false;
     PlayerX = true; PlayerO = false;
     GameWon = false;
+    MultiPlayerXScore = 0;
+    MultiPlayerOScore = 0;
     for (int i = 1; i <= 9; i++) {
       GridState[i] = 0;
     }
