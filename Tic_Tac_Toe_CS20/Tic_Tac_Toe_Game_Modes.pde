@@ -53,6 +53,19 @@ void TicTacToeMultiPlayer () {
   text(Text[6], xScoreKeeper1, yScoreKeeper1, TicTacToeTextDIVWidth[6], TicTacToeTextDIVHeight[6]);
   textFont(TitleFont, FontSizes[7]);
   text(Text[7], xScoreKeeper2, yScoreKeeper2, TicTacToeTextDIVWidth[7], TicTacToeTextDIVHeight[7]);
+  fill(ResetDefaultInk);
+  if (CheckWin(1) && GameWon) {
+  rect(xPlayerXWin, yPlayerXWin, TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  fill(Black);
+  textFont(TitleFont, FontSizes[0]);
+  text(Text[12], xPlayerXWin, yPlayerXWin, TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
+  } else if (CheckWin(2) && GameWon) {
+  fill(ResetDefaultInk);
+  rect(xPlayerOWin, yPlayerOWin, TicTacToeTextDIVWidth[13], TicTacToeTextDIVHeight[13]);
+  fill(Black);
+  textFont(TitleFont, FontSizes[0]);
+  text(Text[12], xPlayerOWin, yPlayerOWin, TicTacToeTextDIVWidth[13], TicTacToeTextDIVHeight[13]);
+  }
 }
 void TicTacToeMultiPlayerMousePressed () {
   if (GameWon) {
@@ -63,15 +76,13 @@ void TicTacToeMultiPlayerMousePressed () {
     if (PlayerO == false && PlayerX == true) {
       GridState[i] = 1;
       if (CheckWin(1)) {
-          println("Player X wins!");
-          GameWon = true;
+        GameWon = true;
       }
       PlayerX = false;
       PlayerO = true;
     } else if (PlayerX == false && PlayerO == true) {
       GridState[i] = 2;
       if (CheckWin(2)) {
-        println("Player O wins!");
         GameWon = true;
       }
       PlayerX = true;

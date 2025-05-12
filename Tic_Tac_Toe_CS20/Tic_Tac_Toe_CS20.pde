@@ -6,8 +6,8 @@ float[] yGameGrid = new float[10];
 float widthGameGrid, heightGameGrid;
 float widthGameGridSquare, heightGameGridSquare;
 float widthPlayerOGameGridCircle;
-float[] TicTacToeTextDIVWidth = new float[12];
-float[] TicTacToeTextDIVHeight = new float[12];
+float[] TicTacToeTextDIVWidth = new float[14];
+float[] TicTacToeTextDIVHeight = new float[14];
 float xGameModeSelection, yGameModeSelection;
 float xSinglePlayer, ySinglePlayer;
 float xMultiPlayer, yMultiPlayer;
@@ -20,6 +20,8 @@ float xNewGameButton, yNewGameButton;
 float xResetButton, yResetButton;
 float xWinStreak, yWinStreak;
 float xWinStreakCounter, yWinStreakCounter;
+float xPlayerXWin, yPlayerXWin;
+float xPlayerOWin, yPlayerOWin;
 PFont TitleFont;
 PImage Quit;
 color ResetDefaultInk=#FFFFFF;
@@ -34,6 +36,8 @@ boolean GameModeMultiPlayer = false;
 boolean PlayerX = true;
 boolean PlayerO = false;
 boolean GameWon = false;
+boolean GameWonX = false;
+boolean GameWonO = false;
 boolean IsFontSizeUpdated = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
@@ -76,6 +80,10 @@ void setup() {
   //SinglePlayer WinStreak
   xWinStreak = xScoreBoard; yWinStreak = yScoreBoard; TicTacToeTextDIVWidth[10] = TicTacToeTextDIVWidth[5]; TicTacToeTextDIVHeight[10] = TicTacToeTextDIVHeight[5];
   xWinStreakCounter = appWidth*1/12; yWinStreakCounter = appHeight*7/18; TicTacToeTextDIVWidth[11] = appWidth*1/8; TicTacToeTextDIVHeight[11] = TicTacToeTextDIVHeight[5];
+  //
+  //MultiPlayer Win Display
+  xPlayerXWin = xGameModeSelection; yPlayerXWin = yGameModeSelection; TicTacToeTextDIVWidth[12] = TicTacToeTextDIVWidth[0]; TicTacToeTextDIVHeight[12] = TicTacToeTextDIVHeight[0];
+  xPlayerOWin = xGameModeSelection; yPlayerOWin = yGameModeSelection; TicTacToeTextDIVWidth[13] = TicTacToeTextDIVWidth[0]; TicTacToeTextDIVHeight[13] = TicTacToeTextDIVHeight[0];
   //
   //Game Grid and Grid Squares
   widthGameGrid = appWidth*14/36; heightGameGrid = widthGameGrid;
@@ -166,6 +174,8 @@ void draw() {
   textFont(TitleFont, FontSizes[8]);
   text(Text[9], xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
   fill(ResetDefaultInk);
+  //
+  stringVarsEntry ();
   //
   //Images
   image(Quit, xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
