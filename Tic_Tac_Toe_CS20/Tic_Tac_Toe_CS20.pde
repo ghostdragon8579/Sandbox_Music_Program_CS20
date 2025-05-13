@@ -6,8 +6,8 @@ float[] yGameGrid = new float[10];
 float widthGameGrid, heightGameGrid;
 float widthGameGridSquare, heightGameGridSquare;
 float widthPlayerOGameGridCircle;
-float[] TicTacToeTextDIVWidth = new float[14];
-float[] TicTacToeTextDIVHeight = new float[14];
+float[] TicTacToeTextDIVWidth = new float[18];
+float[] TicTacToeTextDIVHeight = new float[18];
 float xGameModeSelection, yGameModeSelection;
 float xSinglePlayer, ySinglePlayer;
 float xMultiPlayer, yMultiPlayer;
@@ -22,11 +22,18 @@ float xWinStreak, yWinStreak;
 float xWinStreakCounter, yWinStreakCounter;
 float xPlayerXWin, yPlayerXWin;
 float xPlayerOWin, yPlayerOWin;
+float xDifficultySelection, yDifficultySelection;
+float xDifficultyEasy, yDifficultyEasy;
+float xDifficultyMedium, yDifficultyMedium;
+float xDifficultyHard, yDifficultyHard;
 PFont TitleFont;
 PImage Quit;
 color ResetDefaultInk=#FFFFFF;
 color Black=#000000;
 color LightGray=#EAE8E8;
+color Green=#60E329;
+color Orange=#FFC82E;
+color Red=#FA212F;
 int appWidth, appHeight;
 int size;
 int ShorterSide;
@@ -40,6 +47,7 @@ boolean PlayerO = false;
 boolean GameWon = false;
 boolean GameWonX = false;
 boolean GameWonO = false;
+boolean DifficultySelected = false;
 boolean IsFontSizeUpdated = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
@@ -79,9 +87,13 @@ void setup() {
   xResetButton = appWidth*11/24; yResetButton = appHeight*33/36; TicTacToeTextDIVWidth[9] = appWidth*1/12; TicTacToeTextDIVHeight[9] = appHeight*1/24;
   xQuitButton = appWidth*15/16; yQuitButton = appHeight*0; widthQuitButton = appWidth*1/16; heightQuitButton = appHeight*1/24;
   //
-  //SinglePlayer WinStreak
+  //SinglePlayer WinStreak and Difficulty Selection
   xWinStreak = xScoreBoard; yWinStreak = yScoreBoard; TicTacToeTextDIVWidth[10] = TicTacToeTextDIVWidth[5]; TicTacToeTextDIVHeight[10] = TicTacToeTextDIVHeight[5];
   xWinStreakCounter = appWidth*1/12; yWinStreakCounter = appHeight*7/18; TicTacToeTextDIVWidth[11] = appWidth*1/8; TicTacToeTextDIVHeight[11] = TicTacToeTextDIVHeight[5];
+  xDifficultySelection = appWidth*1/24; yDifficultySelection = appHeight*1/3; TicTacToeTextDIVWidth[14] = appWidth*1/5; TicTacToeTextDIVHeight[14] = appHeight*1/12;
+  xDifficultyEasy = xDifficultySelection+TicTacToeTextDIVWidth[14]*1/6; yDifficultyEasy = yDifficultySelection+TicTacToeTextDIVHeight[14]*3/2; TicTacToeTextDIVWidth[15] = TicTacToeTextDIVWidth[14]*2/3; TicTacToeTextDIVHeight[15] = appHeight*1/24;
+  xDifficultyMedium = xDifficultyEasy; yDifficultyMedium = yDifficultySelection+TicTacToeTextDIVHeight[14]*5/2; TicTacToeTextDIVWidth[16] = TicTacToeTextDIVWidth[14]*2/3; TicTacToeTextDIVHeight[16] = appHeight*1/24;
+  xDifficultyHard = xDifficultyEasy; yDifficultyHard = yDifficultySelection+TicTacToeTextDIVHeight[14]*7/2; TicTacToeTextDIVWidth[17] = TicTacToeTextDIVWidth[14]*2/3; TicTacToeTextDIVHeight[17] = appHeight*1/24;
   //
   //MultiPlayer Win Display
   xPlayerXWin = xGameModeSelection; yPlayerXWin = yGameModeSelection; TicTacToeTextDIVWidth[12] = TicTacToeTextDIVWidth[0]; TicTacToeTextDIVHeight[12] = TicTacToeTextDIVHeight[0];
@@ -182,11 +194,10 @@ void draw() {
   //Images
   image(Quit, xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
   //
-  if (GameModeMultiPlayer == true) {
+  if (GameModeMultiPlayer) {
   TicTacToeMultiPlayer();
-  } else if (GameModeSinglePlayer == true) {
+  } else if (GameModeSinglePlayer) {
   TicTacToeSinglePlayer();
-  TicTacToeSinglePlayerMousePressed();
   }
   Tic_Tac_Toe_CS20_HoverOver ();
   //
@@ -199,8 +210,10 @@ void keyPressed() {
 //
 void mousePressed() {
   //
-  if (GameModeMultiPlayer == true) {
+  if (GameModeMultiPlayer) {
   TicTacToeMultiPlayerMousePressed();
+  } else if (GameModeSinglePlayer) {
+  TicTacToeSinglePlayerMousePressed();
   }
   //
   if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1])) {

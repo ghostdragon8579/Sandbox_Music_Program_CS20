@@ -1,7 +1,7 @@
 float TitleFontSize;
 float[] InitialFontSizes = new float[TicTacToeTextDIVHeight.length];
 float[] FontSizes = new float[TicTacToeTextDIVHeight.length];
-String[] Text = new String[14];
+String[] Text = new String[18];
 void MusicPanelTextSetup1() {
   //
   TitleFontSize = ShorterSide;
@@ -10,19 +10,19 @@ void MusicPanelTextSetup1() {
   stringVarsEntry();
 }
 void stringVarsEntry() {
-  if (GameModeSinglePlayer == false && GameModeMultiPlayer == false) {
+  if (!GameModeSinglePlayer && !GameModeMultiPlayer) {
   Text[0] = "Select your Game Mode:";
-  } else if (GameModeSinglePlayer == true) { 
+  } else if (GameModeSinglePlayer) { 
   Text[0] = "Game Mode: SinglePlayer";
-  } else if (GameModeMultiPlayer == true) {
+  } else if (GameModeMultiPlayer) {
   Text[0] = "Game Mode: MultiPlayer";
   }
   Text[1] = "SinglePlayer";
   Text[2] = "MultiPlayer";
   Text[3] = "Whose turn it is:";
-  if (PlayerO == false && PlayerX == true) {
+  if (!PlayerO && PlayerX) {
   Text[4] = "X";
-  } else if (PlayerX == false && PlayerO == true) {
+  } else if (!PlayerX && PlayerO) {
   Text[4] = "O";
   }
   Text[5] = "Score:";
@@ -34,6 +34,10 @@ void stringVarsEntry() {
   Text[11] = "0";
   Text[12] = "Player X Wins!";
   Text[13] = "Player O Wins!";
+  Text[14] = "Choose your difficulty:";
+  Text[15] = "Easy";
+  Text[16] = "Medium";
+  Text[17] = "Hard";
   //
 }
 void MusicPanelTextSetup2() {
@@ -88,6 +92,24 @@ void Tic_Tac_Toe_CS20_HoverOver () {
     fill(HoverOverColor);
     stroke(HoverOverColor);
     rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
+    fill(ResetDefaultInk);
+    stroke(Black);
+ } else if (MouseIsOver(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]) && GameModeSinglePlayer && !DifficultySelected) {
+    fill(HoverOverColor);
+    stroke(HoverOverColor);
+    rect(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]);
+    fill(ResetDefaultInk);
+    stroke(Black);
+ } else if (MouseIsOver(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]) && GameModeSinglePlayer && !DifficultySelected) {
+    fill(HoverOverColor);
+    stroke(HoverOverColor);
+    rect(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]);
+    fill(ResetDefaultInk);
+    stroke(Black);
+ } else if (MouseIsOver(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]) && GameModeSinglePlayer && !DifficultySelected) {
+    fill(HoverOverColor);
+    stroke(HoverOverColor);
+    rect(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]);
     fill(ResetDefaultInk);
     stroke(Black);
   }

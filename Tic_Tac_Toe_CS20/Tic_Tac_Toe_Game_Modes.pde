@@ -19,7 +19,29 @@ boolean CheckWin(int player) {
   return false;
 }
 void TicTacToeSinglePlayer () {
+  if (!DifficultySelected) {
+  strokeWeight(2);
+  rect(xDifficultySelection, yDifficultySelection, TicTacToeTextDIVWidth[14], TicTacToeTextDIVHeight[14]);
+  rect(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]);
+  rect(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]);
+  rect(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]);
+  strokeWeight(1);
+  fill(Black);
+  textFont(TitleFont, FontSizes[14]);
+  text(Text[14], xDifficultySelection, yDifficultySelection, TicTacToeTextDIVWidth[14], TicTacToeTextDIVHeight[14]);
+  fill(Green);
+  textFont(TitleFont, FontSizes[15]);
+  text(Text[15], xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]);
+  fill(Orange);
+  textFont(TitleFont, FontSizes[16]);
+  text(Text[16], xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]);
+  fill(Red);
+  textFont(TitleFont, FontSizes[17]);
+  text(Text[17], xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]);
+  fill(Black);
+  }
   //Win Streak Counter
+  if (DifficultySelected) {
   strokeWeight(2);
   rect(xWinStreak, yWinStreak, TicTacToeTextDIVWidth[10], TicTacToeTextDIVHeight[10]);
   rect(xWinStreakCounter, yWinStreakCounter, TicTacToeTextDIVWidth[11], TicTacToeTextDIVHeight[11]);
@@ -30,8 +52,16 @@ void TicTacToeSinglePlayer () {
   textFont(TitleFont, FontSizes[11]);
   text(Text[11], xWinStreakCounter, yWinStreakCounter, TicTacToeTextDIVWidth[11], TicTacToeTextDIVHeight[11]);
   fill(Black);
+  }
 }
 void TicTacToeSinglePlayerMousePressed () {
+  if (MouseIsOver(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15])) {
+    DifficultySelected = true;
+  } else if (MouseIsOver(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16])) {
+    DifficultySelected = true;
+  } else if (MouseIsOver(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17])) {
+    DifficultySelected = true;
+  }
 }
 void TicTacToeMultiPlayer () {
   //Turn Display and Score Board
