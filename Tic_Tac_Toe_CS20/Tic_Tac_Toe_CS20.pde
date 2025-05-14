@@ -6,8 +6,8 @@ float[] yGameGrid = new float[10];
 float widthGameGrid, heightGameGrid;
 float widthGameGridSquare, heightGameGridSquare;
 float widthPlayerOGameGridCircle;
-float[] TicTacToeTextDIVWidth = new float[18];
-float[] TicTacToeTextDIVHeight = new float[18];
+float[] TicTacToeTextDIVWidth = new float[19];
+float[] TicTacToeTextDIVHeight = new float[19];
 float xGameModeSelection, yGameModeSelection;
 float xSinglePlayer, ySinglePlayer;
 float xMultiPlayer, yMultiPlayer;
@@ -26,6 +26,7 @@ float xDifficultySelection, yDifficultySelection;
 float xDifficultyEasy, yDifficultyEasy;
 float xDifficultyMedium, yDifficultyMedium;
 float xDifficultyHard, yDifficultyHard;
+float xDifficultyDisplay, yDifficultyDisplay;
 PFont TitleFont;
 PImage Quit;
 color ResetDefaultInk=#FFFFFF;
@@ -48,6 +49,9 @@ boolean GameWon = false;
 boolean GameWonX = false;
 boolean GameWonO = false;
 boolean DifficultySelected = false;
+boolean DifficultyEasy = false;
+boolean DifficultyMedium = false;
+boolean DifficultyHard = false;
 boolean IsFontSizeUpdated = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
@@ -94,6 +98,7 @@ void setup() {
   xDifficultyEasy = xDifficultySelection+TicTacToeTextDIVWidth[14]*1/6; yDifficultyEasy = yDifficultySelection+TicTacToeTextDIVHeight[14]*3/2; TicTacToeTextDIVWidth[15] = TicTacToeTextDIVWidth[14]*2/3; TicTacToeTextDIVHeight[15] = appHeight*1/24;
   xDifficultyMedium = xDifficultyEasy; yDifficultyMedium = yDifficultySelection+TicTacToeTextDIVHeight[14]*5/2; TicTacToeTextDIVWidth[16] = TicTacToeTextDIVWidth[14]*2/3; TicTacToeTextDIVHeight[16] = appHeight*1/24;
   xDifficultyHard = xDifficultyEasy; yDifficultyHard = yDifficultySelection+TicTacToeTextDIVHeight[14]*7/2; TicTacToeTextDIVWidth[17] = TicTacToeTextDIVWidth[14]*2/3; TicTacToeTextDIVHeight[17] = appHeight*1/24;
+  xDifficultyDisplay = appWidth*2/5; yDifficultyDisplay = ySinglePlayer; TicTacToeTextDIVWidth[18] = appWidth*1/5; TicTacToeTextDIVHeight[18] = TicTacToeTextDIVHeight[1];
   //
   //MultiPlayer Win Display
   xPlayerXWin = xGameModeSelection; yPlayerXWin = yGameModeSelection; TicTacToeTextDIVWidth[12] = TicTacToeTextDIVWidth[0]; TicTacToeTextDIVHeight[12] = TicTacToeTextDIVHeight[0];
@@ -231,6 +236,8 @@ void mousePressed() {
     GameModeMultiPlayer = false;
     PlayerX = true; PlayerO = false;
     GameWon = false;
+    DifficultySelected = false; DifficultyEasy = false;
+    DifficultyMedium = false; DifficultyHard = false;
     for (int i = 1; i <= 9; i++) {
       GridState[i] = 0;
     }
@@ -241,6 +248,8 @@ void mousePressed() {
     GameWon = false;
     MultiPlayerXScore = 0;
     MultiPlayerOScore = 0;
+    DifficultySelected = false; DifficultyEasy = false;
+    DifficultyMedium = false; DifficultyHard = false;
     for (int i = 1; i <= 9; i++) {
       GridState[i] = 0;
     }

@@ -51,16 +51,25 @@ void TicTacToeSinglePlayer () {
   text(Text[10], xWinStreak, yWinStreak, TicTacToeTextDIVWidth[10], TicTacToeTextDIVHeight[10]);
   textFont(TitleFont, FontSizes[11]);
   text(Text[11], xWinStreakCounter, yWinStreakCounter, TicTacToeTextDIVWidth[11], TicTacToeTextDIVHeight[11]);
+  fill(ResetDefaultInk);
+  strokeWeight(2);
+  rect(xDifficultyDisplay, yDifficultyDisplay, TicTacToeTextDIVWidth[18], TicTacToeTextDIVHeight[18]);
+  strokeWeight(1);
   fill(Black);
+  textFont(TitleFont, FontSizes[18]);
+  text(Text[18], xDifficultyDisplay, yDifficultyDisplay, TicTacToeTextDIVWidth[18], TicTacToeTextDIVHeight[18]);
   }
 }
 void TicTacToeSinglePlayerMousePressed () {
-  if (MouseIsOver(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15])) {
+  if (MouseIsOver(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]) && !DifficultyMedium && !DifficultyHard) {
     DifficultySelected = true;
-  } else if (MouseIsOver(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16])) {
+    DifficultyEasy = true;
+  } else if (MouseIsOver(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]) && !DifficultyEasy && !DifficultyHard) {
     DifficultySelected = true;
-  } else if (MouseIsOver(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17])) {
+    DifficultyMedium = true;
+  } else if (MouseIsOver(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]) && !DifficultyEasy && !DifficultyMedium) {
     DifficultySelected = true;
+    DifficultyHard = true;
   }
 }
 void TicTacToeMultiPlayer () {
