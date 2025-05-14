@@ -63,14 +63,18 @@ void MusicPanelTextSetup2() {
 void TicTacToe () {
 }
 void Tic_Tac_Toe_CS20_HoverOver () {
+  color DefaultHoverOverColor=color(255, 255, 255, 96);
+  color HoverOverGreen=color(96, 227, 41, 96);
+  color HoverOverOrange=color(225, 200, 46, 96);
+  color HoverOverRed=color(250, 33, 47, 96);
   color HoverOverColor=color(255, 255, 255, 96); 
-  if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1])) {
+  if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]) && !GameModeSinglePlayer && !GameModeMultiPlayer) {
     fill(HoverOverColor);
     stroke(HoverOverColor);
     rect(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
     fill(ResetDefaultInk);
     stroke(Black);
-  } else if (MouseIsOver(xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2])) {
+  } else if (MouseIsOver(xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]) && !GameModeSinglePlayer && !GameModeMultiPlayer) {
     fill(HoverOverColor);
     stroke(HoverOverColor);
     rect(xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
@@ -94,22 +98,28 @@ void Tic_Tac_Toe_CS20_HoverOver () {
     rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
     fill(ResetDefaultInk);
     stroke(Black);
- } else if (MouseIsOver(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]) && GameModeSinglePlayer && !DifficultySelected) {
+  } else if (MouseIsOver(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]) && GameModeSinglePlayer && !DifficultySelected) {
+    HoverOverColor = HoverOverGreen;
     fill(HoverOverColor);
     stroke(HoverOverColor);
     rect(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]);
+    HoverOverColor = DefaultHoverOverColor;
     fill(ResetDefaultInk);
     stroke(Black);
- } else if (MouseIsOver(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]) && GameModeSinglePlayer && !DifficultySelected) {
+  } else if (MouseIsOver(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]) && GameModeSinglePlayer && !DifficultySelected) {
+    HoverOverColor = HoverOverOrange;
     fill(HoverOverColor);
     stroke(HoverOverColor);
     rect(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]);
+    HoverOverColor = DefaultHoverOverColor;
     fill(ResetDefaultInk);
     stroke(Black);
- } else if (MouseIsOver(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]) && GameModeSinglePlayer && !DifficultySelected) {
+  } else if (MouseIsOver(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]) && GameModeSinglePlayer && !DifficultySelected) {
+    HoverOverColor = HoverOverRed;
     fill(HoverOverColor);
     stroke(HoverOverColor);
     rect(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]);
+    HoverOverColor = DefaultHoverOverColor;
     fill(ResetDefaultInk);
     stroke(Black);
   }

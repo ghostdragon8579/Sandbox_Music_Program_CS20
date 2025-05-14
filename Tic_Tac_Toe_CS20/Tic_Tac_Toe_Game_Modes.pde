@@ -94,7 +94,7 @@ void TicTacToeMultiPlayer () {
   rect(xPlayerOWin, yPlayerOWin, TicTacToeTextDIVWidth[13], TicTacToeTextDIVHeight[13]);
   fill(Black);
   textFont(TitleFont, FontSizes[0]);
-  text(Text[12], xPlayerOWin, yPlayerOWin, TicTacToeTextDIVWidth[13], TicTacToeTextDIVHeight[13]);
+  text(Text[13], xPlayerOWin, yPlayerOWin, TicTacToeTextDIVWidth[13], TicTacToeTextDIVHeight[13]);
   }
 }
 void TicTacToeMultiPlayerMousePressed () {

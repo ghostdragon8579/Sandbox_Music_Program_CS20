@@ -163,8 +163,10 @@ void draw() {
   //Game Mode Selection
   strokeWeight(2);
   rect(xGameModeSelection, yGameModeSelection, TicTacToeTextDIVWidth[0], TicTacToeTextDIVHeight[0]);
+  if (!GameModeSinglePlayer && !GameModeMultiPlayer) {
   rect(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
   rect(xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
+  }
   strokeWeight(1);
   //
   //Buttons
@@ -179,10 +181,12 @@ void draw() {
   fill(Black);
   textFont(TitleFont, FontSizes[0]);
   text(Text[0], xGameModeSelection, yGameModeSelection, TicTacToeTextDIVWidth[0], TicTacToeTextDIVHeight[0]);
+  if (!GameModeSinglePlayer && !GameModeMultiPlayer) {
   textFont(TitleFont, FontSizes[1]);
   text(Text[1], xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
   textFont(TitleFont, FontSizes[2]);
   text(Text[2], xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
+  }
   textFont(TitleFont, FontSizes[8]);
   text(Text[8], xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
   textFont(TitleFont, FontSizes[8]);
