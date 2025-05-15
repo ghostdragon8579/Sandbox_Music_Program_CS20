@@ -52,6 +52,8 @@ boolean DifficultySelected = false;
 boolean DifficultyEasy = false;
 boolean DifficultyMedium = false;
 boolean DifficultyHard = false;
+boolean PlayerTurn = true;
+boolean ComputerTurn = false;
 boolean IsFontSizeUpdated = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;

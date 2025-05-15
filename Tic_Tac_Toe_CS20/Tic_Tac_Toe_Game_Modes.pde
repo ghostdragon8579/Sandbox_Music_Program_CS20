@@ -71,6 +71,43 @@ void TicTacToeSinglePlayerMousePressed () {
     DifficultySelected = true;
     DifficultyHard = true;
   }
+  if (GameWon) {
+    return;
+  }
+  ArrayList<Integer> availableSquares = new ArrayList<Integer>();
+  for (int i = 1; i <= 9; i++) {
+    if (MouseIsOver(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare) && GridState[i] == 0) {
+    if (!ComputerTurn && PlayerTurn && DifficultySelected) {
+      GridState[i] = 1;
+      if (CheckWin(1)) {
+      GameWon = true;
+    }
+      PlayerTurn = false;
+      ComputerTurn = true;
+    } else if (!PlayerTurn && ComputerTurn && DifficultyMedium) {
+      if (GridState[i] == 0) {
+        availableSquares.add(i);
+        }
+      }
+    }
+  }
+  if (!PlayerTurn && ComputerTurn && DifficultyMedium && !GameWon) {
+    for (int i = 1; i <= 9; i++) {
+      if (GridState[i] == 0) {
+        availableSquares.add(i);
+      }
+    }
+    if (!availableSquares.isEmpty()) {
+      int randomIndex = int(random(availableSquares.size()));
+      int selectedSquare = availableSquares.get(randomIndex);
+      GridState[selectedSquare] = 2;
+      if (CheckWin(2)) {
+        GameWon = true;
+      }
+      PlayerTurn = true;
+      ComputerTurn = false;
+    }
+  }
 }
 void TicTacToeMultiPlayer () {
   //Turn Display and Score Board
