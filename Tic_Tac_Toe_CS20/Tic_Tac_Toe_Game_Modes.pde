@@ -18,6 +18,34 @@ boolean CheckWin(int player) {
   }
   return false;
 }
+boolean CheckAlmostWin(int player, int[] resultSquare) {
+  int[][] WinningCombinations = {
+    {1,2,3}, //Top row
+    {4,5,6}, //Middle row
+    {7,8,9}, //Bottom row
+    {1,4,7}, //Left column
+    {2,5,8}, //Middle column
+    {3,6,9}, //Right column
+    {1,5,9}, //Diagonal top-left to bottom-right
+    {3,5,7}  //Diagonal top-right to bottom-left
+  };
+  for (int[] Combination : WinningCombinations) {
+    int CountPlayer = 0;
+    int EmptySquare = -1;
+    for (int square : Combination) {
+      if (GridState[square] == player) {
+        CountPlayer++;
+      } else if (GridState[square] == 0) {
+        EmptySquare = square;
+      }
+    }
+    if (CountPlayer == 2 && EmptySquare != -1) {
+      resultSquare[0] = EmptySquare;
+      return true;
+    }
+  }
+  return false;
+} 
 void TicTacToeSinglePlayer () {
   if (!DifficultySelected) {
   strokeWeight(2);
