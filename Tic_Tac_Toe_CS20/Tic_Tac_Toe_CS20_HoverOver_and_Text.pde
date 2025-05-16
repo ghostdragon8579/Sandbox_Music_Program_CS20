@@ -1,8 +1,7 @@
 float TitleFontSize;
 float[] InitialFontSizes = new float[TicTacToeTextDIVHeight.length];
 float[] FontSizes = new float[TicTacToeTextDIVHeight.length];
-String[] Text = new String[19];
-String Difficulty;
+String[] Text = new String[21];
 void MusicPanelTextSetup1() {
   //
   TitleFontSize = ShorterSide;
@@ -33,7 +32,7 @@ void stringVarsEntry() {
   Text[8] = "New Game";
   Text[9] = "Reset";
   Text[10] = "Win Streak:";
-  Text[11] = "0";
+  Text[11] = ""+SinglePlayerWinStreak;
   Text[12] = "Player X Wins!";
   Text[13] = "Player O Wins!";
   Text[14] = "Choose your difficulty:";
@@ -48,6 +47,8 @@ void stringVarsEntry() {
   } else if (DifficultySelected && DifficultyHard) {
     Text[18] = "Difficulty: Hard";
   }
+  Text[19] = "You Win!";
+  Text[20] = "You Lose!";
   //
 }
 void MusicPanelTextSetup2() {

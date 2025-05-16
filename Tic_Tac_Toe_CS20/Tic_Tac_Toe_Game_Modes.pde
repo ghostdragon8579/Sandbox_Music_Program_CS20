@@ -1,13 +1,13 @@
 boolean CheckWin(int player) {
   int[][] WinningCombinations = {
-    {1, 2, 3}, // Top row
-    {4, 5, 6}, // Middle row
-    {7, 8, 9}, // Bottom row
-    {1, 4, 7}, // Left column
-    {2, 5, 8}, // Middle column
-    {3, 6, 9}, // Right column
-    {1, 5, 9}, // Diagonal top-left to bottom-right
-    {3, 5, 7}  // Diagonal top-right to bottom-left
+    {1,2,3}, //Top row
+    {4,5,6}, //Middle row
+    {7,8,9}, //Bottom row
+    {1,4,7}, //Left column
+    {2,5,8}, //Middle column
+    {3,6,9}, //Right column
+    {1,5,9}, //Diagonal top-left to bottom-right
+    {3,5,7}  //Diagonal top-right to bottom-left
   };
   for (int[] Combination : WinningCombinations) {
     if (GridState[Combination[0]] == player &&
@@ -40,7 +40,7 @@ void TicTacToeSinglePlayer () {
   text(Text[17], xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]);
   fill(Black);
   }
-  //Win Streak Counter
+  //Win Streak Counter and Win display
   if (DifficultySelected) {
   strokeWeight(2);
   rect(xWinStreak, yWinStreak, TicTacToeTextDIVWidth[10], TicTacToeTextDIVHeight[10]);
@@ -58,6 +58,19 @@ void TicTacToeSinglePlayer () {
   fill(Black);
   textFont(TitleFont, FontSizes[18]);
   text(Text[18], xDifficultyDisplay, yDifficultyDisplay, TicTacToeTextDIVWidth[18], TicTacToeTextDIVHeight[18]);
+  if (CheckWin(1) && GameWon) {
+  fill(ResetDefaultInk);
+  rect(xPlayerWin, yPlayerWin, TicTacToeTextDIVWidth[19], TicTacToeTextDIVHeight[19]);
+  fill(Black);
+  textFont(TitleFont, FontSizes[0]);
+  text(Text[19], xPlayerWin, yPlayerWin, TicTacToeTextDIVWidth[19], TicTacToeTextDIVHeight[19]);
+  } else if (CheckWin(2) && GameWon) {
+  fill(ResetDefaultInk);
+  rect(xComputerWin, yComputerWin, TicTacToeTextDIVWidth[20], TicTacToeTextDIVHeight[20]);
+  fill(Black);
+  textFont(TitleFont, FontSizes[0]);
+  text(Text[20], xComputerWin, yComputerWin, TicTacToeTextDIVWidth[20], TicTacToeTextDIVHeight[20]);
+  }
   }
 }
 void TicTacToeSinglePlayerMousePressed () {
@@ -81,6 +94,7 @@ void TicTacToeSinglePlayerMousePressed () {
       GridState[i] = 1;
       if (CheckWin(1)) {
       GameWon = true;
+      SinglePlayerWinStreak++;
     }
       PlayerTurn = false;
       ComputerTurn = true;
@@ -88,24 +102,31 @@ void TicTacToeSinglePlayerMousePressed () {
       if (GridState[i] == 0) {
         availableSquares.add(i);
         }
+      PlayerTurn = false;
+      ComputerTurn = true;
       }
     }
   }
   if (!PlayerTurn && ComputerTurn && DifficultyMedium && !GameWon) {
+    availableSquares.clear();
     for (int i = 1; i <= 9; i++) {
       if (GridState[i] == 0) {
         availableSquares.add(i);
       }
     }
-    if (!availableSquares.isEmpty()) {
-      int randomIndex = int(random(availableSquares.size()));
-      int selectedSquare = availableSquares.get(randomIndex);
-      GridState[selectedSquare] = 2;
-      if (CheckWin(2)) {
-        GameWon = true;
-      }
+  if (!availableSquares.isEmpty()) {
+    int randomIndex = int(random(availableSquares.size()));
+    int selectedSquare = availableSquares.get(randomIndex);
+    GridState[selectedSquare] = 2;
+    println("Computer selects square: " + selectedSquare);
+    if (CheckWin(2)) {
+      GameWon = true;
+      SinglePlayerWinStreak = 0;
+    }
       PlayerTurn = true;
       ComputerTurn = false;
+    } else {
+      println("Error no available squares.");
     }
   }
 }
