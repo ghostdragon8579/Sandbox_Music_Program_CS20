@@ -18,7 +18,7 @@ boolean CheckWin(int player) {
   }
   return false;
 }
-boolean CheckAlmostWin(int player, int[] resultSquare) {
+boolean CheckNearWin(int player, int[] resultSquare) {
   int[][] WinningCombinations = {
     {1,2,3}, //Top row
     {4,5,6}, //Middle row
@@ -126,7 +126,7 @@ void TicTacToeSinglePlayerMousePressed () {
     }
       PlayerTurn = false;
       ComputerTurn = true;
-    } else if (!PlayerTurn && ComputerTurn && DifficultyMedium) {
+    } else if (!PlayerTurn && ComputerTurn && DifficultySelected) {
       if (GridState[i] == 0) {
         availableSquares.add(i);
         }
