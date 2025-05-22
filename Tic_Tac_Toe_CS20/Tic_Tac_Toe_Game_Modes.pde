@@ -135,6 +135,8 @@ void TicTacToeSinglePlayerMousePressed () {
       }
     }
   }
+  //
+  //Single Player Medium Difficulty Computer
   if (!PlayerTurn && ComputerTurn && DifficultyMedium && !GameWon) {
     availableSquares.clear();
     for (int i = 1; i <= 9; i++) {
@@ -155,6 +157,41 @@ void TicTacToeSinglePlayerMousePressed () {
       ComputerTurn = false;
     } else {
       println("Error no available squares.");
+    }
+  }
+  //
+  //Single Player Hard Difficulty Computer
+  if (!PlayerTurn && ComputerTurn && DifficultyHard && !GameWon) {
+    availableSquares.clear();
+    for (int i = 1; i <= 9; i++) {
+      if (GridState[i] == 0) {
+        availableSquares.add(i);
+      }
+    }
+    if (GridState[5] == 0) {
+    GridState[5] = 2;
+    println("Computer prioritizes the center square");
+    if (CheckWin(2)) {
+      GameWon = true;
+      SinglePlayerWinStreak = 0;
+    }
+      PlayerTurn = true;
+      ComputerTurn = false;
+    } else {
+  if (!availableSquares.isEmpty()) {
+    int randomIndex = int(random(availableSquares.size()));
+    int selectedSquare = availableSquares.get(randomIndex);
+    GridState[selectedSquare] = 2;
+    println("Computer selects square: " + selectedSquare);
+    if (CheckWin(2)) {
+      GameWon = true;
+      SinglePlayerWinStreak = 0;
+    }
+      PlayerTurn = true;
+      ComputerTurn = false;
+    } else {
+      println("Error no available squares.");
+    }
     }
   }
 }
