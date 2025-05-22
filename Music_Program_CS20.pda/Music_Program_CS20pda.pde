@@ -166,6 +166,7 @@ void setup() {
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
   AudioFiles = new File(AbsoluteMusicPathway);
   int AudioFileCount = AudioFiles.list().length;
+  SongNumber = AudioFiles.list().length;
   File[] SongFiles = AudioFiles.listFiles();
   String[] SongFilePathway = new String[AudioFileCount];
   for (int i = SongPlaying; i < SongFiles.length; i++) {
@@ -374,6 +375,9 @@ void keyPressed() {
   }
   if (key=='r' || key=='R') {
     SongPlayList[SongPlaying].rewind();
+  }
+  if (key=='m' || key=='M') {
+    KeyMuteFunction ();
   }
   if (key == CODED && keyCode == RIGHT) {
     SongPlayList[SongPlaying].skip(+SongSkipTime);
