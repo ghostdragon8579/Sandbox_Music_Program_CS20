@@ -145,10 +145,8 @@ void TicTacToeSinglePlayerMousePressed () {
       }
     }
   if (!availableSquares.isEmpty()) {
-    int randomIndex = int(random(availableSquares.size()));
-    int selectedSquare = availableSquares.get(randomIndex);
+    int selectedSquare = availableSquares.get(0);
     GridState[selectedSquare] = 2;
-    println("Computer selects square: " + selectedSquare);
     if (CheckWin(2)) {
       GameWon = true;
       SinglePlayerWinStreak = 0;
@@ -172,7 +170,6 @@ void TicTacToeSinglePlayerMousePressed () {
     int randomIndex = int(random(availableSquares.size()));
     int selectedSquare = availableSquares.get(randomIndex);
     GridState[selectedSquare] = 2;
-    println("Computer selects square: " + selectedSquare);
     if (CheckWin(2)) {
       GameWon = true;
       SinglePlayerWinStreak = 0;
