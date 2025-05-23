@@ -170,7 +170,6 @@ void TicTacToeSinglePlayerMousePressed () {
     }
     if (GridState[5] == 0) {
     GridState[5] = 2;
-    println("Computer prioritizes the center square");
     if (CheckWin(2)) {
       GameWon = true;
       SinglePlayerWinStreak = 0;
@@ -181,7 +180,7 @@ void TicTacToeSinglePlayerMousePressed () {
     int[] blockSquare = new int[1];
   if (CheckNearWin(1, blockSquare)) {
     GridState[blockSquare[0]] = 2;
-    println("Computer blocks player's win at square: " + blockSquare[0]);
+    println("Player's win blocked at square: " + blockSquare[0]);
     if (CheckWin(2)) {
       GameWon = true;
       SinglePlayerWinStreak = 0;
@@ -193,7 +192,6 @@ void TicTacToeSinglePlayerMousePressed () {
     int randomIndex = int(random(availableSquares.size()));
     int selectedSquare = availableSquares.get(randomIndex);
     GridState[selectedSquare] = 2;
-    println("Computer selects square: " + selectedSquare);
     if (CheckWin(2)) {
       GameWon = true;
       SinglePlayerWinStreak = 0;
