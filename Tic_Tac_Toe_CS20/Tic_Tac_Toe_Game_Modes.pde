@@ -136,6 +136,30 @@ void TicTacToeSinglePlayerMousePressed () {
     }
   }
   //
+  //Single Player Easy Difficulty Computer
+  if (!PlayerTurn && ComputerTurn && DifficultyEasy && !GameWon) {
+    availableSquares.clear();
+    for (int i = 1; i <= 9; i++) {
+      if (GridState[i] == 0) {
+        availableSquares.add(i);
+      }
+    }
+  if (!availableSquares.isEmpty()) {
+    int randomIndex = int(random(availableSquares.size()));
+    int selectedSquare = availableSquares.get(randomIndex);
+    GridState[selectedSquare] = 2;
+    println("Computer selects square: " + selectedSquare);
+    if (CheckWin(2)) {
+      GameWon = true;
+      SinglePlayerWinStreak = 0;
+    }
+      PlayerTurn = true;
+      ComputerTurn = false;
+    } else {
+      println("Error no available squares.");
+    }
+  }
+  //
   //Single Player Medium Difficulty Computer
   if (!PlayerTurn && ComputerTurn && DifficultyMedium && !GameWon) {
     availableSquares.clear();
