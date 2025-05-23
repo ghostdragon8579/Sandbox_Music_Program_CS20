@@ -178,6 +178,17 @@ void TicTacToeSinglePlayerMousePressed () {
       PlayerTurn = true;
       ComputerTurn = false;
     } else {
+    int[] blockSquare = new int[1];
+  if (CheckNearWin(1, blockSquare)) {
+    GridState[blockSquare[0]] = 2;
+    println("Computer blocks player's win at square: " + blockSquare[0]);
+    if (CheckWin(2)) {
+      GameWon = true;
+      SinglePlayerWinStreak = 0;
+    }
+      PlayerTurn = true;
+      ComputerTurn = false;
+    } else {
   if (!availableSquares.isEmpty()) {
     int randomIndex = int(random(availableSquares.size()));
     int selectedSquare = availableSquares.get(randomIndex);
@@ -191,6 +202,7 @@ void TicTacToeSinglePlayerMousePressed () {
       ComputerTurn = false;
     } else {
       println("Error no available squares.");
+    }
     }
     }
   }
