@@ -69,7 +69,7 @@ int AlteredCurrentSongLength;
 int KeySongPosition;
 int SongSkipTime;
 int LastSongState;
-String LastSongStateTxtPath_LastSongState;
+String SongStateTxtPath_LastSongState;
 boolean SongLoop = false;
 boolean IsFontSizeUpdated = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
@@ -252,7 +252,7 @@ void setup() {
   AttributionFont = createFont("Calibri Bold", 55);
   //
   //Saved Song State from last use
-  LastSongStateTxtPath_LastSongState = sketchPath("Last_Song_State.txt");
+  SongStateTxtPath_LastSongState = sketchPath("Last_Song_State.txt");
   //
   /*
   String[] fontList = PFont.list();
@@ -434,10 +434,11 @@ void mousePressed() {
   } else if (MouseIsOver(xShuffle, yShuffle, widthShuffle, heightShuffle)) {
     ShuffleSongFunction();
   } else if (MouseIsOver(xLoop, yLoop, widthLoop, heightLoop)) {
-      SongLoop = true;
-    } else if (SongLoop == true) {
-      SongLoop = false;
+    SongLoop = true;
+  } else if (SongLoop == true) {
+    SongLoop = false;
   } else if (MouseIsOver(xQuit, yQuit, widthQuit, heightQuit)) {
+    SaveLastSongState();
     exit();
   }
   //
