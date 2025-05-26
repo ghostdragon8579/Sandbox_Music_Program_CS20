@@ -70,3 +70,14 @@ void SaveLastSongState() {
   SaveSong.println(SongPlaying);
   SaveSong.close();
 }
+void LoadLastSongState() {
+  File stateFile = new File(SongStateTxtPath_LastSongState);
+  if (stateFile.exists()) {
+    String[] lines = loadStrings(SongStateTxtPath_LastSongState);
+    if (lines.length > 0) {
+      SongPlaying = constrain(int(lines[0]), 0, SongNumber - 1);
+    }
+  } else {
+    println("Error Last_Song_State.txt not found");
+  }
+}

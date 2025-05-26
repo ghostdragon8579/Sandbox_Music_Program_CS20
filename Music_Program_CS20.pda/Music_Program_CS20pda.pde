@@ -253,6 +253,7 @@ void setup() {
   //
   //Saved Song State from last use
   SongStateTxtPath_LastSongState = sketchPath("Last_Song_State.txt");
+  LoadLastSongState();
   //
   /*
   String[] fontList = PFont.list();
