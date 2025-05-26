@@ -68,6 +68,8 @@ int SongLengthAlteration;
 int AlteredCurrentSongLength;
 int KeySongPosition;
 int SongSkipTime;
+int LastSongState;
+String LastSongStateTxtPath_LastSongState;
 boolean SongLoop = false;
 boolean IsFontSizeUpdated = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
@@ -248,6 +250,9 @@ void setup() {
   //
   TitleFont = createFont("Times New Roman Bold", 55);
   AttributionFont = createFont("Calibri Bold", 55);
+  //
+  //Saved Song State from last use
+  LastSongStateTxtPath_LastSongState = sketchPath("Last_Song_State.txt");
   //
   /*
   String[] fontList = PFont.list();
