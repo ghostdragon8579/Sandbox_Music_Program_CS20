@@ -71,8 +71,8 @@ void SaveLastSongState() {
   SaveSong.close();
 }
 void LoadLastSongState() {
-  File stateFile = new File(SongStateTxtPath_LastSongState);
-  if (stateFile.exists()) {
+  File SongStateFile = new File(SongStateTxtPath_LastSongState);
+  if (SongStateFile.exists()) {
     String[] lines = loadStrings(SongStateTxtPath_LastSongState);
     if (lines.length > 0) {
       SongPlaying = constrain(int(lines[0]), 0, SongNumber - 1);
