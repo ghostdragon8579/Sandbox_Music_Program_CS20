@@ -37,6 +37,7 @@ color LightGray=#EAE8E8;
 color Green=#60E329;
 color Orange=#FFC82E;
 color Red=#FA212F;
+color Gold=#FFD700;
 int appWidth, appHeight;
 int size;
 int ShorterSide;
@@ -140,12 +141,13 @@ void draw() {
   }
   //
   //Background
-  fill(LightGray);
+  fill(Black);
   rect(xBackground, yBackground, widthBackground, heightBackground);
   fill(ResetDefaultInk);
   //
   //Game Grid and Grid Squares
   strokeWeight(4);
+  stroke(Gold);
   rect(xGameGrid[0], yGameGrid[0], widthGameGrid, heightGameGrid);
   rect(xGameGrid[1], yGameGrid[1], widthGameGridSquare, heightGameGridSquare);
   rect(xGameGrid[2], yGameGrid[2], widthGameGridSquare, heightGameGridSquare);
@@ -188,8 +190,9 @@ void draw() {
   //
   //Text
   textAlign(CENTER, CENTER);
-  fill(Black);
+  fill(Gold);
   textFont(TitleFont, FontSizes[0]);
+  strokeWeight(3);
   text(Text[0], xGameModeSelection, yGameModeSelection, TicTacToeTextDIVWidth[0], TicTacToeTextDIVHeight[0]);
   if (!GameModeSinglePlayer && !GameModeMultiPlayer) {
   textFont(TitleFont, FontSizes[1]);

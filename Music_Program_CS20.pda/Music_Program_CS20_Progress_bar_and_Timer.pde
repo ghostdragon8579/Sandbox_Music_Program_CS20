@@ -26,12 +26,12 @@ void Music_Program_CS20_ProgressTimer () {
   textAlign(CENTER, CENTER);
   textSize(appHeight*1/40);
   text(
-    nf(CurrentSongPositionMinutes, 2) + ":" + nf(CurrentSongPositionSeconds, 2) + " / " +
-    nf(TotalSongMinutes, 2) + ":" + nf(TotalSongSeconds, 2),
-    xMusicProgressBar + widthMusicProgressBar - textWidth("/" +
-        nf(TotalSongMinutes, 2) + ":" + nf(TotalSongSeconds, 2)
+    nf(CurrentSongPositionMinutes, 2)+":"+nf(CurrentSongPositionSeconds, 2)+" / "+
+    nf(TotalSongMinutes, 2)+":"+nf(TotalSongSeconds, 2),
+    xMusicProgressBar+widthMusicProgressBar-textWidth("/"+
+    nf(TotalSongMinutes, 2)+":"+nf(TotalSongSeconds, 2)
     ),
-    yMusicProgressBar + heightMusicProgressBar + appHeight*3/160
+    yMusicProgressBar+heightMusicProgressBar+appHeight*3/160
   );
   fill(resetDefaultInk);
 }

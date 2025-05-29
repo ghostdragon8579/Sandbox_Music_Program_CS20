@@ -50,11 +50,13 @@ void TicTacToeSinglePlayer () {
   if (!DifficultySelected) {
   strokeWeight(2);
   rect(xDifficultySelection, yDifficultySelection, TicTacToeTextDIVWidth[14], TicTacToeTextDIVHeight[14]);
+  fill(LightGray);
+  stroke(Gold);
   rect(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]);
   rect(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]);
   rect(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]);
   strokeWeight(1);
-  fill(Black);
+  fill(Gold);
   textFont(TitleFont, FontSizes[14]);
   text(Text[14], xDifficultySelection, yDifficultySelection, TicTacToeTextDIVWidth[14], TicTacToeTextDIVHeight[14]);
   fill(Green);
@@ -70,20 +72,21 @@ void TicTacToeSinglePlayer () {
   }
   //Win Streak Counter and Win display
   if (DifficultySelected) {
-  strokeWeight(2);
+  strokeWeight(3);
+  stroke(Gold);
   rect(xWinStreak, yWinStreak, TicTacToeTextDIVWidth[10], TicTacToeTextDIVHeight[10]);
   rect(xWinStreakCounter, yWinStreakCounter, TicTacToeTextDIVWidth[11], TicTacToeTextDIVHeight[11]);
   strokeWeight(1);
-  fill(Black);
+  fill(Gold);
   textFont(TitleFont, FontSizes[10]);
   text(Text[10], xWinStreak, yWinStreak, TicTacToeTextDIVWidth[10], TicTacToeTextDIVHeight[10]);
   textFont(TitleFont, FontSizes[11]);
   text(Text[11], xWinStreakCounter, yWinStreakCounter, TicTacToeTextDIVWidth[11], TicTacToeTextDIVHeight[11]);
   fill(ResetDefaultInk);
-  strokeWeight(2);
+  strokeWeight(3);
   rect(xDifficultyDisplay, yDifficultyDisplay, TicTacToeTextDIVWidth[18], TicTacToeTextDIVHeight[18]);
   strokeWeight(1);
-  fill(Black);
+  fill(Gold);
   textFont(TitleFont, FontSizes[18]);
   text(Text[18], xDifficultyDisplay, yDifficultyDisplay, TicTacToeTextDIVWidth[18], TicTacToeTextDIVHeight[18]);
   if (CheckWin(1) && GameWon) {
