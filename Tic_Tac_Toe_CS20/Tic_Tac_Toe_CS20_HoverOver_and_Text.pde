@@ -81,25 +81,21 @@ void Tic_Tac_Toe_CS20_HoverOver () {
   color HoverOverColor=color(255, 255, 255, 96); 
   if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]) && !GameModeSinglePlayer && !GameModeMultiPlayer) {
     fill(HoverOverColor);
-    stroke(HoverOverColor);
     rect(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
     fill(ResetDefaultInk);
     stroke(Black);
   } else if (MouseIsOver(xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]) && !GameModeSinglePlayer && !GameModeMultiPlayer) {
     fill(HoverOverColor);
-    stroke(HoverOverColor);
     rect(xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
     fill(ResetDefaultInk);
     stroke(Black);
   } else if (MouseIsOver(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8])) {
     fill(HoverOverColor);
-    stroke(HoverOverColor);
     rect(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
     fill(ResetDefaultInk);
     stroke(Black);
   } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
     fill(HoverOverColor);
-    stroke(HoverOverColor);
     rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
     fill(ResetDefaultInk);
     stroke(Black);
@@ -112,7 +108,6 @@ void Tic_Tac_Toe_CS20_HoverOver () {
   } else if (MouseIsOver(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]) && GameModeSinglePlayer && !DifficultySelected) {
     HoverOverColor = HoverOverGreen;
     fill(HoverOverColor);
-    stroke(HoverOverColor);
     rect(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]);
     HoverOverColor = DefaultHoverOverColor;
     fill(ResetDefaultInk);
@@ -120,7 +115,6 @@ void Tic_Tac_Toe_CS20_HoverOver () {
   } else if (MouseIsOver(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]) && GameModeSinglePlayer && !DifficultySelected) {
     HoverOverColor = HoverOverOrange;
     fill(HoverOverColor);
-    stroke(HoverOverColor);
     rect(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]);
     HoverOverColor = DefaultHoverOverColor;
     fill(ResetDefaultInk);
@@ -128,7 +122,6 @@ void Tic_Tac_Toe_CS20_HoverOver () {
   } else if (MouseIsOver(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]) && GameModeSinglePlayer && !DifficultySelected) {
     HoverOverColor = HoverOverRed;
     fill(HoverOverColor);
-    stroke(HoverOverColor);
     rect(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]);
     HoverOverColor = DefaultHoverOverColor;
     fill(ResetDefaultInk);
