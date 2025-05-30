@@ -38,6 +38,7 @@ color Green=#60E329;
 color Orange=#FFC82E;
 color Red=#FA212F;
 color Gold=#FFD700;
+color RoseGold=#FFC0CB;
 int appWidth, appHeight;
 int size;
 int ShorterSide;
@@ -142,12 +143,14 @@ void draw() {
   //
   //Background
   fill(Black);
+  noStroke();
   rect(xBackground, yBackground, widthBackground, heightBackground);
   fill(ResetDefaultInk);
   //
   //Game Grid and Grid Squares
-  strokeWeight(4);
+  strokeWeight(3);
   stroke(Gold);
+  fill(Black);
   rect(xGameGrid[0], yGameGrid[0], widthGameGrid, heightGameGrid);
   rect(xGameGrid[1], yGameGrid[1], widthGameGridSquare, heightGameGridSquare);
   rect(xGameGrid[2], yGameGrid[2], widthGameGridSquare, heightGameGridSquare);
@@ -160,12 +163,12 @@ void draw() {
   rect(xGameGrid[9], yGameGrid[9], widthGameGridSquare, heightGameGridSquare);
   for (int i = 1; i <= 9; i++) {
     if (GridState[i] == 1) {
-      stroke(Black);
+      stroke(RoseGold);
       strokeWeight(10);
       line(xGameGrid[i], yGameGrid[i], xGameGrid[i] + widthGameGridSquare, yGameGrid[i] + heightGameGridSquare); // Diagonal line 1
       line(xGameGrid[i], yGameGrid[i] + heightGameGridSquare, xGameGrid[i] + widthGameGridSquare, yGameGrid[i]); // Diagonal line 2
     } else if (GridState[i] == 2) {
-      stroke(Black);
+      stroke(RoseGold);
       strokeWeight(10);
       circle(xGameGrid[i]+widthGameGridSquare*1/2, yGameGrid[i]+heightGameGridSquare*1/2, widthPlayerOGameGridCircle);
     }
@@ -173,24 +176,24 @@ void draw() {
   strokeWeight(1);
   //
   //Game Mode Selection
-  strokeWeight(2);
+  strokeWeight(3);
+  stroke(Gold);
   rect(xGameModeSelection, yGameModeSelection, TicTacToeTextDIVWidth[0], TicTacToeTextDIVHeight[0]);
   if (!GameModeSinglePlayer && !GameModeMultiPlayer) {
   rect(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
   rect(xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
   }
-  strokeWeight(1);
   //
   //Buttons
-  strokeWeight(2);
+  strokeWeight(3);
+  stroke(Gold);
   rect(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
   rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
   rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
-  strokeWeight(1);
   //
   //Text
   textAlign(CENTER, CENTER);
-  fill(Gold);
+  fill(RoseGold);
   textFont(TitleFont, FontSizes[0]);
   strokeWeight(3);
   text(Text[0], xGameModeSelection, yGameModeSelection, TicTacToeTextDIVWidth[0], TicTacToeTextDIVHeight[0]);

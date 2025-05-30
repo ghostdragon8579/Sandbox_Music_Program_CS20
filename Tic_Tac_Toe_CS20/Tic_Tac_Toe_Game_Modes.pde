@@ -48,15 +48,14 @@ boolean CheckNearWin(int player, int[] resultSquare) {
 } 
 void TicTacToeSinglePlayer () {
   if (!DifficultySelected) {
-  strokeWeight(2);
+  strokeWeight(3);
+  fill(Black);
   rect(xDifficultySelection, yDifficultySelection, TicTacToeTextDIVWidth[14], TicTacToeTextDIVHeight[14]);
-  fill(LightGray);
   stroke(Gold);
   rect(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]);
   rect(xDifficultyMedium, yDifficultyMedium, TicTacToeTextDIVWidth[16], TicTacToeTextDIVHeight[16]);
   rect(xDifficultyHard, yDifficultyHard, TicTacToeTextDIVWidth[17], TicTacToeTextDIVHeight[17]);
-  strokeWeight(1);
-  fill(Gold);
+  fill(RoseGold);
   textFont(TitleFont, FontSizes[14]);
   text(Text[14], xDifficultySelection, yDifficultySelection, TicTacToeTextDIVWidth[14], TicTacToeTextDIVHeight[14]);
   fill(Green);
@@ -74,31 +73,32 @@ void TicTacToeSinglePlayer () {
   if (DifficultySelected) {
   strokeWeight(3);
   stroke(Gold);
+  fill(Black);
   rect(xWinStreak, yWinStreak, TicTacToeTextDIVWidth[10], TicTacToeTextDIVHeight[10]);
   rect(xWinStreakCounter, yWinStreakCounter, TicTacToeTextDIVWidth[11], TicTacToeTextDIVHeight[11]);
   strokeWeight(1);
-  fill(Gold);
+  fill(RoseGold);
   textFont(TitleFont, FontSizes[10]);
   text(Text[10], xWinStreak, yWinStreak, TicTacToeTextDIVWidth[10], TicTacToeTextDIVHeight[10]);
   textFont(TitleFont, FontSizes[11]);
   text(Text[11], xWinStreakCounter, yWinStreakCounter, TicTacToeTextDIVWidth[11], TicTacToeTextDIVHeight[11]);
   fill(ResetDefaultInk);
   strokeWeight(3);
+  fill(Black);
   rect(xDifficultyDisplay, yDifficultyDisplay, TicTacToeTextDIVWidth[18], TicTacToeTextDIVHeight[18]);
-  strokeWeight(1);
-  fill(Gold);
+  fill(RoseGold);
   textFont(TitleFont, FontSizes[18]);
   text(Text[18], xDifficultyDisplay, yDifficultyDisplay, TicTacToeTextDIVWidth[18], TicTacToeTextDIVHeight[18]);
   if (CheckWin(1) && GameWon) {
-  fill(ResetDefaultInk);
-  rect(xPlayerWin, yPlayerWin, TicTacToeTextDIVWidth[19], TicTacToeTextDIVHeight[19]);
   fill(Black);
+  rect(xPlayerWin, yPlayerWin, TicTacToeTextDIVWidth[19], TicTacToeTextDIVHeight[19]);
+  fill(RoseGold);
   textFont(TitleFont, FontSizes[0]);
   text(Text[19], xPlayerWin, yPlayerWin, TicTacToeTextDIVWidth[19], TicTacToeTextDIVHeight[19]);
   } else if (CheckWin(2) && GameWon) {
-  fill(ResetDefaultInk);
-  rect(xComputerWin, yComputerWin, TicTacToeTextDIVWidth[20], TicTacToeTextDIVHeight[20]);
   fill(Black);
+  rect(xComputerWin, yComputerWin, TicTacToeTextDIVWidth[20], TicTacToeTextDIVHeight[20]);
+  fill(RoseGold);
   textFont(TitleFont, FontSizes[0]);
   text(Text[20], xComputerWin, yComputerWin, TicTacToeTextDIVWidth[20], TicTacToeTextDIVHeight[20]);
   }
@@ -231,14 +231,14 @@ void TicTacToeSinglePlayerMousePressed () {
 }
 void TicTacToeMultiPlayer () {
   //Turn Display and Score Board
-  strokeWeight(2);
+  strokeWeight(3);
+  fill(Black);
   rect(xTurn, yTurn, TicTacToeTextDIVWidth[3], TicTacToeTextDIVHeight[3]);
   rect(xTurnDisplay, yTurnDisplay, TicTacToeTextDIVWidth[4], TicTacToeTextDIVHeight[4]);
   rect(xScoreBoard, yScoreBoard, TicTacToeTextDIVWidth[5], TicTacToeTextDIVHeight[5]);
   rect(xScoreKeeper1, yScoreKeeper1, TicTacToeTextDIVWidth[6], TicTacToeTextDIVHeight[6]);
   rect(xScoreKeeper2, yScoreKeeper2, TicTacToeTextDIVWidth[7], TicTacToeTextDIVHeight[7]);
-  strokeWeight(1);
-  fill(Black);
+  fill(RoseGold);
   textFont(TitleFont, FontSizes[3]);
   text(Text[3], xTurn, yTurn, TicTacToeTextDIVWidth[3], TicTacToeTextDIVHeight[3]);
   textFont(TitleFont, FontSizes[4]);
@@ -249,16 +249,16 @@ void TicTacToeMultiPlayer () {
   text(Text[6], xScoreKeeper1, yScoreKeeper1, TicTacToeTextDIVWidth[6], TicTacToeTextDIVHeight[6]);
   textFont(TitleFont, FontSizes[7]);
   text(Text[7], xScoreKeeper2, yScoreKeeper2, TicTacToeTextDIVWidth[7], TicTacToeTextDIVHeight[7]);
-  fill(ResetDefaultInk);
+  fill(Black);
   if (CheckWin(1) && GameWon) {
   rect(xPlayerXWin, yPlayerXWin, TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
-  fill(Black);
+  fill(RoseGold);
   textFont(TitleFont, FontSizes[0]);
   text(Text[12], xPlayerXWin, yPlayerXWin, TicTacToeTextDIVWidth[12], TicTacToeTextDIVHeight[12]);
   } else if (CheckWin(2) && GameWon) {
-  fill(ResetDefaultInk);
-  rect(xPlayerOWin, yPlayerOWin, TicTacToeTextDIVWidth[13], TicTacToeTextDIVHeight[13]);
   fill(Black);
+  rect(xPlayerOWin, yPlayerOWin, TicTacToeTextDIVWidth[13], TicTacToeTextDIVHeight[13]);
+  fill(RoseGold);
   textFont(TitleFont, FontSizes[0]);
   text(Text[13], xPlayerOWin, yPlayerOWin, TicTacToeTextDIVWidth[13], TicTacToeTextDIVHeight[13]);
   }
