@@ -43,6 +43,13 @@ void ShuffleSongFunction () {
     SongPlayList[SongPlaying].rewind();
     SongPlaying=int (random(0, SongNumber-1));
 }
+void ToggleAttributions () {
+  if (!Attributions) {
+    Attributions = true;
+  } else if (Attributions) {
+    Attributions = false;
+  }
+}
 void KeyPlayPauseFunction () {
   if (SongPlayList[SongPlaying].isPlaying()) {
     SongPlayList[SongPlaying].pause();

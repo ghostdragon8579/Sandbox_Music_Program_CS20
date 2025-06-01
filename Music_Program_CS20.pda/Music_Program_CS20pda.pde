@@ -10,17 +10,27 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 //
 //Global Variables
-float[] TextDIVWidth = new float[3];
-float[] TextDIVHeight = new float[3];
+float[] TextDIVWidth = new float[6];
+float[] TextDIVHeight = new float[6];
 float xMusicTitle, yMusicTitle;
 float xMusicAuthor, yMusicAuthor;
 float xMusicPublishDate, yMusicPublishDate;
+float xAttributions, yAttributions;
+float xIconAttribution, yIconAttribution;
+float xBackgroundAttribution, yBackgroundAttribution;
+float xSongAttribution1, ySongAttribution1;
+float xSongAttribution2, ySongAttribution2;
+float xSongAttribution3, ySongAttribution3;
+float xSongAttribution4, ySongAttribution4;
+float xSongAttribution5, ySongAttribution5;
+float xSongAttribution6, ySongAttribution6;
+float xSongAttribution7, ySongAttribution7;
+float xSongAttribution8, ySongAttribution8;
 float xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground;
+float xAttributionBackground, yAttributionBackground, widthAttributionBackground, heightAttributionBackground;
 float xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel;
 float xMusicImage, yMusicImage, widthMusicImage, heightMusicImage;
 float xMusicProgressBar, yMusicProgressBar, widthMusicProgressBar, heightMusicProgressBar;
-float xIconAttribution, yIconAttribution, widthIconAttribution, heightIconAttribution;
-float xBackgroundAttribution, yBackgroundAttribution, widthBackgroundAttribution, heightBackgroundAttribution;
 float xPlayPause, yPlayPause, widthPlayPause, heightPlayPause;
 float xPlayPauseTriangle1, yPlayPauseTriangle1, xPlayPauseTriangle2, yPlayPauseTriangle2, xPlayPauseTriangle3, yPlayPauseTriangle3;
 float xFastForward, yFastForward, widthFastForward, heightFastForward;
@@ -72,6 +82,7 @@ int LastSongState;
 String SongStateTxtPath_LastSongState;
 boolean SongLoop = false;
 boolean IsFontSizeUpdated = false;
+boolean Attributions = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
 }
@@ -121,8 +132,8 @@ void setup() {
   xMusicPublishDate = xMusicAuthor; yMusicPublishDate = yMusicAuthor+TextDIVHeight[1]; TextDIVWidth[2] = TextDIVWidth[1]; TextDIVHeight[2] = TextDIVHeight[1];
   xMusicImage = appWidth*1/3; yMusicImage = yMusicPublishDate+TextDIVHeight[2]; widthMusicImage = appWidth*1/3; heightMusicImage = appHeight*1/6;
   xMusicProgressBar = appWidth*5/26; yMusicProgressBar = appHeight*13/16; widthMusicProgressBar = appWidth*8/13; heightMusicProgressBar = appHeight*1/48;
-  xIconAttribution = xMusicPanel+appWidth*1/100; yIconAttribution = appHeight*9/10-appHeight*1/30; widthIconAttribution = widthMusicPanel*1/2; heightIconAttribution = appHeight*1/36;
-  xBackgroundAttribution = xIconAttribution; yBackgroundAttribution = appHeight*9/10-appHeight*1/30; widthBackgroundAttribution = widthIconAttribution*1/2; heightBackgroundAttribution = heightIconAttribution;
+  xIconAttribution = xMusicPanel+widthMusicPanel*1/10; yIconAttribution = yMusicPanel+heightMusicPanel*1/24; TextDIVWidth[4] = widthMusicPanel*4/5; TextDIVHeight[4] = appHeight*1/36;
+  xBackgroundAttribution = xIconAttribution; yBackgroundAttribution = yIconAttribution+heightMusicPanel*1/12; TextDIVWidth[5] = TextDIVWidth[4]; TextDIVHeight[5] = TextDIVHeight[4];
   //
   //Buttons
   xQuit = appWidth*15/16; yQuit = appHeight*0; widthQuit = appWidth*1/16; heightQuit = appHeight*1/24;
@@ -134,6 +145,7 @@ void setup() {
   xShuffle = xPlayPause; yShuffle = yPlayPause+heightPrevious*1.5; widthShuffle = widthPrevious; heightShuffle = heightPrevious;
   xReplay = xRewind; yReplay = yShuffle; widthReplay = widthPrevious; heightReplay = heightPrevious;
   xLoop = xFastForward; yLoop = yShuffle; widthLoop = widthPrevious; heightLoop = heightPrevious;
+  xAttributions = appWidth*0; yAttributions = appHeight*11/12; TextDIVWidth[3] = appWidth*1/12; TextDIVHeight[3] = appHeight*1/12;
   //
   //Music Button Icons
   xPlayPauseTriangle1 = xPlayPause+widthPlayPause*1/5; yPlayPauseTriangle1 = yPlayPause+heightPlayPause*1/5;
@@ -282,12 +294,12 @@ void draw() {
   stroke(Purple);
   fill(Black);
   rect(xMusicPanel, yMusicPanel, widthMusicPanel, heightMusicPanel);
+  if (!Attributions) {
   rect(xMusicTitle, yMusicTitle, TextDIVWidth[0], TextDIVHeight[0]);
   rect(xMusicAuthor, yMusicAuthor, TextDIVWidth[1], TextDIVHeight[1]);
   rect(xMusicPublishDate, yMusicPublishDate, TextDIVWidth[2], TextDIVHeight[2]);
   rect(xMusicImage, yMusicImage, widthMusicImage, heightMusicImage);
   noStroke();
-  rect(xIconAttribution, yIconAttribution, widthIconAttribution, heightIconAttribution);
   //
   //Buttons
   strokeWeight(3);
@@ -325,7 +337,7 @@ void draw() {
   image(MusicProgramImage[2], xReplay, yReplay, widthReplay, heightReplay);
   image(MusicProgramImage[3], xShuffle, yShuffle, widthShuffle, heightShuffle);
   //
-  //Text ()
+  //Text
   fill(TextPurple);
   textAlign(CENTER, CENTER);
   textFont(TitleFont, FontSizes[0]);
@@ -335,23 +347,21 @@ void draw() {
   textFont(TitleFont, FontSizes[1]);
   text(Text[2], xMusicPublishDate, yMusicPublishDate, TextDIVWidth[2], TextDIVHeight[2]);
   fill(resetDefaultInk);
+  }
   //
-  //Icon Attribution
+  //Attributions
+  strokeWeight(3);
+  stroke(Purple);
+  fill(Black);
+  rect(xAttributions, yAttributions, TextDIVWidth[3], TextDIVHeight[3]);
+  textAlign(CENTER, CENTER);
+  textFont(TitleFont, FontSizes[3]);
   fill(TextPurple);
-  textAlign(LEFT, LEFT);
-  size = appHeight*5/400;
-  textFont(AttributionFont, size);
-  String TextAttribution = "Loop, Shuffle, and Rewind icons by Icons8";
-  text(TextAttribution, xIconAttribution, yIconAttribution+heightIconAttribution*3/4);
-  fill(resetDefaultInk);
+  text(Text[3], xAttributions, yAttributions, TextDIVWidth[3], TextDIVHeight[3]);
   //
-  fill(TextPurple);
-  textAlign(LEFT, LEFT);
-  size = appHeight*5/400;
-  textFont(AttributionFont, size);
-  String BackgroundAttribution = "Background Image by Tinnapon Wuttichaikitcharoen on Vecteezy";
-  text(BackgroundAttribution, xBackgroundAttribution, yBackgroundAttribution, heightBackgroundAttribution*3/4);
-  fill(resetDefaultInk);
+  if (Attributions) {
+  ImageMusicAttributions();
+  }
   //
   //Song Auto Transition
   if (SongPlayList[SongPlaying].position() >= AlteredCurrentSongLength && SongLoop == false) {
@@ -364,18 +374,21 @@ void draw() {
     SongPlayList[SongPlaying].rewind();
   }
   //
+  if (!Attributions) {
   //Progress Bar and Progress Timer
   textFont(TitleFont, size);
-  Music_Program_CS20_ProgressBar ();
-  Music_Program_CS20_ProgressTimer ();
+  Music_Program_CS20_ProgressBar();
+  Music_Program_CS20_ProgressTimer();
+  }
   //
   //HoverOverColors
-  Music_Program_CS20_HoverOver ();
+  Music_Program_CS20_HoverOver();
   //
 } //End draw
 //
 void keyPressed() {
   //
+  if (!Attributions) {
   if (key=='p' || key=='P') {
     KeyPlayPauseFunction ();
   }
@@ -394,6 +407,7 @@ void keyPressed() {
   if (key >= '1' && key <= '9') {
     KeyBasedLocationFunction ();
   }
+  }
   //
 } //End keyPressed
 //
@@ -403,6 +417,7 @@ void keyReleased() {
 //
 void mousePressed() {
   //
+  if (!Attributions) {
   //Progress Bar
   if (MouseIsOver(xMusicProgressBar, yMusicProgressBar, widthMusicProgressBar, heightMusicProgressBar)) {
     float ProgressBarPositionClicked = mouseX-xMusicProgressBar*5/6;
@@ -410,14 +425,6 @@ void mousePressed() {
     float SongPercentageAtClickPoint = ProgressBarPositionClicked/widthMusicProgressBar;
     int ClickedSongPosition = int(SongPercentageAtClickPoint*SongPlayList[SongPlaying].length());
     SongPlayList[SongPlaying].cue(ClickedSongPosition);
-  }
-  //
-  //Icon Attribution
-  if (MouseIsOver(xIcons8Location, yIconAttribution - appHeight*3/200, textWidth("Icons8"), appHeight*3/100)) {
-    link("https://icons8.com/");
-  }
-  if (MouseIsOver(xIcons8Location, yBackgroundAttribution - appHeight*3/200, textWidth("Vecteezy"), appHeight*3/100)) {
-    link("https://www.vecteezy.com/members/earthtin");
   }
   //
   //Buttons
@@ -442,6 +449,13 @@ void mousePressed() {
   } else if (MouseIsOver(xQuit, yQuit, widthQuit, heightQuit)) {
     SaveLastSongState();
     exit();
+  }
+  }
+  if (Attributions) {
+  ImageMusicAttributionsMousePressed ();
+  }
+  if (MouseIsOver(xAttributions, yAttributions, TextDIVWidth[3], TextDIVHeight[3])) {
+    ToggleAttributions();
   }
   //
 } //End mousePressed

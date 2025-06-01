@@ -1,7 +1,7 @@
 float TitleFontSize;
 float[] InitialFontSizes = new float[TextDIVHeight.length];
 float[] FontSizes = new float[TextDIVHeight.length];
-String[] Text = new String[3];
+String[] Text = new String[6];
 void MusicPanelTextSetup1() {
   //
   TitleFontSize = ShorterSide;
@@ -13,6 +13,15 @@ void stringVarsEntry() {
   Text[0] = SongPlayListMetaData[SongPlaying].title();
   Text[1] = "Author: "+SongPlayListMetaData[SongPlaying].author();
   Text[2] = "Released in: "+SongPlayListMetaData[SongPlaying].date();
+  if (!Attributions) {
+  Text[3] = "Attributions";
+  } else if (Attributions) {
+  Text[3] = "Return";
+  }
+  Text[4] = "Loop, Shuffle, and Rewind icons by Icons8";
+  Text[5] = "Background Image by Tinnapon Wuttichaikitcharoen on Vecteezy";
+  //Text[6] = "Song: NIVIRO - The Guardian Of Angels [NCS Release] Music provided by NoCopyrightSounds Free Download/Stream: http://ncs.io/TGOA Watch: http://youtu.be/yHU6g3-35IU";
+  //Text[7] = "Song: NIVIRO - The Return [NCS Release] Music provided by NoCopyrightSounds Free Download/Stream: http://ncs.io/TheReturn Watch: http://youtu.be/R0QkZOyuqIs";
 }
 void MusicPanelTextSetup2() {
   TitleFontSize = ShorterSide;
@@ -22,19 +31,25 @@ void MusicPanelTextSetup2() {
   float TimesNewRomanBoldAspectRatio = 1.04;
   TitleFontSize = TitleFontSize * TimesNewRomanBoldAspectRatio;
   //
-  for (int i = 0; i < TextDIVHeight.length; i++) {
+  for (int i = 0; i<TextDIVHeight.length; i++) {
     float TemporaryFontSize = TextDIVHeight[i];
     textFont(TitleFont, TemporaryFontSize);
     while (textWidth(Text[i]) > TextDIVWidth[i]) {
       TemporaryFontSize *= 0.99;
-      textFont(TitleFont, TemporaryFontSize);
+      if (TemporaryFontSize < 8) {
+        TemporaryFontSize = 8;
+        break;
+      }
+      textFont(TitleFont, TemporaryFontSize);    
     }
+    if (TemporaryFontSize < 8) TemporaryFontSize = 8;
     FontSizes[i] = TemporaryFontSize;
     textFont(TitleFont, TemporaryFontSize);
   }
 }
 void Music_Program_CS20_HoverOver () {
   color hoverOverColor=color(255, 255, 255, 64);
+  if (!Attributions) {
   if (MouseIsOver(xPrevious, yPrevious, widthPrevious, heightPrevious)) {
     fill(hoverOverColor);
     rect(xPrevious, yPrevious, widthPrevious, heightPrevious);
@@ -70,6 +85,12 @@ void Music_Program_CS20_HoverOver () {
   } else if (MouseIsOver(xLoop, yLoop, widthLoop, heightLoop)) {
     fill(hoverOverColor);
     rect(xLoop, yLoop, widthLoop, heightLoop);
+    fill(resetDefaultInk);
+  }
+  }
+  if (MouseIsOver(xAttributions, yAttributions, TextDIVWidth[3], TextDIVHeight[3])) {
+    fill(hoverOverColor);
+    rect(xAttributions, yAttributions, TextDIVWidth[3], TextDIVHeight[3]);
     fill(resetDefaultInk);
   }
 }
