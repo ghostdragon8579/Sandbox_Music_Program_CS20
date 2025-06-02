@@ -176,7 +176,7 @@ void setup() {
   xPreviousTriangleTwo2 = xPreviousTriangleTwo1; yPreviousTriangleTwo2 = yPlayPauseTriangle2;
   xPreviousTriangleTwo3 = xPreviousTriangleTwo1; yPreviousTriangleTwo3 = yPlayPauseTriangle3;
   //
-  String RelativeMusicPathway = "../Audio_Files_CS20/";
+  String RelativeMusicPathway = "/Music_Program_CS20_Audio_Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
   AudioFiles = new File(AbsoluteMusicPathway);
   int AudioFileCount = AudioFiles.list().length;
@@ -278,10 +278,7 @@ void draw() {
   shapeMode(CENTER);
   //
   MusicPanelTextSetup1();
-  if (!IsFontSizeUpdated) {
-    MusicPanelTextSetup2();
-    IsFontSizeUpdated = true;
-  }
+  MusicPanelTextSetup2();
   //
   //Background
   fill(Black);
