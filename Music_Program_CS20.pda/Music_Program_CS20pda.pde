@@ -51,6 +51,7 @@ float xIcons8Location;
 float xVecteezyLocation;
 float ProgressWidth;
 PImage[] MusicProgramImage = new PImage[7];
+PImage[] MusicImage = new PImage[6];
 PImage NeonBackground2;
 PImage Quit;
 PImage Shuffle;
@@ -108,17 +109,6 @@ void setup() {
   ShorterSide = (appWidth >= appHeight) ? appHeight : appWidth;
   //
   minim = new Minim(this);
-  // Define the image folder path
-  String ImagePathwayRelative = "../Music_Program_Images/";
-  String ImagePathwayAbsolute = sketchPath(ImagePathwayRelative);
-  File ImageFolder = new File(ImagePathwayAbsolute);
-  File[] ImageFiles = ImageFolder.listFiles();
-  MusicProgramImage = new PImage[ImageFiles.length];
-  for (int i = 0; i < ImageFiles.length; i++) {
-    if (ImageFiles[i].isFile()) {
-      MusicProgramImage[i] = loadImage(ImageFiles[i].getAbsolutePath());
-    }
-  }
   //
   //Background
   xPopupBackground = appWidth*0; yPopupBackground = appHeight*0; widthPopupBackground = appWidth-1; heightPopupBackground = appHeight-1;
@@ -184,6 +174,7 @@ void setup() {
   xPreviousTriangleTwo2 = xPreviousTriangleTwo1; yPreviousTriangleTwo2 = yPlayPauseTriangle2;
   xPreviousTriangleTwo3 = xPreviousTriangleTwo1; yPreviousTriangleTwo3 = yPlayPauseTriangle3;
   //
+  //Music Pathway
   String RelativeMusicPathway = "/Music_Program_CS20_Audio_Files/";
   String AbsoluteMusicPathway = sketchPath(RelativeMusicPathway);
   AudioFiles = new File(AbsoluteMusicPathway);
@@ -211,6 +202,7 @@ void setup() {
     SongPlayListMetaData[i] = SongPlayList[i].getMetaData();
   }
   //
+  //Sound Effects
   String RelativeSoundEffectPathway = "../Sound Effects/";
   String AbsoluteSoundEffectPathway = sketchPath(RelativeSoundEffectPathway);
   SoundEffectFiles = new File(AbsoluteSoundEffectPathway);
@@ -234,6 +226,30 @@ void setup() {
   for (int i=SoundEffectPlaying; i<SoundEffectFileCount; i++) {
     SoundEffectPlayList[i]= minim.loadFile(SoundEffectFilePathway[i]);
     SoundEffectPlayListMetaData[i] = SoundEffectPlayList[i].getMetaData();
+  }
+  //
+  //Images
+  String ImagePathwayRelative = "/Music_Program_CS20_Image_FIles/";
+  String ImagePathwayAbsolute = sketchPath(ImagePathwayRelative);
+  File ImageFolder = new File(ImagePathwayAbsolute);
+  File[] ImageFiles = ImageFolder.listFiles();
+  MusicProgramImage = new PImage[ImageFiles.length];
+  for (int i = 0; i < ImageFiles.length; i++) {
+    if (ImageFiles[i].isFile()) {
+      MusicProgramImage[i] = loadImage(ImageFiles[i].getAbsolutePath());
+    }
+  }
+  //
+  //Music Images
+  String MusicImagePathwayRelative = "/Music_Program_CS20_Music_Image_Files/";
+  String MusicImagePathwayAbsolute = sketchPath(MusicImagePathwayRelative);
+  File MusicImageFolder = new File(MusicImagePathwayAbsolute);
+  File[] MusicImageFiles = MusicImageFolder.listFiles();
+  MusicImage = new PImage[MusicImageFiles.length];
+  for (int i = 0; i < MusicImageFiles.length; i++) {
+    if (MusicImageFiles[i].isFile()) {
+      MusicImage[i] = loadImage(MusicImageFiles[i].getAbsolutePath());
+    }
   }
   //
   /*
@@ -341,6 +357,7 @@ void draw() {
   image(MusicProgramImage[1], xLoop, yLoop, widthLoop, heightLoop);
   image(MusicProgramImage[2], xReplay, yReplay, widthReplay, heightReplay);
   image(MusicProgramImage[3], xShuffle, yShuffle, widthShuffle, heightShuffle);
+  AspectRatioMusicImage(MusicImage[SongPlaying], xMusicImage, yMusicImage, widthMusicImage, heightMusicImage);
   //
   //Text
   fill(TextPurple);

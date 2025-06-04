@@ -35,3 +35,18 @@ void Music_Program_CS20_ProgressTimer () {
   );
   fill(resetDefaultInk);
 }
+void AspectRatioMusicImage(PImage img, float x, float y, float Width, float Height) {
+  float imgAspectRatio = float(img.width)/float(img.height);
+  float rectAspect = Width/Height;
+  float drawWidth, drawHeight;
+  if (imgAspectRatio>rectAspect) {
+    drawHeight = Width/imgAspectRatio-appHeight*1/200;
+    drawWidth = drawHeight;
+  } else {
+    drawHeight = Height-appHeight*1/200;
+    drawWidth = Height*imgAspectRatio;
+  }
+  float drawX =x+(Width-drawWidth)/2;
+  float drawY =y+(Height-drawHeight)/2;
+  image(img, drawX, drawY, drawWidth, drawHeight);
+}
