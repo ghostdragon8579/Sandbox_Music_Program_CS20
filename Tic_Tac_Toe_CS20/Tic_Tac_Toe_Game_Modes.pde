@@ -1,3 +1,4 @@
+//See README.md for details about these matrix arrays.
 boolean CheckWin(int player) {
   int[][] WinningCombinations = {
     {1,2,3}, //Top row
