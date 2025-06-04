@@ -307,7 +307,7 @@ void draw() {
   //Background
   fill(Black);
   rect(xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
-  image(MusicProgramImage[5], xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
+  image(MusicProgramImage[4], xPopupBackground, yPopupBackground, widthPopupBackground, heightPopupBackground);
   fill(resetDefaultInk);
   //
   //Music Player Panel
