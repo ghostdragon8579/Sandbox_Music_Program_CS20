@@ -84,6 +84,7 @@ void Tic_Tac_Toe_CS20_HoverOver () {
   color HoverOverOrange=color(225, 200, 46, 96);
   color HoverOverRed=color(250, 33, 47, 96);
   color HoverOverColor=color(255, 255, 255, 96); 
+  if (!MusicPlayer) {
   if (MouseIsOver(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]) && !GameModeSinglePlayer && !GameModeMultiPlayer) {
     fill(HoverOverColor);
     rect(xSinglePlayer, ySinglePlayer, TicTacToeTextDIVWidth[1], TicTacToeTextDIVHeight[1]);
@@ -102,17 +103,6 @@ void Tic_Tac_Toe_CS20_HoverOver () {
   } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
     fill(HoverOverColor);
     rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
-    fill(ResetDefaultInk);
-    stroke(Black);
-  } else if (MouseIsOver(xMusicPlayer, yMusicPlayer, TicTacToeTextDIVWidth[21], TicTacToeTextDIVHeight[21])) {
-    fill(HoverOverColor);
-    rect(xMusicPlayer, yMusicPlayer, TicTacToeTextDIVWidth[21], TicTacToeTextDIVHeight[21]);
-    fill(ResetDefaultInk);
-    stroke(Black);
-  } else if (MouseIsOver(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton)) {
-    fill(HoverOverColor);
-    stroke(HoverOverColor);
-    rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
     fill(ResetDefaultInk);
     stroke(Black);
   } else if (MouseIsOver(xDifficultyEasy, yDifficultyEasy, TicTacToeTextDIVWidth[15], TicTacToeTextDIVHeight[15]) && GameModeSinglePlayer && !DifficultySelected) {
@@ -137,7 +127,22 @@ void Tic_Tac_Toe_CS20_HoverOver () {
     fill(ResetDefaultInk);
     stroke(Black);
   }
+  }
+  //
+  if (MouseIsOver(xMusicPlayer, yMusicPlayer, TicTacToeTextDIVWidth[21], TicTacToeTextDIVHeight[21])) {
+    fill(HoverOverColor);
+    rect(xMusicPlayer, yMusicPlayer, TicTacToeTextDIVWidth[21], TicTacToeTextDIVHeight[21]);
+    fill(ResetDefaultInk);
+    stroke(Black);
+  } else if (MouseIsOver(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton)) {
+    fill(HoverOverColor);
+    stroke(HoverOverColor);
+    rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
+    fill(ResetDefaultInk);
+    stroke(Black);
+  }
   //Array Hover Over Goes on the end to prevent miscoloring
+  if (!MusicPlayer) {
   for (int i = 1; i <= 9; i++) {
   if (MouseIsOver(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare)) {
     fill(HoverOverColor);
@@ -145,6 +150,7 @@ void Tic_Tac_Toe_CS20_HoverOver () {
     rect(xGameGrid[i], yGameGrid[i], widthGameGridSquare, heightGameGridSquare);
     fill(ResetDefaultInk);
     stroke(Black);
+  }
   }
  }
 }
