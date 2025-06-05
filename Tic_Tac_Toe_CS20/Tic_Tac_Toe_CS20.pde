@@ -6,8 +6,8 @@ float[] yGameGrid = new float[10];
 float widthGameGrid, heightGameGrid;
 float widthGameGridSquare, heightGameGridSquare;
 float widthPlayerOGameGridCircle;
-float[] TicTacToeTextDIVWidth = new float[21];
-float[] TicTacToeTextDIVHeight = new float[21];
+float[] TicTacToeTextDIVWidth = new float[22];
+float[] TicTacToeTextDIVHeight = new float[22];
 float xGameModeSelection, yGameModeSelection;
 float xSinglePlayer, ySinglePlayer;
 float xMultiPlayer, yMultiPlayer;
@@ -29,6 +29,7 @@ float xDifficultyHard, yDifficultyHard;
 float xDifficultyDisplay, yDifficultyDisplay;
 float xPlayerWin, yPlayerWin;
 float xComputerWin, yComputerWin;
+float xMusicPlayer, yMusicPlayer;
 PFont TitleFont;
 PImage Quit;
 color ResetDefaultInk=#FFFFFF;
@@ -58,6 +59,7 @@ boolean DifficultyHard = false;
 boolean PlayerTurn = true;
 boolean ComputerTurn = false;
 boolean IsFontSizeUpdated = false;
+boolean MusicPlayer = false;
 boolean MouseIsOver(float xVariable, float yVariable, float widthVariable, float heightVariable) {
   return mouseX > xVariable && mouseX < xVariable + widthVariable && mouseY > yVariable && mouseY < yVariable + heightVariable;
 }
@@ -126,6 +128,9 @@ void setup() {
   xGameGrid[9] = xGameGrid[0]+widthGameGridSquare*2; yGameGrid[9] = yGameGrid[0]+heightGameGridSquare*2;
   widthPlayerOGameGridCircle = widthGameGridSquare*2/3;
   //
+  //Music Player
+  xMusicPlayer = appWidth-appWidth*1/10; yMusicPlayer = appHeight*23/24; TicTacToeTextDIVWidth[21] = appWidth*1/10; TicTacToeTextDIVHeight[21] = appHeight*1/24;
+  //
   //Fonts
   TitleFont = createFont("Times New Roman Bold", 55);
   //
@@ -146,6 +151,8 @@ void draw() {
   noStroke();
   rect(xBackground, yBackground, widthBackground, heightBackground);
   fill(ResetDefaultInk);
+  //
+  if (!MusicPlayer) {
   //
   //Game Grid and Grid Squares
   strokeWeight(3);
@@ -184,12 +191,11 @@ void draw() {
   rect(xMultiPlayer, yMultiPlayer, TicTacToeTextDIVWidth[2], TicTacToeTextDIVHeight[2]);
   }
   //
-  //Buttons
+  //Buttons Affected by MusicPlayer
   strokeWeight(3);
   stroke(Gold);
   rect(xNewGameButton, yNewGameButton, TicTacToeTextDIVWidth[8], TicTacToeTextDIVHeight[8]);
   rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
-  rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
   //
   //Text
   textAlign(CENTER, CENTER);
@@ -208,6 +214,18 @@ void draw() {
   textFont(TitleFont, FontSizes[8]);
   text(Text[9], xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
   fill(ResetDefaultInk);
+  //
+  }
+  //
+  //Buttons Unaffected by MusicPlayer
+  fill(Black);
+  strokeWeight(3);
+  stroke(Gold);
+  rect(xMusicPlayer, yMusicPlayer, TicTacToeTextDIVWidth[21], TicTacToeTextDIVHeight[21]);
+  fill(RoseGold);
+  textFont(TitleFont, FontSizes[21]);
+  text(Text[21], xMusicPlayer, yMusicPlayer, TicTacToeTextDIVWidth[21], TicTacToeTextDIVHeight[21]);
+  rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
   //
   stringVarsEntry ();
   //
@@ -229,6 +247,8 @@ void keyPressed() {
 } //End keyPressed
 //
 void mousePressed() {
+  //
+  if (!MusicPlayer) {
   //
   if (GameModeMultiPlayer) {
   TicTacToeMultiPlayerMousePressed();
@@ -265,6 +285,12 @@ void mousePressed() {
     for (int i = 1; i <= 9; i++) {
       GridState[i] = 0;
     }
+  } 
+  }
+  if (MouseIsOver(xMusicPlayer, yMusicPlayer, TicTacToeTextDIVWidth[21], TicTacToeTextDIVHeight[21]) && !MusicPlayer) {
+    MusicPlayer = true;
+  } else if (MouseIsOver(xMusicPlayer, yMusicPlayer, TicTacToeTextDIVWidth[21], TicTacToeTextDIVHeight[21]) && MusicPlayer) {
+    MusicPlayer = false;
   } else if (MouseIsOver(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton)) {
     exit();
   }

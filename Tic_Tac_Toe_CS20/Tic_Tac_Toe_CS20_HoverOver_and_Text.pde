@@ -1,7 +1,7 @@
 float TitleFontSize;
 float[] InitialFontSizes = new float[TicTacToeTextDIVHeight.length];
 float[] FontSizes = new float[TicTacToeTextDIVHeight.length];
-String[] Text = new String[21];
+String[] Text = new String[22];
 void MusicPanelTextSetup1() {
   //
   TitleFontSize = ShorterSide;
@@ -49,6 +49,11 @@ void stringVarsEntry() {
   }
   Text[19] = "You Win!";
   Text[20] = "You Lose!";
+  if (!MusicPlayer) {
+  Text[21] = "Music Player";
+  } else if (MusicPlayer) { 
+  Text[21] = "Return";
+  }
   //
 }
 void MusicPanelTextSetup2() {
@@ -97,6 +102,11 @@ void Tic_Tac_Toe_CS20_HoverOver () {
   } else if (MouseIsOver(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9])) {
     fill(HoverOverColor);
     rect(xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
+    fill(ResetDefaultInk);
+    stroke(Black);
+  } else if (MouseIsOver(xMusicPlayer, yMusicPlayer, TicTacToeTextDIVWidth[21], TicTacToeTextDIVHeight[21])) {
+    fill(HoverOverColor);
+    rect(xMusicPlayer, yMusicPlayer, TicTacToeTextDIVWidth[21], TicTacToeTextDIVHeight[21]);
     fill(ResetDefaultInk);
     stroke(Black);
   } else if (MouseIsOver(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton)) {
