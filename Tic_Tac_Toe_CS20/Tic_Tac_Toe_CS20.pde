@@ -6,6 +6,8 @@ float[] yGameGrid = new float[10];
 float widthGameGrid, heightGameGrid;
 float widthGameGridSquare, heightGameGridSquare;
 float widthPlayerOGameGridCircle;
+float[] TextDIVWidth = new float[18];
+float[] TextDIVHeight = new float[18];
 float[] TicTacToeTextDIVWidth = new float[22];
 float[] TicTacToeTextDIVHeight = new float[22];
 float xGameModeSelection, yGameModeSelection;
@@ -128,9 +130,7 @@ void setup() {
   xGameGrid[9] = xGameGrid[0]+widthGameGridSquare*2; yGameGrid[9] = yGameGrid[0]+heightGameGridSquare*2;
   widthPlayerOGameGridCircle = widthGameGridSquare*2/3;
   //
-  if (MusicPlayer) {
-    //MusicPlayerVoidSetup();
-  }
+  MusicPlayerVoidSetup();
   //
   //Music Player
   xMusicPlayer = appWidth-appWidth*1/10; yMusicPlayer = appHeight*23/24; TicTacToeTextDIVWidth[21] = appWidth*1/10; TicTacToeTextDIVHeight[21] = appHeight*1/24;
@@ -142,6 +142,11 @@ void setup() {
 void draw() {
   //
   shapeMode(CENTER);
+  //
+  TextSetup1();
+  TextSetup2();
+  MusicPanelTextSetup1();
+  MusicPanelTextSetup2();
   //
   //Background
   fill(Black);
@@ -214,7 +219,7 @@ void draw() {
   }
   //
   if (MusicPlayer) {
-    //MusicPlayerVoidDraw();
+    MusicPlayerVoidDraw();
   }
   //
   //Buttons Unaffected by MusicPlayer
@@ -227,7 +232,7 @@ void draw() {
   text(Text[21], xMusicPlayer, yMusicPlayer, TicTacToeTextDIVWidth[21], TicTacToeTextDIVHeight[21]);
   rect(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
   //
-  stringVarsEntry ();
+  stringVarsEntry();
   //
   //Images
   image(Quit, xQuitButton, yQuitButton, widthQuitButton, heightQuitButton);
@@ -244,7 +249,7 @@ void draw() {
 void keyPressed() {
   //
   if (MusicPlayer) {
-    //MusicPlayerKeyPressed();
+    MusicPlayerKeyPressed();
   }
   //
 } //End keyPressed
@@ -298,7 +303,7 @@ void mousePressed() {
     exit();
   }
   if (MusicPlayer) {
-    //MusicPlayerMousePressed();
+    MusicPlayerMousePressed();
   }
   //
 } //End mousePressed

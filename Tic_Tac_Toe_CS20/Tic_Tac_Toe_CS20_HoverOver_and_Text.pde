@@ -2,7 +2,7 @@ float TitleFontSize;
 float[] InitialFontSizes = new float[TicTacToeTextDIVHeight.length];
 float[] FontSizes = new float[TicTacToeTextDIVHeight.length];
 String[] Text = new String[22];
-void MusicPanelTextSetup1() {
+void TextSetup1() {
   //
   TitleFontSize = ShorterSide;
   TitleFont = createFont("Times New Roman Bold", TitleFontSize);
@@ -56,7 +56,7 @@ void stringVarsEntry() {
   }
   //
 }
-void MusicPanelTextSetup2() {
+void TextSetup2() {
   TitleFontSize = ShorterSide;
   for (int i=0; i<TicTacToeTextDIVHeight.length; i++) {
     if (TitleFontSize > TicTacToeTextDIVHeight[i]) 
