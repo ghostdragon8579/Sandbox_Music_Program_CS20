@@ -128,6 +128,10 @@ void setup() {
   xGameGrid[9] = xGameGrid[0]+widthGameGridSquare*2; yGameGrid[9] = yGameGrid[0]+heightGameGridSquare*2;
   widthPlayerOGameGridCircle = widthGameGridSquare*2/3;
   //
+  if (MusicPlayer) {
+    //MusicPlayerVoidSetup();
+  }
+  //
   //Music Player
   xMusicPlayer = appWidth-appWidth*1/10; yMusicPlayer = appHeight*23/24; TicTacToeTextDIVWidth[21] = appWidth*1/10; TicTacToeTextDIVHeight[21] = appHeight*1/24;
   //
@@ -138,13 +142,6 @@ void setup() {
 void draw() {
   //
   shapeMode(CENTER);
-  //
-  MusicPanelTextSetup1();
-  MusicPanelTextSetup2();
-  if (!IsFontSizeUpdated) {
-    MusicPanelTextSetup2();
-    IsFontSizeUpdated = true;
-  }
   //
   //Background
   fill(Black);
@@ -214,7 +211,10 @@ void draw() {
   textFont(TitleFont, FontSizes[8]);
   text(Text[9], xResetButton, yResetButton, TicTacToeTextDIVWidth[9], TicTacToeTextDIVHeight[9]);
   fill(ResetDefaultInk);
+  }
   //
+  if (MusicPlayer) {
+    //MusicPlayerVoidDraw();
   }
   //
   //Buttons Unaffected by MusicPlayer
@@ -243,6 +243,9 @@ void draw() {
 //
 void keyPressed() {
   //
+  if (MusicPlayer) {
+    //MusicPlayerKeyPressed();
+  }
   //
 } //End keyPressed
 //
@@ -293,6 +296,9 @@ void mousePressed() {
     MusicPlayer = false;
   } else if (MouseIsOver(xQuitButton, yQuitButton, widthQuitButton, heightQuitButton)) {
     exit();
+  }
+  if (MusicPlayer) {
+    //MusicPlayerMousePressed();
   }
   //
 } //End mousePressed
