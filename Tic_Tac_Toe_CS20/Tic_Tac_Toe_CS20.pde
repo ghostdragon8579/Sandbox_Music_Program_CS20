@@ -6,8 +6,6 @@ float[] yGameGrid = new float[10];
 float widthGameGrid, heightGameGrid;
 float widthGameGridSquare, heightGameGridSquare;
 float widthPlayerOGameGridCircle;
-float[] TextDIVWidth = new float[18];
-float[] TextDIVHeight = new float[18];
 float[] TicTacToeTextDIVWidth = new float[22];
 float[] TicTacToeTextDIVHeight = new float[22];
 float xGameModeSelection, yGameModeSelection;

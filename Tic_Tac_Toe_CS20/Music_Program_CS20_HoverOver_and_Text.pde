@@ -1,3 +1,5 @@
+float[] TextDIVWidth = new float[18];
+float[] TextDIVHeight = new float[18];
 float[] InitialFontSizes2 = new float[TextDIVHeight.length];
 float[] FontSizes2 = new float[TextDIVHeight.length];
 String[] MusicPlayerText = new String[18];
