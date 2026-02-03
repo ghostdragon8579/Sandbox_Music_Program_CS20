@@ -71,12 +71,12 @@ void setup() {
   appHeight = height;
   ShorterSide = (appWidth >= appHeight) ? appHeight : appWidth;
   //
-  String up = "..";
-  String open = "/";
+  String Up = "..";
+  String Open = "/";
   String ImageFolder = "Music_Program_Images";
-  String Imagepathway = up + open;
+  String Imagepathway = Up+Open;
   String QuitImage = "exit.png";
-  Quit = loadImage(Imagepathway + ImageFolder + open + QuitImage);
+  Quit = loadImage(Imagepathway+ImageFolder+Open+QuitImage);
   //
   //Background
   xBackground = appWidth*0; yBackground = appHeight*0; widthBackground = appWidth-1; heightBackground = appHeight-1;
